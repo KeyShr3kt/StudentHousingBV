@@ -1,92 +1,99 @@
-# StudentHousingBV - Group01
+Introduction 
 
+	You have successfully finished the semester 1 orientation phase and introduction project, in which 
+you have gained the basic knowledge of programming, designing interfaces, and other ICT related 
+subjects. For the profile phase you have chosen ICT & Software Engineering and we welcome you to 
+the ICT & Software Engineering profile! 
+In this phase, you will join a team to develop a project, which will be described in this document. 
 
+Objective 
 
-## Getting started
+	You will form a team with two other students to work on a project for a simulated environment. The 
+objective is to determine what the problem is and how to remedy this with a software system.  
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+The simulated situation 
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+	We, Student Housing BV, own different building where students (our clients) can stay during their 
+study in the Netherlands. Our buildings are composed of rooms, which are rented by our clients, but 
+also shared facilities such as toilets, bathroom, kitchen, hallway, storage space, etc. 
+For some time now we are receiving complaints from our clients related to: 
+- Appointed persons not cleaning the shared facilities. 
+- Groceries are not done or paid for shared items such as toilet paper, dish soap, etc. 
+- Garbage disposal is not done on time. 
+- Unannounced parties, gatherings, etc. 
+These are only the complaints we have received and it would be realistic to assume minor issues 
+have not been communicated to us. 
+As an extra service, we want to offer our clients a software solution to better arrange day-to-day 
+situations and hopefully this will reduce the amount of issues they face. 
+We envision an application where our clients can record and see agreements made between them, 
+but also the possibility to see the house rules and to file complaints anonymously. Every so often we 
+will have one of our employees go by the buildings to update the rules and gather any complaints. 
+We encourage additional functionalities and suggestions as long as it does not endanger the delivery 
+of the application on time. 
 
-## Add your files
+Constraints
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+	For this project, all teams will have to keep to the following constraints: 
+- The programming language is C# and the main application must be a Windows Forms 
+Application; object-oriented programming must be applied for the application(s). 
+- Only theory covered during this semester is expected to be applied for the application(s). 
+- Information must be persisted in files, not in a database. 
+- If you later want to connect to a database, it must be done after having a good object-
+oriented level for the application data and after having implemented persistence in files. 
+- GitLab from Fontys ICT must be used for collaborating on the code base. 
+- Canvas must be used for determining and submitting the deliverables for the project. 
+- Weekly meetings must be scheduled with your assigned technical tutor to discuss the 
+progress of the project; presence of all members is required. 
+- Also, bi-weekly meetings must be scheduled with your assigned professional-skills tutor to 
+discuss the collaboration process; presence of all members is also required here. 
+- Agendas for meetings with the tutors must be delivered at the latest 24 hours before the 
+meeting; likewise, minutes of meetings must be delivered at the latest 24 hours after the 
+meeting. 
 
-```
-cd existing_repo
-git remote add origin https://git.fhict.nl/I505880/studenthousingbv-group01.git
-git branch -M main
-git push -uf origin main
-```
+Way of working
 
-## Integrate with your tools
+	This project is performed with a group of three students. The tutors will guide you in the formation 
+of teams, which must be registered in Canvas. The tutors will send invitations for the first meeting, but
+for the rest of the project it is your responsibility to arrange the meetings. During these 
+meetings, you have the chance to inform your tutors about either your technical progress or the 
+collaboration process and, in all cases, discuss the challenges that you are currently facing. 
+The project will be performed in a sequential manner: 
+- Analyse the situation and propose a solution. 
+- Develop the solution. 
+- Deliver and present the solution.
 
-- [ ] [Set up project integrations](https://git.fhict.nl/I505880/studenthousingbv-group01/-/settings/integrations)
+Assessment
 
-## Collaborate with your team
+	At the end of this project, you have grown as a group and as individuals. This growth can be divided 
+into four categories; enumerated in an arbitrary order: 
+1. Documentation. 
+2. Implementation. 
+3. Project Management skills. 
+4. Professional collaboration. 
+The tutors of the project will give you frequent feedback on your performance in all these 
+categories. By the end of the profile phase, the project tutors together with the teachers of the 
+courses will assess you on these categories. In the end, they will decide together, based on both your 
+project performance and your performance on the courses, what the result is for the student on the 
+two learning outcomes of the profile phase: U(ndefined), O(rienting), B(eginning), P(roficient), 
+A(dvanced). For details, see Semester Guide. 
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Expectations 
 
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+	The information about your performance that the assessors get from the project comes both from 
+the deliverables and from your professional skills; the latter often relates to how you collaborated 
+during the development of the project.  
+At the very least the following are expected: 
+- Project ownership pro-active attitude: It is expected that you take ownership of the project 
+and be pro-active. The work must be divided evenly between the members and, when 
+asked, should be made tangible and explicit. Note that dividing the work means all members 
+work on all the deliverables and you split it up on deliverable-level. 
+In addition, the project is open in what functionalities should be implemented (i.e. the case 
+only supplies a context). It is expected of you and your group to suggest, discuss and 
+implement additional features besides the ones mentioned in the simulated situation 
+description. 
+- Justifiable choices: During the project you will have to decide what and how you are going to 
+implement functionalities; these decisions should come from you or your group members 
+(see prior point). You should always be able to justify your choices in such a way that is 
+acceptable by your tutors. If you make assumptions for your decisions, always make sure 
+they are correct. 
+- Apply theory: It is expected that you apply the theory covered in the profile phase. 
