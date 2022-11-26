@@ -5,6 +5,8 @@ namespace StudentHousingBV
         public Form1()
         {
             InitializeComponent();
+            Console.WriteLine("Hello World!");
+
         }
     }
 }
