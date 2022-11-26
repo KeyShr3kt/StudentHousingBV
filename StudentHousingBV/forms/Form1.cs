@@ -1,3 +1,5 @@
+using StudentHousingBV.models;
+
 namespace StudentHousingBV
 {
     public partial class Form1 : Form
@@ -5,8 +7,6 @@ namespace StudentHousingBV
         public Form1()
         {
             InitializeComponent();
-            Console.WriteLine("Hello World!");
-
         }
     }
 }
