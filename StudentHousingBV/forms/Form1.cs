@@ -1,3 +1,5 @@
+using StudentHousingBV.models;
+
 namespace StudentHousingBV
 {
     public partial class Form1 : Form
