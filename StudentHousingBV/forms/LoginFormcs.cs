@@ -1,4 +1,5 @@
-﻿using StudentHousingBV.models;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,10 @@ namespace StudentHousingBV.forms
     public partial class LoginForm : Form
     {
         private Database _db = new Database();
-        public LoginForm()
+        public LoginForm(Database db)
         {
             InitializeComponent();
+            this._db = db;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -25,18 +27,30 @@ namespace StudentHousingBV.forms
             string password = txtBoxPassword.Text.Trim();
 
 
-            User? foundUser = _db.getUserWithLogin(email, password);
+            int? userId = UserManager.GetUserIdWith(email, password, _db);
 
-            if (foundUser != null)
+
+            if (userId != null)
             {
-                if (foundUser.GetLastSeenAt() == null)
+                if (UserManager.isFirstTimeLoginForUserId((int)userId, _db))
                 {
-                    ChangePasswordForm form = new ChangePasswordForm(foundUser.GetId(), this._db);
+                    ChangePasswordForm form = new ChangePasswordForm((int)userId, this._db);
                     form.Show();
                     this.Hide();
 
-                } else if (foundUser.GetIsAdmin()) { MessageBox.Show("welcome! (show the admin form)"); }
-                  else { MessageBox.Show("welcome! show user form!"); }
+                } else if (UserManager.IsUserWithIdAdmin((int)userId, this._db)) 
+                { 
+                    UserManager.UpdateLastSeenAtForUserId((int)userId, _db);
+                    AdminForm adminForm = new AdminForm();
+                    adminForm.Show();
+                    this.Hide();
+                } else 
+                {
+                    UserManager.UpdateLastSeenAtForUserId((int)userId, _db);
+                    Form1 form = new Form1();
+                    form.Show();
+                    this.Hide();
+                }
             } else
             {
                 MessageBox.Show("User not found!");
@@ -45,5 +59,8 @@ namespace StudentHousingBV.forms
            
             
         }
+
+       
+
     }
 }

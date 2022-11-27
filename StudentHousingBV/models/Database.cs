@@ -10,40 +10,28 @@ namespace StudentHousingBV.models
 {
     public class Database
     {
-        private List<User> users;
+        private List<User> _users;
+        private List<Report> _reports;
         public Database() {
             User user1 = new User(1, "User1", "User1", "user1@abv.bg", "password", "0111", false);
             User user2 = new User(1, "User2", "User2", "user2@abv.bg", "password", "0111", false);
             User user3 = new User(1, "User3", "User3", "user3@abv.bg", "password", "0111", false);
-            this.users = new List<User>() { user1, user2, user3 };
+            this._users = new List<User>() { user1, user2, user3 };
         }
         public List<User> GetUsers()
         {
-            return this.users;
+            return this._users;
         }
 
-        public User? getUserWithLogin(string email, string password)
+        public List<Report> GetReports()
         {
-            User? foundUser = null;
-            foreach (User user in this.users)
-            {
-                if (user.GetEmailAddress() == email && SecurePassword.Verify(password, user.GetPassword()))
-                {
-                    foundUser = user;
-                }
-            }
-            return foundUser;
+            return this._reports;
         }
 
-        public void ChangePasswordForUserWith(int id, string password)
+        public void AppendReport(Report report)
         {
-            foreach (User user in this.users)
-            {
-                if (user.GetId() == id)
-                {
-                    user.SetPassword(password);
-                }
-            }
+            this._reports.Add(report);
         }
+
     }
 }

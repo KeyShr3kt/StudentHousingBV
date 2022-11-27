@@ -1,4 +1,5 @@
-﻿using StudentHousingBV.models;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace StudentHousingBV.forms
         public ChangePasswordForm(int userId, Database db)
         {
             InitializeComponent();
-            _userId = userId;
+            this._userId = userId;
             this._db = db;
         }
 
@@ -26,9 +27,25 @@ namespace StudentHousingBV.forms
         {
             string newPassword = this.txtBoxNewPassword.Text.Trim();
             string confirmPassword = this.txtBoxConfirmPassword.Text.Trim();
-            if (newPassword == "" || confirmPassword == "" || newPassword.Length < 8 || confirmPassword.Length < 8) { MessageBox.Show("The password must contain at least 8 characters."); return; }
-            if (newPassword != confirmPassword) { MessageBox.Show("The passwords are not the same!"); return; }
-            _db.ChangePasswordForUserWith(_userId, newPassword);
+            if (newPassword == "" || confirmPassword == "" || newPassword.Length < 8 || confirmPassword.Length < 8) 
+            { 
+                MessageBox.Show("The password must contain at least 8 characters."); 
+                return; 
+            }
+
+            if (newPassword != confirmPassword) 
+            { 
+                MessageBox.Show("The passwords are not the same!");
+                return; 
+            }
+
+            UserManager.ChangePasswordForUserWith(_userId, newPassword, _db);
+            UserManager.UpdateLastSeenAtForUserId(_userId, _db);
+            // redirect the user to the user form 
+            //Form1 form = new Form1(); // pass current user to the form?????/
+            LoginForm form = new LoginForm(_db);
+            form.Show();
+            this.Hide();
         }
     }
 }

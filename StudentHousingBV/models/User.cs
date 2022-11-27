@@ -20,6 +20,7 @@ namespace StudentHousingBV.models
         private int _strikes;
         private bool _isAdmin;
         private DateTime? _lastSeenAt;
+        private int roomId = 0;
 
         public User(int id, string firstName, string lastName, string emailAddress, string password, string phoneNumber, bool isAdmin) 
         {
@@ -27,13 +28,14 @@ namespace StudentHousingBV.models
             this._firstName = firstName;
             this._lastName = lastName;
             this._emailAddress = emailAddress;
-            this._password = SecurePassword.Hash(password);
+            this._password = PasswordHasher.Hash(password);
             this._phoneNumber = phoneNumber;
             this._possitiveVotes = 0;
             this._negativeVotes = 0;
             this._strikes = 0;
             this._isAdmin = isAdmin;
             this._lastSeenAt = null;
+
         }
 
         public string GetPassword()
@@ -49,8 +51,8 @@ namespace StudentHousingBV.models
 
         public bool GetIsAdmin() { return this._isAdmin; }
 
-        public void SetPassword(string password) { this._password = SecurePassword.Hash(password); }
+        public void SetPassword(string password) { this._password = PasswordHasher.Hash(password); }
 
-   
+        public void UpdateLastSeenAt() { this._lastSeenAt = DateTime.Now; }
     }
 }

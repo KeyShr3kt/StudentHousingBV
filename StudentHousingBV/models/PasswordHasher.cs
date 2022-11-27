@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public static class SecurePassword
+    public static class PasswordHasher
     {
         /// <summary>
         /// Size of salt.
