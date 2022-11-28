@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace StudentHousingBV.forms
 {
-    public partial class LoginForm : Form
+    public partial class LoginPanel : Form
     {
         private Database _db = new Database();
-        public LoginForm(Database db)
+        public LoginPanel(Database db)
         {
             InitializeComponent();
             this._db = db;
@@ -47,7 +47,7 @@ namespace StudentHousingBV.forms
                 } else 
                 {
                     UserManager.UpdateLastSeenAtForUserId((int)userId, _db);
-                    Form1 form = new Form1();
+                    StudentPanel form = new StudentPanel();
                     form.Show();
                     this.Hide();
                 }

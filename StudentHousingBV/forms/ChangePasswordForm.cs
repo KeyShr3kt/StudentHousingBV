@@ -43,7 +43,7 @@ namespace StudentHousingBV.forms
             UserManager.UpdateLastSeenAtForUserId(_userId, _db);
             // redirect the user to the user form 
             //Form1 form = new Form1(); // pass current user to the form?????/
-            LoginForm form = new LoginForm(_db);
+            LoginPanel form = new LoginPanel(_db);
             form.Show();
             this.Hide();
         }

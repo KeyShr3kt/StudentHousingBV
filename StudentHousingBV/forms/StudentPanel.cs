@@ -1,14 +1,13 @@
 using StudentHousingBV.models;
 
-namespace StudentHousingBV
+namespace StudentHousingBV.forms
 {
-    public partial class Form1 : Form
+    public partial class StudentPanel : Form
     {
         public User user;
-        public Form1()
+        public StudentPanel()
         {
             InitializeComponent();
         }
-
     }
 }
