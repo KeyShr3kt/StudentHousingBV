@@ -28,39 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LoginEmailLabel = new System.Windows.Forms.Label();
+            this.LoginPasswordLabel = new System.Windows.Forms.Label();
             this.txtBoxEmail = new System.Windows.Forms.TextBox();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LoginWelcomeLabel = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.LoginLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // LoginEmailLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Brown;
-            this.label1.Location = new System.Drawing.Point(106, 226);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Email:";
+            this.LoginEmailLabel.AutoSize = true;
+            this.LoginEmailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LoginEmailLabel.ForeColor = System.Drawing.Color.Brown;
+            this.LoginEmailLabel.Location = new System.Drawing.Point(106, 226);
+            this.LoginEmailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginEmailLabel.Name = "LoginEmailLabel";
+            this.LoginEmailLabel.Size = new System.Drawing.Size(39, 15);
+            this.LoginEmailLabel.TabIndex = 0;
+            this.LoginEmailLabel.Text = "Email:";
             // 
-            // label2
+            // LoginPasswordLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Brown;
-            this.label2.Location = new System.Drawing.Point(106, 286);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Password:";
+            this.LoginPasswordLabel.AutoSize = true;
+            this.LoginPasswordLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LoginPasswordLabel.ForeColor = System.Drawing.Color.Brown;
+            this.LoginPasswordLabel.Location = new System.Drawing.Point(106, 286);
+            this.LoginPasswordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginPasswordLabel.Name = "LoginPasswordLabel";
+            this.LoginPasswordLabel.Size = new System.Drawing.Size(62, 15);
+            this.LoginPasswordLabel.TabIndex = 1;
+            this.LoginPasswordLabel.Text = "Password:";
             // 
             // txtBoxEmail
             // 
@@ -79,22 +79,22 @@
             this.txtBoxPassword.Size = new System.Drawing.Size(247, 23);
             this.txtBoxPassword.TabIndex = 3;
             // 
-            // label3
+            // LoginWelcomeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.Brown;
-            this.label3.Location = new System.Drawing.Point(173, 185);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 30);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "WELCOME!";
+            this.LoginWelcomeLabel.AutoSize = true;
+            this.LoginWelcomeLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LoginWelcomeLabel.ForeColor = System.Drawing.Color.Brown;
+            this.LoginWelcomeLabel.Location = new System.Drawing.Point(173, 185);
+            this.LoginWelcomeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LoginWelcomeLabel.Name = "LoginWelcomeLabel";
+            this.LoginWelcomeLabel.Size = new System.Drawing.Size(122, 30);
+            this.LoginWelcomeLabel.TabIndex = 4;
+            this.LoginWelcomeLabel.Text = "WELCOME!";
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI Black", 10.875F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btnLogin.BackColor = System.Drawing.Color.Brown;
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(149, 347);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -105,17 +105,17 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // pictureBox1
+            // LoginLogo
             // 
-            this.pictureBox1.Image = global::StudentHousingBV.Properties.Resources.project_modified;
-            this.pictureBox1.InitialImage = global::StudentHousingBV.Properties.Resources.project_modified;
-            this.pictureBox1.Location = new System.Drawing.Point(149, 28);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(166, 132);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.LoginLogo.Image = global::StudentHousingBV.Properties.Resources.project_modified;
+            this.LoginLogo.InitialImage = global::StudentHousingBV.Properties.Resources.project_modified;
+            this.LoginLogo.Location = new System.Drawing.Point(149, 28);
+            this.LoginLogo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.LoginLogo.Name = "LoginLogo";
+            this.LoginLogo.Size = new System.Drawing.Size(166, 132);
+            this.LoginLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LoginLogo.TabIndex = 6;
+            this.LoginLogo.TabStop = false;
             // 
             // LoginPanel
             // 
@@ -123,17 +123,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(458, 418);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.LoginWelcomeLabel);
+            this.Controls.Add(this.LoginLogo);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBoxPassword);
             this.Controls.Add(this.txtBoxEmail);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LoginPasswordLabel);
+            this.Controls.Add(this.LoginEmailLabel);
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "LoginPanel";
             this.Text = "Student Housing BV - Login";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,12 +141,12 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
+        private Label LoginEmailLabel;
+        private Label LoginPasswordLabel;
         private TextBox txtBoxEmail;
         private TextBox txtBoxPassword;
-        private Label label3;
+        private Label LoginWelcomeLabel;
         private Button btnLogin;
-        private PictureBox pictureBox1;
+        private PictureBox LoginLogo;
     }
 }
