@@ -33,16 +33,16 @@
             this.pageAgreements = new System.Windows.Forms.TabPage();
             this.navAgreements = new System.Windows.Forms.TabControl();
             this.pageClosedAgreements = new System.Windows.Forms.TabPage();
+            this.selectClosedAgreement = new System.Windows.Forms.ComboBox();
+            this.btnClosedAgreement = new System.Windows.Forms.Button();
             this.listClosedAgreements = new System.Windows.Forms.ListBox();
             this.pageOpenAgreements = new System.Windows.Forms.TabPage();
+            this.selectOpenAgreement = new System.Windows.Forms.ComboBox();
+            this.listOpenAgreements = new System.Windows.Forms.ListBox();
             this.btnOpenAgreement = new System.Windows.Forms.Button();
             this.pageTasks = new System.Windows.Forms.TabPage();
             this.pageRules = new System.Windows.Forms.TabPage();
             this.pageAccount = new System.Windows.Forms.TabPage();
-            this.btnClosedAgreement = new System.Windows.Forms.Button();
-            this.selectClosedAgreement = new System.Windows.Forms.ComboBox();
-            this.selectOpenAgreement = new System.Windows.Forms.ComboBox();
-            this.listOpenAgreements = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPicture)).BeginInit();
             this.navPages.SuspendLayout();
             this.pageAgreements.SuspendLayout();
@@ -56,7 +56,7 @@
             this.backgroundPicture.Image = global::StudentHousingBV.Properties.Resources.TUe_by_night1;
             this.backgroundPicture.Location = new System.Drawing.Point(12, 12);
             this.backgroundPicture.Name = "backgroundPicture";
-            this.backgroundPicture.Size = new System.Drawing.Size(967, 155);
+            this.backgroundPicture.Size = new System.Drawing.Size(969, 155);
             this.backgroundPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.backgroundPicture.TabIndex = 0;
             this.backgroundPicture.TabStop = false;
@@ -111,6 +111,25 @@
             this.pageClosedAgreements.TabIndex = 0;
             this.pageClosedAgreements.Text = "Closed Agreements";
             // 
+            // selectClosedAgreement
+            // 
+            this.selectClosedAgreement.FormattingEnabled = true;
+            this.selectClosedAgreement.Location = new System.Drawing.Point(6, 257);
+            this.selectClosedAgreement.Name = "selectClosedAgreement";
+            this.selectClosedAgreement.Size = new System.Drawing.Size(929, 23);
+            this.selectClosedAgreement.TabIndex = 5;
+            // 
+            // btnClosedAgreement
+            // 
+            this.btnClosedAgreement.BackColor = System.Drawing.Color.Brown;
+            this.btnClosedAgreement.ForeColor = System.Drawing.Color.White;
+            this.btnClosedAgreement.Location = new System.Drawing.Point(6, 286);
+            this.btnClosedAgreement.Name = "btnClosedAgreement";
+            this.btnClosedAgreement.Size = new System.Drawing.Size(929, 30);
+            this.btnClosedAgreement.TabIndex = 4;
+            this.btnClosedAgreement.Text = "Open Agreement";
+            this.btnClosedAgreement.UseVisualStyleBackColor = false;
+            // 
             // listClosedAgreements
             // 
             this.listClosedAgreements.BackColor = System.Drawing.Color.White;
@@ -133,6 +152,24 @@
             this.pageOpenAgreements.Size = new System.Drawing.Size(941, 322);
             this.pageOpenAgreements.TabIndex = 1;
             this.pageOpenAgreements.Text = "Open Agreements";
+            // 
+            // selectOpenAgreement
+            // 
+            this.selectOpenAgreement.FormattingEnabled = true;
+            this.selectOpenAgreement.Location = new System.Drawing.Point(6, 257);
+            this.selectOpenAgreement.Name = "selectOpenAgreement";
+            this.selectOpenAgreement.Size = new System.Drawing.Size(929, 23);
+            this.selectOpenAgreement.TabIndex = 7;
+            // 
+            // listOpenAgreements
+            // 
+            this.listOpenAgreements.BackColor = System.Drawing.Color.White;
+            this.listOpenAgreements.FormattingEnabled = true;
+            this.listOpenAgreements.ItemHeight = 15;
+            this.listOpenAgreements.Location = new System.Drawing.Point(6, 6);
+            this.listOpenAgreements.Name = "listOpenAgreements";
+            this.listOpenAgreements.Size = new System.Drawing.Size(929, 244);
+            this.listOpenAgreements.TabIndex = 6;
             // 
             // btnOpenAgreement
             // 
@@ -174,43 +211,6 @@
             this.pageAccount.Size = new System.Drawing.Size(961, 365);
             this.pageAccount.TabIndex = 3;
             this.pageAccount.Text = "ACCOUNT";
-            // 
-            // btnClosedAgreement
-            // 
-            this.btnClosedAgreement.BackColor = System.Drawing.Color.Brown;
-            this.btnClosedAgreement.ForeColor = System.Drawing.Color.White;
-            this.btnClosedAgreement.Location = new System.Drawing.Point(6, 286);
-            this.btnClosedAgreement.Name = "btnClosedAgreement";
-            this.btnClosedAgreement.Size = new System.Drawing.Size(929, 30);
-            this.btnClosedAgreement.TabIndex = 4;
-            this.btnClosedAgreement.Text = "Open Agreement";
-            this.btnClosedAgreement.UseVisualStyleBackColor = false;
-            // 
-            // selectClosedAgreement
-            // 
-            this.selectClosedAgreement.FormattingEnabled = true;
-            this.selectClosedAgreement.Location = new System.Drawing.Point(6, 257);
-            this.selectClosedAgreement.Name = "selectClosedAgreement";
-            this.selectClosedAgreement.Size = new System.Drawing.Size(929, 23);
-            this.selectClosedAgreement.TabIndex = 5;
-            // 
-            // selectOpenAgreement
-            // 
-            this.selectOpenAgreement.FormattingEnabled = true;
-            this.selectOpenAgreement.Location = new System.Drawing.Point(6, 257);
-            this.selectOpenAgreement.Name = "selectOpenAgreement";
-            this.selectOpenAgreement.Size = new System.Drawing.Size(929, 23);
-            this.selectOpenAgreement.TabIndex = 7;
-            // 
-            // listOpenAgreements
-            // 
-            this.listOpenAgreements.BackColor = System.Drawing.Color.White;
-            this.listOpenAgreements.FormattingEnabled = true;
-            this.listOpenAgreements.ItemHeight = 15;
-            this.listOpenAgreements.Location = new System.Drawing.Point(6, 6);
-            this.listOpenAgreements.Name = "listOpenAgreements";
-            this.listOpenAgreements.Size = new System.Drawing.Size(929, 244);
-            this.listOpenAgreements.TabIndex = 6;
             // 
             // StudentPanel
             // 

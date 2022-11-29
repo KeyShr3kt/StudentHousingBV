@@ -1,6 +1,6 @@
 ﻿namespace StudentHousingBV.forms
 {
-    partial class Form1
+    partial class AgreementPanel
     {
         /// <summary>
         /// Required designer variable.

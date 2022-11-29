@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StudentHousingBV.forms
 {
-    public partial class Form1 : Form
+    public partial class AgreementPanel : Form
     {
-        public Form1()
+        public AgreementPanel()
         {
             InitializeComponent();
         }
