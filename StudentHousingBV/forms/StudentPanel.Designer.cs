@@ -148,7 +148,7 @@
             this.btnClosedAgreement.Name = "btnClosedAgreement";
             this.btnClosedAgreement.Size = new System.Drawing.Size(848, 30);
             this.btnClosedAgreement.TabIndex = 9;
-            this.btnClosedAgreement.Text = "Open Agreement";
+            this.btnClosedAgreement.Text = "Expand Agreement";
             this.btnClosedAgreement.UseVisualStyleBackColor = false;
             // 
             // listClosedAgreements
@@ -213,7 +213,7 @@
             this.btnOpenAgreement.Name = "btnOpenAgreement";
             this.btnOpenAgreement.Size = new System.Drawing.Size(848, 30);
             this.btnOpenAgreement.TabIndex = 3;
-            this.btnOpenAgreement.Text = "Open Agreement";
+            this.btnOpenAgreement.Text = "Expand Agreement";
             this.btnOpenAgreement.UseVisualStyleBackColor = false;
             // 
             // pageTasks
