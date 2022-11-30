@@ -43,8 +43,7 @@
             this.listOpenAgreements = new System.Windows.Forms.ListBox();
             this.btnOpenAgreement = new System.Windows.Forms.Button();
             this.pageTasks = new System.Windows.Forms.TabPage();
-            this.listTasks = new System.Windows.Forms.CheckedListBox();
-            this.btnMarkTaskAsFinished = new System.Windows.Forms.Button();
+            this.flowTasks = new System.Windows.Forms.FlowLayoutPanel();
             this.btnReportTask = new StudentHousingBV.forms.RoundButton();
             this.pageRules = new System.Windows.Forms.TabPage();
             this.btnReportRule = new StudentHousingBV.forms.RoundButton();
@@ -154,11 +153,12 @@
             // listClosedAgreements
             // 
             this.listClosedAgreements.BackColor = System.Drawing.Color.White;
+            this.listClosedAgreements.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listClosedAgreements.FormattingEnabled = true;
-            this.listClosedAgreements.ItemHeight = 15;
+            this.listClosedAgreements.ItemHeight = 21;
             this.listClosedAgreements.Location = new System.Drawing.Point(6, 6);
             this.listClosedAgreements.Name = "listClosedAgreements";
-            this.listClosedAgreements.Size = new System.Drawing.Size(929, 244);
+            this.listClosedAgreements.Size = new System.Drawing.Size(929, 235);
             this.listClosedAgreements.TabIndex = 0;
             // 
             // pageOpenAgreements
@@ -197,11 +197,12 @@
             // listOpenAgreements
             // 
             this.listOpenAgreements.BackColor = System.Drawing.Color.White;
+            this.listOpenAgreements.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listOpenAgreements.FormattingEnabled = true;
-            this.listOpenAgreements.ItemHeight = 15;
+            this.listOpenAgreements.ItemHeight = 21;
             this.listOpenAgreements.Location = new System.Drawing.Point(6, 6);
             this.listOpenAgreements.Name = "listOpenAgreements";
-            this.listOpenAgreements.Size = new System.Drawing.Size(929, 244);
+            this.listOpenAgreements.Size = new System.Drawing.Size(929, 235);
             this.listOpenAgreements.TabIndex = 6;
             // 
             // btnOpenAgreement
@@ -219,8 +220,7 @@
             // pageTasks
             // 
             this.pageTasks.BackColor = System.Drawing.Color.RosyBrown;
-            this.pageTasks.Controls.Add(this.listTasks);
-            this.pageTasks.Controls.Add(this.btnMarkTaskAsFinished);
+            this.pageTasks.Controls.Add(this.flowTasks);
             this.pageTasks.Controls.Add(this.btnReportTask);
             this.pageTasks.Location = new System.Drawing.Point(4, 33);
             this.pageTasks.Name = "pageTasks";
@@ -229,25 +229,16 @@
             this.pageTasks.TabIndex = 1;
             this.pageTasks.Text = "TASKS";
             // 
-            // listTasks
+            // flowTasks
             // 
-            this.listTasks.FormattingEnabled = true;
-            this.listTasks.Location = new System.Drawing.Point(6, 6);
-            this.listTasks.Name = "listTasks";
-            this.listTasks.Size = new System.Drawing.Size(949, 292);
-            this.listTasks.TabIndex = 13;
-            // 
-            // btnMarkTaskAsFinished
-            // 
-            this.btnMarkTaskAsFinished.BackColor = System.Drawing.Color.Brown;
-            this.btnMarkTaskAsFinished.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMarkTaskAsFinished.ForeColor = System.Drawing.Color.White;
-            this.btnMarkTaskAsFinished.Location = new System.Drawing.Point(87, 315);
-            this.btnMarkTaskAsFinished.Name = "btnMarkTaskAsFinished";
-            this.btnMarkTaskAsFinished.Size = new System.Drawing.Size(868, 30);
-            this.btnMarkTaskAsFinished.TabIndex = 11;
-            this.btnMarkTaskAsFinished.Text = "Mark task as finished";
-            this.btnMarkTaskAsFinished.UseVisualStyleBackColor = false;
+            this.flowTasks.AutoScroll = true;
+            this.flowTasks.BackColor = System.Drawing.Color.LightGray;
+            this.flowTasks.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowTasks.Location = new System.Drawing.Point(6, 6);
+            this.flowTasks.Name = "flowTasks";
+            this.flowTasks.Size = new System.Drawing.Size(949, 287);
+            this.flowTasks.TabIndex = 10;
+            this.flowTasks.WrapContents = false;
             // 
             // btnReportTask
             // 
@@ -335,7 +326,6 @@
         private RoundButton btnReportOpenAgreement;
         private RoundButton btnReportTask;
         private RoundButton btnReportRule;
-        private CheckedListBox listTasks;
-        private Button btnMarkTaskAsFinished;
+        private FlowLayoutPanel flowTasks;
     }
 }
