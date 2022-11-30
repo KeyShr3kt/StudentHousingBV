@@ -9,9 +9,11 @@ namespace StudentHousingBV.forms
         public StudentPanel()
         {
             InitializeComponent();
+            #region tests
             listClosedAgreements.Items.Add("#ID | {user}: {title} - Upvotes: {number} / Downvotes: {number}");
             listOpenAgreements.Items.Add("#ID | {user}: {title} - Upvotes: {number} / Downvotes: {number}");
             flowTasks.Controls.Add(new TaskComponent(1, "bla", date, 2, false, false));
+            #endregion
         }
     }
 }
