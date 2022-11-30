@@ -16,5 +16,9 @@ namespace StudentHousingBV.models
             _isShopping = isShopping;
             _isCompleted = isCompleted;
         }
+
+        public bool IsCompleted { get => _isCompleted; set => _isCompleted = value; }
+
+        public bool IsShopping { get => _isShopping; set => _isShopping = value; }
     }
 }

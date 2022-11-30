@@ -14,5 +14,7 @@ namespace StudentHousingBV.models
         {
             _updatedAt = updatedAt;
         }
+
+        public DateTime UpdatedAt { get => _updatedAt; set => _updatedAt = value; }
     }
 }
