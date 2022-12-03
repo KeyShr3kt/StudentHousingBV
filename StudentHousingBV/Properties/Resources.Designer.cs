@@ -63,6 +63,16 @@ namespace StudentHousingBV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap menuButton {
+            get {
+                object obj = ResourceManager.GetObject("menuButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap project_modified {
             get {
                 object obj = ResourceManager.GetObject("project-modified", resourceCulture);
