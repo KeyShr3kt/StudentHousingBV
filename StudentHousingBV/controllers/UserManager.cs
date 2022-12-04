@@ -20,9 +20,9 @@ namespace StudentHousingBV.controllers
             // close the db object in the end of the method
             foreach (User user in users)
             {
-                if (user.GetId() == id)
+                if (user.Id == id)
                 {
-                    user.SetPassword(password);
+                    user.Password = password;
                 }
             }
         }
@@ -34,9 +34,9 @@ namespace StudentHousingBV.controllers
             int? foundUser = null;
             foreach (User user in users)
             {
-                if (user.GetEmailAddress() == email && PasswordHasher.Verify(password, user.GetPassword()))
+                if (user.EmailAddress == email && PasswordHasher.Verify(password, user.Password))
                 {
-                    foundUser = user.GetId();
+                    foundUser = user.Id;
                 }
             }
             return foundUser;
@@ -48,9 +48,9 @@ namespace StudentHousingBV.controllers
             bool newUser = false;
             foreach (User user in users)
             {
-                if (user.GetId() == id)
+                if (user.Id == id)
                 {
-                    if (user.GetLastSeenAt() == null)
+                    if (user.LastSeenAt == null)
                     {
                         newUser = true;
                     }
@@ -65,9 +65,9 @@ namespace StudentHousingBV.controllers
             bool isAdmin = false;
             foreach (User user in users)
             {
-                if (user.GetId() == id)
+                if (user.Id == id)
                 {
-                    isAdmin = user.GetIsAdmin();
+                    isAdmin = user.isAdmin;
                 }
             }
             return isAdmin;
@@ -78,9 +78,9 @@ namespace StudentHousingBV.controllers
             List<User> users = db.GetUsers();
             foreach (User user in users)
             {
-                if (user.GetId() == id)
+                if (user.Id == id)
                 {
-                    user.UpdateLastSeenAt();
+                    user.LastSeenAt = DateTime.Now;
                 }
             }
         }
