@@ -48,6 +48,7 @@
             this.pageRules = new System.Windows.Forms.TabPage();
             this.btnReportRule = new StudentHousingBV.forms.RoundButton();
             this.pageAccount = new System.Windows.Forms.TabPage();
+            this.flowRules = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPicture)).BeginInit();
             this.navPages.SuspendLayout();
             this.pageAgreements.SuspendLayout();
@@ -254,6 +255,7 @@
             // pageRules
             // 
             this.pageRules.BackColor = System.Drawing.Color.RosyBrown;
+            this.pageRules.Controls.Add(this.flowRules);
             this.pageRules.Controls.Add(this.btnReportRule);
             this.pageRules.Location = new System.Drawing.Point(4, 33);
             this.pageRules.Name = "pageRules";
@@ -282,6 +284,17 @@
             this.pageAccount.Size = new System.Drawing.Size(961, 365);
             this.pageAccount.TabIndex = 3;
             this.pageAccount.Text = "ACCOUNT";
+            // 
+            // flowRules
+            // 
+            this.flowRules.AutoScroll = true;
+            this.flowRules.BackColor = System.Drawing.Color.LightGray;
+            this.flowRules.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowRules.Location = new System.Drawing.Point(6, 6);
+            this.flowRules.Name = "flowRules";
+            this.flowRules.Size = new System.Drawing.Size(949, 287);
+            this.flowRules.TabIndex = 11;
+            this.flowRules.WrapContents = false;
             // 
             // StudentPanel
             // 
@@ -327,5 +340,6 @@
         private RoundButton btnReportTask;
         private RoundButton btnReportRule;
         private FlowLayoutPanel flowTasks;
+        private FlowLayoutPanel flowRules;
     }
 }

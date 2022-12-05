@@ -1,5 +1,4 @@
-﻿using StudentHousingBV.models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,12 +10,12 @@ using System.Windows.Forms;
 
 namespace StudentHousingBV.forms.components
 {
-    public partial class TaskComponent : UserControl
+    public partial class RuleComponent : UserControl
     {
-        private StudentHousingBV.models.Task _task;
-        public TaskComponent(StudentHousingBV.models.Task task)
+        private StudentHousingBV.models.Rule _rule;
+        public RuleComponent(StudentHousingBV.models.Rule rule)
         {
-            this._task = task;
+            this._rule = rule;
             InitializeComponent();
         }
     }
