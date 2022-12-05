@@ -30,13 +30,14 @@ namespace StudentHousingBV.forms
 
         private void btnRules_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new forms.adminSectionForms.AdminRulesForm(), sender);
         }
 
        
 
         private void btnTasks_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new forms.AdminCreateUserForm(), sender);
+            OpenChildForm(new forms.adminSectionForms.AdminTasksForm(), sender);
 
         }
 

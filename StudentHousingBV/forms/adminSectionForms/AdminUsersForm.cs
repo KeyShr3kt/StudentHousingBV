@@ -40,5 +40,11 @@ namespace StudentHousingBV.forms.adminSectionForms
             }
             
         }
+
+        private void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            AdminCreateUserForm form = new AdminCreateUserForm();
+            form.Show();
+        }
     }
 }
