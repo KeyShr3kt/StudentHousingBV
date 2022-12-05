@@ -13,6 +13,7 @@ namespace StudentHousingBV.forms
 {
     public partial class AdminForm : Form
     {
+
         private Form _activeForm;
         public AdminForm()
         {
