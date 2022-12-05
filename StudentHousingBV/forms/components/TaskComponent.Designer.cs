@@ -28,68 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.TaskDescriptionLabel = new System.Windows.Forms.Label();
+            this.TaskUserLabel = new System.Windows.Forms.Label();
+            this.TaskMarkAsDoneButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // TaskDescriptionLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.TaskDescriptionLabel.AutoSize = true;
+            this.TaskDescriptionLabel.Location = new System.Drawing.Point(23, 28);
+            this.TaskDescriptionLabel.Name = "TaskDescriptionLabel";
+            this.TaskDescriptionLabel.Size = new System.Drawing.Size(74, 15);
+            this.TaskDescriptionLabel.TabIndex = 0;
+            this.TaskDescriptionLabel.Text = "{description}";
             // 
-            // label2
+            // TaskUserLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.TaskUserLabel.AutoSize = true;
+            this.TaskUserLabel.Location = new System.Drawing.Point(451, 28);
+            this.TaskUserLabel.Name = "TaskUserLabel";
+            this.TaskUserLabel.Size = new System.Drawing.Size(37, 15);
+            this.TaskUserLabel.TabIndex = 1;
+            this.TaskUserLabel.Text = "{user}";
             // 
-            // label3
+            // TaskMarkAsDoneButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(479, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(479, 42);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(815, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.TaskMarkAsDoneButton.Location = new System.Drawing.Point(763, 24);
+            this.TaskMarkAsDoneButton.Name = "TaskMarkAsDoneButton";
+            this.TaskMarkAsDoneButton.Size = new System.Drawing.Size(127, 23);
+            this.TaskMarkAsDoneButton.TabIndex = 4;
+            this.TaskMarkAsDoneButton.Text = "Mark as done";
+            this.TaskMarkAsDoneButton.UseVisualStyleBackColor = true;
             // 
             // TaskComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TaskMarkAsDoneButton);
+            this.Controls.Add(this.TaskUserLabel);
+            this.Controls.Add(this.TaskDescriptionLabel);
             this.Name = "TaskComponent";
             this.Size = new System.Drawing.Size(914, 72);
             this.ResumeLayout(false);
@@ -99,10 +76,8 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Button button1;
+        private Label TaskDescriptionLabel;
+        private Label TaskUserLabel;
+        private Button TaskMarkAsDoneButton;
     }
 }
