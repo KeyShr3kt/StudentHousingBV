@@ -13,7 +13,6 @@ namespace StudentHousingBV.forms
 {
     public partial class AdminForm : Form
     {
-        private bool sidebarExpand;
         private Form _activeForm;
         public AdminForm()
         {
@@ -22,35 +21,7 @@ namespace StudentHousingBV.forms
 
         private void menuButton_Click(object sender, EventArgs e)
         {
-            sidebarTimer.Start();
         }
-
-        private void sidebarTimer_Tick_1(object sender, EventArgs e)
-        {
-            if (sidebarExpand)
-            {
-                // if sidebar is expanded, minimize
-                sidebarPanel.Width -= 10;
-                if (sidebarPanel.Width == sidebarPanel.MinimumSize.Width)
-                {
-                    sidebarExpand = false;
-                    sidebarTimer.Stop();
-                }
-            
-            }
-            else
-            {
-                sidebarPanel.Width += 10;
-                if (sidebarPanel.Width == sidebarPanel.MaximumSize.Width)
-                {
-                    sidebarExpand = true;
-                    sidebarTimer.Stop();
-                }
-            }
-        }
-
-
-
         private void btnUsers_Click(object sender, EventArgs e)
         {
             OpenChildForm(new forms.adminSectionForms.AdminUsersForm(), sender);
@@ -77,8 +48,8 @@ namespace StudentHousingBV.forms
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            this.panel3.Controls.Add(childForm);
-            this.panel3.Tag = childForm;
+            this.pnlActiveForm.Controls.Add(childForm);
+            this.pnlActiveForm.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
         }

@@ -37,17 +37,17 @@
             // 
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 73);
+            this.panel1.Location = new System.Drawing.Point(0, 230);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(694, 330);
+            this.panel1.Size = new System.Drawing.Size(843, 392);
             this.panel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 21);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(47, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(667, 335);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 368);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // AdminUsersForm
@@ -55,10 +55,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(694, 403);
+            this.ClientSize = new System.Drawing.Size(843, 622);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(710, 442);
-            this.MinimumSize = new System.Drawing.Size(639, 442);
+            this.MaximumSize = new System.Drawing.Size(859, 661);
+            this.MinimumSize = new System.Drawing.Size(859, 661);
             this.Name = "AdminUsersForm";
             this.Text = "AdminUsersForm";
             this.panel1.ResumeLayout(false);
