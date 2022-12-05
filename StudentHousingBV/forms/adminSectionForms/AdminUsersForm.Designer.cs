@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCreateUser = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnCreateUser
+            // panel1
             // 
-            this.btnCreateUser.Location = new System.Drawing.Point(750, 12);
-            this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(81, 29);
-            this.btnCreateUser.TabIndex = 1;
-            this.btnCreateUser.Text = "Create user";
-            this.btnCreateUser.UseVisualStyleBackColor = true;
-            this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 230);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(843, 392);
+            this.panel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(25, 199);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(47, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(818, 448);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 368);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // AdminUsersForm
@@ -56,18 +56,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(843, 622);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.btnCreateUser);
+            this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(859, 661);
             this.MinimumSize = new System.Drawing.Size(859, 661);
             this.Name = "AdminUsersForm";
             this.Text = "AdminUsersForm";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Button btnCreateUser;
+
+        private Panel panel1;
         private FlowLayoutPanel flowLayoutPanel1;
     }
 }

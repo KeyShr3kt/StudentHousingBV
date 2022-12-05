@@ -16,11 +16,5 @@ namespace StudentHousingBV.forms.adminSectionForms
         {
             InitializeComponent();
         }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            // create the task
-            this.Hide();
-        }
     }
 }
