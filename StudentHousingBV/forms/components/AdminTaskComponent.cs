@@ -8,19 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StudentHousingBV.forms.adminSectionForms
+namespace StudentHousingBV.forms.components
 {
-    public partial class AdminCreateTaskForm : Form
+    public partial class AdminTaskComponent : UserControl
     {
-        public AdminCreateTaskForm()
+        public AdminTaskComponent()
         {
             InitializeComponent();
-        }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            // create the task
-            this.Hide();
+            lblTaskDescription.Text = "Task desccc hereee";
         }
     }
 }

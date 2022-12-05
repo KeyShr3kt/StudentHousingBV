@@ -28,12 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCreateTask = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 187);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(818, 491);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btnCreateTask
+            // 
+            this.btnCreateTask.Location = new System.Drawing.Point(749, 12);
+            this.btnCreateTask.Name = "btnCreateTask";
+            this.btnCreateTask.Size = new System.Drawing.Size(82, 30);
+            this.btnCreateTask.TabIndex = 2;
+            this.btnCreateTask.Text = "Create Task";
+            this.btnCreateTask.UseVisualStyleBackColor = true;
+            this.btnCreateTask.Click += new System.EventHandler(this.btnCreateTask_Click);
+            // 
+            // AdminTasksForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(843, 622);
+            this.Controls.Add(this.btnCreateTask);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Name = "AdminTasksForm";
             this.Text = "AdminTasksForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnCreateTask;
     }
 }

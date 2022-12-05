@@ -124,7 +124,7 @@
             this.Controls.Add(this.lblPhoneNumber);
             this.Controls.Add(this.lblName);
             this.Name = "AdminUserComponent";
-            this.Size = new System.Drawing.Size(784, 105);
+            this.Size = new System.Drawing.Size(837, 105);
             this.MouseLeave += new System.EventHandler(this.AdminUserComponent_MouseLeave);
             this.MouseHover += new System.EventHandler(this.AdminUserComponent_MouseHover);
             this.ResumeLayout(false);
