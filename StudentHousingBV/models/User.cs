@@ -37,22 +37,16 @@ namespace StudentHousingBV.models
             this._lastSeenAt = null;
 
         }
-
-        public string GetPassword()
-        {
-            return this._password;
-        }
-
-        public string GetEmailAddress() { return this._emailAddress; }
-        public string GetFirstName() { return this._firstName; }
-
-        public int GetId() { return this._id; }
-        public DateTime? GetLastSeenAt() { return this._lastSeenAt; }
-
-        public bool GetIsAdmin() { return this._isAdmin; }
-
-        public void SetPassword(string password) { this._password = PasswordHasher.Hash(password); }
-
-        public void UpdateLastSeenAt() { this._lastSeenAt = DateTime.Now; }
+        public int PossitiveVotes { get => this._possitiveVotes; }
+        public int NegativeVotes { get => this._negativeVotes; }
+        public int Strikes { get => this._strikes; }
+        public string EmailAddress { get => _emailAddress;}
+        public string PhoneNumber { get => _phoneNumber; }
+        public string FirstName { get => this._firstName;}
+        public string LastName { get => this._lastName; }
+        public int Id { get => this._id;}
+        public DateTime? LastSeenAt { get => _lastSeenAt; set => _lastSeenAt = value; }
+        public bool isAdmin { get => _isAdmin;}
+        public string Password { get => _password; set => _password = PasswordHasher.Hash(value); }
     }
 }

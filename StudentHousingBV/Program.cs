@@ -14,8 +14,9 @@ namespace StudentHousingBV
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Database db = new Database();
-            Application.Run(new forms.LoginPanel(db));
-            Application.Run(new forms.StudentPanel());
+            Application.Run(new forms.AdminForm());
+            //Application.Run(new forms.LoginPanel(db));
+            //Application.Run(new forms.StudentPanel());
             //Application.Run(new forms.ReportForm());
         }
     }
