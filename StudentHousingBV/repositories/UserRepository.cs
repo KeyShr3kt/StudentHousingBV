@@ -9,23 +9,11 @@ namespace StudentHousingBV.repositories
 {
     public class UserRepository
     {
-        public List<User> GetAllUsers()
-        {
-            User user1 = new User(1, "Peter", "Ivanov", "email@email.com", "password", "+314321256", false);
-            User user2 = new User(2, "John", "Johnes", "email@email.com", "password", "+314321256", false);
-            User user3 = new User(3, "Martin", "LastName", "email@email.com", "password", "+314321256", false);
-            User user4 = new User(4, "Lucas", "Petrov", "email@email.com", "password", "+314321256", false);
-            return new List<User>{user1, user2, user3, user4};
-        }
-
-        public bool isFirstTimeLoginForUserId(int id)
-        {
-            return true;
-        }
-
-        public bool IsAdmin(int id)
-        {
-            return true;
-        }
+        public List<User> GetAll() { return new List<User>(); }
+        public User Get(int id) { return new User(1, "firstName", "LastName", "email", "password", "phonenumber", false, 0, 0, DateTime.UtcNow); }
+        public void Delete(User user) { return; }
+        public void Insert(User user) { return; }
+        public void Update(User user) { return;  }
+    
     }
 }
