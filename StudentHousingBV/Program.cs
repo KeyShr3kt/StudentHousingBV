@@ -14,8 +14,9 @@ namespace StudentHousingBV
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Database db = new Database();
-            Application.Run(new forms.LoginPanel(db));
-            Application.Run(new forms.StudentPanel());
+            StudentHousingBV.models.User currentUser = new StudentHousingBV.models.User(1, "Ionut", "Dragomir", "510175@student.fontys.nl", "smthsmthsmth", "+31 633396888", false, 0, 0, DateTime.Now);
+            Application.Run(new forms.LoginPanel(currentUser));
+            Application.Run(new forms.StudentPanel(currentUser));
             //Application.Run(new forms.ReportForm());
         }
     }

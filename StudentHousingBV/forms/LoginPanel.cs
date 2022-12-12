@@ -14,11 +14,15 @@ namespace StudentHousingBV.forms
 {
     public partial class LoginPanel : Form
     {
-        private Database _db = new Database();
-        public LoginPanel(Database db)
+
+        private UserManager _userManager = new UserManager();
+        StudentHousingBV.models.User _currentUser;
+        public UserManager UserManager { get => _userManager; private set { _userManager = value; } }
+        public LoginPanel(StudentHousingBV.models.User currentUser)
         {
             InitializeComponent();
-            this._db = db;
+            this._currentUser = currentUser;
+            //this._db = db;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -46,8 +50,7 @@ namespace StudentHousingBV.forms
                     this.Hide();
                 } else 
                 {
-                    UserManager.UpdateLastSeenAtForUserId((int)userId, _db);
-                    StudentPanel form = new StudentPanel();
+                    StudentPanel form = new StudentPanel(_currentUser);
                     form.Show();
                     this.Hide();
                 }
