@@ -1,4 +1,5 @@
-﻿using StudentHousingBV.forms.adminSectionForms;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.forms.adminSectionForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +16,12 @@ namespace StudentHousingBV.forms
     {
 
         private Form _activeForm;
-        public AdminForm()
+        private UserManager _userManager;
+        public UserManager UserManager { get => _userManager; private set {_userManager = value; } }
+        public AdminForm(UserManager userManager)
         {
             InitializeComponent();
+            UserManager = userManager;
         }
 
         private void menuButton_Click(object sender, EventArgs e)
@@ -25,19 +29,25 @@ namespace StudentHousingBV.forms
         }
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new forms.adminSectionForms.AdminUsersForm(), sender);
+            OpenChildForm(new forms.adminSectionForms.AdminUsersForm(UserManager), sender);
         }
 
         private void btnRules_Click(object sender, EventArgs e)
         {
+            if (UserManager.CurrentUserId != null)
+            {
+                OpenChildForm(new forms.adminSectionForms.AdminRulesForm((int)UserManager.CurrentUserId), sender);
+            }
         }
 
        
 
         private void btnTasks_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new forms.AdminCreateUserForm(), sender);
-
+            if (UserManager.CurrentUserId != null)
+            {
+                OpenChildForm(new forms.adminSectionForms.AdminTasksForm(), sender);
+            }
         }
 
         private void OpenChildForm(Form childForm, object btnSender) {

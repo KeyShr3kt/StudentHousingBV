@@ -1,4 +1,5 @@
-﻿using StudentHousingBV.models;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,32 +14,76 @@ namespace StudentHousingBV.forms.adminSectionForms
 {
     public partial class AdminUsersForm : Form
     {
-        public AdminUsersForm()
+        private UserManager _userManager;
+        public UserManager UserManager { get => _userManager; private set { _userManager = value; } }
+        public AdminUsersForm(UserManager manager)
         {
             InitializeComponent();
+            UserManager = manager;
             fillUsers();
         }
 
         public void fillUsers()
         {
-            
-            User user1 = new User(1, "ivan", "ivan", "ivan", "ivan", "ivan", true);
-            AdminUserComponent component1 = new AdminUserComponent(user1);
-
-            User user2 = new User(1, "ivan1", "ivan1", "ivan1", "ivan1", "ivan1", true);
-            AdminUserComponent component2 = new AdminUserComponent(user2);
-
-            AdminUserComponent component3 = new AdminUserComponent(user1);
-            AdminUserComponent component4 = new AdminUserComponent(user1);
-            AdminUserComponent component5 = new AdminUserComponent(user1);
-            AdminUserComponent component6 = new AdminUserComponent(user1);
-
-            List<AdminUserComponent> components = new List<AdminUserComponent> { component1, component2, component3, component4, component5, component6 };
+            flowLayoutPanel1.Controls.Clear();
+            List<User> users = UserManager.GetAllUsers();
+            List<AdminUserComponent> components = new List<AdminUserComponent>();
+            foreach (User user in users)
+            {
+                components.Add(new AdminUserComponent(user));
+            }
             foreach (AdminUserComponent auc in components)
             {
                 flowLayoutPanel1.Controls.Add(auc);
             }
             
+        }
+
+        private void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            AdminCreateUserForm form = new AdminCreateUserForm();
+            form.Show();
+        }
+
+        private void txtBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBoxSearch.Text.Length > 0)
+            {
+                if (flowLayoutPanel1.Controls.Count == 0)
+                {
+                    fillUsers();
+                }
+                
+                List<AdminUserComponent> testcomponents = new List<AdminUserComponent>();
+                foreach (Control c in flowLayoutPanel1.Controls)
+                {
+                    if (c.GetType() == typeof(AdminUserComponent))
+                    {
+                        AdminUserComponent auc = (AdminUserComponent)c;
+                        if (!auc.User.FirstName.ToLower().Contains(txtBoxSearch.Text.Trim().ToLower()) &&
+                            !auc.User.LastName.ToLower().Contains(txtBoxSearch.Text.Trim().ToLower()) &&
+                            !auc.User.EmailAddress.ToLower().Contains(txtBoxSearch.Text.Trim().ToLower()))
+                        {
+                            //flowLayoutPanel1.Controls.Remove(auc);
+                            testcomponents.Add(auc);
+                        }
+                    }
+                }
+                foreach (AdminUserComponent c in testcomponents)
+                {
+                    flowLayoutPanel1.Controls.Remove(c);
+                }
+            } 
+            else
+            {
+                flowLayoutPanel1.Controls.Clear();
+                fillUsers();
+            }
+        }
+
+        private void AdminUsersForm_Load(object sender, EventArgs e)
+        {
+            fillUsers();
         }
     }
 }

@@ -30,37 +30,30 @@ namespace StudentHousingBV.forms
             string email = txtBoxEmail.Text.Trim();
             string password = txtBoxPassword.Text.Trim();
 
-
-            int? userId = UserManager.GetUserIdWith(email, password, _db);
-
-
-            if (userId != null)
+            if (UserManager.TryLoginWithEmailAndPassword(email, password))
             {
-                if (UserManager.isFirstTimeLoginForUserId((int)userId, _db))
+                if (UserManager.isFirstTimeLogin())
                 {
-                    ChangePasswordForm form = new ChangePasswordForm((int)userId, this._db);
+                    ChangePasswordForm form = new ChangePasswordForm(UserManager);
                     form.Show();
                     this.Hide();
-
-                } else if (UserManager.IsUserWithIdAdmin((int)userId, this._db)) 
-                { 
-                    UserManager.UpdateLastSeenAtForUserId((int)userId, _db);
-                    AdminForm adminForm = new AdminForm();
+                } else if (UserManager.IsUserAdmin())
+                {
+                    AdminForm adminForm = new AdminForm(UserManager);
                     adminForm.Show();
                     this.Hide();
-                } else 
+                } else
                 {
                     StudentPanel form = new StudentPanel(_currentUser);
                     form.Show();
                     this.Hide();
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("User not found!");
                 this.txtBoxPassword.Text = "";
             }
-           
-            
         }
 
        
