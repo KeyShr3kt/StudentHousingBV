@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public class Task : Event
+    public class Task : Events
     {
         private bool _isShopping;
         private bool _isCompleted;
 
-        public Task(int id, string description, DateTime createdAt, int buildingId, bool isShopping, bool isCompleted) : base(id, description, createdAt, buildingId)
+        public Task(int id, string description, DateTime createdAt, Building building, bool isShopping, bool isCompleted, User user) 
+            : base(id, description, createdAt, building, user)
         {
             _isShopping = isShopping;
             _isCompleted = isCompleted;

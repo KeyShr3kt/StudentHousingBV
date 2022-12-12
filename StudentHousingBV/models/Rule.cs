@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public class Rule : Event
+    public class Rule : Events
     {
         private DateTime _updatedAt;
 
-        public Rule(int id, string description, DateTime createdAt, int buildingId, DateTime updatedAt) : base(id, description, createdAt, buildingId)
+        public Rule(int id, string description, DateTime createdAt, Building building, DateTime updatedAt, User createdBy) 
+            : base(id, description, createdAt, building, createdBy)
         {
             _updatedAt = updatedAt;
         }

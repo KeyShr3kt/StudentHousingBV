@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentHousingBV.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,13 @@ namespace StudentHousingBV.forms.components
 {
     public partial class AdminRuleComponent : UserControl
     {
-        public AdminRuleComponent()
+        public AdminRuleComponent(Events rule)
         {
             InitializeComponent();
-            lblRuleDescription.Text = "Description of the rule Description of the rule Description of the rule Description of the rule Description of the rule Description of the rule Description of the rule Description of the rule Description of the rule Description of the ruleDescription of the rule Description of the rule Description of the rule Description of the rule";
-            lblCreatedBy.Text = "admin";
-            lblForBuilding.Text = "building 1";
-            lblUpdatedAt.Text = "updated at NOW";
+            lblRuleDescription.Text = rule.Description;
+            lblCreatedBy.Text = "asds";
+            lblForBuilding.Text = "das";
+            lblUpdatedAt.Text = "asdas";
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

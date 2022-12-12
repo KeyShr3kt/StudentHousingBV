@@ -14,11 +14,14 @@ namespace StudentHousingBV.forms
 {
     public partial class LoginPanel : Form
     {
-        private Database _db = new Database();
-        public LoginPanel(Database db)
+
+        private UserManager _userManager = new UserManager();
+        public UserManager UserManager { get => _userManager; private set { _userManager = value; } }
+        public LoginPanel()
         {
             InitializeComponent();
-            this._db = db;
+       
+            //this._db = db;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -26,38 +29,30 @@ namespace StudentHousingBV.forms
             string email = txtBoxEmail.Text.Trim();
             string password = txtBoxPassword.Text.Trim();
 
-
-            int? userId = UserManager.GetUserIdWith(email, password, _db);
-
-
-            if (userId != null)
+            if (UserManager.TryLoginWithEmailAndPassword(email, password))
             {
-                if (UserManager.isFirstTimeLoginForUserId((int)userId, _db))
+                if (UserManager.isFirstTimeLogin())
                 {
-                    ChangePasswordForm form = new ChangePasswordForm((int)userId, this._db);
+                    ChangePasswordForm form = new ChangePasswordForm(UserManager);
                     form.Show();
                     this.Hide();
-
-                } else if (UserManager.IsUserWithIdAdmin((int)userId, this._db)) 
-                { 
-                    UserManager.UpdateLastSeenAtForUserId((int)userId, _db);
-                    AdminForm adminForm = new AdminForm();
+                } else if (UserManager.IsUserAdmin())
+                {
+                    AdminForm adminForm = new AdminForm(UserManager);
                     adminForm.Show();
                     this.Hide();
-                } else 
+                } else
                 {
-                    UserManager.UpdateLastSeenAtForUserId((int)userId, _db);
                     StudentPanel form = new StudentPanel();
                     form.Show();
                     this.Hide();
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("User not found!");
                 this.txtBoxPassword.Text = "";
             }
-           
-            
         }
 
        

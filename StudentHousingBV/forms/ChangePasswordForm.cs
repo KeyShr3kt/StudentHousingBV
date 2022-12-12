@@ -15,12 +15,12 @@ namespace StudentHousingBV.forms
     public partial class ChangePasswordForm : Form
     {
         private int _userId;
-        private Database _db;
-        public ChangePasswordForm(int userId, Database db)
+        private UserManager _userManager;
+        public UserManager UserManager { get => _userManager; private set { _userManager = value; } }
+        public ChangePasswordForm(UserManager manager)
         {
             InitializeComponent();
-            this._userId = userId;
-            this._db = db;
+            UserManager = manager;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public class Report: Event
+    public class Report: Events
     {
         private int _inRegardOfEventId;
-        public Report(int id, string description, DateTime createdAt, int buildingId, int inRegardOfEventId): base(id, description, createdAt, buildingId)
+        public Report(int id, string description, DateTime createdAt, Building building, int inRegardOfEventId, User createdBy): 
+            base(id, description, createdAt, building, createdBy)
         {
             _inRegardOfEventId = inRegardOfEventId;
         }

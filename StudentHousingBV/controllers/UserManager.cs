@@ -4,13 +4,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StudentHousingBV.models;
+using StudentHousingBV.repositories;
 
 namespace StudentHousingBV.controllers
 {
-    public static class UserManager
+    public class UserManager
     {
+        private int? _currentUserId;
+        public int? CurrentUserId { get => _currentUserId;  set { _currentUserId = value; } }
 
-        public static void ChangePasswordForUserWith(int id, string password, Database db)
+        private UserRepository _userRepository = new UserRepository();
+        public UserRepository UserRepository { get => _userRepository;}
+
+        public bool TryLoginWithEmailAndPassword(string email, string password)
+        {
+            bool userFound = false;
+            List<User> users = UserRepository.GetAllUsers();
+            foreach (User user in users)
+            {
+                if (user.EmailAddress == email && PasswordHasher.Verify(password, user.Password))
+                {
+                    CurrentUserId = user.Id;
+                    user.LastSeenAt = DateTime.UtcNow;
+                    userFound = true;
+                }
+            }
+            return userFound;
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return UserRepository.GetAllUsers();
+        }
+
+        public bool IsUserAdmin()
+        {
+            bool isAdmin = false;
+            if (CurrentUserId != null)
+            {
+                isAdmin = UserRepository.IsAdmin((int)CurrentUserId);
+            }
+            return isAdmin;
+        }
+
+        public bool isFirstTimeLogin()
+        {
+            bool firstTime = false;
+            if (CurrentUserId != null)
+            {
+                firstTime = UserRepository.isFirstTimeLoginForUserId((int)CurrentUserId);
+            }
+            return firstTime;
+        }
+
+        public void ChangePasswordForUserWith(int id, string password, Database db)
         {
 
             // open the db and do the query "get all users where user.id = id and change its password"
@@ -27,53 +74,8 @@ namespace StudentHousingBV.controllers
             }
         }
 
-        public static int? GetUserIdWith(string email, string password, Database db)
-        {
-            List<User> users = db.GetUsers();
 
-            int? foundUser = null;
-            foreach (User user in users)
-            {
-                if (user.EmailAddress == email && PasswordHasher.Verify(password, user.Password))
-                {
-                    foundUser = user.Id;
-                }
-            }
-            return foundUser;
-        }
-
-        public static bool isFirstTimeLoginForUserId(int id, Database db)
-        {
-            List<User> users = db.GetUsers();
-            bool newUser = false;
-            foreach (User user in users)
-            {
-                if (user.Id == id)
-                {
-                    if (user.LastSeenAt == null)
-                    {
-                        newUser = true;
-                    }
-                }
-            }
-            return newUser;
-        }
-
-        public static bool IsUserWithIdAdmin(int id, Database db)
-        {
-            List<User> users = db.GetUsers();
-            bool isAdmin = false;
-            foreach (User user in users)
-            {
-                if (user.Id == id)
-                {
-                    isAdmin = user.isAdmin;
-                }
-            }
-            return isAdmin;
-        }
-
-        public static void UpdateLastSeenAtForUserId(int id, Database db)
+        public static void UpdateLastSeenAtForUserId(int id)
         {
             List<User> users = db.GetUsers();
             foreach (User user in users)

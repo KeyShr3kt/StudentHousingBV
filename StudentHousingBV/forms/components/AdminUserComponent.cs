@@ -13,7 +13,7 @@ namespace StudentHousingBV.forms
 {
     public partial class AdminUserComponent : UserControl
     {
-        
+
         public AdminUserComponent(User user)
         {
             InitializeComponent();

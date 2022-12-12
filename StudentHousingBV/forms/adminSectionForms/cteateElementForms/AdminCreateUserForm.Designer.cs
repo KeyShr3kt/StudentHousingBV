@@ -41,13 +41,15 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btnCreateUser = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(291, 46);
+            this.label1.Location = new System.Drawing.Point(150, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 15);
@@ -57,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(166, 77);
+            this.label2.Location = new System.Drawing.Point(16, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 15);
@@ -67,7 +69,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(166, 130);
+            this.label3.Location = new System.Drawing.Point(17, 81);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 15);
@@ -77,7 +79,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(166, 175);
+            this.label4.Location = new System.Drawing.Point(16, 117);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 15);
@@ -87,7 +89,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(166, 218);
+            this.label5.Location = new System.Drawing.Point(17, 149);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 15);
@@ -97,7 +99,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(166, 258);
+            this.label6.Location = new System.Drawing.Point(16, 185);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 15);
@@ -106,50 +108,50 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(166, 281);
+            this.textBox1.Location = new System.Drawing.Point(121, 182);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(335, 23);
+            this.textBox1.Size = new System.Drawing.Size(265, 23);
             this.textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(166, 238);
+            this.textBox2.Location = new System.Drawing.Point(121, 146);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(335, 23);
+            this.textBox2.Size = new System.Drawing.Size(265, 23);
             this.textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(166, 199);
+            this.textBox3.Location = new System.Drawing.Point(121, 114);
             this.textBox3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(335, 23);
+            this.textBox3.Size = new System.Drawing.Size(265, 23);
             this.textBox3.TabIndex = 8;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(166, 155);
+            this.textBox4.Location = new System.Drawing.Point(121, 78);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(335, 23);
+            this.textBox4.Size = new System.Drawing.Size(265, 23);
             this.textBox4.TabIndex = 9;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(166, 104);
+            this.textBox5.Location = new System.Drawing.Point(121, 47);
             this.textBox5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(335, 23);
+            this.textBox5.Size = new System.Drawing.Size(265, 23);
             this.textBox5.TabIndex = 10;
             // 
             // btnCreateUser
             // 
-            this.btnCreateUser.Location = new System.Drawing.Point(293, 322);
+            this.btnCreateUser.Location = new System.Drawing.Point(89, 223);
             this.btnCreateUser.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(81, 22);
+            this.btnCreateUser.Size = new System.Drawing.Size(204, 22);
             this.btnCreateUser.TabIndex = 11;
             this.btnCreateUser.Text = "Create";
             this.btnCreateUser.UseVisualStyleBackColor = true;
@@ -158,18 +160,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.btnCreateUser);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -178,6 +169,25 @@
             this.groupBox1.Size = new System.Drawing.Size(663, 408);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.btnCreateUser);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Location = new System.Drawing.Point(132, 34);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(388, 362);
+            this.panel1.TabIndex = 12;
             // 
             // AdminCreateUserForm
             // 
@@ -190,7 +200,8 @@
             this.Name = "AdminCreateUserForm";
             this.Text = "AdminUsersForm";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -210,5 +221,6 @@
         private TextBox textBox5;
         private Button btnCreateUser;
         private GroupBox groupBox1;
+        private Panel panel1;
     }
 }
