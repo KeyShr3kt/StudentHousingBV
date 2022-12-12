@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public class Task : Events
+    public class Task : Event
     {
         private bool _isShopping;
         private bool _isCompleted;

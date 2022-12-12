@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public class Rule : Events
+    public class Rule : Event
     {
         private DateTime _updatedAt;
 

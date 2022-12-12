@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public class BuildingEvents
+    public class Event
     {
         private int _id;
         private DateTime _createdAt;
@@ -25,7 +25,7 @@ namespace StudentHousingBV.models
 
         public Building Building { get => _building; set => _building = value; }
 
-        public BuildingEvents(int id, string description, DateTime createdAt, Building building, User createdBy)
+        public Event(int id, string description, DateTime createdAt, Building building, User createdBy)
         {
             this.Id = id;
             this.Description = description;

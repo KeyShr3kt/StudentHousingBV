@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentHousingBV.models
 {
-    public class Report: Events
+    public class Report: Event
     {
         private int _inRegardOfEventId;
         public Report(int id, string description, DateTime createdAt, Building building, int inRegardOfEventId, User createdBy): 

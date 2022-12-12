@@ -13,7 +13,7 @@ namespace StudentHousingBV.forms.components
 {
     public partial class AdminRuleComponent : UserControl
     {
-        public AdminRuleComponent(Events rule)
+        public AdminRuleComponent(Event rule)
         {
             InitializeComponent();
             lblRuleDescription.Text = rule.Description;

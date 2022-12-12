@@ -18,9 +18,9 @@ namespace StudentHousingBV.models
 
         public List<Room> Rooms { get => _rooms; private set => _rooms = value; }
 
-        public List<BuildingEvents> BuildingEvents { get => _events; private set => _events = value; }
+        public List<Event> BuildingEvents { get => _events; private set => _events = value; }
 
-        public Building(int id, string address, List<Room> rooms, List<BuildingEvents> events)
+        public Building(int id, string address, List<Room> rooms, List<Event> events)
         {
             Id = id;
             Address = address;
@@ -34,7 +34,7 @@ namespace StudentHousingBV.models
             Rooms.Add(room);
         }
 
-        public void AddEvent(BuildingEvents buildingEvent) 
+        public void AddEvent(Event buildingEvent) 
         {
             BuildingEvents.Add(buildingEvent);
         }
