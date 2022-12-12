@@ -3,15 +3,13 @@
     public class Agreement : Event
     {
         private bool _isAccepted = false;
-        private string _title;
 
-        public string Title { get => _title; set => _title = value; }
-
-        public Agreement(int id, string title, string description, DateTime createdAt, int buildingId, bool isAccepted)
-            : base(id, description, createdAt, buildingId)
+        public Agreement(int id, string title, string description, User creator, DateTime createdAt, bool isAccepted)
+            : base(id, title, description, creator, createdAt)
         {
-            _title = title;
             _isAccepted = isAccepted;
         }
+
+        public bool IsAccepted { get => _isAccepted; set => _isAccepted = value; }
     }
 }

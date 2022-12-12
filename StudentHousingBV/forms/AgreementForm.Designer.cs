@@ -1,6 +1,6 @@
 ﻿namespace StudentHousingBV.forms
 {
-    partial class AgreementPanel
+    partial class AgreementForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundPicture = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.backgroundPicture)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // backgroundPicture
+            // pictureBox1
             // 
-            this.backgroundPicture.Image = global::StudentHousingBV.Properties.Resources.TUe_by_night1;
-            this.backgroundPicture.Location = new System.Drawing.Point(12, 12);
-            this.backgroundPicture.Name = "backgroundPicture";
-            this.backgroundPicture.Size = new System.Drawing.Size(969, 155);
-            this.backgroundPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.backgroundPicture.TabIndex = 1;
-            this.backgroundPicture.TabStop = false;
+            this.pictureBox1.Image = global::StudentHousingBV.Properties.Resources.TUe_by_night1;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(969, 155);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
-            // AgreementPanel
+            // AgreementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 587);
-            this.Controls.Add(this.backgroundPicture);
-            this.Name = "AgreementPanel";
-            this.Text = "Student Housing BV - Agreement View";
-            ((System.ComponentModel.ISupportInitialize)(this.backgroundPicture)).EndInit();
+            this.Controls.Add(this.pictureBox1);
+            this.Name = "AgreementForm";
+            this.Text = "AgreementForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private PictureBox backgroundPicture;
+        private PictureBox pictureBox1;
     }
 }
