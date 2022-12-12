@@ -18,7 +18,7 @@ namespace StudentHousingBV.controllers
 
         public bool TryLoginWithEmailAndPassword(string email, string password)
         {
-            bool userFound = false;
+            /*bool userFound = false;
             List<User> users = UserRepository.GetAllUsers();
             foreach (User user in users)
             {
@@ -29,32 +29,35 @@ namespace StudentHousingBV.controllers
                     userFound = true;
                 }
             }
-            return userFound;
+            return userFound;*/
+            return true;
         }
 
         public List<User> GetAllUsers()
         {
-            return UserRepository.GetAllUsers();
+
+           return new List<User>();
         }
 
         public bool IsUserAdmin()
         {
-            bool isAdmin = false;
+            /*bool isAdmin = false;
             if (CurrentUserId != null)
             {
                 isAdmin = UserRepository.IsAdmin((int)CurrentUserId);
-            }
-            return isAdmin;
+            }*/
+            return true;
         }
 
         public bool isFirstTimeLogin()
         {
-            bool firstTime = false;
-            if (CurrentUserId != null)
-            {
-                firstTime = UserRepository.isFirstTimeLoginForUserId((int)CurrentUserId);
-            }
-            return firstTime;
+            /* bool firstTime = false;
+             if (CurrentUserId != null)
+             {
+                 firstTime = UserRepository.isFirstTimeLoginForUserId((int)CurrentUserId);
+             }
+             return firstTime;*/
+            return true;
         }
 
         public void ChangePasswordForUserWith(int id, string password, Database db)
@@ -62,29 +65,29 @@ namespace StudentHousingBV.controllers
 
             // open the db and do the query "get all users where user.id = id and change its password"
             //Database db = new Database();
-            List<User> users = db.GetUsers();
+           // List<User> users = db.GetUsers();
 
             // close the db object in the end of the method
-            foreach (User user in users)
+            /*foreach (User user in users)
             {
                 if (user.Id == id)
                 {
                     user.Password = password;
                 }
-            }
+            }*/
         }
 
 
         public static void UpdateLastSeenAtForUserId(int id)
         {
-            List<User> users = db.GetUsers();
+            /*List<User> users = db.GetUsers();
             foreach (User user in users)
             {
                 if (user.Id == id)
                 {
                     user.LastSeenAt = DateTime.Now;
                 }
-            }
+            }*/
         }
     }
 }

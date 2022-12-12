@@ -10,7 +10,7 @@ namespace StudentHousingBV.models
 {
     public class Database
     {
-        private List<User> _users;
+       /* private List<User> _users;
         private List<Report> _reports;
         public Database() {
             
@@ -35,6 +35,6 @@ namespace StudentHousingBV.models
         {
             this._reports.Add(report);
         }
-
+       */
     }
 }

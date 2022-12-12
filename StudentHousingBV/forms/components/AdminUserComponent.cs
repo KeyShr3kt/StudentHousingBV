@@ -23,7 +23,7 @@ namespace StudentHousingBV.forms
             lblPhoneNumber.Text = _user.PhoneNumber;
             lblPossitiveVotes.Text = _user.PossitiveVotes.ToString();
             lblNegativeVotes.Text = _user.NegativeVotes.ToString();
-            lblStrikes.Text = _user.Strikes.ToString();
+           // lblStrikes.Text = _user.Strikes.ToString();
             lblisAdmin.Text = _user.isAdmin.ToString();
             lblLastSeenAt.Text = _user.LastSeenAt.ToString();
         }
