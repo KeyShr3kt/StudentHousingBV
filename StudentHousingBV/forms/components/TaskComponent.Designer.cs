@@ -28,68 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lbTaskDescription = new System.Windows.Forms.Label();
+            this.lbTaskUser = new System.Windows.Forms.Label();
+            this.btnTaskComponent = new System.Windows.Forms.Button();
+            this.btnReportTask = new StudentHousingBV.forms.RoundButton();
             this.SuspendLayout();
             // 
-            // label1
+            // lbTaskDescription
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.lbTaskDescription.AutoSize = true;
+            this.lbTaskDescription.Location = new System.Drawing.Point(39, 28);
+            this.lbTaskDescription.Name = "lbTaskDescription";
+            this.lbTaskDescription.Size = new System.Drawing.Size(74, 15);
+            this.lbTaskDescription.TabIndex = 0;
+            this.lbTaskDescription.Text = "{description}";
             // 
-            // label2
+            // lbTaskUser
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.lbTaskUser.AutoSize = true;
+            this.lbTaskUser.Location = new System.Drawing.Point(442, 28);
+            this.lbTaskUser.Name = "lbTaskUser";
+            this.lbTaskUser.Size = new System.Drawing.Size(37, 15);
+            this.lbTaskUser.TabIndex = 1;
+            this.lbTaskUser.Text = "{user}";
             // 
-            // label3
+            // btnTaskComponent
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(479, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.btnTaskComponent.Location = new System.Drawing.Point(722, 24);
+            this.btnTaskComponent.Name = "btnTaskComponent";
+            this.btnTaskComponent.Size = new System.Drawing.Size(127, 23);
+            this.btnTaskComponent.TabIndex = 4;
+            this.btnTaskComponent.Text = "Open details";
+            this.btnTaskComponent.UseVisualStyleBackColor = true;
+            this.btnTaskComponent.Visible = false;
+            this.btnTaskComponent.Click += new System.EventHandler(this.btnTaskComponent_Click);
             // 
-            // label4
+            // btnReportTask
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(479, 42);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(815, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnReportTask.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReportTask.ForeColor = System.Drawing.Color.Red;
+            this.btnReportTask.Location = new System.Drawing.Point(855, 22);
+            this.btnReportTask.Name = "btnReportTask";
+            this.btnReportTask.Size = new System.Drawing.Size(25, 25);
+            this.btnReportTask.TabIndex = 5;
+            this.btnReportTask.Text = "!";
+            this.btnReportTask.UseVisualStyleBackColor = true;
+            this.btnReportTask.Click += new System.EventHandler(this.btnReportTask_Click);
             // 
             // TaskComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnReportTask);
+            this.Controls.Add(this.btnTaskComponent);
+            this.Controls.Add(this.lbTaskUser);
+            this.Controls.Add(this.lbTaskDescription);
             this.Name = "TaskComponent";
             this.Size = new System.Drawing.Size(914, 72);
             this.ResumeLayout(false);
@@ -99,10 +92,9 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Button button1;
+        private Label lbTaskDescription;
+        private Label lbTaskUser;
+        private Button btnTaskComponent;
+        private RoundButton btnReportTask;
     }
 }

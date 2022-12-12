@@ -13,27 +13,28 @@ namespace StudentHousingBV.forms.components
 {
     public partial class TaskComponent : UserControl
     {
-        private int id;
-        private string description;
-        private DateTime createdAt;
-        private int buildingId;
-        private bool _isShopping;
-        private bool _isCompleted;
-
-        public TaskComponent(int id, string description, DateTime createdAt, int buildingId, bool isShopping, bool isCompleted)
+        private StudentHousingBV.models.Task _task;
+        public TaskComponent(StudentHousingBV.models.Task task)
         {
-            this.id = id;
-            this.description = description;
-            this.createdAt = createdAt;
-            this.buildingId = buildingId;
-            this._isCompleted = isCompleted;
-            this._isShopping = isShopping;
             InitializeComponent();
+            this._task = task;
+            this.lbTaskDescription.Text = this._task.Title;
+            if (this._task.IsShopping == true) 
+            {
+                this.btnTaskComponent.Visible = true;
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnTaskComponent_Click(object sender, EventArgs e)
         {
-            this.label1.Text = this.description;
+            StudentHousingBV.forms.TaskForm _taskForm = new StudentHousingBV.forms.TaskForm(this._task);
+            _taskForm.Show();
+        }
+
+        private void btnReportTask_Click(object sender, EventArgs e)
+        {
+            StudentHousingBV.forms.ReportForm _reportForm = new StudentHousingBV.forms.ReportForm(this._task);
+            _reportForm.Show();
         }
     }
 }
