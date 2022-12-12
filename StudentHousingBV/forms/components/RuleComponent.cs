@@ -15,8 +15,15 @@ namespace StudentHousingBV.forms.components
         private StudentHousingBV.models.Rule _rule;
         public RuleComponent(StudentHousingBV.models.Rule rule)
         {
-            this._rule = rule;
             InitializeComponent();
+            this._rule = rule;
+            this.lbRuleTitle.Text = this._rule.Title;
+        }
+
+        private void btnReportTask_Click(object sender, EventArgs e)
+        {
+            StudentHousingBV.forms.ReportForm _reportForm = new StudentHousingBV.forms.ReportForm(this._rule);
+            _reportForm.Show();
         }
     }
 }

@@ -16,8 +16,25 @@ namespace StudentHousingBV.forms.components
         private StudentHousingBV.models.Task _task;
         public TaskComponent(StudentHousingBV.models.Task task)
         {
-            this._task = task;
             InitializeComponent();
+            this._task = task;
+            this.lbTaskDescription.Text = this._task.Title;
+            if (this._task.IsShopping == true) 
+            {
+                this.btnTaskComponent.Visible = true;
+            }
+        }
+
+        private void btnTaskComponent_Click(object sender, EventArgs e)
+        {
+            StudentHousingBV.forms.TaskForm _taskForm = new StudentHousingBV.forms.TaskForm(this._task);
+            _taskForm.Show();
+        }
+
+        private void btnReportTask_Click(object sender, EventArgs e)
+        {
+            StudentHousingBV.forms.ReportForm _reportForm = new StudentHousingBV.forms.ReportForm(this._task);
+            _reportForm.Show();
         }
     }
 }

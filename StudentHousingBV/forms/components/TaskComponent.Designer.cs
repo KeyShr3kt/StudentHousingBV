@@ -28,45 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TaskDescriptionLabel = new System.Windows.Forms.Label();
-            this.TaskUserLabel = new System.Windows.Forms.Label();
-            this.TaskMarkAsDoneButton = new System.Windows.Forms.Button();
+            this.lbTaskDescription = new System.Windows.Forms.Label();
+            this.lbTaskUser = new System.Windows.Forms.Label();
+            this.btnTaskComponent = new System.Windows.Forms.Button();
+            this.btnReportTask = new StudentHousingBV.forms.RoundButton();
             this.SuspendLayout();
             // 
-            // TaskDescriptionLabel
+            // lbTaskDescription
             // 
-            this.TaskDescriptionLabel.AutoSize = true;
-            this.TaskDescriptionLabel.Location = new System.Drawing.Point(23, 28);
-            this.TaskDescriptionLabel.Name = "TaskDescriptionLabel";
-            this.TaskDescriptionLabel.Size = new System.Drawing.Size(74, 15);
-            this.TaskDescriptionLabel.TabIndex = 0;
-            this.TaskDescriptionLabel.Text = "{description}";
+            this.lbTaskDescription.AutoSize = true;
+            this.lbTaskDescription.Location = new System.Drawing.Point(39, 28);
+            this.lbTaskDescription.Name = "lbTaskDescription";
+            this.lbTaskDescription.Size = new System.Drawing.Size(74, 15);
+            this.lbTaskDescription.TabIndex = 0;
+            this.lbTaskDescription.Text = "{description}";
             // 
-            // TaskUserLabel
+            // lbTaskUser
             // 
-            this.TaskUserLabel.AutoSize = true;
-            this.TaskUserLabel.Location = new System.Drawing.Point(451, 28);
-            this.TaskUserLabel.Name = "TaskUserLabel";
-            this.TaskUserLabel.Size = new System.Drawing.Size(37, 15);
-            this.TaskUserLabel.TabIndex = 1;
-            this.TaskUserLabel.Text = "{user}";
+            this.lbTaskUser.AutoSize = true;
+            this.lbTaskUser.Location = new System.Drawing.Point(442, 28);
+            this.lbTaskUser.Name = "lbTaskUser";
+            this.lbTaskUser.Size = new System.Drawing.Size(37, 15);
+            this.lbTaskUser.TabIndex = 1;
+            this.lbTaskUser.Text = "{user}";
             // 
-            // TaskMarkAsDoneButton
+            // btnTaskComponent
             // 
-            this.TaskMarkAsDoneButton.Location = new System.Drawing.Point(763, 24);
-            this.TaskMarkAsDoneButton.Name = "TaskMarkAsDoneButton";
-            this.TaskMarkAsDoneButton.Size = new System.Drawing.Size(127, 23);
-            this.TaskMarkAsDoneButton.TabIndex = 4;
-            this.TaskMarkAsDoneButton.Text = "Mark as done";
-            this.TaskMarkAsDoneButton.UseVisualStyleBackColor = true;
+            this.btnTaskComponent.Location = new System.Drawing.Point(722, 24);
+            this.btnTaskComponent.Name = "btnTaskComponent";
+            this.btnTaskComponent.Size = new System.Drawing.Size(127, 23);
+            this.btnTaskComponent.TabIndex = 4;
+            this.btnTaskComponent.Text = "Open details";
+            this.btnTaskComponent.UseVisualStyleBackColor = true;
+            this.btnTaskComponent.Visible = false;
+            this.btnTaskComponent.Click += new System.EventHandler(this.btnTaskComponent_Click);
+            // 
+            // btnReportTask
+            // 
+            this.btnReportTask.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReportTask.ForeColor = System.Drawing.Color.Red;
+            this.btnReportTask.Location = new System.Drawing.Point(855, 22);
+            this.btnReportTask.Name = "btnReportTask";
+            this.btnReportTask.Size = new System.Drawing.Size(25, 25);
+            this.btnReportTask.TabIndex = 5;
+            this.btnReportTask.Text = "!";
+            this.btnReportTask.UseVisualStyleBackColor = true;
+            this.btnReportTask.Click += new System.EventHandler(this.btnReportTask_Click);
             // 
             // TaskComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.TaskMarkAsDoneButton);
-            this.Controls.Add(this.TaskUserLabel);
-            this.Controls.Add(this.TaskDescriptionLabel);
+            this.Controls.Add(this.btnReportTask);
+            this.Controls.Add(this.btnTaskComponent);
+            this.Controls.Add(this.lbTaskUser);
+            this.Controls.Add(this.lbTaskDescription);
             this.Name = "TaskComponent";
             this.Size = new System.Drawing.Size(914, 72);
             this.ResumeLayout(false);
@@ -76,8 +92,9 @@
 
         #endregion
 
-        private Label TaskDescriptionLabel;
-        private Label TaskUserLabel;
-        private Button TaskMarkAsDoneButton;
+        private Label lbTaskDescription;
+        private Label lbTaskUser;
+        private Button btnTaskComponent;
+        private RoundButton btnReportTask;
     }
 }

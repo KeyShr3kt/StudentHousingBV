@@ -10,11 +10,17 @@ namespace StudentHousingBV.models
     {
         private DateTime _updatedAt;
 
-        public Rule(int id, string description, DateTime createdAt, int buildingId, DateTime updatedAt) : base(id, description, createdAt, buildingId)
+        public Rule(int id, string title, string description, StudentHousingBV.models.User user, DateTime createdAt, DateTime updatedAt) : base(id, title, description, user, createdAt)
         {
             _updatedAt = updatedAt;
         }
 
-        public DateTime UpdatedAt { get => _updatedAt; set => _updatedAt = value; }
+        public DateTime UpdatedAt
+        {   
+            get
+            { return this._updatedAt; }
+            set
+            { this._updatedAt = value; }
+        }
     }
 }
