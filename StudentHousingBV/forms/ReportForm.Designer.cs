@@ -29,90 +29,75 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbReportedEvent = new System.Windows.Forms.Label();
+            this.tbDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(373, 66);
+            this.label1.Location = new System.Drawing.Point(201, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 32);
+            this.label1.Size = new System.Drawing.Size(48, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Report";
+            this.label1.Text = "REPORT";
             // 
-            // label2
+            // lbReportedEvent
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 135);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(351, 32);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Choose an agreement/task/rule";
+            this.lbReportedEvent.AutoSize = true;
+            this.lbReportedEvent.Location = new System.Drawing.Point(11, 63);
+            this.lbReportedEvent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbReportedEvent.Name = "lbReportedEvent";
+            this.lbReportedEvent.Size = new System.Drawing.Size(133, 15);
+            this.lbReportedEvent.TabIndex = 1;
+            this.lbReportedEvent.Text = "Event reported: #ID Title";
             // 
-            // comboBox1
+            // tbDescription
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(77, 197);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(242, 40);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(77, 335);
-            this.textBox1.MinimumSize = new System.Drawing.Size(700, 300);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(700, 300);
-            this.textBox1.TabIndex = 3;
+            this.tbDescription.Location = new System.Drawing.Point(11, 119);
+            this.tbDescription.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tbDescription.MinimumSize = new System.Drawing.Size(379, 143);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(436, 143);
+            this.tbDescription.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(77, 274);
+            this.label3.Location = new System.Drawing.Point(11, 89);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 32);
+            this.label3.Size = new System.Drawing.Size(70, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             // 
-            // button1
+            // btnSend
             // 
-            this.button1.Location = new System.Drawing.Point(329, 656);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Complete";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(329, 724);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 46);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSend.Location = new System.Drawing.Point(188, 280);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(81, 22);
+            this.btnSend.TabIndex = 5;
+            this.btnSend.Text = "Complete";
+            this.btnSend.UseVisualStyleBackColor = true;
             // 
             // ReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 782);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(458, 339);
+            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbDescription);
+            this.Controls.Add(this.lbReportedEvent);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "ReportForm";
-            this.Text = "ReportForm";
+            this.Text = "Student Housing BV - Report";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,11 +106,9 @@
         #endregion
 
         private Label label1;
-        private Label label2;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private Label lbReportedEvent;
+        private TextBox tbDescription;
         private Label label3;
-        private Button button1;
-        private Button button2;
+        private Button btnSend;
     }
 }

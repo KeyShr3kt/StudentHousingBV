@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace StudentHousingBV.forms
 {
-    public partial class AgreementPanel : Form
+    public partial class AgreementForm : Form
     {
-        public AgreementPanel()
+        public AgreementForm()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

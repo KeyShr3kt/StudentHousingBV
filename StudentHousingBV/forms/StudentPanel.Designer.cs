@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundPicture = new System.Windows.Forms.PictureBox();
+            this.backgroundStudentPanel = new System.Windows.Forms.PictureBox();
             this.navPages = new System.Windows.Forms.TabControl();
             this.pageAgreements = new System.Windows.Forms.TabPage();
             this.navAgreements = new System.Windows.Forms.TabControl();
@@ -43,12 +43,11 @@
             this.listOpenAgreements = new System.Windows.Forms.ListBox();
             this.btnOpenAgreement = new System.Windows.Forms.Button();
             this.pageTasks = new System.Windows.Forms.TabPage();
-            this.flowTasks = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnReportTask = new StudentHousingBV.forms.RoundButton();
+            this.fpPageTasks = new System.Windows.Forms.FlowLayoutPanel();
             this.pageRules = new System.Windows.Forms.TabPage();
-            this.btnReportRule = new StudentHousingBV.forms.RoundButton();
+            this.flowRules = new System.Windows.Forms.FlowLayoutPanel();
             this.pageAccount = new System.Windows.Forms.TabPage();
-            ((System.ComponentModel.ISupportInitialize)(this.backgroundPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backgroundStudentPanel)).BeginInit();
             this.navPages.SuspendLayout();
             this.pageAgreements.SuspendLayout();
             this.navAgreements.SuspendLayout();
@@ -58,15 +57,15 @@
             this.pageRules.SuspendLayout();
             this.SuspendLayout();
             // 
-            // backgroundPicture
+            // backgroundStudentPanel
             // 
-            this.backgroundPicture.Image = global::StudentHousingBV.Properties.Resources.TUe_by_night1;
-            this.backgroundPicture.Location = new System.Drawing.Point(12, 12);
-            this.backgroundPicture.Name = "backgroundPicture";
-            this.backgroundPicture.Size = new System.Drawing.Size(969, 155);
-            this.backgroundPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.backgroundPicture.TabIndex = 0;
-            this.backgroundPicture.TabStop = false;
+            this.backgroundStudentPanel.Image = global::StudentHousingBV.Properties.Resources.TUe_by_night1;
+            this.backgroundStudentPanel.Location = new System.Drawing.Point(12, 12);
+            this.backgroundStudentPanel.Name = "backgroundStudentPanel";
+            this.backgroundStudentPanel.Size = new System.Drawing.Size(969, 155);
+            this.backgroundStudentPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.backgroundStudentPanel.TabIndex = 0;
+            this.backgroundStudentPanel.TabStop = false;
             // 
             // navPages
             // 
@@ -220,8 +219,7 @@
             // pageTasks
             // 
             this.pageTasks.BackColor = System.Drawing.Color.RosyBrown;
-            this.pageTasks.Controls.Add(this.flowTasks);
-            this.pageTasks.Controls.Add(this.btnReportTask);
+            this.pageTasks.Controls.Add(this.fpPageTasks);
             this.pageTasks.Location = new System.Drawing.Point(4, 33);
             this.pageTasks.Name = "pageTasks";
             this.pageTasks.Padding = new System.Windows.Forms.Padding(3);
@@ -229,32 +227,21 @@
             this.pageTasks.TabIndex = 1;
             this.pageTasks.Text = "TASKS";
             // 
-            // flowTasks
+            // fpPageTasks
             // 
-            this.flowTasks.AutoScroll = true;
-            this.flowTasks.BackColor = System.Drawing.Color.LightGray;
-            this.flowTasks.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowTasks.Location = new System.Drawing.Point(6, 6);
-            this.flowTasks.Name = "flowTasks";
-            this.flowTasks.Size = new System.Drawing.Size(949, 287);
-            this.flowTasks.TabIndex = 10;
-            this.flowTasks.WrapContents = false;
-            // 
-            // btnReportTask
-            // 
-            this.btnReportTask.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReportTask.ForeColor = System.Drawing.Color.Red;
-            this.btnReportTask.Location = new System.Drawing.Point(6, 299);
-            this.btnReportTask.Name = "btnReportTask";
-            this.btnReportTask.Size = new System.Drawing.Size(75, 60);
-            this.btnReportTask.TabIndex = 9;
-            this.btnReportTask.Text = "!";
-            this.btnReportTask.UseVisualStyleBackColor = true;
+            this.fpPageTasks.AutoScroll = true;
+            this.fpPageTasks.BackColor = System.Drawing.Color.LightGray;
+            this.fpPageTasks.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.fpPageTasks.Location = new System.Drawing.Point(6, 6);
+            this.fpPageTasks.Name = "fpPageTasks";
+            this.fpPageTasks.Size = new System.Drawing.Size(949, 353);
+            this.fpPageTasks.TabIndex = 10;
+            this.fpPageTasks.WrapContents = false;
             // 
             // pageRules
             // 
             this.pageRules.BackColor = System.Drawing.Color.RosyBrown;
-            this.pageRules.Controls.Add(this.btnReportRule);
+            this.pageRules.Controls.Add(this.flowRules);
             this.pageRules.Location = new System.Drawing.Point(4, 33);
             this.pageRules.Name = "pageRules";
             this.pageRules.Padding = new System.Windows.Forms.Padding(3);
@@ -262,16 +249,16 @@
             this.pageRules.TabIndex = 2;
             this.pageRules.Text = "RULES";
             // 
-            // btnReportRule
+            // flowRules
             // 
-            this.btnReportRule.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReportRule.ForeColor = System.Drawing.Color.Red;
-            this.btnReportRule.Location = new System.Drawing.Point(6, 299);
-            this.btnReportRule.Name = "btnReportRule";
-            this.btnReportRule.Size = new System.Drawing.Size(75, 60);
-            this.btnReportRule.TabIndex = 9;
-            this.btnReportRule.Text = "!";
-            this.btnReportRule.UseVisualStyleBackColor = true;
+            this.flowRules.AutoScroll = true;
+            this.flowRules.BackColor = System.Drawing.Color.LightGray;
+            this.flowRules.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowRules.Location = new System.Drawing.Point(6, 6);
+            this.flowRules.Name = "flowRules";
+            this.flowRules.Size = new System.Drawing.Size(949, 353);
+            this.flowRules.TabIndex = 11;
+            this.flowRules.WrapContents = false;
             // 
             // pageAccount
             // 
@@ -289,11 +276,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 587);
             this.Controls.Add(this.navPages);
-            this.Controls.Add(this.backgroundPicture);
+            this.Controls.Add(this.backgroundStudentPanel);
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "StudentPanel";
             this.Text = "Student Housing BV - Student Panel";
-            ((System.ComponentModel.ISupportInitialize)(this.backgroundPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.backgroundStudentPanel)).EndInit();
             this.navPages.ResumeLayout(false);
             this.pageAgreements.ResumeLayout(false);
             this.navAgreements.ResumeLayout(false);
@@ -307,7 +294,7 @@
 
         #endregion
 
-        private PictureBox backgroundPicture;
+        private PictureBox backgroundStudentPanel;
         private TabControl navPages;
         private TabPage pageAgreements;
         private TabPage pageTasks;
@@ -324,8 +311,7 @@
         private ComboBox selectClosedAgreement;
         private Button btnClosedAgreement;
         private RoundButton btnReportOpenAgreement;
-        private RoundButton btnReportTask;
-        private RoundButton btnReportRule;
-        private FlowLayoutPanel flowTasks;
+        private FlowLayoutPanel fpPageTasks;
+        private FlowLayoutPanel flowRules;
     }
 }

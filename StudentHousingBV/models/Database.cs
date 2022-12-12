@@ -13,10 +13,13 @@ namespace StudentHousingBV.models
         private List<User> _users;
         private List<Report> _reports;
         public Database() {
-            User user1 = new User(1, "User1", "User1", "user1@abv.bg", "password", "0111", false);
-            User user2 = new User(1, "User2", "User2", "user2@abv.bg", "password", "0111", false);
-            User user3 = new User(1, "User3", "User3", "user3@abv.bg", "password", "0111", false);
-            this._users = new List<User>() { user1, user2, user3 };
+            
+            this._users = new List<User>() 
+            {
+                new User(1, "User1", "User1", "user1@abv.bg", "password", "0111", false),
+                new User(1, "User2", "User2", "user2@abv.bg", "password", "0111", false),
+                new User(1, "User3", "User3", "user3@abv.bg", "password", "0111", false)
+            };
         }
         public List<User> GetUsers()
         {

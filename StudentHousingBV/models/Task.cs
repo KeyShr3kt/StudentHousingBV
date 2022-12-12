@@ -11,15 +11,26 @@ namespace StudentHousingBV.models
         private bool _isShopping;
         private bool _isCompleted;
 
-        public Task(int id, string description, DateTime createdAt, Building building, bool isShopping, bool isCompleted, User user) 
-            : base(id, description, createdAt, building, user)
+        public Task(int id, string title, string description, StudentHousingBV.models.User user, DateTime createdAt, bool isShopping, bool isCompleted) : base(id, title, description, user, createdAt)
         {
-            _isShopping = isShopping;
-            _isCompleted = isCompleted;
+            this._isShopping = isShopping;
+            this._isCompleted = isCompleted;
         }
 
-        public bool IsCompleted { get => _isCompleted; set => _isCompleted = value; }
+        public bool IsCompleted
+        {
+            get
+            { return this._isCompleted; }
+            set
+            { this._isCompleted = value; }
+        }
 
-        public bool IsShopping { get => _isShopping; set => _isShopping = value; }
+        public bool IsShopping
+        {
+            get
+            { return this._isShopping; }
+            set
+            { this._isShopping = value; }
+        }
     }
 }
