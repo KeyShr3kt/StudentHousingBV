@@ -1,6 +1,6 @@
 ﻿namespace StudentHousingBV.forms.adminSectionForms
 {
-    partial class AdminHomeFormcs
+    partial class AdminHomeForm
     {
         /// <summary>
         /// Required designer variable.

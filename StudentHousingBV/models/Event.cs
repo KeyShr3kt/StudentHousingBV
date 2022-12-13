@@ -13,15 +13,17 @@ namespace StudentHousingBV.models
         private DateTime _createdAt;
         private string _description;
         private string _title;
-        private StudentHousingBV.models.User _user;
+        private int _creatorId;
+        private int _buildingId;
 
-        public Event(int id, string title, string description, StudentHousingBV.models.User user, DateTime createdAt)
+        public Event(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId)
         {
             this._id = id;
             this._description = description;
             this._createdAt = createdAt;
             this._title = title;
-            this._user = user;
+            this._creatorId = creatorId;
+            this._buildingId = buildingId;
         }
 
         public string Description
@@ -56,12 +58,14 @@ namespace StudentHousingBV.models
             { this._title = value; }
         }
 
-        public StudentHousingBV.models.User User
+        public int CreatorId
         {
             get
-            { return this._user; }
+            { return this._creatorId; }
             set
-            { this._user = value; }
+            { this._creatorId = value; }
         }
+
+        public int BuildingId { get => this._buildingId; set => _buildingId = value; }
     }
 }

@@ -10,43 +10,69 @@ namespace StudentHousingBV.controllers
 {
     public class UserManager
     {
-        private int? _currentUserId;
-        public int? CurrentUserId { get => _currentUserId;  set { _currentUserId = value; } }
+        private int _currentUserId;
+        public int CurrentUserId { get => _currentUserId;  set { _currentUserId = value; } }
 
-        private UserRepository _userRepository = new UserRepository();
-        public UserRepository UserRepository { get => _userRepository;}
+        //      private UserRepository _userRepository = new UserRepository();
+        //      public UserRepository userRepository { get => _userRepository;}
 
-        public bool TryLoginWithEmailAndPassword(string email, string password)
+        private UnitOfWork _unitOfWork = new();
+        public UnitOfWork unitOfWork { get => _unitOfWork;}
+
+        public UserManager(int userId) 
         {
-            /*bool userFound = false;
-            List<User> users = UserRepository.GetAllUsers();
-            foreach (User user in users)
+            CurrentUserId = userId;
+        }
+        public static User? VirifyUserWithEmailAndPassword(string email, string password)
+        {
+            UnitOfWork unitOfWork = new();
+            List<User> users = unitOfWork.Users.GetAll();
+            User? foundUser = null;
+
+            if (email == "" || password == "")
+            {
+                throw new ArgumentException("Input cannot be empty");
+            }
+            
+            
+            foreach (User user in users) 
             {
                 if (user.EmailAddress == email && PasswordHasher.Verify(password, user.Password))
                 {
-                    CurrentUserId = user.Id;
-                    user.LastSeenAt = DateTime.UtcNow;
-                    userFound = true;
+                    foundUser = user;
                 }
             }
-            return userFound;*/
-            return true;
+            return foundUser;
         }
 
         public List<User> GetAllUsers()
         {
-
-           return new List<User>();
+           return unitOfWork.Users.GetAll();
         }
 
-        public bool IsUserAdmin()
+        public List<Building> GetAllBuildings()
         {
-            /*bool isAdmin = false;
-            if (CurrentUserId != null)
+            return unitOfWork.Buildings.GetAll();
+        }
+
+        public void SetNewPasswordForCurrentUser(string password)
+        {
+            if (password == "")
             {
-                isAdmin = UserRepository.IsAdmin((int)CurrentUserId);
-            }*/
-            return true;
+                throw new ArgumentException("Password can't be empty!");
+            }
+            if (password.Length < 8)
+            {
+                throw new ArgumentException("Password should be at least 8 characters!");
+            }
+
+            User user = unitOfWork.Users.Get(CurrentUserId);
+            user.Password = password;
+            unitOfWork.Users.Update(user);
+        }
+        public bool isCurrentUserAdmin()
+        {
+            return unitOfWork.Users.Get(CurrentUserId).isAdmin;
         }
 
         public bool isFirstTimeLogin()

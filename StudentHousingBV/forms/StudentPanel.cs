@@ -12,7 +12,7 @@ namespace StudentHousingBV.forms
             #region Tests
             StudentHousingBV.models.Task _testTask1, _testTask2;
             StudentHousingBV.models.Rule _testRule;
-            StudentHousingBV.models.User _testUser = new User(1,"Ionut", "Dragomir", "510175@student.fontys.nl", "smthsmthsmth", "+31633396888", false, DateTime.Now);
+            StudentHousingBV.models.User _testUser = new User(1,"Ionut", "Dragomir", "510175@student.fontys.nl", "smthsmthsmth", "+31633396888", false, 0, 0, DateTime.Now);
             listClosedAgreements.Items.Add("#ID | {user}: {title} - Upvotes: {number} / Downvotes: {number}");
             listOpenAgreements.Items.Add("#ID | {user}: {title} - Upvotes: {number} / Downvotes: {number}");
             _testTask1 = new StudentHousingBV.models.Task(1, "This is a task title.", "This is a task description.", _testUser, DateTime.Now, false, false);

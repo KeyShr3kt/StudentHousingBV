@@ -34,14 +34,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtBoxEmail = new System.Windows.Forms.TextBox();
+            this.txtBoxPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtBoxLastName = new System.Windows.Forms.TextBox();
+            this.txtBoxFirstName = new System.Windows.Forms.TextBox();
             this.btnCreateUser = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbBoxRooms = new System.Windows.Forms.ComboBox();
+            this.cmbBoxBuildings = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -106,49 +111,41 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Role:";
             // 
-            // textBox1
+            // txtBoxEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(121, 182);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(265, 23);
-            this.textBox1.TabIndex = 6;
+            this.txtBoxEmail.Location = new System.Drawing.Point(121, 146);
+            this.txtBoxEmail.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBoxEmail.Name = "txtBoxEmail";
+            this.txtBoxEmail.Size = new System.Drawing.Size(265, 23);
+            this.txtBoxEmail.TabIndex = 7;
             // 
-            // textBox2
+            // txtBoxPhoneNumber
             // 
-            this.textBox2.Location = new System.Drawing.Point(121, 146);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(265, 23);
-            this.textBox2.TabIndex = 7;
+            this.txtBoxPhoneNumber.Location = new System.Drawing.Point(121, 114);
+            this.txtBoxPhoneNumber.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBoxPhoneNumber.Name = "txtBoxPhoneNumber";
+            this.txtBoxPhoneNumber.Size = new System.Drawing.Size(265, 23);
+            this.txtBoxPhoneNumber.TabIndex = 8;
             // 
-            // textBox3
+            // txtBoxLastName
             // 
-            this.textBox3.Location = new System.Drawing.Point(121, 114);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(265, 23);
-            this.textBox3.TabIndex = 8;
+            this.txtBoxLastName.Location = new System.Drawing.Point(121, 78);
+            this.txtBoxLastName.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBoxLastName.Name = "txtBoxLastName";
+            this.txtBoxLastName.Size = new System.Drawing.Size(265, 23);
+            this.txtBoxLastName.TabIndex = 9;
             // 
-            // textBox4
+            // txtBoxFirstName
             // 
-            this.textBox4.Location = new System.Drawing.Point(121, 78);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(265, 23);
-            this.textBox4.TabIndex = 9;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(121, 47);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(265, 23);
-            this.textBox5.TabIndex = 10;
+            this.txtBoxFirstName.Location = new System.Drawing.Point(121, 47);
+            this.txtBoxFirstName.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtBoxFirstName.Name = "txtBoxFirstName";
+            this.txtBoxFirstName.Size = new System.Drawing.Size(265, 23);
+            this.txtBoxFirstName.TabIndex = 10;
             // 
             // btnCreateUser
             // 
-            this.btnCreateUser.Location = new System.Drawing.Point(89, 223);
+            this.btnCreateUser.Location = new System.Drawing.Point(86, 314);
             this.btnCreateUser.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(204, 22);
@@ -172,22 +169,84 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmbBoxRooms);
+            this.panel1.Controls.Add(this.cmbBoxBuildings);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnCreateUser);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.txtBoxFirstName);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txtBoxEmail);
+            this.panel1.Controls.Add(this.txtBoxLastName);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.txtBoxPhoneNumber);
             this.panel1.Location = new System.Drawing.Point(132, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(388, 362);
             this.panel1.TabIndex = 12;
+            // 
+            // cmbBoxRooms
+            // 
+            this.cmbBoxRooms.FormattingEnabled = true;
+            this.cmbBoxRooms.Location = new System.Drawing.Point(121, 260);
+            this.cmbBoxRooms.Name = "cmbBoxRooms";
+            this.cmbBoxRooms.Size = new System.Drawing.Size(265, 23);
+            this.cmbBoxRooms.TabIndex = 16;
+            // 
+            // cmbBoxBuildings
+            // 
+            this.cmbBoxBuildings.FormattingEnabled = true;
+            this.cmbBoxBuildings.Location = new System.Drawing.Point(121, 222);
+            this.cmbBoxBuildings.Name = "cmbBoxBuildings";
+            this.cmbBoxBuildings.Size = new System.Drawing.Size(265, 23);
+            this.cmbBoxBuildings.TabIndex = 15;
+            this.cmbBoxBuildings.SelectedIndexChanged += new System.EventHandler(this.cmbBoxBuildings_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 263);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 15);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Room";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 225);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 15);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Building";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(207, 184);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(62, 19);
+            this.checkBox2.TabIndex = 13;
+            this.checkBox2.Text = "Admin";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(121, 184);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(61, 19);
+            this.checkBox1.TabIndex = 12;
+            this.checkBox1.Text = "Tenant";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // AdminCreateUserForm
             // 
@@ -214,13 +273,18 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox txtBoxEmail;
+        private TextBox txtBoxPhoneNumber;
+        private TextBox txtBoxLastName;
+        private TextBox txtBoxFirstName;
         private Button btnCreateUser;
         private GroupBox groupBox1;
         private Panel panel1;
+        private ComboBox cmbBoxRooms;
+        private ComboBox cmbBoxBuildings;
+        private Label label8;
+        private Label label7;
+        private CheckBox checkBox2;
+        private CheckBox checkBox1;
     }
 }

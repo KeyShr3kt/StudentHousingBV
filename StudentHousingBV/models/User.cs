@@ -20,8 +20,6 @@ namespace StudentHousingBV.models
         private bool _isAdmin;
         private DateTime? _lastSeenAt;
 
-        // do i need Room room here?
-
         public int PossitiveVotes { get => this._possitiveVotes; private set => _possitiveVotes = value;  }
         public int NegativeVotes { get => this._negativeVotes; private set => _negativeVotes = value;  }
         public string EmailAddress { get => _emailAddress; private set => _emailAddress = value;  }
@@ -35,14 +33,15 @@ namespace StudentHousingBV.models
 
 
         public User(int id, string firstName, string lastName, string emailAddress, 
-                    string password, string phoneNumber, bool isAdmin, 
-                    int possitiveVotes, int negativeVotes, DateTime lastSeenAt) 
+                    string password, string phoneNumber, int possitiveVotes, 
+                    int negativeVotes, bool isAdmin, 
+                    DateTime lastSeenAt) 
         {
             this.Id = id;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.EmailAddress = emailAddress;
-            this.Password = PasswordHasher.Hash(password);
+            this.Password = password;
             this.PhoneNumber = phoneNumber;
             this.PossitiveVotes = possitiveVotes;
             this.NegativeVotes = negativeVotes;

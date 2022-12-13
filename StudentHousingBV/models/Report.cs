@@ -8,10 +8,13 @@ namespace StudentHousingBV.models
 {
     public class Report: Event
     {
-        private StudentHousingBV.models.Event _inRegardOfEvent;
-        public Report(int id, string title, string description, StudentHousingBV.models.User user, DateTime createdAt, StudentHousingBV.models.Event inRegardOfEvent) : base(id, title, description, user, createdAt)
+        private int _targetedToEventId;
+        public Report(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, int eventId) 
+            : base(id, title, description, createdAt, creatorId, buildingId)
         {
-            _inRegardOfEvent = inRegardOfEvent;
+            _targetedToEventId = eventId;
         }
+
+        public int TargetedToEventId { get => _targetedToEventId; private set => _targetedToEventId = value; }
     }
 }

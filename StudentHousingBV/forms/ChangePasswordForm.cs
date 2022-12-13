@@ -14,38 +14,39 @@ namespace StudentHousingBV.forms
 {
     public partial class ChangePasswordForm : Form
     {
-        private int _userId;
         private UserManager _userManager;
-        public UserManager UserManager { get => _userManager; private set { _userManager = value; } }
-        public ChangePasswordForm(UserManager manager)
+        public UserManager userManager { get => _userManager; private set { _userManager = value; } }
+        public ChangePasswordForm(int userId)
         {
             InitializeComponent();
-            UserManager = manager;
+            _userManager = new UserManager(userId);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string newPassword = this.txtBoxNewPassword.Text.Trim();
-            string confirmPassword = this.txtBoxConfirmPassword.Text.Trim();
-            if (newPassword == "" || confirmPassword == "" || newPassword.Length < 8 || confirmPassword.Length < 8) 
-            { 
-                MessageBox.Show("The password must contain at least 8 characters."); 
-                return; 
-            }
+            try
+            {
+                string newPassword = this.txtBoxNewPassword.Text.Trim();
+                string confirmPassword = this.txtBoxConfirmPassword.Text.Trim();
 
-            if (newPassword != confirmPassword) 
-            { 
-                MessageBox.Show("The passwords are not the same!");
-                return; 
-            }
+                if (newPassword != confirmPassword)
+                {
+                    throw new ArgumentException("Password can't be empty!");
+                }
 
-           // UserManager.ChangePasswordForUserWith(_userId, newPassword, _db);
-           // UserManager.UpdateLastSeenAtForUserId(_userId, _db);
-            // redirect the user to the user form 
-            //Form1 form = new Form1(); // pass current user to the form?????/
-           // LoginPanel form = new LoginPanel(_db);
-            //form.Show();
-            //this.Hide();
+                userManager.SetNewPasswordForCurrentUser(newPassword);
+                MessageBox.Show("Password saved!");
+                if (userManager.isCurrentUserAdmin())
+                {
+                    AdminForm admin = new AdminForm(userManager);
+                    admin.Show();
+                    this.Hide();
+                }
+            } 
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

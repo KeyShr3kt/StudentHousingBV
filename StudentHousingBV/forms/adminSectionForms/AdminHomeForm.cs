@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace StudentHousingBV.forms.adminSectionForms
 {
-    public partial class AdminHomeFormcs : Form
+    public partial class AdminHomeForm : Form
     {
-        public AdminHomeFormcs()
+        public AdminHomeForm()
         {
             InitializeComponent();
         }

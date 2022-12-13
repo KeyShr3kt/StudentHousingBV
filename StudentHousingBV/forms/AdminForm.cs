@@ -14,14 +14,21 @@ namespace StudentHousingBV.forms
 {
     public partial class AdminForm : Form
     {
-
-        private Form _activeForm;
+        private Form? _activeForm;
         private UserManager _userManager;
-        public UserManager UserManager { get => _userManager; private set {_userManager = value; } }
-        public AdminForm(UserManager userManager)
+        public UserManager userManager { get => _userManager; private set {_userManager = value; } }
+        public AdminForm(UserManager manager)
         {
             InitializeComponent();
-            UserManager = userManager;
+            OpenChildForm(new AdminHomeForm(), this);
+            _userManager = manager;
+      
+        }
+
+        public AdminForm(int userId) 
+        {
+            InitializeComponent();
+            _userManager = new UserManager(userId);
         }
 
         private void menuButton_Click(object sender, EventArgs e)
@@ -29,25 +36,19 @@ namespace StudentHousingBV.forms
         }
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new forms.adminSectionForms.AdminUsersForm(UserManager), sender);
+            OpenChildForm(new forms.adminSectionForms.AdminUsersForm(userManager), this);
         }
 
         private void btnRules_Click(object sender, EventArgs e)
         {
-            if (UserManager.CurrentUserId != null)
-            {
-                OpenChildForm(new forms.adminSectionForms.AdminRulesForm((int)UserManager.CurrentUserId), sender);
-            }
+          //  OpenChildForm(new forms.adminSectionForms.AdminRulesForm((int)UserManager.CurrentUserId), sender);
         }
 
        
 
         private void btnTasks_Click(object sender, EventArgs e)
         {
-            if (UserManager.CurrentUserId != null)
-            {
-                OpenChildForm(new forms.adminSectionForms.AdminTasksForm(), sender);
-            }
+            OpenChildForm(new forms.adminSectionForms.AdminTasksForm(), sender);
         }
 
         private void OpenChildForm(Form childForm, object btnSender) {

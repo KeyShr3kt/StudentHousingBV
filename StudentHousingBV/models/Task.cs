@@ -11,7 +11,8 @@ namespace StudentHousingBV.models
         private bool _isShopping;
         private bool _isCompleted;
 
-        public Task(int id, string title, string description, StudentHousingBV.models.User user, DateTime createdAt, bool isShopping, bool isCompleted) : base(id, title, description, user, createdAt)
+        public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted) 
+            : base(id, title, description, createdAt, creatorId, buildingId)
         {
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;

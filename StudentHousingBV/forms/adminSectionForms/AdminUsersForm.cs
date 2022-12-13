@@ -15,18 +15,18 @@ namespace StudentHousingBV.forms.adminSectionForms
     public partial class AdminUsersForm : Form
     {
         private UserManager _userManager;
-        public UserManager UserManager { get => _userManager; private set { _userManager = value; } }
+        public UserManager userManager { get => _userManager; private set { _userManager = value; } }
         public AdminUsersForm(UserManager manager)
         {
             InitializeComponent();
-            UserManager = manager;
+            _userManager = manager;
             fillUsers();
         }
 
         public void fillUsers()
         {
             flowLayoutPanel1.Controls.Clear();
-            List<User> users = UserManager.GetAllUsers();
+            List<User> users = userManager.GetAllUsers();
             List<AdminUserComponent> components = new List<AdminUserComponent>();
             foreach (User user in users)
             {
@@ -41,7 +41,7 @@ namespace StudentHousingBV.forms.adminSectionForms
 
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
-            AdminCreateUserForm form = new AdminCreateUserForm();
+            AdminCreateUserForm form = new AdminCreateUserForm(userManager);
             form.Show();
         }
 

@@ -15,43 +15,51 @@ namespace StudentHousingBV.forms
     public partial class LoginPanel : Form
     {
 
-        private UserManager _userManager = new UserManager();
-        public UserManager UserManager { get => _userManager; private set { _userManager = value; } }
         public LoginPanel()
         {
             InitializeComponent();
-       
-            //this._db = db;
+            txtBoxEmail.Text = "admin";
+            txtBoxPassword.Text = "admin";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtBoxEmail.Text.Trim();
-            string password = txtBoxPassword.Text.Trim();
-
-            if (UserManager.TryLoginWithEmailAndPassword(email, password))
+            try
             {
-                if (UserManager.isFirstTimeLogin())
+                string email = txtBoxEmail.Text.Trim();
+                string password = txtBoxPassword.Text.Trim();
+
+                User? foundUser = UserManager.VirifyUserWithEmailAndPassword(email, password);
+                if (foundUser != null)
                 {
-                    ChangePasswordForm form = new ChangePasswordForm(UserManager);
-                    form.Show();
-                    this.Hide();
-                } else if (UserManager.IsUserAdmin())
+                    if (foundUser.LastSeenAt == null)
+                    {
+                        ChangePasswordForm form = new ChangePasswordForm(foundUser.Id);
+                        form.Show();
+                        this.Hide();
+                    }
+                    else if (foundUser.isAdmin)
+                    {
+                        AdminForm adminForm = new AdminForm(foundUser.Id);
+                        adminForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        StudentPanel form = new StudentPanel();
+                        form.Show();
+                        this.Hide();
+                    }
+                }
+                else
                 {
-                    AdminForm adminForm = new AdminForm(UserManager);
-                    adminForm.Show();
-                    this.Hide();
-                } else
-                {
-                    StudentPanel form = new StudentPanel();
-                    form.Show();
-                    this.Hide();
+                    MessageBox.Show("User not found!");
+                    this.txtBoxPassword.Text = "";
                 }
             }
-            else
+            catch (ArgumentException ex)
             {
-                MessageBox.Show("User not found!");
-                this.txtBoxPassword.Text = "";
+                MessageBox.Show(ex.Message);
             }
         }
 

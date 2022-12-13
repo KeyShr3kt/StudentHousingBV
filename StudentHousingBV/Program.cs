@@ -1,3 +1,4 @@
+using StudentHousingBV.forms;
 using StudentHousingBV.models;
 
 namespace StudentHousingBV
@@ -13,9 +14,8 @@ namespace StudentHousingBV
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Database db = new Database();
-            //Application.Run(new forms.LoginPanel(db));
-            Application.Run(new forms.StudentPanel());
+            Application.Run(new LoginPanel());
+           // Application.Run(new forms.StudentPanel());
             //Application.Run(new forms.ReportForm());
         }
     }

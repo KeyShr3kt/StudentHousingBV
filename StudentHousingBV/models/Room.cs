@@ -11,21 +11,30 @@ namespace StudentHousingBV.models
         private int _id;
         private string _type;
         private string _name;
-        private User? _user;
+        private int? _userId;
+        private int _buildingId;
 
         public int Id { get => _id; private set => _id = value; }
         public string Type { get => _type; private set => _type = value; }
 
         public string Name { get => _name; private set => _name = value; }
 
-        public User? User { get => _user; private set => _user = value; }
+        public int? UserId { get => _userId; private set => _userId = value; }
 
-        public Room(int id, string type, string name, User? user)
+        public int BuildingId { get => _buildingId; private set => _buildingId = value; }
+
+        public Room(int id, string type, int userId, string name, int buildingId)
         {
             Id = id;
             Type = type;
             Name = name;
-            User = user;
+            UserId = userId;
+            BuildingId = buildingId;
+        }
+
+        public override string ToString()
+        {
+            return $"{Type} - {Name}";
         }
     }
 }
