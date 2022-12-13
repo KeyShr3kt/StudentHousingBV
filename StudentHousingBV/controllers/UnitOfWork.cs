@@ -15,5 +15,8 @@ namespace StudentHousingBV.controllers
         private BuildingRepository _buildingRepository = new();
 
         public BuildingRepository Buildings { get => _buildingRepository;}
+
+        private RoomRepository _roomRepository = new();
+        public RoomRepository Rooms { get => _roomRepository; }
     }
 }

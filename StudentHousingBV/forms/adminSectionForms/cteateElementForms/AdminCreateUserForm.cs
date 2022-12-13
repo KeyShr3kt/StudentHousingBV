@@ -22,17 +22,22 @@ namespace StudentHousingBV.forms
         private UserManager _userManager;
 
         public UserManager userManager { get => _userManager; }
-        public AdminCreateUserForm(UserManager manager)
+
+        private BuildingManager _buildingManager;
+
+        public BuildingManager buildingManager { get => _buildingManager; }
+        public AdminCreateUserForm(UserManager manager, BuildingManager bManager)
         {
             InitializeComponent();
             _userManager = manager;
+            _buildingManager = bManager;
             fillBuildings();
         }
 
         void fillBuildings()
         {
             cmbBoxBuildings.Items.Clear();
-            foreach (Building building in userManager.GetAllBuildings())
+            foreach (Building building in buildingManager.GetAllBuildings())
             {
                 cmbBoxBuildings.Items.Add(building);
             }
@@ -40,10 +45,20 @@ namespace StudentHousingBV.forms
 
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
-            string firstName = txtBoxFirstName.Text;
-            string lastName = txtBoxLastName.Text;
-            string email = txtBoxEmail.Text;
-            string phoneNumber = txtBoxPhoneNumber.Text;
+            try
+            {
+                string firstName = txtBoxFirstName.Text;
+                string lastName = txtBoxLastName.Text;
+                string email = txtBoxEmail.Text;
+                string phoneNumber = txtBoxPhoneNumber.Text;
+                bool isAdmin = checkBoxIfAdmin.Checked;
+
+                userManager.createUser(firstName, lastName, email,
+                                phoneNumber, isAdmin, cmbBoxRooms.SelectedItem as Room);
+            } catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
 
         }
@@ -54,14 +69,12 @@ namespace StudentHousingBV.forms
             if (cmbBoxBuildings.SelectedIndex > -1)
             {
                 Building building = (Building) cmbBoxBuildings.SelectedItem;
+                List<Room> availableBedrooms = buildingManager.GetAvailableBedroomsForBuilding(building);
 
-                /*foreach (Room room in building.Rooms) 
+                foreach (Room room in availableBedrooms) 
                 {
-                    if (room.User == null)
-                    {
-                        cmbBoxRooms.Items.Add(room);
-                    }
-                }*/
+                    cmbBoxRooms.Items.Add(room);
+                }
             }
         }
     }

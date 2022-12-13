@@ -9,7 +9,7 @@ namespace StudentHousingBV.forms
         public StudentPanel()
         {
             InitializeComponent();
-            #region Tests
+        /*    #region Tests
             StudentHousingBV.models.Task _testTask1, _testTask2;
             StudentHousingBV.models.Rule _testRule;
             StudentHousingBV.models.User _testUser = new User(1,"Ionut", "Dragomir", "510175@student.fontys.nl", "smthsmthsmth", "+31633396888", false, 0, 0, DateTime.Now);
@@ -27,7 +27,7 @@ namespace StudentHousingBV.forms
             _testRule = new StudentHousingBV.models.Rule(1, "This is a rule title.", "This is a rule description.", _testUser, DateTime.Now, DateTime.Now);
             for (int i = 1; i <= 10; i++)
                 flowRules.Controls.Add(new RuleComponent(_testRule));
-            #endregion
+            #endregion*/
         }
     }
 }

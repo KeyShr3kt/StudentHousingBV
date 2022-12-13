@@ -45,8 +45,7 @@
             this.cmbBoxBuildings = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxIfAdmin = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -173,8 +172,7 @@
             this.panel1.Controls.Add(this.cmbBoxBuildings);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.checkBoxIfAdmin);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnCreateUser);
@@ -228,25 +226,15 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Building";
             // 
-            // checkBox2
+            // checkBoxIfAdmin
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(207, 184);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(62, 19);
-            this.checkBox2.TabIndex = 13;
-            this.checkBox2.Text = "Admin";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(121, 184);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(61, 19);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Tenant";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxIfAdmin.AutoSize = true;
+            this.checkBoxIfAdmin.Location = new System.Drawing.Point(121, 184);
+            this.checkBoxIfAdmin.Name = "checkBoxIfAdmin";
+            this.checkBoxIfAdmin.Size = new System.Drawing.Size(62, 19);
+            this.checkBoxIfAdmin.TabIndex = 13;
+            this.checkBoxIfAdmin.Text = "Admin";
+            this.checkBoxIfAdmin.UseVisualStyleBackColor = true;
             // 
             // AdminCreateUserForm
             // 
@@ -284,7 +272,6 @@
         private ComboBox cmbBoxBuildings;
         private Label label8;
         private Label label7;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
+        private CheckBox checkBoxIfAdmin;
     }
 }

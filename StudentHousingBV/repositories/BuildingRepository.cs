@@ -14,9 +14,9 @@ namespace StudentHousingBV.repositories
         {
             return new List<Building>
             {
-                //new Building(1, "Address1", new List<Room>{new Room(1, "kitchen", "happy kitchen", null)}, new List<Event>()),
-                //new Building(2, "Address2", new List<Room>(), new List<Event>()),
-                //new Building(3, "Address3", new List<Room>(), new List<Event>())
+                new Building(1, "Eindhoven1"),
+                new Building(2, "Eindhoven2"),
+                new Building(3, "Eindhoven3")
             };
         }
        // Building Get(id)
