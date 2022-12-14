@@ -41,7 +41,7 @@ namespace StudentHousingBV.forms
 
         private void btnRules_Click(object sender, EventArgs e)
         {
-          //  OpenChildForm(new forms.adminSectionForms.AdminRulesForm((int)UserManager.CurrentUserId), sender);
+           OpenChildForm(new AdminRulesForm(userManager.CurrentUserId), this);
         }
 
        

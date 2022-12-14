@@ -26,7 +26,13 @@ namespace StudentHousingBV.controllers
 
         public List<Room> GetAvailableBedroomsForBuilding(Building building) 
         {
-            return unitOfWork.Rooms.GetAvailableBedroomsForBuilding(building);
+            return unitOfWork.Rooms.GetAvailableBedroomsForBuildingId(building.Id);
         }
+
+        public Building GetBuidingWithId(int id)
+        {
+            return unitOfWork.Buildings.Get(id);
+        }
+
     }
 }

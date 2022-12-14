@@ -19,7 +19,10 @@ namespace StudentHousingBV.repositories
                 new Building(3, "Eindhoven3")
             };
         }
-       // Building Get(id)
+       public Building Get(int id)
+       {
+            return new Building(2, "Eindhoven2");
+       }
        // void Delete(obj)
        // void Insert(obj)
        // void Update(obj)

@@ -81,7 +81,7 @@ namespace StudentHousingBV.controllers
             }
             else if (!IsPhoneNumber(phoneNumber)) 
             {
-                throw new ArgumentException("Invalid phone number! You should include country code in the beginning!");
+                throw new ArgumentException("Invalid phone number! You should include country code ins the beginning!");
             }
 
             int userId = unitOfWork.Users.Insert(firstName, lastName, email, phoneNumber, isAdmin);

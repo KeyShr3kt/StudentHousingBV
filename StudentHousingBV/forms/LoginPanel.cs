@@ -46,9 +46,9 @@ namespace StudentHousingBV.forms
                     }
                     else
                     {
-                        StudentPanel form = new StudentPanel();
-                        form.Show();
-                        this.Hide();
+                       // StudentPanel form = new StudentPanel(foundUser.Id);
+                       // form.Show();
+                       // this.Hide();
                     }
                 }
                 else

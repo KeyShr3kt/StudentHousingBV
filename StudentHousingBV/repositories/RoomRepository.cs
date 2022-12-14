@@ -9,7 +9,10 @@ namespace StudentHousingBV.repositories
 {
     public class RoomRepository
     {
-        public List<Room> GetAll() { return new List<Room>(); }
+        public List<Room> GetAll() 
+        { 
+            return new List<Room>(); 
+        }
 
         // Building Get(id)
         // void Delete(obj)
@@ -17,7 +20,7 @@ namespace StudentHousingBV.repositories
         // void Update(obj)
         // Building GetForUser(obj)
 
-        public List<Room> GetAvailableBedroomsForBuilding(Building b) 
+        public List<Room> GetAvailableBedroomsForBuildingId(int id) 
         {
             // select where buildingId == b.Id
             return new List<Room> {
