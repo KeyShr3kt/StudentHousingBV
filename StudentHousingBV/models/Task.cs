@@ -10,12 +10,14 @@ namespace StudentHousingBV.models
     {
         private bool _isShopping;
         private bool _isCompleted;
+        private int? _totalPrice;
 
         public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted) 
             : base(id, title, description, createdAt, creatorId, buildingId)
         {
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;
+            _totalPrice = null;
         }
 
         public bool IsCompleted
@@ -33,5 +35,7 @@ namespace StudentHousingBV.models
             set
             { this._isShopping = value; }
         }
+
+        public int? TotalPrice { get => _totalPrice; }
     }
 }
