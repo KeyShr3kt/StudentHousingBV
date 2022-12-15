@@ -49,11 +49,11 @@ INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (3, 0, 0);
 
 INSERT INTO [RULE] (eventID, updatedAt) VALUES (4, CURRENT_TIMESTAMP);
 INSERT INTO AGREEMENT (eventID, StartDateTime, EndDateTime, isAccepted) VALUES (5, CURRENT_TIMESTAMP, '2022/12/17 00:00:00', 0);
-INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (6, 0, 0);
+INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (6, 1, 0);
 
 INSERT INTO [RULE] (eventID, updatedAt) VALUES (7, CURRENT_TIMESTAMP);
 INSERT INTO AGREEMENT (eventID, StartDateTime, EndDateTime, isAccepted) VALUES (8, CURRENT_TIMESTAMP, '2022/12/17 00:00:00', 0);
-INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (9, 0, 0);
+INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (9, 1, 1);
 
 INSERT INTO REPORT (Title, Description, CreatedAt, CreatorID, BuildingID, TargetedToEventID) VALUES 
 ('Report 1', 'Description of report 1', CURRENT_TIMESTAMP, 5, 2, 5);
