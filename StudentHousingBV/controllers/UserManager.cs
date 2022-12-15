@@ -15,8 +15,6 @@ namespace StudentHousingBV.controllers
         private int _currentUserId;
         public int CurrentUserId { get => _currentUserId;  set { _currentUserId = value; } }
 
-        //      private UserRepository _userRepository = new UserRepository();
-        //      public UserRepository userRepository { get => _userRepository;}
 
         private UnitOfWork _unitOfWork = new();
         public UnitOfWork unitOfWork { get => _unitOfWork;}
@@ -94,11 +92,8 @@ namespace StudentHousingBV.controllers
             unitOfWork.Rooms.SetRoomToUserId(room.Id, userId);
         }
 
-<<<<<<< HEAD
-        public void ChangePasswordForUserWith(int id, string password)
-=======
+
         public List<User> GetAdminsInBuilding(Building building)
->>>>>>> martin-accountsManagement
         {
             return unitOfWork.Users.GetAdminsInBuildingId(building.Id);
         }
