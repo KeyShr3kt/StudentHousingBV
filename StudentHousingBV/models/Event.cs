@@ -26,7 +26,7 @@ namespace StudentHousingBV.models
             this._buildingId = buildingId;
         }
 
-        public string Description
+        public string Description 
         {
             get
             { return this._description; }

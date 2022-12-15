@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Rule = StudentHousingBV.models.Rule;
+using Task = StudentHousingBV.models.Task;
 
 namespace StudentHousingBV.controllers
 {
@@ -29,6 +30,11 @@ namespace StudentHousingBV.controllers
             return unitOfWork.Events.GetAllRules();
         }
 
+        public List<Task> GetAllTasks()
+        {
+            return unitOfWork.Events.GetAllTasks();
+        }
+
         public List<Rule> GetAllRulesInBuildingId(int id)
         {
             return unitOfWork.Events.GetAllRulesInBuildingId(id);
@@ -36,27 +42,57 @@ namespace StudentHousingBV.controllers
 
         public void CreateRuleForBuilding(string title, string description, Building building)
         {
-           var createdAt = DateTime.Now;
             if (title == "" || description == "" || building == null)
             {
                 throw new ArgumentException("Invalid input!");
             }
-           unitOfWork.Events.CreateRule(title, description, createdAt, CurrentUserId, building.Id, createdAt);
+           unitOfWork.Events.CreateRule(title, description,CurrentUserId, building.Id);
         }
 
         public void UpdateRuleForBuilding(int ruleId, string title, string description, Building building)
         {
-            var updatedAt = DateTime.Now;
+     
             if (title == "" || description == "" || building == null)
             {
                 throw new ArgumentException("Invalid input!");
             }
-            unitOfWork.Events.UpdateRule(ruleId, title, description, CurrentUserId, building.Id, updatedAt);
+            unitOfWork.Events.UpdateRule(ruleId, title, description, CurrentUserId, building.Id);
         }
 
         public User GetCreatorOfRule(Rule rule)
         {
             return unitOfWork.Events.GetCreatorOfEventId(rule.Id);
+        }
+
+        public void CreateTaskForBuilding(Building building, string title, string description, bool includesPayment)
+        {
+            var createdAt = DateTime.Now;
+            if (title == "" || description == "" || building == null)
+            {
+                throw new ArgumentException("Invalid input!");
+            }
+
+            unitOfWork.Events.CreateTask(title, description, CurrentUserId, building.Id);
+        }
+
+        public List<Task> GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(int id)
+        {
+            return unitOfWork.Events.GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(id);
+        }
+            
+        public List<Task> GetAllTasksInBuildingIdWithStatusCompleted(int id)
+        {
+            return unitOfWork.Events.GetAllTasksInBuildingIdWithStatusCompleted(id);
+        }
+
+        public List<Task> GetAllTasksInBuildingId(int id)
+        {
+            return unitOfWork.Events.GetAllTasksInBuildingId(id);
+        }
+
+        public void DeleteTaskWithId(int id)
+        {
+            unitOfWork.Events.Delete(id);
         }
     }
 }

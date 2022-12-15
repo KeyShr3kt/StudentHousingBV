@@ -20,6 +20,14 @@ namespace StudentHousingBV.models
             _totalPrice = null;
         }
 
+        public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted, int totalPrice)
+            : base(id, title, description, createdAt, creatorId, buildingId)
+        {
+            this._isShopping = isShopping;
+            this._isCompleted = isCompleted;
+            _totalPrice = totalPrice;
+        }
+
         public bool IsCompleted
         {
             get

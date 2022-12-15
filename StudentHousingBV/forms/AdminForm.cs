@@ -48,7 +48,7 @@ namespace StudentHousingBV.forms
 
         private void btnTasks_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new forms.adminSectionForms.AdminTasksForm(), sender);
+            OpenChildForm(new AdminTasksForm(userManager.CurrentUserId), sender);
         }
 
         private void OpenChildForm(Form childForm, object btnSender) {

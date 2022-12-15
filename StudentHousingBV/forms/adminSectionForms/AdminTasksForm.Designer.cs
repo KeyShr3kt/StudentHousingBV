@@ -31,9 +31,12 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCreateTask = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.rdBtnCompleted = new System.Windows.Forms.RadioButton();
+            this.rdBtnForReview = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnDisableFilters = new System.Windows.Forms.Button();
+            this.cmbBoxBuildings = new System.Windows.Forms.ComboBox();
+            this.btnApplyFilters = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -43,9 +46,9 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 187);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 241);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(818, 491);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(818, 437);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnCreateTask
@@ -60,32 +63,67 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.rdBtnCompleted);
+            this.groupBox1.Controls.Add(this.rdBtnForReview);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnDisableFilters);
+            this.groupBox1.Controls.Add(this.cmbBoxBuildings);
+            this.groupBox1.Controls.Add(this.btnApplyFilters);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(13, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(535, 119);
+            this.groupBox1.Size = new System.Drawing.Size(535, 138);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by:";
             // 
-            // button2
+            // rdBtnCompleted
             // 
-            this.button2.Location = new System.Drawing.Point(358, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 32);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Disable filters";
-            this.button2.UseVisualStyleBackColor = true;
+            this.rdBtnCompleted.AutoSize = true;
+            this.rdBtnCompleted.Location = new System.Drawing.Point(204, 59);
+            this.rdBtnCompleted.Name = "rdBtnCompleted";
+            this.rdBtnCompleted.Size = new System.Drawing.Size(84, 19);
+            this.rdBtnCompleted.TabIndex = 10;
+            this.rdBtnCompleted.TabStop = true;
+            this.rdBtnCompleted.Text = "Completed";
+            this.rdBtnCompleted.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // rdBtnForReview
             // 
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.rdBtnForReview.AutoSize = true;
+            this.rdBtnForReview.Location = new System.Drawing.Point(108, 59);
+            this.rdBtnForReview.Name = "rdBtnForReview";
+            this.rdBtnForReview.Size = new System.Drawing.Size(79, 19);
+            this.rdBtnForReview.TabIndex = 9;
+            this.rdBtnForReview.TabStop = true;
+            this.rdBtnForReview.Text = "For review";
+            this.rdBtnForReview.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Status:";
+            // 
+            // btnDisableFilters
+            // 
+            this.btnDisableFilters.Location = new System.Drawing.Point(358, 86);
+            this.btnDisableFilters.Name = "btnDisableFilters";
+            this.btnDisableFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnDisableFilters.TabIndex = 6;
+            this.btnDisableFilters.Text = "Disable filters";
+            this.btnDisableFilters.UseVisualStyleBackColor = true;
+            this.btnDisableFilters.Click += new System.EventHandler(this.btnDisableFilters_Click);
+            // 
+            // cmbBoxBuildings
+            // 
+            this.cmbBoxBuildings.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbBoxBuildings.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBoxBuildings.FormattingEnabled = true;
+            this.cmbBoxBuildings.Items.AddRange(new object[] {
             "",
             "ivan",
             "petar",
@@ -93,19 +131,20 @@
             "martin",
             "ivan2",
             "ivan3"});
-            this.comboBox2.Location = new System.Drawing.Point(108, 25);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(416, 23);
-            this.comboBox2.TabIndex = 7;
+            this.cmbBoxBuildings.Location = new System.Drawing.Point(108, 25);
+            this.cmbBoxBuildings.Name = "cmbBoxBuildings";
+            this.cmbBoxBuildings.Size = new System.Drawing.Size(416, 23);
+            this.cmbBoxBuildings.TabIndex = 7;
             // 
-            // button1
+            // btnApplyFilters
             // 
-            this.button1.Location = new System.Drawing.Point(108, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Apply filters";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnApplyFilters.Location = new System.Drawing.Point(108, 86);
+            this.btnApplyFilters.Name = "btnApplyFilters";
+            this.btnApplyFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnApplyFilters.TabIndex = 2;
+            this.btnApplyFilters.Text = "Apply filters";
+            this.btnApplyFilters.UseVisualStyleBackColor = true;
+            this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
             // label2
             // 
@@ -148,10 +187,13 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnCreateTask;
         private GroupBox groupBox1;
-        private Button button2;
-        private ComboBox comboBox2;
-        private Button button1;
+        private Button btnDisableFilters;
+        private ComboBox cmbBoxBuildings;
+        private Button btnApplyFilters;
         private Label label2;
         private GroupBox groupBox2;
+        private RadioButton rdBtnCompleted;
+        private RadioButton rdBtnForReview;
+        private Label label1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using StudentHousingBV.models;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +13,14 @@ namespace StudentHousingBV.repositories
 {
     public class EventRepository
     {
-        public List<Task> GetAllTasks() { return new List<Task>(); }
+        public List<Task> GetAllTasks() 
+        {
+            return new List<Task> {
+                new Task(1, "Task1", "Description here", DateTime.Now, 1, 1, false, false),
+                new Task(2, "Task2", "Description here", DateTime.Now, 1, 1, true, false, 337),
+                new Task(3, "Task3", "Description here", DateTime.Now, 1, 1, true, false)
+            };
+        }
         public List<Rule> GetAllRules() { return new List<Rule>{ new Rule(1, "Title", "description", DateTime.Now, 1, 1, DateTime.Now) }; }
         public List<Agreement> GetAllAgreements() { return new List<Agreement>(); }
         public List<Report> GetAllReports() { return new List<Report>(); }
@@ -22,7 +30,7 @@ namespace StudentHousingBV.repositories
             return new List<Rule>();
         }
 
-        public void CreateRule(string title, string description, DateTime createdAt, int createdByUserId, int inBuildingId, DateTime updatedAt)
+        public void CreateRule(string title, string description, int createdByUserId, int inBuildingId)
         {
         }
 
@@ -31,9 +39,34 @@ namespace StudentHousingBV.repositories
             return new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow);
         }
 
-        public void UpdateRule(int ruleId, string title, string description, int creatorId, int buildingId, DateTime updatedAt)
+        public void UpdateRule(int ruleId, string title, string description, int creatorId, int buildingId)
         {
 
+        }
+
+        public void CreateTask(string title, string description, int creatorId, int buildingId)
+        {
+
+        }
+
+        public List<Task> GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(int id)
+        {
+            return new List<Task>();
+        }
+
+        public List<Task> GetAllTasksInBuildingIdWithStatusCompleted(int id)
+        {
+            return new List<Task>();
+        }
+
+        public List<Task> GetAllTasksInBuildingId(int id)
+        {
+            return new List<Task>();
+        }
+
+        public void Delete(int id)
+        {
+            // delete event with id
         }
         // GetTask(id)
         // GetRule(id)
