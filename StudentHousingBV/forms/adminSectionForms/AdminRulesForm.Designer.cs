@@ -30,12 +30,12 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDisableFilters = new System.Windows.Forms.Button();
+            this.cmbBoxBuildings = new System.Windows.Forms.ComboBox();
+            this.btnApplyFilters = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnCreateUser = new System.Windows.Forms.Button();
+            this.btnCreateRule = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -50,9 +50,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnDisableFilters);
+            this.groupBox1.Controls.Add(this.cmbBoxBuildings);
+            this.groupBox1.Controls.Add(this.btnApplyFilters);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(13, 36);
             this.groupBox1.Name = "groupBox1";
@@ -61,21 +61,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by:";
             // 
-            // button2
+            // btnDisableFilters
             // 
-            this.button2.Location = new System.Drawing.Point(358, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 32);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Disable filters";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDisableFilters.Location = new System.Drawing.Point(358, 65);
+            this.btnDisableFilters.Name = "btnDisableFilters";
+            this.btnDisableFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnDisableFilters.TabIndex = 6;
+            this.btnDisableFilters.Text = "Disable filters";
+            this.btnDisableFilters.UseVisualStyleBackColor = true;
+            this.btnDisableFilters.Click += new System.EventHandler(this.btnDisableFilters_Click);
             // 
-            // comboBox2
+            // cmbBoxBuildings
             // 
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cmbBoxBuildings.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbBoxBuildings.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbBoxBuildings.FormattingEnabled = true;
+            this.cmbBoxBuildings.Items.AddRange(new object[] {
             "",
             "ivan",
             "petar",
@@ -83,19 +84,20 @@
             "martin",
             "ivan2",
             "ivan3"});
-            this.comboBox2.Location = new System.Drawing.Point(108, 25);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(416, 23);
-            this.comboBox2.TabIndex = 7;
+            this.cmbBoxBuildings.Location = new System.Drawing.Point(108, 25);
+            this.cmbBoxBuildings.Name = "cmbBoxBuildings";
+            this.cmbBoxBuildings.Size = new System.Drawing.Size(416, 23);
+            this.cmbBoxBuildings.TabIndex = 7;
             // 
-            // button1
+            // btnApplyFilters
             // 
-            this.button1.Location = new System.Drawing.Point(108, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Apply filters";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnApplyFilters.Location = new System.Drawing.Point(108, 65);
+            this.btnApplyFilters.Name = "btnApplyFilters";
+            this.btnApplyFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnApplyFilters.TabIndex = 2;
+            this.btnApplyFilters.Text = "Apply filters";
+            this.btnApplyFilters.UseVisualStyleBackColor = true;
+            this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
             // label2
             // 
@@ -108,7 +110,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnCreateUser);
+            this.groupBox2.Controls.Add(this.btnCreateRule);
             this.groupBox2.Location = new System.Drawing.Point(581, 36);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(250, 76);
@@ -116,14 +118,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "More options";
             // 
-            // btnCreateUser
+            // btnCreateRule
             // 
-            this.btnCreateUser.Location = new System.Drawing.Point(6, 28);
-            this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(238, 29);
-            this.btnCreateUser.TabIndex = 1;
-            this.btnCreateUser.Text = "Create rule";
-            this.btnCreateUser.UseVisualStyleBackColor = true;
+            this.btnCreateRule.Location = new System.Drawing.Point(6, 28);
+            this.btnCreateRule.Name = "btnCreateRule";
+            this.btnCreateRule.Size = new System.Drawing.Size(238, 29);
+            this.btnCreateRule.TabIndex = 1;
+            this.btnCreateRule.Text = "Create rule";
+            this.btnCreateRule.UseVisualStyleBackColor = true;
+            this.btnCreateRule.Click += new System.EventHandler(this.btnCreateRule_Click);
             // 
             // AdminRulesForm
             // 
@@ -147,11 +150,11 @@
         #endregion
         private FlowLayoutPanel flowLayoutPanel1;
         private GroupBox groupBox1;
-        private Button button2;
-        private ComboBox comboBox2;
-        private Button button1;
+        private Button btnDisableFilters;
+        private ComboBox cmbBoxBuildings;
+        private Button btnApplyFilters;
         private Label label2;
         private GroupBox groupBox2;
-        private Button btnCreateUser;
+        private Button btnCreateRule;
     }
 }

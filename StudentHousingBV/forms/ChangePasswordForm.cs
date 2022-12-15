@@ -41,6 +41,12 @@ namespace StudentHousingBV.forms
                     AdminForm admin = new AdminForm(userManager);
                     admin.Show();
                     this.Hide();
+                } 
+                else
+                {
+                    //StudentPanel student = new StudentPanel(userManager);
+                    //student.Show();
+                    //this.Hide();
                 }
             } 
             catch (ArgumentException ex)

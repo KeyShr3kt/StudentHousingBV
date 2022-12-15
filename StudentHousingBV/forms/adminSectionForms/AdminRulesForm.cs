@@ -18,22 +18,67 @@ namespace StudentHousingBV.forms.adminSectionForms
     {
         // private RulesManager _rulesManager;
         // public RulesManager RulesManager { get => _rulesManager; private set {_rulesManager = value; } }
+        private BuildingManager _buildingManager;
+        public BuildingManager buildingManager { get => _buildingManager; }
+
+        private EventManager _eventManager;
+        public EventManager eventManager { get => _eventManager;}
+
+
         public AdminRulesForm(int userId)
         {
-            // RulesManager = new RulesManager(userId);
             InitializeComponent();
-            // List<Rule> rules = RulesManager.getAllRules();
-            List<AdminRuleComponent> components = new List<AdminRuleComponent>();
-            // foreach(Rule rule in rules)
-            // {
-            //     components.Add(new AdminRuleComponent(rule));
-            // }
-            foreach (AdminRuleComponent auc in components)
+            _buildingManager = new BuildingManager(userId);
+            _eventManager = new EventManager(userId);
+            fillRules(new());
+            fillBuildings();
+        }
+        void fillBuildings()
+        {
+            cmbBoxBuildings.Items.Clear();
+            buildingManager.GetAllBuildings().ForEach(building => { cmbBoxBuildings.Items.Add(building); });
+        }
+        void fillRules(List<Rule> rulesToFill)
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            List<Rule> rules;
+            if (rulesToFill.Count == 0)
             {
-                flowLayoutPanel1.Controls.Add(auc);
+                rules = eventManager.GetAllRules();
+            }
+            else
+            {
+                rules = new List<Rule>(rulesToFill);
+            }
+
+
+            List<AdminRuleComponent> components = new List<AdminRuleComponent>();
+            foreach (Rule rule in rules)
+            {
+                components.Add(new AdminRuleComponent(rule, eventManager));
+            }
+            foreach (AdminRuleComponent arc in components)
+            {
+                flowLayoutPanel1.Controls.Add(arc);
             }
         }
 
+        private void btnCreateRule_Click(object sender, EventArgs e)
+        {
+            AdminCreateRuleForm createForm = new AdminCreateRuleForm(eventManager, buildingManager);
+            createForm.Show();
+        }
 
+        private void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            List<Rule> rules = eventManager.GetAllRulesInBuildingId(((Building)cmbBoxBuildings.SelectedItem).Id);
+            fillRules(rules);
+        }
+
+        private void btnDisableFilters_Click(object sender, EventArgs e)
+        {
+            fillRules(new());
+        }
     }
 }

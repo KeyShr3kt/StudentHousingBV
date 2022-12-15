@@ -49,5 +49,7 @@ namespace StudentHousingBV.models
             this.LastSeenAt = lastSeenAt;
         }
 
+        public User() { }
+
     }
 }

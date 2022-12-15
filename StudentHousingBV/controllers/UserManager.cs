@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using StudentHousingBV.models;
 using StudentHousingBV.repositories;
 
@@ -50,11 +52,6 @@ namespace StudentHousingBV.controllers
            return unitOfWork.Users.GetAll();
         }
 
-        public List<Building> GetAllBuildings()
-        {
-            return unitOfWork.Buildings.GetAll();
-        }
-
         public void SetNewPasswordForCurrentUser(string password)
         {
             if (password == "")
@@ -74,46 +71,70 @@ namespace StudentHousingBV.controllers
         {
             return unitOfWork.Users.Get(CurrentUserId).isAdmin;
         }
-
-        public bool isFirstTimeLogin()
+        
+        public void createUser(string firstName, string lastName, string email, 
+                                string phoneNumber, bool isAdmin, Room? room)
         {
-            /* bool firstTime = false;
-             if (CurrentUserId != null)
-             {
-                 firstTime = UserRepository.isFirstTimeLoginForUserId((int)CurrentUserId);
-             }
-             return firstTime;*/
-            return true;
+            if (firstName == "" || lastName == "" || room == null )
+            {
+                throw new ArgumentException("Invalid input! Please try again!");
+            }
+            else if (!IsValidEmail(email))
+            {
+                throw new ArgumentException("Invalid email! Please try again!");
+            }
+            else if (!IsPhoneNumber(phoneNumber)) 
+            {
+                throw new ArgumentException("Invalid phone number! You should include country code ins the beginning!");
+            }
+
+            int userId = unitOfWork.Users.Insert(firstName, lastName, email, phoneNumber, isAdmin);
+
+            unitOfWork.Rooms.SetRoomToUserId(room.Id, userId);
         }
 
+<<<<<<< HEAD
         public void ChangePasswordForUserWith(int id, string password)
+=======
+        public List<User> GetAdminsInBuilding(Building building)
+>>>>>>> martin-accountsManagement
         {
-
-            // open the db and do the query "get all users where user.id = id and change its password"
-            //Database db = new Database();
-           // List<User> users = db.GetUsers();
-
-            // close the db object in the end of the method
-            /*foreach (User user in users)
-            {
-                if (user.Id == id)
-                {
-                    user.Password = password;
-                }
-            }*/
+            return unitOfWork.Users.GetAdminsInBuildingId(building.Id);
         }
 
-
-        public static void UpdateLastSeenAtForUserId(int id)
+        public List<User> GetAllUsersInBuilding(Building building)
         {
-            /*List<User> users = db.GetUsers();
-            foreach (User user in users)
+            return unitOfWork.Users.GetAllUsersInBuildingId(building.Id);
+        }
+
+        public List<User> GetAllAdmins()
+        {
+            return unitOfWork.Users.GetAllAdmins();
+        }
+        bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
             {
-                if (user.Id == id)
-                {
-                    user.LastSeenAt = DateTime.Now;
-                }
-            }*/
+                return false;
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool IsPhoneNumber(string number)
+        {
+            Regex validatePhoneNumberRegex = new Regex("^\\s*\\+?[0-9]\\d?[- .]?(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$");
+            return validatePhoneNumberRegex.IsMatch(number); // returns True
+            //return Regex.Match(number, @"^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$").Success;
         }
     }
 }
