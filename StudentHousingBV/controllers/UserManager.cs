@@ -86,7 +86,7 @@ namespace StudentHousingBV.controllers
             return true;
         }
 
-        public void ChangePasswordForUserWith(int id, string password, Database db)
+        public void ChangePasswordForUserWith(int id, string password)
         {
 
             // open the db and do the query "get all users where user.id = id and change its password"
