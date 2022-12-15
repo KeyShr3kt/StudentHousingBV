@@ -75,6 +75,7 @@ namespace StudentHousingBV.controllers
         public void createUser(string firstName, string lastName, string email, 
                                 string phoneNumber, bool isAdmin, Room? room)
         {
+
             if (firstName == "" || lastName == "" || room == null )
             {
                 throw new ArgumentException("Invalid input! Please try again!");
