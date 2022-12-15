@@ -22,5 +22,9 @@ namespace StudentHousingBV.controllers
 
         private EventRepository _eventRepository = new();
         public EventRepository Events { get => _eventRepository; }
+
+        private ReportRepository _reportRepository = new();
+
+        public ReportRepository Reports { get => _reportRepository; }
     }
 }
