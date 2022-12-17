@@ -23,6 +23,15 @@ namespace StudentHousingBV.controllers
         {
             CurrentUserId = userId;
         }
+        public User GetUser(int userId) 
+        {
+           return unitOfWork.Users.Get(userId);
+        }
+
+        public int CountUsersInBuildingId(int id)
+        {
+            return unitOfWork.Users.CountInBuildingId(id);
+        }
         public static User? VirifyUserWithEmailAndPassword(string email, string password)
         {
             UnitOfWork unitOfWork = new();

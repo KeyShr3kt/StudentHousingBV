@@ -19,6 +19,7 @@ namespace StudentHousingBV.models
         private int _negativeVotes;
         private bool _isAdmin;
         private DateTime? _lastSeenAt;
+        private string _IBAN;
 
         public int PossitiveVotes { get => this._possitiveVotes; private set => _possitiveVotes = value;  }
         public int NegativeVotes { get => this._negativeVotes; private set => _negativeVotes = value;  }
@@ -31,11 +32,11 @@ namespace StudentHousingBV.models
         public bool isAdmin { get => _isAdmin; private set => _isAdmin = value; }
         public string Password { get => _password; set => _password = PasswordHasher.Hash(value); }
 
-
+        public string IBAN { get => _IBAN; private set => _IBAN = value; }
         public User(int id, string firstName, string lastName, string emailAddress, 
                     string password, string phoneNumber, int possitiveVotes, 
                     int negativeVotes, bool isAdmin, 
-                    DateTime lastSeenAt) 
+                    DateTime? lastSeenAt, string IBAN) 
         {
             this.Id = id;
             this.FirstName = firstName;
@@ -47,6 +48,8 @@ namespace StudentHousingBV.models
             this.NegativeVotes = negativeVotes;
             this.isAdmin = isAdmin;
             this.LastSeenAt = lastSeenAt;
+            this.IBAN = IBAN;
+
         }
 
         public User() { }

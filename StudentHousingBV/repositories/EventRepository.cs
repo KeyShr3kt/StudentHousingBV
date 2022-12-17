@@ -33,10 +33,19 @@ namespace StudentHousingBV.repositories
         public void CreateRule(string title, string description, int createdByUserId, int inBuildingId)
         {
         }
+        public List<Task> GetAllTasksWithTotalPriceAndNotCompleted()
+        {
+            return new List<Task>();
+        }
+
+        public List<Task> GetAllTasksWithStatusCompleted()
+        {
+            return new List<Task>();
+        }
 
         public User GetCreatorOfEventId(int id)
         {
-            return new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow);
+            return new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL51INGB9304669103");
         }
 
         public void UpdateRule(int ruleId, string title, string description, int creatorId, int buildingId)
@@ -67,6 +76,15 @@ namespace StudentHousingBV.repositories
         public void Delete(int id)
         {
             // delete event with id
+        }
+        public Event Get(int id)
+        {
+            return new Task(1, "Task1", "Description here", DateTime.Now, 1, 1, false, false);
+        }
+
+        public void MarkTaskIdAsComplete(int id)
+        {
+            // to do 
         }
         // GetTask(id)
         // GetRule(id)

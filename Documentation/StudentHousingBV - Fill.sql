@@ -1,17 +1,17 @@
 -- Insert 10 rows into the USER table
-INSERT INTO [USER] (FirstName, LastName, EmailAddress, Password, PhoneNumber, PositiveVotes, NegativeVotes, IsAdmin)
+INSERT INTO [USER] (FirstName, LastName, EmailAddress, Password, PhoneNumber, PositiveVotes, NegativeVotes, IsAdmin, IBAN)
 VALUES 
-	('Ionut', 'Dragomir', 'i.dragomir@student.fontys.nl', 'ionutdragomir123', '123-456-7890', 10, 2, 1),
-	('John', 'Doe', 'john.doe@example.com', 'johndoe123', '123-456-7890', 10, 2, 0),
-	('Jane', 'Doe', 'jane.doe@example.com', 'janedoe456', '123-456-7891', 20, 3, 0),
-	('Bob', 'Smith', 'bob.smith@example.com', 'bobsmith789', '123-456-7892', 30, 4, 0),
-	('Sally', 'Smith', 'sally.smith@example.com', 'sallysmith101', '123-456-7893', 40, 5, 0),
-	('Tom', 'Johnson', 'tom.johnson@example.com', 'tomjohnson112', '123-456-7894', 50, 6, 0),
-	('Alice', 'Johnson', 'alice.johnson@example.com', 'alicejohnson113', '123-456-7895', 60, 7, 0),
-	('David', 'Brown', 'david.brown@example.com', 'davidbrown114', '123-456-7896', 70, 8, 0),
-	('Emily', 'Brown', 'emily.brown@example.com', 'emilybrown115', '123-456-7897', 80, 9, 0),
-	('James', 'Miller', 'james.miller@example.com', 'jamesmiller116', '123-456-7898', 90, 10, 0),
-	('Abby', 'Miller', 'abby.miller@example.com', 'abbymiller117', '123-456-7899', 100, 11, 0);
+	('Ionut', 'Dragomir', 'i.dragomir@student.fontys.nl', 'ionutdragomir123', '123-456-7890', 10, 2, 1, 'NL75ABNA4887467303'),
+	('John', 'Doe', 'john.doe@example.com', 'johndoe123', '123-456-7890', 10, 2, 0, 'NL03ABNA9510165298'),
+	('Jane', 'Doe', 'jane.doe@example.com', 'janedoe456', '123-456-7891', 20, 3, 0, 'NL81ABNA3984212798'),
+	('Bob', 'Smith', 'bob.smith@example.com', 'bobsmith789', '123-456-7892', 30, 4, 0, 'NL51ABNA9861487085'),
+	('Sally', 'Smith', 'sally.smith@example.com', 'sallysmith101', '123-456-7893', 40, 5, 0, 'NL06ABNA6482008283'),
+	('Tom', 'Johnson', 'tom.johnson@example.com', 'tomjohnson112', '123-456-7894', 50, 6, 0, 'NL32RABO1670475085'),
+	('Alice', 'Johnson', 'alice.johnson@example.com', 'alicejohnson113', '123-456-7895', 60, 7, 0, 'NL73RABO6709624056'),
+	('David', 'Brown', 'david.brown@example.com', 'davidbrown114', '123-456-7896', 70, 8, 0, 'NL28ABNA2504374283'),
+	('Emily', 'Brown', 'emily.brown@example.com', 'emilybrown115', '123-456-7897', 80, 9, 0, 'NL32RABO4193835510'),
+	('James', 'Miller', 'james.miller@example.com', 'jamesmiller116', '123-456-7898', 90, 10, 0, 'NL46RABO2045352188'),
+	('Abby', 'Miller', 'abby.miller@example.com', 'abbymiller117', '123-456-7899', 100, 11, 0, 'NL48INGB4991062764');
 SELECT * FROM [USER]
 
 -- Insert 10 rows into the BUILDING table
@@ -55,14 +55,15 @@ INSERT INTO [RULE] (eventID, updatedAt) VALUES (7, CURRENT_TIMESTAMP);
 INSERT INTO AGREEMENT (eventID, StartDateTime, EndDateTime, isAccepted) VALUES (8, CURRENT_TIMESTAMP, '2022/12/17 00:00:00', 0);
 INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (9, 1, 1);
 
-INSERT INTO REPORT (Title, Description, CreatedAt, CreatorID, BuildingID, TargetedToEventID) VALUES 
-('Report 1', 'Description of report 1', CURRENT_TIMESTAMP, 5, 2, 5);
+INSERT INTO REPORT (Title, Description, CreatedAt, CreatorID, BuildingID, TargetedToEventID, IsReviewed) VALUES 
+('Report 1', 'Description of report 1', CURRENT_TIMESTAMP, 5, 2, 5, 0);
+
 
 SELECT * FROM [RULE]
 SELECT * FROM [TASK]
 SELECT * FROM [AGREEMENT]
 SELECT * FROM [REPORT]
-
+/*
 DELETE FROM [USER]
 DBCC CHECKIDENT ('[USER]', RESEED, 0)
 DELETE FROM [BUILDING]
@@ -76,4 +77,4 @@ DELETE FROM [REPORT]
 DELETE FROM [RULE]
 DELETE FROM [AGREEMENT]
 DELETE FROM [REACTION]
-DBCC CHECKIDENT ('[REACTION]', RESEED, 0)
+DBCC CHECKIDENT ('[REACTION]', RESEED, 0)*/

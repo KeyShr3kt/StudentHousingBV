@@ -15,6 +15,7 @@ namespace StudentHousingBV.models
         private DateTime _createdAt;
         private int _creatorId;
         private int _buildingId;
+        private bool _isReviewed;
         public int TargetedToEventId { get => _targetedToEventId;}
         public int Id { get => _id; }
 
@@ -26,6 +27,7 @@ namespace StudentHousingBV.models
 
         public int BuildingId { get => _buildingId; }
 
+        public bool IsReviewd { get => _isReviewed; }
 
         public Report(int id, int targetedToEventId, string title, string description, DateTime createdAt, int creatorId, int buildingId)
         {

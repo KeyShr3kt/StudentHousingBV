@@ -15,6 +15,7 @@ namespace StudentHousingBV.forms.adminSectionForms
         public AdminHomeForm()
         {
             InitializeComponent();
+            
         }
     }
 }

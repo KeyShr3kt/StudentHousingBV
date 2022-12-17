@@ -86,22 +86,25 @@ namespace StudentHousingBV.forms.adminSectionForms
         private void btnApplyFilters_Click(object sender, EventArgs e)
         {
             List<models.Task> tasks;
-            int buildingId = ((Building)cmbBoxBuildings.SelectedItem).Id;
-
+            Building? building = (Building)cmbBoxBuildings.SelectedItem;
+            int? buildingId = null;
+            if (building != null)
+            {
+                buildingId = building.Id;
+            }
 
             if (rdBtnCompleted.Checked)
             {
                 tasks = eventManager.GetAllTasksInBuildingIdWithStatusCompleted(buildingId);
-            } 
-            else if (rdBtnForReview.Checked) 
+            }
+            else if (rdBtnForReview.Checked)
             {
                 tasks = eventManager.GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(buildingId);
-            } 
+            }
             else
             {
                 tasks = eventManager.GetAllTasksInBuildingId(buildingId);
             }
-            
             fillTasks(tasks);
         }
 

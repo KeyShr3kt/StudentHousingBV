@@ -86,9 +86,9 @@ namespace StudentHousingBV.repositories
           //  return ExecuteReaderUsers(sql, new());
 
             return new List<User> {
-                new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow),
-                new User(2, "Quanna", "Cevdet", "quanna@mail.com", "password", "+31434342", 7, 1, false, DateTime.UtcNow),
-                new User(3, "Kalina", "Ravi", "admin", "admin", "+3154i2o", 90, 37, true, DateTime.UtcNow)
+                new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL71ABNA2405012723"),
+                new User(2, "Quanna", "Cevdet", "quanna@mail.com", "password", "+31434342", 7, 1, false, DateTime.UtcNow, "NL78ABNA3470416656"),
+                new User(3, "Kalina", "Ravi", "admin", "admin", "+3154i2o", 90, 37, true, null, "NL23INGB4666097791")
             }; 
         }
         public User Get(int id) 
@@ -99,7 +99,7 @@ namespace StudentHousingBV.repositories
                 { "@name", id.ToString() }
             };
             return ExecuteReaderUsers(sql, parameters).First(); */
-           return new User(1, "firstName", "LastName", "email", "password", "phonenumber", 1, 0, true, DateTime.UtcNow); 
+           return new User(1, "firstName", "LastName", "email", "password", "phonenumber", 1, 0, true, DateTime.UtcNow, "NL75ABNA4887467303"); 
         }
         public void Delete(User user) { return; }
         public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin) { return 1; }
@@ -120,6 +120,11 @@ namespace StudentHousingBV.repositories
            // string sql = "SELECT * FROM USER WHERE USER.isAdmin = 1;";
            // return ExecuteReaderUsers(sql, new());
             return new List<User>();
+        }
+
+        public int CountInBuildingId(int id)
+        {
+            return 3;
         }
     }
 }

@@ -40,7 +40,7 @@ namespace StudentHousingBV.forms
                 {
                     AdminForm admin = new AdminForm(userManager);
                     admin.Show();
-                    this.Hide();
+                    this.Close();
                 } 
                 else
                 {

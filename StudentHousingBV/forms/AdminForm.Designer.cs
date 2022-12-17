@@ -32,12 +32,12 @@
             this.sidebarPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuButton = new System.Windows.Forms.PictureBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnRules = new System.Windows.Forms.Button();
             this.btnTasks = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlActiveForm = new System.Windows.Forms.Panel();
             this.sidebarPanel.SuspendLayout();
@@ -49,12 +49,12 @@
             // 
             this.sidebarPanel.BackColor = System.Drawing.Color.RosyBrown;
             this.sidebarPanel.Controls.Add(this.panel1);
-            this.sidebarPanel.Controls.Add(this.button9);
+            this.sidebarPanel.Controls.Add(this.btnHome);
             this.sidebarPanel.Controls.Add(this.btnUsers);
             this.sidebarPanel.Controls.Add(this.btnRules);
             this.sidebarPanel.Controls.Add(this.btnTasks);
             this.sidebarPanel.Controls.Add(this.btnReports);
-            this.sidebarPanel.Controls.Add(this.button2);
+            this.sidebarPanel.Controls.Add(this.btnLogout);
             this.sidebarPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebarPanel.Location = new System.Drawing.Point(0, 0);
             this.sidebarPanel.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -86,24 +86,25 @@
             this.menuButton.TabStop = false;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
-            // button9
+            // btnHome
             // 
-            this.button9.BackColor = System.Drawing.Color.RosyBrown;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI Black", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Image = global::StudentHousingBV.Properties.Resources.icons8_home_page_24__1_;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(2, 46);
-            this.button9.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(127, 54);
-            this.button9.TabIndex = 2;
-            this.button9.Text = " Home";
-            this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnHome.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI Black", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Image = global::StudentHousingBV.Properties.Resources.icons8_home_page_24__1_;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(2, 46);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(127, 54);
+            this.btnHome.TabIndex = 2;
+            this.btnHome.Text = " Home";
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnUsers
             // 
@@ -182,25 +183,27 @@
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReports.UseVisualStyleBackColor = false;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
-            // button2
+            // btnLogout
             // 
-            this.button2.BackColor = System.Drawing.Color.RosyBrown;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Black", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::StudentHousingBV.Properties.Resources.icons8_logout_rounded_down_24;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(2, 326);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 54);
-            this.button2.TabIndex = 3;
-            this.button2.Text = " Logout";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnLogout.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI Black", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Image = global::StudentHousingBV.Properties.Resources.icons8_logout_rounded_down_24;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(2, 326);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(125, 54);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.Text = " Logout";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // button1
             // 
@@ -215,6 +218,7 @@
             // pnlActiveForm
             // 
             this.pnlActiveForm.AutoSize = true;
+            this.pnlActiveForm.BackColor = System.Drawing.SystemColors.Control;
             this.pnlActiveForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlActiveForm.Location = new System.Drawing.Point(125, 0);
             this.pnlActiveForm.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -246,13 +250,13 @@
         private FlowLayoutPanel sidebarPanel;
         private Panel panel1;
         private Button button1;
-        private Button button9;
+        private Button btnHome;
         private PictureBox menuButton;
         private Button btnUsers;
         private Button btnRules;
         private Button btnTasks;
         private Button btnReports;
         private Panel pnlActiveForm;
-        private Button button2;
+        private Button btnLogout;
     }
 }

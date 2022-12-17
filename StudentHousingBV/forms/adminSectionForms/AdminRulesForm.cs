@@ -72,12 +72,18 @@ namespace StudentHousingBV.forms.adminSectionForms
 
         private void btnApplyFilters_Click(object sender, EventArgs e)
         {
-            List<Rule> rules = eventManager.GetAllRulesInBuildingId(((Building)cmbBoxBuildings.SelectedItem).Id);
+            Building? building = (Building)cmbBoxBuildings.SelectedItem;
+            List<Rule> rules;
+            if (building != null)
+                rules = eventManager.GetAllRulesInBuildingId(building.Id);
+            else
+                rules = eventManager.GetAllRules();
             fillRules(rules);
         }
 
         private void btnDisableFilters_Click(object sender, EventArgs e)
         {
+            cmbBoxBuildings.SelectedItem = null;
             fillRules(new());
         }
     }
