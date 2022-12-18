@@ -80,10 +80,10 @@ namespace StudentHousingBV.controllers
         }
         
         public void createUser(string firstName, string lastName, string email, 
-                                string phoneNumber, bool isAdmin, Room? room)
+                                string phoneNumber, bool isAdmin, string IBAN, Room? room)
         {
 
-            if (firstName == "" || lastName == "" || room == null )
+            if (firstName == "" || lastName == "" || IBAN == "" )
             {
                 throw new ArgumentException("Invalid input! Please try again!");
             }
@@ -96,7 +96,7 @@ namespace StudentHousingBV.controllers
                 throw new ArgumentException("Invalid phone number! You should include country code ins the beginning!");
             }
 
-            int userId = unitOfWork.Users.Insert(firstName, lastName, email, phoneNumber, isAdmin);
+            int userId = unitOfWork.Users.Insert(firstName, lastName, email, phoneNumber, isAdmin, IBAN);
 
             unitOfWork.Rooms.SetRoomToUserId(room.Id, userId);
         }

@@ -52,9 +52,10 @@ namespace StudentHousingBV.forms
                 string email = txtBoxEmail.Text;
                 string phoneNumber = txtBoxPhoneNumber.Text;
                 bool isAdmin = checkBoxIfAdmin.Checked;
+                string IBAN = txtBoxIBAN.Text;
 
                 userManager.createUser(firstName, lastName, email,
-                                phoneNumber, isAdmin, cmbBoxRooms.SelectedItem as Room);
+                                phoneNumber, isAdmin, IBAN, cmbBoxRooms.SelectedItem as Room);
             } catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);

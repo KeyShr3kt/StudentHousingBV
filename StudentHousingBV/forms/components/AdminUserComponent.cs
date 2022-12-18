@@ -14,18 +14,35 @@ namespace StudentHousingBV.forms
     public partial class AdminUserComponent : UserControl
     {
 
+
         public AdminUserComponent(User user)
         {
             InitializeComponent();
+            
             _user = user;
             lblName.Text = _user.FirstName + " " + _user.LastName;
             lblEmail.Text = _user.EmailAddress;
             lblPhoneNumber.Text = _user.PhoneNumber;
             lblPossitiveVotes.Text = _user.PossitiveVotes.ToString();
             lblNegativeVotes.Text = _user.NegativeVotes.ToString();
-           // lblStrikes.Text = _user.Strikes.ToString();
-            lblisAdmin.Text = _user.isAdmin.ToString();
+            lblIBAN.Text = _user.IBAN;
+            if (_user.isAdmin)
+            {
+                lblisAdmin.Text = "Admin";
+            } else
+            {
+                lblisAdmin.Text = "Tenant";
+            }
+             
             lblLastSeenAt.Text = _user.LastSeenAt.ToString();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Color color = Color.FromArgb(220, 220, 220);
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, color,
+            ButtonBorderStyle.Solid);
+            base.OnPaint(e);
         }
         #region Properties
         private User _user;
@@ -33,15 +50,5 @@ namespace StudentHousingBV.forms
         public User User { get => _user; set => _user = value; }
         #endregion
 
-
-        private void AdminUserComponent_MouseHover(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Silver;
-        }
-
-        private void AdminUserComponent_MouseLeave(object sender, EventArgs e)
-        {
-            this.BackColor= Color.White;
-        }
     }
 }

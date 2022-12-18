@@ -88,7 +88,7 @@ namespace StudentHousingBV.repositories
             return new List<User> {
                 new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL71ABNA2405012723"),
                 new User(2, "Quanna", "Cevdet", "quanna@mail.com", "password", "+31434342", 7, 1, false, DateTime.UtcNow, "NL78ABNA3470416656"),
-                new User(3, "Kalina", "Ravi", "admin", "admin", "+3154i2o", 90, 37, true, null, "NL23INGB4666097791")
+                new User(3, "Kalina", "Ravi", "admin", "admin", "+3154i2o", 90, 37, true, DateTime.Now, "NL23INGB4666097791")
             }; 
         }
         public User Get(int id) 
@@ -102,7 +102,7 @@ namespace StudentHousingBV.repositories
            return new User(1, "firstName", "LastName", "email", "password", "phonenumber", 1, 0, true, DateTime.UtcNow, "NL75ABNA4887467303"); 
         }
         public void Delete(User user) { return; }
-        public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin) { return 1; }
+        public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN) { return 1; }
         public void Update(User user) { return;  }
 
         public List<User> GetAdminsInBuildingId(int buildingId)
