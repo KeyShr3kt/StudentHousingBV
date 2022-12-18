@@ -43,9 +43,9 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(19, 183);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(25, 175);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(827, 476);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(806, 484);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // groupBox1
@@ -54,20 +54,22 @@
             this.groupBox1.Controls.Add(this.cmbBoxBuildings);
             this.groupBox1.Controls.Add(this.btnApplyFilters);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(13, 36);
+            this.groupBox1.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox1.Location = new System.Drawing.Point(25, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(535, 119);
+            this.groupBox1.Size = new System.Drawing.Size(460, 98);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by:";
             // 
             // btnDisableFilters
             // 
-            this.btnDisableFilters.Location = new System.Drawing.Point(358, 65);
+            this.btnDisableFilters.ForeColor = System.Drawing.Color.Black;
+            this.btnDisableFilters.Location = new System.Drawing.Point(351, 64);
             this.btnDisableFilters.Name = "btnDisableFilters";
-            this.btnDisableFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnDisableFilters.Size = new System.Drawing.Size(94, 22);
             this.btnDisableFilters.TabIndex = 6;
-            this.btnDisableFilters.Text = "Disable filters";
+            this.btnDisableFilters.Text = "Disable";
             this.btnDisableFilters.UseVisualStyleBackColor = true;
             this.btnDisableFilters.Click += new System.EventHandler(this.btnDisableFilters_Click);
             // 
@@ -86,22 +88,24 @@
             "ivan3"});
             this.cmbBoxBuildings.Location = new System.Drawing.Point(108, 25);
             this.cmbBoxBuildings.Name = "cmbBoxBuildings";
-            this.cmbBoxBuildings.Size = new System.Drawing.Size(416, 23);
+            this.cmbBoxBuildings.Size = new System.Drawing.Size(239, 23);
             this.cmbBoxBuildings.TabIndex = 7;
             // 
             // btnApplyFilters
             // 
-            this.btnApplyFilters.Location = new System.Drawing.Point(108, 65);
+            this.btnApplyFilters.ForeColor = System.Drawing.Color.Black;
+            this.btnApplyFilters.Location = new System.Drawing.Point(242, 64);
             this.btnApplyFilters.Name = "btnApplyFilters";
-            this.btnApplyFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnApplyFilters.Size = new System.Drawing.Size(94, 22);
             this.btnApplyFilters.TabIndex = 2;
-            this.btnApplyFilters.Text = "Apply filters";
+            this.btnApplyFilters.Text = "Apply";
             this.btnApplyFilters.UseVisualStyleBackColor = true;
             this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(6, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 15);
@@ -111,20 +115,25 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnCreateRule);
-            this.groupBox2.Location = new System.Drawing.Point(581, 36);
+            this.groupBox2.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox2.Location = new System.Drawing.Point(526, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(250, 76);
+            this.groupBox2.Size = new System.Drawing.Size(305, 98);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "More options";
             // 
             // btnCreateRule
             // 
-            this.btnCreateRule.Location = new System.Drawing.Point(6, 28);
+            this.btnCreateRule.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateRule.Image = global::StudentHousingBV.Properties.Resources.icons8_create_24;
+            this.btnCreateRule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateRule.Location = new System.Drawing.Point(17, 22);
             this.btnCreateRule.Name = "btnCreateRule";
-            this.btnCreateRule.Size = new System.Drawing.Size(238, 29);
+            this.btnCreateRule.Size = new System.Drawing.Size(129, 36);
             this.btnCreateRule.TabIndex = 1;
-            this.btnCreateRule.Text = "Create rule";
+            this.btnCreateRule.Text = "Create Rule";
+            this.btnCreateRule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCreateRule.UseVisualStyleBackColor = true;
             this.btnCreateRule.Click += new System.EventHandler(this.btnCreateRule_Click);
             // 

@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -39,48 +38,50 @@
             this.rdBtnPaymentNo = new System.Windows.Forms.RadioButton();
             this.rdBtnPaymentYes = new System.Windows.Forms.RadioButton();
             this.cmbBoxBuildings = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 119);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(6, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.Size = new System.Drawing.Size(70, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Description";
+            this.label1.Text = "Description:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(137, 75);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(6, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
+            this.label2.Size = new System.Drawing.Size(32, 15);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Title";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(137, 167);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Does it include payment:";
+            this.label2.Text = "Title:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(278, 26);
+            this.label4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.DarkRed;
+            this.label4.Location = new System.Drawing.Point(19, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 15);
+            this.label4.Size = new System.Drawing.Size(111, 22);
             this.label4.TabIndex = 3;
             this.label4.Text = "Create Task";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(137, 208);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(6, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 15);
             this.label5.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(257, 263);
+            this.btnCreate.Location = new System.Drawing.Point(268, 406);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(98, 27);
             this.btnCreate.TabIndex = 6;
@@ -98,22 +99,26 @@
             // 
             // txtBoxTitle
             // 
-            this.txtBoxTitle.Location = new System.Drawing.Point(224, 72);
+            this.txtBoxTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxTitle.Location = new System.Drawing.Point(79, 36);
             this.txtBoxTitle.Name = "txtBoxTitle";
-            this.txtBoxTitle.Size = new System.Drawing.Size(300, 23);
+            this.txtBoxTitle.Size = new System.Drawing.Size(268, 23);
             this.txtBoxTitle.TabIndex = 7;
             // 
             // txtBoxDescription
             // 
-            this.txtBoxDescription.Location = new System.Drawing.Point(224, 116);
+            this.txtBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBoxDescription.Location = new System.Drawing.Point(79, 71);
+            this.txtBoxDescription.Multiline = true;
             this.txtBoxDescription.Name = "txtBoxDescription";
-            this.txtBoxDescription.Size = new System.Drawing.Size(300, 23);
+            this.txtBoxDescription.Size = new System.Drawing.Size(268, 151);
             this.txtBoxDescription.TabIndex = 8;
             // 
             // rdBtnPaymentNo
             // 
             this.rdBtnPaymentNo.AutoSize = true;
-            this.rdBtnPaymentNo.Location = new System.Drawing.Point(293, 168);
+            this.rdBtnPaymentNo.ForeColor = System.Drawing.Color.Black;
+            this.rdBtnPaymentNo.Location = new System.Drawing.Point(65, 20);
             this.rdBtnPaymentNo.Name = "rdBtnPaymentNo";
             this.rdBtnPaymentNo.Size = new System.Drawing.Size(41, 19);
             this.rdBtnPaymentNo.TabIndex = 9;
@@ -124,7 +129,8 @@
             // rdBtnPaymentYes
             // 
             this.rdBtnPaymentYes.AutoSize = true;
-            this.rdBtnPaymentYes.Location = new System.Drawing.Point(340, 168);
+            this.rdBtnPaymentYes.ForeColor = System.Drawing.Color.Black;
+            this.rdBtnPaymentYes.Location = new System.Drawing.Point(17, 20);
             this.rdBtnPaymentYes.Name = "rdBtnPaymentYes";
             this.rdBtnPaymentYes.Size = new System.Drawing.Size(42, 19);
             this.rdBtnPaymentYes.TabIndex = 10;
@@ -135,29 +141,67 @@
             // cmbBoxBuildings
             // 
             this.cmbBoxBuildings.FormattingEnabled = true;
-            this.cmbBoxBuildings.Location = new System.Drawing.Point(224, 205);
+            this.cmbBoxBuildings.Location = new System.Drawing.Point(80, 22);
             this.cmbBoxBuildings.Name = "cmbBoxBuildings";
-            this.cmbBoxBuildings.Size = new System.Drawing.Size(300, 23);
+            this.cmbBoxBuildings.Size = new System.Drawing.Size(268, 23);
             this.cmbBoxBuildings.TabIndex = 11;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtBoxTitle);
+            this.groupBox1.Controls.Add(this.txtBoxDescription);
+            this.groupBox1.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox1.Location = new System.Drawing.Point(13, 56);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(353, 229);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Task Details";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.cmbBoxBuildings);
+            this.groupBox2.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox2.Location = new System.Drawing.Point(13, 291);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(353, 58);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "House Details";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rdBtnPaymentNo);
+            this.groupBox3.Controls.Add(this.rdBtnPaymentYes);
+            this.groupBox3.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox3.Location = new System.Drawing.Point(13, 355);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(353, 45);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Payment";
             // 
             // AdminCreateTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 369);
-            this.Controls.Add(this.cmbBoxBuildings);
-            this.Controls.Add(this.rdBtnPaymentYes);
-            this.Controls.Add(this.rdBtnPaymentNo);
-            this.Controls.Add(this.txtBoxDescription);
-            this.Controls.Add(this.txtBoxTitle);
+            this.ClientSize = new System.Drawing.Size(378, 445);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "AdminCreateTaskForm";
             this.Text = "v";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,7 +211,6 @@
 
         private Label label1;
         private Label label2;
-        private Label label3;
         private Label label4;
         private Label label5;
         private Button btnCreate;
@@ -176,5 +219,8 @@
         private RadioButton rdBtnPaymentNo;
         private RadioButton rdBtnPaymentYes;
         private ComboBox cmbBoxBuildings;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
     }
 }

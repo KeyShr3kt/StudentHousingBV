@@ -24,7 +24,7 @@ namespace StudentHousingBV.forms.components
         {
             InitializeComponent();
             _rule = rule;
-            lblRuleDescription.Text = rule.Description;
+            //lblRuleDescription.Text = rule.Description;
             lblTitle.Text = rule.Title;
             _eventManager = manager;
         }
@@ -39,6 +39,14 @@ namespace StudentHousingBV.forms.components
         {
             AdminCreateRuleForm editRule = new AdminCreateRuleForm(eventManager, _rule);
             editRule.Show();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Color color = Color.FromArgb(220, 220, 220);
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, color,
+            ButtonBorderStyle.Solid);
+            base.OnPaint(e);
         }
     }
 }

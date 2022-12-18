@@ -87,7 +87,7 @@
             // 
             this.lblPossitiveVotes.AutoSize = true;
             this.lblPossitiveVotes.ForeColor = System.Drawing.Color.Black;
-            this.lblPossitiveVotes.Location = new System.Drawing.Point(82, 33);
+            this.lblPossitiveVotes.Location = new System.Drawing.Point(83, 14);
             this.lblPossitiveVotes.Name = "lblPossitiveVotes";
             this.lblPossitiveVotes.Size = new System.Drawing.Size(84, 15);
             this.lblPossitiveVotes.TabIndex = 4;
@@ -97,7 +97,7 @@
             // 
             this.lblNegativeVotes.AutoSize = true;
             this.lblNegativeVotes.ForeColor = System.Drawing.Color.Black;
-            this.lblNegativeVotes.Location = new System.Drawing.Point(82, 16);
+            this.lblNegativeVotes.Location = new System.Drawing.Point(82, 29);
             this.lblNegativeVotes.Name = "lblNegativeVotes";
             this.lblNegativeVotes.Size = new System.Drawing.Size(85, 15);
             this.lblNegativeVotes.TabIndex = 5;
@@ -139,7 +139,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Controls.Add(this.lblIBAN);
-            this.groupBox1.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox1.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(219, 63);
@@ -175,7 +175,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.lblEmail);
             this.groupBox2.Controls.Add(this.lblPhoneNumber);
-            this.groupBox2.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox2.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox2.Location = new System.Drawing.Point(237, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(193, 63);
@@ -211,7 +211,7 @@
             this.groupBox3.Controls.Add(this.lblNegativeVotes);
             this.groupBox3.Controls.Add(this.lblPossitiveVotes);
             this.groupBox3.Controls.Add(this.lblLastSeenAt);
-            this.groupBox3.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox3.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox3.Location = new System.Drawing.Point(436, 13);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(217, 63);
@@ -252,10 +252,10 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lblisAdmin);
-            this.groupBox4.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox4.ForeColor = System.Drawing.Color.Firebrick;
             this.groupBox4.Location = new System.Drawing.Point(659, 13);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(126, 44);
+            this.groupBox4.Size = new System.Drawing.Size(115, 44);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Role";

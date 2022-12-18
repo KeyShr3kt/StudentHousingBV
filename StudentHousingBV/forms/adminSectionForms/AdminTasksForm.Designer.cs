@@ -46,18 +46,22 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 241);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(25, 182);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(818, 437);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(806, 496);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnCreateTask
             // 
-            this.btnCreateTask.Location = new System.Drawing.Point(6, 24);
+            this.btnCreateTask.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateTask.Image = global::StudentHousingBV.Properties.Resources.icons8_create_24__1_;
+            this.btnCreateTask.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnCreateTask.Location = new System.Drawing.Point(24, 28);
             this.btnCreateTask.Name = "btnCreateTask";
-            this.btnCreateTask.Size = new System.Drawing.Size(238, 30);
+            this.btnCreateTask.Size = new System.Drawing.Size(112, 35);
             this.btnCreateTask.TabIndex = 2;
             this.btnCreateTask.Text = "Create Task";
+            this.btnCreateTask.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCreateTask.UseVisualStyleBackColor = true;
             this.btnCreateTask.Click += new System.EventHandler(this.btnCreateTask_Click);
             // 
@@ -70,9 +74,10 @@
             this.groupBox1.Controls.Add(this.cmbBoxBuildings);
             this.groupBox1.Controls.Add(this.btnApplyFilters);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(13, 21);
+            this.groupBox1.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox1.Location = new System.Drawing.Point(25, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(535, 138);
+            this.groupBox1.Size = new System.Drawing.Size(463, 117);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by:";
@@ -80,7 +85,8 @@
             // rdBtnCompleted
             // 
             this.rdBtnCompleted.AutoSize = true;
-            this.rdBtnCompleted.Location = new System.Drawing.Point(204, 59);
+            this.rdBtnCompleted.ForeColor = System.Drawing.Color.Black;
+            this.rdBtnCompleted.Location = new System.Drawing.Point(193, 59);
             this.rdBtnCompleted.Name = "rdBtnCompleted";
             this.rdBtnCompleted.Size = new System.Drawing.Size(84, 19);
             this.rdBtnCompleted.TabIndex = 10;
@@ -91,6 +97,7 @@
             // rdBtnForReview
             // 
             this.rdBtnForReview.AutoSize = true;
+            this.rdBtnForReview.ForeColor = System.Drawing.Color.Black;
             this.rdBtnForReview.Location = new System.Drawing.Point(108, 59);
             this.rdBtnForReview.Name = "rdBtnForReview";
             this.rdBtnForReview.Size = new System.Drawing.Size(79, 19);
@@ -102,6 +109,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(18, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 15);
@@ -110,11 +118,12 @@
             // 
             // btnDisableFilters
             // 
-            this.btnDisableFilters.Location = new System.Drawing.Point(358, 86);
+            this.btnDisableFilters.ForeColor = System.Drawing.Color.Black;
+            this.btnDisableFilters.Location = new System.Drawing.Point(350, 84);
             this.btnDisableFilters.Name = "btnDisableFilters";
-            this.btnDisableFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnDisableFilters.Size = new System.Drawing.Size(94, 22);
             this.btnDisableFilters.TabIndex = 6;
-            this.btnDisableFilters.Text = "Disable filters";
+            this.btnDisableFilters.Text = "Disable";
             this.btnDisableFilters.UseVisualStyleBackColor = true;
             this.btnDisableFilters.Click += new System.EventHandler(this.btnDisableFilters_Click);
             // 
@@ -133,23 +142,25 @@
             "ivan3"});
             this.cmbBoxBuildings.Location = new System.Drawing.Point(108, 25);
             this.cmbBoxBuildings.Name = "cmbBoxBuildings";
-            this.cmbBoxBuildings.Size = new System.Drawing.Size(416, 23);
+            this.cmbBoxBuildings.Size = new System.Drawing.Size(266, 23);
             this.cmbBoxBuildings.TabIndex = 7;
             // 
             // btnApplyFilters
             // 
-            this.btnApplyFilters.Location = new System.Drawing.Point(108, 86);
+            this.btnApplyFilters.ForeColor = System.Drawing.Color.Black;
+            this.btnApplyFilters.Location = new System.Drawing.Point(250, 84);
             this.btnApplyFilters.Name = "btnApplyFilters";
-            this.btnApplyFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnApplyFilters.Size = new System.Drawing.Size(94, 22);
             this.btnApplyFilters.TabIndex = 2;
-            this.btnApplyFilters.Text = "Apply filters";
+            this.btnApplyFilters.Text = "Apply";
             this.btnApplyFilters.UseVisualStyleBackColor = true;
             this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 28);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(18, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 15);
             this.label2.TabIndex = 4;
@@ -158,9 +169,10 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnCreateTask);
-            this.groupBox2.Location = new System.Drawing.Point(581, 21);
+            this.groupBox2.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox2.Location = new System.Drawing.Point(516, 21);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(250, 76);
+            this.groupBox2.Size = new System.Drawing.Size(304, 117);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "More options";

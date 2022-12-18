@@ -21,7 +21,7 @@ namespace StudentHousingBV.repositories
                 new Task(3, "Task3", "Description here", DateTime.Now, 1, 1, true, false)
             };
         }
-        public List<Rule> GetAllRules() { return new List<Rule>{ new Rule(1, "Title", "description", DateTime.Now, 1, 1, DateTime.Now) }; }
+        public List<Rule> GetAllRules() { return new List<Rule>{ new Rule(1, "Title", "description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description", DateTime.Now, 1, 1, DateTime.Now) }; }
         public List<Agreement> GetAllAgreements() { return new List<Agreement>(); }
         public List<Report> GetAllReports() { return new List<Report>(); }
 

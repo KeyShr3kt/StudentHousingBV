@@ -53,7 +53,7 @@
             this.btnCreateUser.ForeColor = System.Drawing.Color.Black;
             this.btnCreateUser.Image = global::StudentHousingBV.Properties.Resources.icons8_add_user_male_24;
             this.btnCreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCreateUser.Location = new System.Drawing.Point(6, 16);
+            this.btnCreateUser.Location = new System.Drawing.Point(16, 25);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(149, 38);
             this.btnCreateUser.TabIndex = 1;

@@ -22,6 +22,8 @@ namespace StudentHousingBV.forms.adminSectionForms
             lblUpdatedAt.Text = rule.UpdatedAt.ToString();
             User user = eventManager.GetCreatorOfRule(rule);
             lblCreatedBy.Text = user.FirstName + " " + user.LastName;
+            lblDescription.Text = rule.Description;
+
         }
     }
 }

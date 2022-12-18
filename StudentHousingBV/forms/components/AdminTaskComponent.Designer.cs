@@ -38,25 +38,23 @@
             // 
             // lblDescription
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(18, 45);
+            this.lblDescription.Location = new System.Drawing.Point(8, 45);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(91, 15);
+            this.lblDescription.Size = new System.Drawing.Size(641, 48);
             this.lblDescription.TabIndex = 0;
             this.lblDescription.Text = "Task description";
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(18, 19);
+            this.lblTitle.Location = new System.Drawing.Point(8, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(38, 15);
+            this.lblTitle.Size = new System.Drawing.Size(523, 19);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "label1";
             // 
             // btnDeleteTask
             // 
-            this.btnDeleteTask.Location = new System.Drawing.Point(724, 45);
+            this.btnDeleteTask.Location = new System.Drawing.Point(714, 45);
             this.btnDeleteTask.Name = "btnDeleteTask";
             this.btnDeleteTask.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteTask.TabIndex = 2;
@@ -66,7 +64,7 @@
             // 
             // btnComplete
             // 
-            this.btnComplete.Location = new System.Drawing.Point(724, 16);
+            this.btnComplete.Location = new System.Drawing.Point(714, 16);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(75, 23);
             this.btnComplete.TabIndex = 3;
@@ -77,7 +75,7 @@
             // lblCreatedAt
             // 
             this.lblCreatedAt.AutoSize = true;
-            this.lblCreatedAt.Location = new System.Drawing.Point(498, 53);
+            this.lblCreatedAt.Location = new System.Drawing.Point(537, 16);
             this.lblCreatedAt.Name = "lblCreatedAt";
             this.lblCreatedAt.Size = new System.Drawing.Size(38, 15);
             this.lblCreatedAt.TabIndex = 4;
@@ -86,7 +84,7 @@
             // lblTaskIdHidden
             // 
             this.lblTaskIdHidden.AutoSize = true;
-            this.lblTaskIdHidden.Location = new System.Drawing.Point(664, 21);
+            this.lblTaskIdHidden.Location = new System.Drawing.Point(654, 21);
             this.lblTaskIdHidden.Name = "lblTaskIdHidden";
             this.lblTaskIdHidden.Size = new System.Drawing.Size(38, 15);
             this.lblTaskIdHidden.TabIndex = 5;
@@ -96,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.lblTaskIdHidden);
             this.Controls.Add(this.lblCreatedAt);
             this.Controls.Add(this.btnComplete);
@@ -104,7 +102,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblDescription);
             this.Name = "AdminTaskComponent";
-            this.Size = new System.Drawing.Size(818, 82);
+            this.Size = new System.Drawing.Size(798, 100);
             this.ResumeLayout(false);
             this.PerformLayout();
 

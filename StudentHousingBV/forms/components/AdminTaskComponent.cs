@@ -48,5 +48,13 @@ namespace StudentHousingBV.forms.components
             }
             
         }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Color color = Color.FromArgb(220, 220, 220);
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, color,
+            ButtonBorderStyle.Solid);
+            base.OnPaint(e);
+        }
     }
 }
