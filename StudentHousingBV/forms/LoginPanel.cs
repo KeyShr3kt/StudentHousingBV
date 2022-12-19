@@ -15,7 +15,7 @@ namespace StudentHousingBV.forms
     public partial class LoginPanel : Form
     {
 
-        public LoginPanel()
+        public LoginPanel(StudentHousingBV.models.User currentUser)
         {
             InitializeComponent();
             txtBoxEmail.Text = "admin";

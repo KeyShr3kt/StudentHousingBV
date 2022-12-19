@@ -14,11 +14,12 @@ namespace StudentHousingBV.forms.components
     public partial class TaskComponent : UserControl
     {
         private StudentHousingBV.models.Task _task;
-        public TaskComponent(StudentHousingBV.models.Task task)
+        public TaskComponent(StudentHousingBV.models.Task task, StudentHousingBV.models.User currentUser)
         {
             InitializeComponent();
             this._task = task;
             this.lbTaskDescription.Text = this._task.Title;
+            this.lbTaskUser.Text = currentUser.FirstName;
             if (this._task.IsShopping == true) 
             {
                 this.btnTaskComponent.Visible = true;
