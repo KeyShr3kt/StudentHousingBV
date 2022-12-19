@@ -49,6 +49,5 @@ namespace StudentHousingBV.models
             this.isAdmin = isAdmin;
             this.LastSeenAt = lastSeenAt;
         }
-
     }
 }

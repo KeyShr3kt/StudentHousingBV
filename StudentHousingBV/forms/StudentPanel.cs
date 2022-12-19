@@ -14,18 +14,13 @@ namespace StudentHousingBV.forms
             StudentHousingBV.models.Rule _testRule;
             listClosedAgreements.Items.Add("#ID | {user}: {title} - Upvotes: {number} / Downvotes: {number}");
             listOpenAgreements.Items.Add("#ID | {user}: {title} - Upvotes: {number} / Downvotes: {number}");
-            _testTask1 = new StudentHousingBV.models.Task(1, "This is a task title.", "This is a task description.", currentUser, DateTime.Now, false, false);
-            _testTask2 = new StudentHousingBV.models.Task(2, "This is a task title.", "This is a task description.", currentUser, DateTime.Now, true, false);
-            for (int i = 1; i <= 10; i++)
-            {
-                if (i % 2 != 0)
-                    fpPageTasks.Controls.Add(new TaskComponent(_testTask1, currentUser));
-                else
-                    fpPageTasks.Controls.Add(new TaskComponent(_testTask2, currentUser));
-            }
+            _testTask1 = new StudentHousingBV.models.Task(1, "This is a normal task title.", "This is a task description.", currentUser, DateTime.Now, false, false);
+            _testTask2 = new StudentHousingBV.models.Task(2, "This is a shopping task title.", "This is a task description.", currentUser, DateTime.Now, true, false);
+            fpPageTasks.Controls.Add(new TaskComponent(_testTask1, currentUser));
+            fpPageTasks.Controls.Add(new TaskComponent(_testTask1, currentUser));
+            fpPageTasks.Controls.Add(new TaskComponent(_testTask2, currentUser));
             _testRule = new StudentHousingBV.models.Rule(1, "This is a rule title.", "This is a rule description.", currentUser, DateTime.Now, DateTime.Now);
-            for (int i = 1; i <= 10; i++)
-                flowRules.Controls.Add(new RuleComponent(_testRule));
+            flowRules.Controls.Add(new RuleComponent(_testRule));
             #endregion
         }
     }
