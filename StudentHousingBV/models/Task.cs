@@ -17,7 +17,7 @@ namespace StudentHousingBV.models
         {
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;
-            _totalPrice = null;
+            this._totalPrice = null;
         }
 
         public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted, int totalPrice)
@@ -25,7 +25,7 @@ namespace StudentHousingBV.models
         {
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;
-            _totalPrice = totalPrice;
+            this._totalPrice = totalPrice;
         }
 
         public bool IsCompleted
