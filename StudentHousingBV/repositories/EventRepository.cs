@@ -43,10 +43,7 @@ namespace StudentHousingBV.repositories
             return new List<Task>();
         }
 
-        public User GetCreatorOfEventId(int id)
-        {
-            return new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL51INGB9304669103");
-        }
+        
 
         public void UpdateRule(int ruleId, string title, string description, int creatorId, int buildingId)
         {

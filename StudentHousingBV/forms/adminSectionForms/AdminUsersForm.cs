@@ -148,7 +148,7 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 components.Add((AdminUserComponent)c);
             }
-            List<AdminUserComponent> sortedComponents = components.OrderByDescending(c => c.User.PossitiveVotes).ToList();
+            List<AdminUserComponent> sortedComponents = components.OrderByDescending(c => c.User.PositiveVotes).ToList();
             flowLayoutPanel1.Controls.Clear();
             foreach (AdminUserComponent c in sortedComponents)
             {

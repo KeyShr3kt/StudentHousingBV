@@ -23,10 +23,10 @@ namespace StudentHousingBV.forms
             lblName.Text = _user.FirstName + " " + _user.LastName;
             lblEmail.Text = _user.EmailAddress;
             lblPhoneNumber.Text = _user.PhoneNumber;
-            lblPossitiveVotes.Text = _user.PossitiveVotes.ToString();
+            lblPossitiveVotes.Text = _user.PositiveVotes.ToString();
             lblNegativeVotes.Text = _user.NegativeVotes.ToString();
             lblIBAN.Text = _user.IBAN;
-            if (_user.isAdmin)
+            if (_user.IsAdmin)
             {
                 lblisAdmin.Text = "Admin";
             } else

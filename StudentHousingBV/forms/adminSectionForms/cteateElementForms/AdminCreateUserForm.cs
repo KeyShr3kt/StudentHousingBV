@@ -56,6 +56,7 @@ namespace StudentHousingBV.forms
 
                 userManager.createUser(firstName, lastName, email,
                                 phoneNumber, isAdmin, IBAN, cmbBoxRooms.SelectedItem as Room);
+                this.Close();
             } catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);

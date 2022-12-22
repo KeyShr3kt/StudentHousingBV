@@ -61,7 +61,7 @@ namespace StudentHousingBV.controllers
 
         public User GetCreatorOfRule(Rule rule)
         {
-            return unitOfWork.Events.GetCreatorOfEventId(rule.Id);
+            return unitOfWork.Users.GetCreatorOfEventId(rule.Id);
         }
 
         public void CreateTaskForBuilding(Building building, string title, string description, bool includesPayment)

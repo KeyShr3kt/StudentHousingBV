@@ -38,7 +38,7 @@ namespace StudentHousingBV.forms
                         form.Show();
                         this.Hide();
                     }
-                    else if (foundUser.isAdmin)
+                    else if (foundUser.IsAdmin)
                     {
                         AdminForm adminForm = new AdminForm(foundUser.Id);
                         adminForm.Show();

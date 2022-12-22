@@ -1,13 +1,7 @@
 ﻿using StudentHousingBV.controllers;
 using StudentHousingBV.models;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using User = StudentHousingBV.models.User;
 
 namespace StudentHousingBV.repositories
 {
@@ -23,7 +17,34 @@ namespace StudentHousingBV.repositories
                 User user = new User();
                 for (int inc = 0; inc < reader.FieldCount; inc++)
                 {
-                    user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, reader.GetValue(inc), null);
+
+                    //Type type = user.GetType();
+                    //var prop = type.GetProperty(reader.GetName(inc));
+                    //prop.SetValue(user, reader.GetValue(inc));
+                    if (inc == 8)
+                    {
+                        if (Convert.ToInt16(reader.GetValue(inc)) > 0) // boolean
+                        {
+                            user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, true, null);
+                        } else
+                        {
+                            user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, false, null);
+                        }
+                        
+                    } else if (inc == 9)
+                    {
+                       if (reader.GetValue(inc) == DBNull.Value) // DateTime parse problem DBNull.Value != null
+                        {
+                            user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, null, null);
+                        } else
+                        {
+                            user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, (DateTime?)reader.GetValue(inc), null);
+                        }
+                    }
+                    else
+                    {
+                        user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, reader.GetValue(inc), null);
+                    }
                 }
                 result.Add(user);
             }
@@ -79,52 +100,175 @@ namespace StudentHousingBV.repositories
             }
         }
 
+        private int ExecuteScalarUsers(string sql, Dictionary<string, string> parameters)
+        {
+            int result = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(UnitOfWork.CONNECTION_STRING))
+                {
+                   
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        conn.Open();
+                        result = (int)cmd.ExecuteScalar();
+                    }
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show($"The connection is no longer available! + {ex.Message}");
+            }
+
+            return result;
+        }
 
         public List<User> GetAll() 
         {
-          //  string sql = "SELECT * FROM USER;";
-          //  return ExecuteReaderUsers(sql, new());
+              string sql = "SELECT * FROM [USER];";
+              return ExecuteReaderUsers(sql, new());
 
-            return new List<User> {
+           /* return new List<User> {
                 new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL71ABNA2405012723"),
                 new User(2, "Quanna", "Cevdet", "quanna@mail.com", "password", "+31434342", 7, 1, false, DateTime.UtcNow, "NL78ABNA3470416656"),
                 new User(3, "Kalina", "Ravi", "admin", "admin", "+3154i2o", 90, 37, true, DateTime.Now, "NL23INGB4666097791")
-            }; 
+            }; */
         }
         public User Get(int id) 
         {
-           /* string sql = "SELECT * FROM USER WHERE USER.userId = @id;";
+            string sql = "SELECT * FROM [USER] WHERE [USER].Id = @id;";
             Dictionary<string, string> parameters = new()
             {
-                { "@name", id.ToString() }
+                { "@id", id.ToString() }
             };
-            return ExecuteReaderUsers(sql, parameters).First(); */
-           return new User(1, "firstName", "LastName", "email", "password", "phonenumber", 1, 0, true, DateTime.UtcNow, "NL75ABNA4887467303"); 
+            return ExecuteReaderUsers(sql, parameters).First(); 
+          // return new User(1, "firstName", "LastName", "email", "password", "phonenumber", 1, 0, true, DateTime.UtcNow, "NL75ABNA4887467303"); 
         }
-        public void Delete(User user) { return; }
-        public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN) { return 1; }
-        public void Update(User user) { return;  }
+       
+        public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN) 
+        {
+            string sql = "INSERT INTO [USER] (FirstName, LastName, EmailAddress, Password, PhoneNumber, PositiveVotes, NegativeVotes, IsAdmin, IBAN)" +
+                "VALUES (@firstName, @lastName, @email, 'admin', @phoneNumber, 0, 0, @isAdmin, @IBAN)";
+
+            Dictionary<string, string> parameters = new()
+            {
+                { "@firstName", firstName },
+                { "@lastName", lastName },
+                { "@email", email},
+                { "@phoneNumber", phoneNumber},
+                { "@isAdmin", Convert.ToInt32(isAdmin).ToString()},
+                { "@IBAN", IBAN}
+            };
+
+            ExecuteNonQuery(sql, parameters);
+            string query = "SELECT Id FROM [USER] WHERE Id = (SELECT MAX(Id) FROM [USER])";
+
+            return ExecuteScalarUsers(query, new()); 
+        }
+        public void Update(User user) 
+        {
+            string sql = "UPDATE [USER] SET FirstName = @FirstName, LastName = @LastName, " +
+                            "EmailAddress = @EmailAddress, Password = @Password, PhoneNumber = @PhoneNumber, " +
+                            "PositiveVotes = @PositiveVotes, NegativeVotes = @NegativeVotes, IsAdmin = @IsAdmin, " +
+                            "LastSeenAt = GETDATE(), IBAN = @IBAN " +
+                            "WHERE Id = @Id;";
+
+            Dictionary<string, string> parameters = new()
+            {
+                { "@id", user.Id.ToString() },
+                { "@FirstName", user.FirstName },
+                { "@LastName", user.LastName },
+                { "@EmailAddress", user.EmailAddress },
+                { "@Password", user.Password },
+                { "@PhoneNumber", user.PhoneNumber },
+                { "@PositiveVotes", user.PositiveVotes.ToString() },
+                { "@NegativeVotes", user.NegativeVotes.ToString() },
+                { "@IsAdmin", Convert.ToInt16(user.IsAdmin).ToString()},
+                { "@IBAN", user.IBAN }
+            };
+
+            ExecuteNonQuery( sql, parameters );
+        }
 
         public List<User> GetAdminsInBuildingId(int buildingId)
         {
-            return new List<User>();
+            string sql = "select u.*" +
+                            "from [USER] as u " +
+                            "inner join [ROOM] as r " +
+                            "on r.UserId = u.Id " +
+                            "inner join BUILDING as b " +
+                            "on r.BuildingId = b.Id " +
+                            "where u.IsAdmin = 1 and r.BuildingId = @buildingId;";
+
+            Dictionary<string, string> parameters = new()
+            {
+                { "@buildingId", buildingId.ToString() }
+            };
+
+
+            return ExecuteReaderUsers( sql, parameters);
         }
 
         public List<User> GetAllUsersInBuildingId(int buildingId)
         {
-            return new List<User>();
+            string sql = "select u.* " +
+                            "from [USER] as u " +
+                            "inner join [ROOM] as r " +
+                            "on r.UserId = u.Id " +
+                            "inner join BUILDING as b " +
+                            "on r.BuildingId = b.Id " +
+                            "where r.BuildingId = @buildingId;";
+
+            Dictionary<string, string> parameters = new()
+            {
+                { "@buildingId", buildingId.ToString() }
+            };
+            return ExecuteReaderUsers(sql, parameters);
         }
 
         public List<User> GetAllAdmins()
         {
-           // string sql = "SELECT * FROM USER WHERE USER.isAdmin = 1;";
-           // return ExecuteReaderUsers(sql, new());
-            return new List<User>();
+            string sql = "select * " +
+                            "from [USER] " +
+                            "where IsAdmin = 1;";
+           
+            return ExecuteReaderUsers(sql, new());
         }
 
         public int CountInBuildingId(int id)
         {
-            return 3;
+            string sql = "select COUNT(*) " +
+                        "from [USER] as u " +
+                        "inner join [ROOM] as r " +
+                        "on r.UserId = u.Id " +
+                        "inner join BUILDING as b " +
+                        "on r.BuildingId = b.Id " +
+                        "where r.BuildingId = @buildingId;";
+
+            Dictionary<string, string> parameters = new()
+            {
+                { "@buildingId", id.ToString() }
+            };
+            return ExecuteScalarUsers(sql, parameters);
+           
+        }
+
+        public User GetCreatorOfEventId(int id)
+        {
+            string sql = "select u.* " +
+                            "from [EVENT] as e " +
+                            "inner join [USER] as u " +
+                            "on e.CreatorId = u.Id " +
+                            "where e.Id = @Id;";
+
+            Dictionary<string, string> parameters = new()
+            {
+                { "@Id", id.ToString() }
+            };
+
+            return ExecuteReaderUsers(sql, parameters).First();
+
+           // return new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL51INGB9304669103");
         }
     }
 }

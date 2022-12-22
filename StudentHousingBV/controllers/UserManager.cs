@@ -42,7 +42,9 @@ namespace StudentHousingBV.controllers
             {
                 throw new ArgumentException("Input cannot be empty");
             }
-            
+            string a = "47B63402595D7DE12B1E0EA732D7391776E1ABBD0DC305783756C7CBB1157B3B:36D58FD2B56E1B17D4908458B524D74A:100000:SHA256";
+
+            bool res = PasswordHasher.Verify(password, a);
             
             foreach (User user in users) 
             {
@@ -76,7 +78,7 @@ namespace StudentHousingBV.controllers
         }
         public bool isCurrentUserAdmin()
         {
-            return unitOfWork.Users.Get(CurrentUserId).isAdmin;
+            return unitOfWork.Users.Get(CurrentUserId).IsAdmin;
         }
         
         public void createUser(string firstName, string lastName, string email, 

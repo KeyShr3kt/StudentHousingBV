@@ -21,7 +21,7 @@ namespace StudentHousingBV.models
         private DateTime? _lastSeenAt;
         private string _IBAN;
 
-        public int PossitiveVotes { get => this._possitiveVotes; private set => _possitiveVotes = value;  }
+        public int PositiveVotes { get => this._possitiveVotes; private set => _possitiveVotes = value;  }
         public int NegativeVotes { get => this._negativeVotes; private set => _negativeVotes = value;  }
         public string EmailAddress { get => _emailAddress; private set => _emailAddress = value;  }
         public string PhoneNumber { get => _phoneNumber; private set => _phoneNumber = value; }
@@ -29,8 +29,8 @@ namespace StudentHousingBV.models
         public string LastName { get => this._lastName; private set => _lastName = value; }
         public int Id { get => this._id; private set => _id = value; }
         public DateTime? LastSeenAt { get => _lastSeenAt; set => _lastSeenAt = value; }
-        public bool isAdmin { get => _isAdmin; private set => _isAdmin = value; }
-        public string Password { get => _password; set => _password = PasswordHasher.Hash(value); }
+        public bool IsAdmin { get => _isAdmin; private set => _isAdmin = value; }
+        public string Password { get => _password; set => _password = value; }
 
         public string IBAN { get => _IBAN; private set => _IBAN = value; }
         public User(int id, string firstName, string lastName, string emailAddress, 
@@ -42,11 +42,11 @@ namespace StudentHousingBV.models
             this.FirstName = firstName;
             this.LastName = lastName;
             this.EmailAddress = emailAddress;
-            this.Password = password;
+            this.Password = PasswordHasher.Hash(password);
             this.PhoneNumber = phoneNumber;
-            this.PossitiveVotes = possitiveVotes;
+            this.PositiveVotes = possitiveVotes;
             this.NegativeVotes = negativeVotes;
-            this.isAdmin = isAdmin;
+            this.IsAdmin = isAdmin;
             this.LastSeenAt = lastSeenAt;
             this.IBAN = IBAN;
 

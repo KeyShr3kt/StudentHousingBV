@@ -132,6 +132,7 @@
             this.Controls.Add(this.LoginEmailLabel);
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "LoginPanel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Housing BV - Login";
             ((System.ComponentModel.ISupportInitialize)(this.LoginLogo)).EndInit();
             this.ResumeLayout(false);
