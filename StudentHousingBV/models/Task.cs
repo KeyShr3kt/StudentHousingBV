@@ -12,6 +12,10 @@ namespace StudentHousingBV.models
         private bool _isCompleted;
         private int? _totalPrice;
 
+        public Task()
+        {
+
+        }
         public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted) 
             : base(id, title, description, createdAt, creatorId, buildingId)
         {
@@ -45,5 +49,7 @@ namespace StudentHousingBV.models
         }
 
         public int? TotalPrice { get => _totalPrice; }
+
+        public int EventId { get; set; } // so we can read columns using reflection
     }
 }

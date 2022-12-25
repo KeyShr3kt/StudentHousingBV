@@ -1,33 +1,96 @@
 ﻿using StudentHousingBV.models;
+using System.Data.SqlClient;
 using Task = StudentHousingBV.models.Task;
 
 namespace StudentHousingBV.repositories
 {
     public partial class EventRepository
     {
-        private Dictionary<int, Event> _events = new();
-        private int _lastId = 1;
+        private string _connectionString;
+
+        public EventRepository(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public void Delete(int id)
         {
-            if (_events.TryGetValue(id, out Event? ev))
+            try
             {
-                _events.Remove(id);
-                _agreements.Remove(id);
-                _rules.Remove(id);
-                _tasks.Remove(id);
+                using SqlConnection conn = new(_connectionString);
+                using SqlCommand cmd = conn.CreateCommand();
+                string sql = "DELETE FROM [TASK] WHERE [TASK].[Id] = @id;";
+                sql += "DELETE FROM [RULE] WHERE [RULE].[Id] = @id";
+                sql += "DELETE FROM [AGREEMENT] WHERE [AGREEMENT].[Id] = @id;";
+                sql += "DELETE FROM [EVENT] WHERE [EVENT].[Id] = @id";
+                sqlNonQueryHelper(sql, new { id });
+            } catch
+            {
+                // nothing
             }
         }
-        public Event Get(int id)
+
+        private List<T>? sqlCommandHelper<T>(string sql, object parameters, Func<T> defaultCtor, bool nonQuery)
+            where T: notnull
         {
-            return _events[id];
-            //return new Task(1, "Task1", "Description here", DateTime.Now, 1, 1, false, false);
+            using SqlConnection conn = new(_connectionString);
+            using SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = sql;
+            foreach (var prop in parameters.GetType().GetProperties())
+            {
+                cmd.Parameters.AddWithValue($"@{prop.Name}", prop.GetValue(parameters));
+            }
+            conn.Open();
+            if (nonQuery)
+            {
+                cmd.ExecuteNonQuery();
+                return null;
+            }
+            using var reader = cmd.ExecuteReader();
+            List<T> result = new();
+            while (reader.Read())
+            {
+                T t = defaultCtor();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    t.GetType().GetProperty(reader.GetName(i))!.SetValue(t, reader.GetValue(i));
+                }
+                result.Add(t);
+            }
+            return result;
         }
 
-        public User GetCreatorOfEventId(int id)
+        private List<T> sqlQueryHelper<T>(string sql, object parameters, Func<T> defaultCtor)
+            where T: notnull
         {
-            // man come on where do I get a fucking UserRepository in here from?
-            return new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL51INGB9304669103");
+            return sqlCommandHelper(sql, parameters, defaultCtor, false)!;
+        }
+        
+        private void sqlNonQueryHelper(string sql, object parameters)
+        {
+            sqlCommandHelper<object>(sql, parameters, () => default!, true);
+        }
+
+        private T? sqlOneHelper<T>(string sql, object parameters, Func<T> defaultCtor)
+            where T: notnull
+        {
+            return sqlQueryHelper(sql, parameters, defaultCtor).First();
+        }
+
+
+        public Event? Get(int id)
+        {
+            Event? evt = sqlOneHelper<Event>("SELECT * FROM [EVENT] WHERE [EVENT].[Id] = @id LIMIT 1",
+                new { id },
+                () => new());
+            return evt;
+        }
+
+        public User? GetCreatorOfEventId(int id)
+        {
+            return sqlOneHelper<User>("SELECT [USER].* FROM [EVENT] WHERE [EVENT].[Id] = @id JOIN [USER] ON [USER].[Id] = [EVENT].[CreatorId] LIMIT 1",
+                new { id },
+                () => new());
         }
     }
 }

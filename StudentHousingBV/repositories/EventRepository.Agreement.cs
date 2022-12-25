@@ -4,17 +4,21 @@ namespace StudentHousingBV.repositories
 {
     public partial class EventRepository
     {
-        private Dictionary<int, Agreement> _agreements = new();
-
         public List<Agreement> GetAllAgreements()
         {
-            return _agreements.Values.ToList();
+            return sqlQueryHelper<Agreement>("SELECT * FROM [AGREEMENT]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [AGREEMENT].[EventId]",
+                new { },
+                () => new());
         }
 
         public Agreement? GetAgreement(int id)
         {
-            _agreements.TryGetValue(id, out Agreement? agreement);
-            return agreement;
+            return sqlOneHelper<Agreement>("SELECT * FROM [AGREEMENT]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [AGREEMENT].[EventId]" +
+                " WHERE [AGREEMENT].[EventId] = @id",
+                new { id },
+                () => new());
         }
 
         public void CreateAgreement(
@@ -26,20 +30,23 @@ namespace StudentHousingBV.repositories
             DateTime endDateTime
         )
         {
-            int id = _lastId++;
-            Agreement agreement = new(
-                id,
-                title,
-                description,
-                DateTime.Now,
-                creatorId,
-                buildingId,
-                false,
-                startDateTime,
-                endDateTime
-            );
-            _agreements[id] = agreement;
-            _events[id] = agreement;
+            sqlNonQueryHelper("INSERT INTO [EVENT]" +
+                " ([Title], [Description], [CreatedAt], [CreatorId], [BuildingId])" +
+                " VALUES" +
+                " (@title, @description, GETDATE(), @creatorId, @buildingId);" +
+                "INSERT INTO [AGREEMENT]" +
+                " ([EventId], [StartDateTime], [EndDateTime], [IsAccepted])" +
+                " VALUES" +
+                " (SCOPE_IDENTITY(), @startDateTime, @endDateTime, 0);",
+                new
+                {
+                    title,
+                    description,
+                    creatorId,
+                    buildingId,
+                    startDateTime = startDateTime.ToString("yyyy-MM-dd H:mm:ss"),
+                    endDateTime = endDateTime.ToString("yyyy-MM-dd H:mm:ss")
+                });
         }
 
         public void UpdateAgreement(
@@ -51,29 +58,50 @@ namespace StudentHousingBV.repositories
             bool isAccepted
         )
         {
-            if (_agreements.TryGetValue(id, out Agreement? agreement))
-            {
-                agreement.Title = title;
-                agreement.Description = description;
-                agreement.CreatorId = creatorId;
-                agreement.BuildingId = buildingId;
-                agreement.IsAccepted = isAccepted;
-            }
+            sqlNonQueryHelper("UPDATE [EVENT]" +
+                " SET [Title] = @title, [Description] = @descrpition, [CreatorId] = @creatorId, [BuildingId] = @buildingId" +
+                " WHERE [Id] = @id;" +
+                "UPDATE [AGREEMENT]" +
+                " SET [IsAccepted] = @isAccepted" +
+                " WHERE [EventId] = @id",
+                new
+                {
+                    id,
+                    title,
+                    description,
+                    creatorId,
+                    buildingId,
+                    isAccepted = isAccepted ? 1 : 0
+                });
         }
 
         public List<Agreement> GetAgreementsForBuilding(int buildingId)
         {
-            return _agreements.Values.Where(a => a.BuildingId == buildingId).ToList();
+            return sqlQueryHelper<Agreement>("SELECT * FROM [AGREEMENT]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [AGREEMENT].[EventId]" +
+                " WHERE [EVENT].[BuildingId] = @buildingId",
+                new { buildingId },
+                () => new());
         }
 
-        public List<Agreement> GetPendingAgreements()
+        public List<Agreement> GetPendingAgreements(int buildingId)
         {
-            return _agreements.Values.Where(a => !a.IsAccepted).ToList();
+            return sqlQueryHelper<Agreement>("SELECT * FROM [AGREEMENT]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [AGREEMENT].[EventId]" +
+                " WHERE [AGREEMENT].[IsAccepted] = 0" +
+                " AND [EVENT].[BuildingId] = @buildingId",
+                new { buildingId },
+                () => new());
         }
 
-        public List<Agreement> GetAcceptedAgreements()
+        public List<Agreement> GetAcceptedAgreements(int buildingId)
         {
-            return _agreements.Values.Where(a => a.IsAccepted).ToList();
+            return sqlQueryHelper<Agreement>("SELECT * FROM [AGREEMENT]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [AGREEMENT].[EventId]" +
+                " WHERE [AGREEMENT].[IsAccepted] = 1" +
+                " AND [EVENT].[BuildingId] = @buildingId",
+                new { buildingId },
+                () => new());
         }
     }
 }

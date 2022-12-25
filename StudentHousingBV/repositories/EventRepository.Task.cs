@@ -5,75 +5,101 @@ namespace StudentHousingBV.repositories
 {
     public partial class EventRepository
     {
-        private Dictionary<int, Task> _tasks = new();
         public List<Task> GetAllTasks()
         {
-            return _tasks.Values.ToList();
-            //return new List<Task> {
-            //    new Task(1, "Task1", "Description here", DateTime.Now, 1, 1, false, false),
-            //    new Task(2, "Task2", "Description here", DateTime.Now, 1, 1, true, false, 337),
-            //    new Task(3, "Task3", "Description here", DateTime.Now, 1, 1, true, false)
-            //};
+            return sqlQueryHelper<Task>("SELECT * FROM [TASK]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]",
+                new { },
+                () => new());
         }
         public List<Task> GetAllTasksWithTotalPriceAndNotCompleted()
         {
-            return _tasks.Values.Where(t => t.TotalPrice != null && !t.IsCompleted).ToList();
+            return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
+                " WHERE [TASK].[TotalPrice] != NULL" +
+                " AND [TASK].[IsCompleted] = 0",
+                new { },
+                () => new());
         }
 
         public List<Task> GetAllTasksWithStatusCompleted()
         {
-            return _tasks.Values.Where(t => t.IsCompleted).ToList();
+            return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
+                " AND [TASK].[IsCompleted] = 1",
+                new { },
+                () => new());
         }
 
         public List<Task> GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(int buildingId)
         {
-            // TODO: implement
-            return _tasks.Values.Where(t => t.BuildingId == buildingId && t.TotalPrice != null && !t.IsCompleted).ToList();
+            return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
+                " WHERE [EVENT].[BuildingId] = @buildingId" +
+                " AND [TASK].[TotalPrice] != NULL" +
+                " AND [TASK].[IsCompleted] = 0",
+                new { buildingId },
+                () => new());
         }
 
         public List<Task> GetAllTasksInBuildingIdWithStatusCompleted(int buildingId)
         {
-            return _tasks.Values.Where(t => t.BuildingId == buildingId && t.IsCompleted).ToList();
+            return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
+                " WHERE [EVENT].[BuildingId] = @buildingId" +
+                " AND [TASK].[IsCompleted] = 1",
+                new { buildingId },
+                () => new());
         }
 
         public List<Task> GetAllTasksInBuildingId(int buildingId)
         {
-            return _tasks.Values.Where(t => t.BuildingId == buildingId).ToList();
+            return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
+                " WHERE [EVENT].[BuildingId] = @buildingId",
+                new { buildingId },
+                () => new());
         }
 
-        public void CreateTask(string title, string description, int creatorId, int buildingId)
+        public void CreateTask(string title, string description, int creatorId, int buildingId, int totalPrice = 0)
         {
-            int id = _lastId++;
-            Task task = new(id, title, description, DateTime.Now, creatorId, buildingId, false, false);
-            _tasks[id] = task;
-            _events[id] = task;
+            sqlNonQueryHelper("INSERT INTO [EVENT]" +
+                " ([Title], [Description], [CreatedAt], [CreatorId], [BuildingId])" +
+                " VALUES" +
+                " (@title, @description, GETDATE(), @creatorId);" +
+                " INSERT INTO [TASK]" +
+                " ([EventId], [IsShopping], [IsCompleted], [TotalPrice])" +
+                " VALUES" +
+                " (SCOPE_IDENTITY(), 0, 0, @totalPrice);",
+                new { title, description, creatorId, buildingId, totalPrice });
         }
 
         public void MarkTaskIdAsComplete(int id)
         {
-            if (_tasks.TryGetValue(id, out Task? task))
-            {
-                task.IsCompleted = true;
-            }
+            sqlNonQueryHelper("UPDATE [TASK]" +
+                " SET [IsCompleted] = 1" +
+                " WHERE [EventId] = @id",
+                new { id });
         }
 
         public Task? GetTask(int id)
         {
-            _tasks.TryGetValue(id, out Task? task);
-            return task;
+            return sqlOneHelper<Task>("SELECT * FROM [TASK]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
+                " WHERE [TASK].[EventId] = @id",
+                new { id },
+                () => new());
         }
 
         public void UpdateTask(int id, string title, string description, int creatorId, int buildingId, bool isShopping, bool isCompleted)
         {
-            if (_tasks.TryGetValue(id, out Task? task))
-            {
-                task.Title = title;
-                task.Description = description;
-                task.CreatorId = creatorId;
-                task.BuildingId = buildingId;
-                task.IsShopping = isShopping;
-                task.IsCompleted = isCompleted;
-            }
+            sqlNonQueryHelper("UPDATE [EVENT]" +
+                " SET [Title] = @title, [Description] = @description, [CreatorId] = @creatorId, [BuildingId] = @buildingId" +
+                " WHERE [Id] = @id;" +
+                "UPDATE [TASK]" +
+                " SET [IsShopping] = @isShopping, [IsCompleted] = @isCompleted" +
+                " WHERE [TASK].[EventId] = @id",
+                new { id, title, description, creatorId, buildingId, isShopping = isShopping ? 1 : 0, isCompleted = isCompleted ? 1 : 0 });
         }
     }
 }
