@@ -53,7 +53,15 @@ namespace StudentHousingBV.repositories
                 T t = defaultCtor();
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    t.GetType().GetProperty(reader.GetName(i))!.SetValue(t, reader.GetValue(i));
+                    var prop = t.GetType().GetProperty(reader.GetName(i));
+                    if (prop?.PropertyType.Name == "Boolean")
+                    {
+                        prop!.SetValue(t, (short)reader.GetValue(i) != 0);
+                    }
+                    else
+                    {
+                        prop!.SetValue(t, reader.GetValue(i));
+                    }
                 }
                 result.Add(t);
             }
