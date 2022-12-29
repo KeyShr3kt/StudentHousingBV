@@ -9,7 +9,7 @@ namespace StudentHousingBV.controllers
 {
     public class UnitOfWork
     {
-        public static string CONNECTION_STRING = "server=localmac;database=StudentHousingBV;uid=SA;password=nepokornite9;";
+        public static string CONNECTION_STRING = "server=localmac;database=StudentHousingBV;uid=SA;password=XXXXXXX;";
         private UserRepository _userRepository = new();
         public UserRepository Users { get => _userRepository; }
 
