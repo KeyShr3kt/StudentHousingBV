@@ -150,5 +150,16 @@ namespace StudentHousingBV.repositories
             " WHERE [Id] = @id",
             new { id = reaction.Id },
             affectedRows => affectedRows == 1);
+
+        public bool DeleteUserReactionOnAgreement(int userId, int agreementId) => sqlNonQueryHelper("DELETE FROM [REACTION]" +
+            " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId",
+            new { creatorId = userId, agreementId },
+            affectedRows => affectedRows == 1);
+
+        public bool ChangeUserReactionOnAgreement(int userId, int agreementId, bool isPositive) => sqlNonQueryHelper("UPDATE [REACTION]" +
+            " SET [IsPositive] = @isPositive" +
+            " WHERE [CreatorId] = @creatorId, [AgreementId] = @agreementId",
+            new { creatorId = userId, agreementId, isPositive },
+            affectedRows => affectedRows == 1);
     }
 }
