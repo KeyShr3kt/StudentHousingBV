@@ -11,6 +11,7 @@ namespace StudentHousingBV.models
         private bool _isShopping;
         private bool _isCompleted;
         private int? _totalPrice;
+        private byte[]? _image;
 
         public Task()
         {
@@ -48,8 +49,10 @@ namespace StudentHousingBV.models
             { this._isShopping = value; }
         }
 
-        public int? TotalPrice { get => _totalPrice; }
+        public int? TotalPrice { get => _totalPrice; set => _totalPrice = value; }
 
         public int EventId { get; set; } // so we can read columns using reflection
+
+        public byte[]? Image { get => _image; set => _image = value; }
     }
 }

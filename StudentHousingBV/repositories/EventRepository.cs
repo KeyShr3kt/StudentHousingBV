@@ -54,7 +54,15 @@ namespace StudentHousingBV.repositories
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
                     var prop = t.GetType().GetProperty(reader.GetName(i));
-                    if (prop?.PropertyType.Name == "Boolean")
+                    if (prop == null)
+                    {
+                        throw new Exception($"field {reader.GetName(i)} does not exist in {t.GetType().Name}");
+                    }
+                    if (reader.IsDBNull(i))
+                    {
+                        prop!.SetValue(t, null);
+                    }
+                    else if (prop?.PropertyType.Name == "Boolean")
                     {
                         prop!.SetValue(t, (short)reader.GetValue(i) != 0);
                     }
