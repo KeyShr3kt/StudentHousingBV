@@ -17,8 +17,6 @@ namespace StudentHousingBV.repositories
         {
             try
             {
-                using SqlConnection conn = new(_connectionString);
-                using SqlCommand cmd = conn.CreateCommand();
                 string sql = "DELETE FROM [TASK] WHERE [TASK].[Id] = @id;";
                 sql += "DELETE FROM [RULE] WHERE [RULE].[Id] = @id";
                 sql += "DELETE FROM [AGREEMENT] WHERE [AGREEMENT].[Id] = @id;";
