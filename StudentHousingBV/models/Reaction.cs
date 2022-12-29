@@ -13,6 +13,11 @@ namespace StudentHousingBV.models
         private int _agreementId;
         private bool _isPositive;
 
+        public Reaction ()
+        {
+
+        }
+
         public Reaction(int id, int creatorID, int agreementId, bool isPossitive)
         {
             _id = id;

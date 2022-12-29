@@ -1,9 +1,4 @@
 ﻿using StudentHousingBV.repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks; 
 
 namespace StudentHousingBV.controllers
 {
@@ -15,7 +10,7 @@ namespace StudentHousingBV.controllers
 
         private BuildingRepository _buildingRepository = new();
 
-        public BuildingRepository Buildings { get => _buildingRepository;}
+        public BuildingRepository Buildings { get => _buildingRepository; }
 
         private RoomRepository _roomRepository = new();
         public RoomRepository Rooms { get => _roomRepository; }
@@ -26,5 +21,8 @@ namespace StudentHousingBV.controllers
         private ReportRepository _reportRepository = new();
 
         public ReportRepository Reports { get => _reportRepository; }
+
+        private ReactionRepository _reactionRepository = new(CONNECTION_STRING);
+        public ReactionRepository Reactions { get => _reactionRepository; }
     }
 }
