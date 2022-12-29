@@ -5,12 +5,15 @@ namespace StudentHousingBV.repositories
     public partial class EventRepository
     {
         public List<Rule> GetAllRules() {
-            return sqlQueryHelper<Rule>("SELECT * FROM [RULE]", new { }, () => new());
+            return sqlQueryHelper<Rule>("SELECT * FROM [RULE]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [RULE].[EventId]", new { }, () => new());
         }
 
         public List<Rule> GetAllRulesInBuildingId(int buildingId)
         {
-            return sqlQueryHelper<Rule>("SELECT * FROM [RULE] WHERE [RULE].[BuildingId] == @buildingId",
+            return sqlQueryHelper<Rule>("SELECT * FROM [RULE]" +
+                " WHERE [RULE].[BuildingId] = @buildingId" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [RULE].[EventId]",
                 new { buildingId },
                 () => new());
         }
@@ -30,16 +33,19 @@ namespace StudentHousingBV.repositories
 
         public void UpdateRule(int id, string title, string description, int creatorId, int buildingId)
         {
-            sqlNonQueryHelper("UPDATE [RULE]" +
-                " SET [Title] = @title, [Description] = @description, [CreatorId] = @creatorId, [BuildingId] = @buildingId, [UpdatedAt] = GETDATE()" +
-                " WHERE [Id] = @id",
+            sqlNonQueryHelper("UPDATE [EVENT]" +
+                " SET [Title] = @title, [Description] = @description, [CreatorId] = @creatorId, [BuildingId] = @buildingId" +
+                " WHERE [Id] = @id;" +
+                "UPDATE [RULE]" +
+                " SET [UpdatedAt] = GETDATE()" +
+                " WHERE [EventId] = @id;",
                 new { title, description, creatorId, buildingId, id });
         }
 
         public Rule? GetRule(int id)
         {
             return sqlOneHelper<Rule>("SELECT * FROM [RULE]" +
-                " JOIN [EVENT] ON [EVENT].[Id] = [RULE].[Id]" +
+                " JOIN [EVENT] ON [EVENT].[Id] = [RULE].[EventId]" +
                 " WHERE [RULE].[Id] = @id",
                 new { id },
                 () => new());
