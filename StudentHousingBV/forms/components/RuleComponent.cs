@@ -17,6 +17,7 @@ namespace StudentHousingBV.forms.components
         {
             InitializeComponent();
             this._rule = rule;
+            this.lbRuleId.Text = this._rule.Id.ToString();
             this.lbRuleTitle.Text = this._rule.Title;
         }
 

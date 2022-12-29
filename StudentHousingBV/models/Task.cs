@@ -12,12 +12,16 @@ namespace StudentHousingBV.models
         private bool _isCompleted;
         private int? _totalPrice;
 
+        public Task()
+        {
+
+        }
         public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted) 
             : base(id, title, description, createdAt, creatorId, buildingId)
         {
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;
-            _totalPrice = null;
+            this._totalPrice = null;
         }
 
         public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted, int totalPrice)
@@ -25,7 +29,7 @@ namespace StudentHousingBV.models
         {
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;
-            _totalPrice = totalPrice;
+            this._totalPrice = totalPrice;
         }
 
         public bool IsCompleted
@@ -45,5 +49,7 @@ namespace StudentHousingBV.models
         }
 
         public int? TotalPrice { get => _totalPrice; }
+
+        public int EventId { get; set; } // so we can read columns using reflection
     }
 }

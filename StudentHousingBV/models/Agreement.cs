@@ -6,6 +6,10 @@
         private DateTime _startDateTime;
         private DateTime _endDateTime;
 
+        public Agreement()
+        {
+
+        }
         public Agreement(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isAccepted, DateTime startDateTime, DateTime endDateTime)
             : base(id, title, description, createdAt, creatorId, buildingId)
         {
@@ -20,5 +24,7 @@
         public DateTime StartDateTime { get => _startDateTime; private set => _startDateTime = value; }
 
         public DateTime EndDateTime { get => _endDateTime; private set => _endDateTime = value; }
+
+        public int EventId { get; set; } // so we can read columns using reflection
     }
 }

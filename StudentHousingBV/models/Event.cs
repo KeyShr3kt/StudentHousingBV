@@ -16,6 +16,10 @@ namespace StudentHousingBV.models
         private int _creatorId;
         private int _buildingId;
 
+        public Event ()
+        {
+
+        }
         public Event(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId)
         {
             this._id = id;

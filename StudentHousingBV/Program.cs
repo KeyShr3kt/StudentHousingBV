@@ -14,8 +14,8 @@ namespace StudentHousingBV
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginPanel());
-           // Application.Run(new forms.StudentPanel());
+            // Application.Run(new LoginPanel());
+            Application.Run(new forms.StudentPanel());
             //Application.Run(new forms.ReportForm());
         }
     }

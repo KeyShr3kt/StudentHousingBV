@@ -1,98 +1,96 @@
-﻿using StudentHousingBV.controllers;
-using StudentHousingBV.models;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Rule = StudentHousingBV.models.Rule;
+﻿using StudentHousingBV.models;
+using System.Data.SqlClient;
 using Task = StudentHousingBV.models.Task;
 
 namespace StudentHousingBV.repositories
 {
-    public class EventRepository
+    public partial class EventRepository
     {
-        public List<Task> GetAllTasks() 
+        private string _connectionString;
+
+        public EventRepository(string connectionString)
         {
-            return new List<Task> {
-                new Task(1, "Task1", "Description here", DateTime.Now, 1, 1, false, false),
-                new Task(2, "Task2", "Description here", DateTime.Now, 1, 1, true, false, 337),
-                new Task(3, "Task3", "Description here", DateTime.Now, 1, 1, true, false)
-            };
-        }
-        public List<Rule> GetAllRules() { return new List<Rule>{ new Rule(1, "Title", "description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description", DateTime.Now, 1, 1, DateTime.Now) }; }
-        public List<Agreement> GetAllAgreements() { return new List<Agreement>(); }
-        public List<Report> GetAllReports() { return new List<Report>(); }
-
-        public List<Rule> GetAllRulesInBuildingId(int id)
-        {
-            return new List<Rule>();
-        }
-
-        public void CreateRule(string title, string description, int createdByUserId, int inBuildingId)
-        {
-        }
-        public List<Task> GetAllTasksWithTotalPriceAndNotCompleted()
-        {
-            return new List<Task>();
-        }
-
-        public List<Task> GetAllTasksWithStatusCompleted()
-        {
-            return new List<Task>();
-        }
-
-        
-
-        public void UpdateRule(int ruleId, string title, string description, int creatorId, int buildingId)
-        {
-
-        }
-
-        public void CreateTask(string title, string description, int creatorId, int buildingId)
-        {
-
-        }
-
-        public List<Task> GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(int id)
-        {
-            return new List<Task>();
-        }
-
-        public List<Task> GetAllTasksInBuildingIdWithStatusCompleted(int id)
-        {
-            return new List<Task>();
-        }
-
-        public List<Task> GetAllTasksInBuildingId(int id)
-        {
-            return new List<Task>();
+            _connectionString = connectionString;
         }
 
         public void Delete(int id)
         {
-            // delete event with id
-        }
-        public Event Get(int id)
-        {
-            return new Task(1, "Task1", "Description here", DateTime.Now, 1, 1, false, false);
+            try
+            {
+                using SqlConnection conn = new(_connectionString);
+                using SqlCommand cmd = conn.CreateCommand();
+                string sql = "DELETE FROM [TASK] WHERE [TASK].[Id] = @id;";
+                sql += "DELETE FROM [RULE] WHERE [RULE].[Id] = @id";
+                sql += "DELETE FROM [AGREEMENT] WHERE [AGREEMENT].[Id] = @id;";
+                sql += "DELETE FROM [EVENT] WHERE [EVENT].[Id] = @id";
+                sqlNonQueryHelper(sql, new { id });
+            } catch
+            {
+                // nothing
+            }
         }
 
-        public void MarkTaskIdAsComplete(int id)
+        private List<T>? sqlCommandHelper<T>(string sql, object parameters, Func<T> defaultCtor, bool nonQuery)
+            where T: notnull
         {
-            // to do 
+            using SqlConnection conn = new(_connectionString);
+            using SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = sql;
+            foreach (var prop in parameters.GetType().GetProperties())
+            {
+                cmd.Parameters.AddWithValue($"@{prop.Name}", prop.GetValue(parameters));
+            }
+            conn.Open();
+            if (nonQuery)
+            {
+                cmd.ExecuteNonQuery();
+                return null;
+            }
+            using var reader = cmd.ExecuteReader();
+            List<T> result = new();
+            while (reader.Read())
+            {
+                T t = defaultCtor();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    t.GetType().GetProperty(reader.GetName(i))!.SetValue(t, reader.GetValue(i));
+                }
+                result.Add(t);
+            }
+            return result;
         }
-        // GetTask(id)
-        // GetRule(id)
-        // GetAgreement(id)
-        // GetReport(id)
 
-        // List<Task> GetTasksForBuilding()
-        // List<Rule> GetRuleForBuilding()
-        // List<Agreement> GetAgreementsForBuilding()
-        // List<Report> GetReportsForBuilding()
-        // List<Agreement> GetAgreementsWithStatusPending()
-        // List<Agreement> GetAgreementsWithStatusAgreed()
+        private List<T> sqlQueryHelper<T>(string sql, object parameters, Func<T> defaultCtor)
+            where T: notnull
+        {
+            return sqlCommandHelper(sql, parameters, defaultCtor, false)!;
+        }
+        
+        private void sqlNonQueryHelper(string sql, object parameters)
+        {
+            sqlCommandHelper<object>(sql, parameters, () => default!, true);
+        }
+
+        private T? sqlOneHelper<T>(string sql, object parameters, Func<T> defaultCtor)
+            where T: notnull
+        {
+            return sqlQueryHelper(sql, parameters, defaultCtor).First();
+        }
+
+
+        public Event? Get(int id)
+        {
+            Event? evt = sqlOneHelper<Event>("SELECT * FROM [EVENT] WHERE [EVENT].[Id] = @id LIMIT 1",
+                new { id },
+                () => new());
+            return evt;
+        }
+
+        public User? GetCreatorOfEventId(int id)
+        {
+            return sqlOneHelper<User>("SELECT [USER].* FROM [EVENT] WHERE [EVENT].[Id] = @id JOIN [USER] ON [USER].[Id] = [EVENT].[CreatorId] LIMIT 1",
+                new { id },
+                () => new());
+        }
     }
 }

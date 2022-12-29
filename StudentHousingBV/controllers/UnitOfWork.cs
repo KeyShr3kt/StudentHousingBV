@@ -20,7 +20,7 @@ namespace StudentHousingBV.controllers
         private RoomRepository _roomRepository = new();
         public RoomRepository Rooms { get => _roomRepository; }
 
-        private EventRepository _eventRepository = new();
+        private EventRepository _eventRepository = new(CONNECTION_STRING);
         public EventRepository Events { get => _eventRepository; }
 
         private ReportRepository _reportRepository = new();

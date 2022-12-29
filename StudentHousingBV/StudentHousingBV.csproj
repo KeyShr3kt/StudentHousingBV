@@ -31,4 +31,17 @@
     </EmbeddedResource>
   </ItemGroup>
 
+	<ItemGroup>
+		<Compile Include="repositories/EventRepository.cs" />
+		<Compile Include="repositories/EventRepository.Task.cs">
+			<DependentUpon>EventRepository.cs</DependentUpon>
+		</Compile>
+		<Compile Include="repositories/EventRepository.Rule.cs">
+			<DependentUpon>EventRepository.cs</DependentUpon>
+		</Compile>
+		<Compile Include="repositories/EventRepository.Agreement.cs">
+			<DependentUpon>EventRepository.cs</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
 </Project>
