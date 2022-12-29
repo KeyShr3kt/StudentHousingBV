@@ -14,7 +14,7 @@ namespace StudentHousingBV.repositories
 
         public Agreement? GetAgreement(int id)
         {
-            return sqlOneHelper<Agreement>("SELECT * FROM [AGREEMENT]" +
+            return sqlOneHelper<Agreement>("SELECT TOP 1 * FROM [AGREEMENT]" +
                 " JOIN [EVENT] ON [EVENT].[Id] = [AGREEMENT].[EventId]" +
                 " WHERE [AGREEMENT].[EventId] = @id",
                 new { id },

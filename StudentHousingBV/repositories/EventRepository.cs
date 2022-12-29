@@ -96,17 +96,10 @@ namespace StudentHousingBV.repositories
 
         public Event? Get(int id)
         {
-            Event? evt = sqlOneHelper<Event>("SELECT * FROM [EVENT] WHERE [EVENT].[Id] = @id LIMIT 1",
+            Event? evt = sqlOneHelper<Event>("SELECT TOP 1 * FROM [EVENT] WHERE [EVENT].[Id] = @id",
                 new { id },
                 () => new());
             return evt;
-        }
-
-        public User? GetCreatorOfEventId(int id)
-        {
-            return sqlOneHelper<User>("SELECT [USER].* FROM [EVENT] WHERE [EVENT].[Id] = @id JOIN [USER] ON [USER].[Id] = [EVENT].[CreatorId] LIMIT 1",
-                new { id },
-                () => new());
         }
     }
 }

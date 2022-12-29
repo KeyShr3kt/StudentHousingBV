@@ -44,7 +44,7 @@ namespace StudentHousingBV.repositories
 
         public Rule? GetRule(int id)
         {
-            return sqlOneHelper<Rule>("SELECT * FROM [RULE]" +
+            return sqlOneHelper<Rule>("SELECT TOP 1 * FROM [RULE]" +
                 " JOIN [EVENT] ON [EVENT].[Id] = [RULE].[EventId]" +
                 " WHERE [RULE].[Id] = @id",
                 new { id },

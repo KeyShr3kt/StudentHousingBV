@@ -84,7 +84,7 @@ namespace StudentHousingBV.repositories
 
         public Task? GetTask(int id)
         {
-            return sqlOneHelper<Task>("SELECT * FROM [TASK]" +
+            return sqlOneHelper<Task>("SELECT TOP 1 * FROM [TASK]" +
                 " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
                 " WHERE [TASK].[EventId] = @id",
                 new { id },
