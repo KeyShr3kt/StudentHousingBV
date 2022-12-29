@@ -73,7 +73,7 @@ namespace StudentHousingBV.controllers
             }
 
             User user = unitOfWork.Users.Get(CurrentUserId);
-            user.Password = password;
+            user.Password = PasswordHasher.Hash(password);
             unitOfWork.Users.Update(user);
         }
         public bool isCurrentUserAdmin()
@@ -99,8 +99,10 @@ namespace StudentHousingBV.controllers
             }
 
             int userId = unitOfWork.Users.Insert(firstName, lastName, email, phoneNumber, isAdmin, IBAN);
-
-            unitOfWork.Rooms.SetRoomToUserId(room.Id, userId);
+            if (room != null)
+            {
+                unitOfWork.Rooms.SetRoomToUserId(room.Id, userId);
+            }
         }
 
 

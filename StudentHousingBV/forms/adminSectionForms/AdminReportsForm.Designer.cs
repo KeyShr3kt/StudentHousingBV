@@ -48,9 +48,10 @@
             this.groupBox1.Controls.Add(this.cmbBoxBuildings);
             this.groupBox1.Controls.Add(this.btnApplyFilters);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox1.Location = new System.Drawing.Point(25, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(535, 138);
+            this.groupBox1.Size = new System.Drawing.Size(535, 116);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by:";
@@ -58,6 +59,7 @@
             // rdBtnForReview
             // 
             this.rdBtnForReview.AutoSize = true;
+            this.rdBtnForReview.ForeColor = System.Drawing.Color.Black;
             this.rdBtnForReview.Location = new System.Drawing.Point(108, 59);
             this.rdBtnForReview.Name = "rdBtnForReview";
             this.rdBtnForReview.Size = new System.Drawing.Size(79, 19);
@@ -69,6 +71,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(18, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 15);
@@ -77,11 +80,12 @@
             // 
             // btnDisableFilters
             // 
-            this.btnDisableFilters.Location = new System.Drawing.Point(358, 86);
+            this.btnDisableFilters.ForeColor = System.Drawing.Color.Black;
+            this.btnDisableFilters.Location = new System.Drawing.Point(430, 87);
             this.btnDisableFilters.Name = "btnDisableFilters";
-            this.btnDisableFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnDisableFilters.Size = new System.Drawing.Size(94, 22);
             this.btnDisableFilters.TabIndex = 6;
-            this.btnDisableFilters.Text = "Disable filters";
+            this.btnDisableFilters.Text = "Refresh";
             this.btnDisableFilters.UseVisualStyleBackColor = true;
             this.btnDisableFilters.Click += new System.EventHandler(this.btnDisableFilters_Click);
             // 
@@ -105,17 +109,19 @@
             // 
             // btnApplyFilters
             // 
-            this.btnApplyFilters.Location = new System.Drawing.Point(108, 86);
+            this.btnApplyFilters.ForeColor = System.Drawing.Color.Black;
+            this.btnApplyFilters.Location = new System.Drawing.Point(319, 87);
             this.btnApplyFilters.Name = "btnApplyFilters";
-            this.btnApplyFilters.Size = new System.Drawing.Size(166, 32);
+            this.btnApplyFilters.Size = new System.Drawing.Size(94, 22);
             this.btnApplyFilters.TabIndex = 2;
-            this.btnApplyFilters.Text = "Apply filters";
+            this.btnApplyFilters.Text = "Apply";
             this.btnApplyFilters.UseVisualStyleBackColor = true;
             this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(6, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 15);
@@ -125,14 +131,14 @@
             // flPanelReports
             // 
             this.flPanelReports.AutoScroll = true;
-            this.flPanelReports.Location = new System.Drawing.Point(12, 232);
+            this.flPanelReports.Location = new System.Drawing.Point(25, 192);
             this.flPanelReports.Name = "flPanelReports";
-            this.flPanelReports.Size = new System.Drawing.Size(818, 437);
+            this.flPanelReports.Size = new System.Drawing.Size(818, 462);
             this.flPanelReports.TabIndex = 10;
             // 
             // txtBoxSearch
             // 
-            this.txtBoxSearch.Location = new System.Drawing.Point(12, 203);
+            this.txtBoxSearch.Location = new System.Drawing.Point(25, 163);
             this.txtBoxSearch.Name = "txtBoxSearch";
             this.txtBoxSearch.PlaceholderText = "Search";
             this.txtBoxSearch.Size = new System.Drawing.Size(300, 23);

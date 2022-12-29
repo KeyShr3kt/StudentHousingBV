@@ -46,7 +46,7 @@
             // lblCreatedBy
             // 
             this.lblCreatedBy.AutoSize = true;
-            this.lblCreatedBy.Location = new System.Drawing.Point(597, 29);
+            this.lblCreatedBy.Location = new System.Drawing.Point(522, 9);
             this.lblCreatedBy.Name = "lblCreatedBy";
             this.lblCreatedBy.Size = new System.Drawing.Size(92, 15);
             this.lblCreatedBy.TabIndex = 2;
@@ -55,7 +55,7 @@
             // lblBuilding
             // 
             this.lblBuilding.AutoSize = true;
-            this.lblBuilding.Location = new System.Drawing.Point(597, 104);
+            this.lblBuilding.Location = new System.Drawing.Point(522, 29);
             this.lblBuilding.Name = "lblBuilding";
             this.lblBuilding.Size = new System.Drawing.Size(74, 15);
             this.lblBuilding.TabIndex = 3;
@@ -63,7 +63,7 @@
             // 
             // btnReview
             // 
-            this.btnReview.Location = new System.Drawing.Point(733, 58);
+            this.btnReview.Location = new System.Drawing.Point(708, 25);
             this.btnReview.Name = "btnReview";
             this.btnReview.Size = new System.Drawing.Size(75, 23);
             this.btnReview.TabIndex = 4;
@@ -81,7 +81,7 @@
             this.Controls.Add(this.lblCreatedBy);
             this.Controls.Add(this.lblTitle);
             this.Name = "AdminReportComponent";
-            this.Size = new System.Drawing.Size(839, 150);
+            this.Size = new System.Drawing.Size(796, 63);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -80,6 +80,8 @@
             this.Controls.Add(this.btnMoreInfo);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.panel1);
+            this.MaximumSize = new System.Drawing.Size(796, 63);
+            this.MinimumSize = new System.Drawing.Size(796, 63);
             this.Name = "AdminRuleComponent";
             this.Size = new System.Drawing.Size(796, 63);
             this.panel1.ResumeLayout(false);
