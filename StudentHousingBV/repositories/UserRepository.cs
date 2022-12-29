@@ -1,13 +1,47 @@
 ﻿using StudentHousingBV.controllers;
 using StudentHousingBV.models;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Net;
 using User = StudentHousingBV.models.User;
 
 namespace StudentHousingBV.repositories
 {
     public class UserRepository
     {
+        private void sendMail(string email, string passwordToSend)
+        {
+            // Set the sender and recipient email addresses
+            string sender = "studenthousing404@outlook.com";
+            string recipient = email;
 
+            // Set the email subject and body
+            string subject = "Test Email from C#";
+           // string body = "This is a test email sent from a C# program.";
+
+            // Generate a random code and append it to the email body
+           // Random random = new Random();
+           // int code = random.Next(10000, 99999);
+            string body = "Password for this email: " + passwordToSend;
+
+            // Create a new MailMessage object
+            MailMessage message = new MailMessage(sender, recipient, subject, body);
+
+            // Set the sender's password
+            string password = "Studenthousingbv404";
+
+            // Create a new SmtpClient object to send the email
+            SmtpClient client = new SmtpClient("smtp.office365.com", 587);
+            client.EnableSsl = true;
+
+            // Set the client's credentials
+            client.Credentials = new NetworkCredential(sender, password);
+
+            // Send the email
+            client.Send(message);
+
+            Console.WriteLine("Email sent!");
+        }
 
         private List<User> toListOfUsers(SqlDataReader reader)
         {
@@ -148,13 +182,17 @@ namespace StudentHousingBV.repositories
         public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN) 
         {
             string sql = "INSERT INTO [USER] (FirstName, LastName, EmailAddress, Password, PhoneNumber, PositiveVotes, NegativeVotes, IsAdmin, IBAN)" +
-                "VALUES (@firstName, @lastName, @email, 'admin', @phoneNumber, 0, 0, @isAdmin, @IBAN)";
+                "VALUES (@firstName, @lastName, @email, @password , @phoneNumber, 0, 0, @isAdmin, @IBAN)";
+
+            string password = DateTime.Now.Ticks.ToString("x");
+            string hashedPassword = PasswordHasher.Hash(password);
 
             Dictionary<string, string> parameters = new()
             {
                 { "@firstName", firstName },
                 { "@lastName", lastName },
                 { "@email", email},
+                { "@password", hashedPassword },
                 { "@phoneNumber", phoneNumber},
                 { "@isAdmin", Convert.ToInt32(isAdmin).ToString()},
                 { "@IBAN", IBAN}
@@ -162,7 +200,7 @@ namespace StudentHousingBV.repositories
 
             ExecuteNonQuery(sql, parameters);
             string query = "SELECT Id FROM [USER] WHERE Id = (SELECT MAX(Id) FROM [USER])";
-
+            sendMail(email, password);
             return ExecuteScalarUsers(query, new()); 
         }
         public void Update(User user) 
