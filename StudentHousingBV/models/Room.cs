@@ -23,6 +23,9 @@ namespace StudentHousingBV.models
 
         public int BuildingId { get => _buildingId; private set => _buildingId = value; }
 
+        public Room()
+        { }
+
         public Room(int id, string type, int? userId, string name, int buildingId)
         {
             Id = id;

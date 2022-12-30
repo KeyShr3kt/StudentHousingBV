@@ -14,15 +14,15 @@ namespace StudentHousingBV.models
         public int Id { get => _id; private set => _id = value; }
         public string Address { get => _address; private set => _address = value; }
 
+        public Building()
+        { }
 
         public Building(int id, string address)
         {
             Id = id;
             Address = address;
-
         }
-
-
+        
         public override string ToString()
         {
             return $"{Id} - {Address}";

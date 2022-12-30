@@ -40,5 +40,7 @@ namespace StudentHousingBV.models
             _buildingId = buildingId;
         }
 
+        public Report()
+        { }
     }
 }
