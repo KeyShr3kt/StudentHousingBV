@@ -28,8 +28,8 @@ namespace StudentHousingBV.forms.components
 
         private void btnTaskComponent_Click(object sender, EventArgs e)
         {
-            StudentHousingBV.forms.TaskForm _taskForm = new StudentHousingBV.forms.TaskForm(this._task);
-            _taskForm.Show();
+            StudentHousingBV.forms.CompletePaymentForm _completePaymentForm = new StudentHousingBV.forms.CompletePaymentForm(this._task);
+            _completePaymentForm.Show();
         }
 
         private void btnReportTask_Click(object sender, EventArgs e)
