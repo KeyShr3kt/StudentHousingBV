@@ -161,5 +161,10 @@ namespace StudentHousingBV.repositories
             " WHERE [CreatorId] = @creatorId, [AgreementId] = @agreementId",
             new { creatorId = userId, agreementId, isPositive },
             affectedRows => affectedRows == 1);
+
+        public Reaction? GetUserReactionOnAgreement(int userId, int agreementId) => sqlOneHelper<Reaction>("SELECT TOP 1 * FROM [REACTION]" +
+            "WHERE [CreatorId] = @creatorId, [Agreementid] = @agreementId",
+            new { creatorId = userId, agreementId },
+            () => new());
     }
 }
