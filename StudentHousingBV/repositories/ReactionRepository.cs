@@ -13,6 +13,8 @@ namespace StudentHousingBV.repositories
             _connectionString = connectionString;
         }
 
+        #region helpers
+
         private List<T>? sqlCommandHelper<T>(string sql, object parameters, Func<T> defaultCtor, bool nonQuery, Func<int, bool> nonQueryPredicate)
             where T : notnull
         {
@@ -107,6 +109,7 @@ namespace StudentHousingBV.repositories
             {
             }
         }
+        #endregion
 
         public Reaction? Get(int id)
         {
@@ -129,7 +132,7 @@ namespace StudentHousingBV.repositories
                     " ([CreatorId], [AgreementId], [IsPositive])" +
                     " VALUES" +
                     " (@creatorId, @agreementId, @isPositive);",
-                    new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive },
+                    new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0 },
                     () => default);
                 reaction.Id = id;
                 return true;
@@ -143,7 +146,7 @@ namespace StudentHousingBV.repositories
         public bool Update(Reaction reaction) => sqlNonQueryHelper("UPDATE [REACTION]" +
             " SET [CreatorId] = @creatorId, [AgreementId] = @agreementId, [IsPositive] = @isPositive" +
             " WHERE [Id] = @id",
-            new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive, id = reaction.Id },
+            new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0, id = reaction.Id },
             affectedRows => affectedRows == 1);
 
         public bool Delete(Reaction reaction) => sqlNonQueryHelper("DELETE FROM [REACTION]" +
@@ -159,12 +162,38 @@ namespace StudentHousingBV.repositories
         public bool ChangeUserReactionOnAgreement(int userId, int agreementId, bool isPositive) => sqlNonQueryHelper("UPDATE [REACTION]" +
             " SET [IsPositive] = @isPositive" +
             " WHERE [CreatorId] = @creatorId, [AgreementId] = @agreementId",
-            new { creatorId = userId, agreementId, isPositive },
+            new { creatorId = userId, agreementId, isPositive = isPositive ? 1 : 0 },
             affectedRows => affectedRows == 1);
 
         public Reaction? GetUserReactionOnAgreement(int userId, int agreementId) => sqlOneHelper<Reaction>("SELECT TOP 1 * FROM [REACTION]" +
             "WHERE [CreatorId] = @creatorId, [Agreementid] = @agreementId",
             new { creatorId = userId, agreementId },
             () => new());
+
+        /// <summary>
+        ///  Inserts a reaction only if no other reaction with the same creator and agreement exists
+        /// </summary>
+        public bool InsertUnique(Reaction reaction)
+        {
+            try
+            {
+                int id = sqlOneHelper<int>("INSERT INTO [REACTION]" +
+                    " OUTPUT Inserted.[Id]" +
+                    " ([CreatorId], [AgreementId], [IsPositive])" +
+                    " SELECT" +
+                    " @creatorId, @agreementId, @isPositive" +
+                    "WHERE NOT EXISTS" +
+                    " (SELECT * FROM [REACTION]" +
+                    " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId",
+                    new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0 },
+                    () => default);
+                reaction.Id = id;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
