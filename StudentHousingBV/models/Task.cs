@@ -12,12 +12,10 @@ namespace StudentHousingBV.models
         private bool _isShopping;
         private bool _isCompleted;
         private int? _totalPrice;
-        private byte[]? _image;
 
         public Task()
-        {
+        { }
 
-        }
         public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, int assignedToUserId, bool isShopping, bool isCompleted) 
             : base(id, title, description, createdAt, creatorId, buildingId)
         {
