@@ -16,18 +16,19 @@ namespace StudentHousingBV.models
         private int _creatorId;
         private int _buildingId;
         private bool _isReviewed;
-        public int TargetedToEventId { get => _targetedToEventId;}
-        public int Id { get => _id; }
 
-        public string Title { get => _title; }
-        public string Description { get => _description; }
-        public DateTime CreatedAt { get => _createdAt; }
+        public int TargetedToEventId { get => _targetedToEventId; private set => _targetedToEventId = value; }
+        public int Id { get => _id; private set => _id = value; }
 
-        public int CreatorId { get => _creatorId; }
+        public string Title { get => _title; private set => _title = value; }
+        public string Description { get => _description; private set => _description = value; }
+        public DateTime CreatedAt { get => _createdAt; private set => _createdAt = value; }
 
-        public int BuildingId { get => _buildingId; }
+        public int CreatorId { get => _creatorId; private set => _creatorId = value; }
 
-        public bool IsReviewd { get => _isReviewed; }
+        public int BuildingId { get => _buildingId; private set => _buildingId = value; }
+
+        public bool IsReviewed { get => _isReviewed; private set => _isReviewed = value; }
 
         public Report(int id, int targetedToEventId, string title, string description, DateTime createdAt, int creatorId, int buildingId)
         {
@@ -38,6 +39,7 @@ namespace StudentHousingBV.models
             _createdAt = createdAt;
             _creatorId = creatorId;
             _buildingId = buildingId;
+            _isReviewed = false;
         }
 
         public Report()

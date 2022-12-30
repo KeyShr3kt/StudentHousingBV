@@ -151,7 +151,7 @@ namespace StudentHousingBV.repositories
             return ExecuteNonQuery(sql, parameters);
         }
 
-        public Building GetForUser(User user)
+        public Building GetForUser(Building building)
         {
             string sql = "SELECT[BUILDING].Id, [BUILDING].Address" +
                             "FROM[BUILDING] INNER JOIN[ROOM] ON[BUILDING].Id = [ROOM].BuildingId" +
@@ -159,7 +159,7 @@ namespace StudentHousingBV.repositories
                             "WHERE[USER].Id = @userId;";
             Dictionary<string, string> parameters = new()
             {
-                { "@userId", user.Id.ToString() }
+                { "@userId", building.Id.ToString() }
             };
             return ExecuteReader(sql, parameters).First();
         }

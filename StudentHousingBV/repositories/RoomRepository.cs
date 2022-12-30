@@ -41,7 +41,7 @@ namespace StudentHousingBV.repositories
             return result;
         }
 
-        private List<Room> ExecuteReader(string sql, Dictionary<string, string> parameters)
+        private List<Room> ExecuteReader(string sql, Dictionary<string, string?> parameters)
         {
             List<Room> rooms = new();
             try
@@ -49,32 +49,10 @@ namespace StudentHousingBV.repositories
                 using (SqlConnection conn = new SqlConnection(UnitOfWork.CONNECTION_STRING))
                 {
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    foreach (KeyValuePair<string, string> entry in parameters)
+                    foreach (KeyValuePair<string, string?> entry in parameters)
                     {
                         cmd.Parameters.AddWithValue(entry.Key, entry.Value);
                     }
-                    conn.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        rooms.AddRange(ToListOfRooms(reader));
-                    }
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                MessageBox.Show($"The connection is no longer available!\n + {ex.Message}");
-            }
-            return rooms;
-        }
-
-        private List<Room> ExecuteReader(string sql)
-        {
-            List<Room> rooms = new();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(UnitOfWork.CONNECTION_STRING))
-                {
-                    SqlCommand cmd = new SqlCommand(sql, conn);
                     conn.Open();
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -192,9 +170,9 @@ namespace StudentHousingBV.repositories
 
         public Room GetForUser(User user)
         {
-            string sql = "SELECT [ROOM].*" +
-                "FROM [ROOM] INNER JOIN [USER] ON [ROOM].UserId = [USER].Id" +
-                "WHERE [USER].Id = @userId";
+            string sql = "SELECT [ROOM].* " +
+                "FROM [ROOM] INNER JOIN [USER] ON [ROOM].UserId = [USER].Id " +
+                "WHERE [USER].Id = @userId;";
             Dictionary<string, string> parameters = new()
             {
                 { "@userId", user.Id.ToString() }
@@ -204,10 +182,15 @@ namespace StudentHousingBV.repositories
 
         public List<Room> GetAvailableBedroomsForBuildingId(int id) 
         {
-            string sql = "SELECT [ROOM].*" +
-                "FROM [ROOM] INNER JOIN [BUILDING] ON [ROOM].BuildingId = [BUILDING].Id" +
-                "WHERE CONVERT(varchar, [ROOM].Type) = 'Bedroom' AND [ROOM].UserId IS NULL;";
-            return ExecuteReader(sql);
+            string sql = "SELECT [ROOM].* " +
+                "FROM [ROOM] INNER JOIN [BUILDING] ON [ROOM].BuildingId = [BUILDING].Id " +
+                "WHERE CONVERT(varchar, [ROOM].Type) = @type AND [ROOM].UserId IS NULL AND [BUILDING].Id = @id;";
+            Dictionary<string, string> parameters = new()
+            {
+                { "@type", "'Bedroom'" },
+                { "@id", id.ToString() }
+            };
+            return ExecuteReader(sql, parameters);
         }
 
         public int SetRoomToUserId(int roomId, int userId) 
