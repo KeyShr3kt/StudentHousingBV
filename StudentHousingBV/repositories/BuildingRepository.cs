@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using User = StudentHousingBV.models.User;
 
 namespace StudentHousingBV.repositories
 {
@@ -151,7 +152,7 @@ namespace StudentHousingBV.repositories
             return ExecuteNonQuery(sql, parameters);
         }
 
-        public Building GetForUser(Building building)
+        public Building GetForUser(User user)
         {
             string sql = "SELECT[BUILDING].Id, [BUILDING].Address" +
                             "FROM[BUILDING] INNER JOIN[ROOM] ON[BUILDING].Id = [ROOM].BuildingId" +
@@ -159,7 +160,7 @@ namespace StudentHousingBV.repositories
                             "WHERE[USER].Id = @userId;";
             Dictionary<string, string> parameters = new()
             {
-                { "@userId", building.Id.ToString() }
+                { "@userId", user.Id.ToString() }
             };
             return ExecuteReader(sql, parameters).First();
         }
