@@ -45,24 +45,29 @@ INSERT INTO EVENT (Title, Description, CreatedAt, CreatorID, BuildingID) VALUES
 
 INSERT INTO [RULE] (eventID, updatedAt) VALUES (1, CURRENT_TIMESTAMP);
 INSERT INTO AGREEMENT (eventID, StartDateTime, EndDateTime, isAccepted) VALUES (2, CURRENT_TIMESTAMP, '2022/12/17 00:00:00', 0);
-INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (3, 0, 0);
+INSERT INTO TASK (eventID, AssignedToUserId, isShopping, isCompleted) VALUES (3, 2, 0, 0);
 
 INSERT INTO [RULE] (eventID, updatedAt) VALUES (4, CURRENT_TIMESTAMP);
 INSERT INTO AGREEMENT (eventID, StartDateTime, EndDateTime, isAccepted) VALUES (5, CURRENT_TIMESTAMP, '2022/12/17 00:00:00', 0);
-INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (6, 1, 0);
+INSERT INTO TASK (eventID, AssignedToUserId, isShopping, isCompleted) VALUES (6, 3,1, 0);
 
 INSERT INTO [RULE] (eventID, updatedAt) VALUES (7, CURRENT_TIMESTAMP);
 INSERT INTO AGREEMENT (eventID, StartDateTime, EndDateTime, isAccepted) VALUES (8, CURRENT_TIMESTAMP, '2022/12/17 00:00:00', 0);
-INSERT INTO TASK (eventID, isShopping, isCompleted) VALUES (9, 1, 1);
+INSERT INTO TASK (eventID, AssignedToUserId, isShopping, isCompleted) VALUES (9, 4, 1, 1);
 
 INSERT INTO REPORT (Title, Description, CreatedAt, CreatorID, BuildingID, TargetedToEventID, IsReviewed) VALUES 
 ('Report 1', 'Description of report 1', CURRENT_TIMESTAMP, 5, 2, 5, 0);
 
 
+Select *
+From [event]
+where id = 1;
+
 SELECT * FROM [RULE]
 SELECT * FROM [TASK]
 SELECT * FROM [AGREEMENT]
 SELECT * FROM [REPORT]
+
 /*
 DELETE FROM [USER]
 DBCC CHECKIDENT ('[USER]', RESEED, 0)
@@ -77,4 +82,26 @@ DELETE FROM [REPORT]
 DELETE FROM [RULE]
 DELETE FROM [AGREEMENT]
 DELETE FROM [REACTION]
-DBCC CHECKIDENT ('[REACTION]', RESEED, 0)*/
+DBCC CHECKIDENT ('[REACTION]', RESEED, 0)
+DROP TABLE [AGREEMENT]
+DROP TABLE [BUILDING]
+DROP TABLE [EVENT]
+DROP TABLE [REACTION]
+DROP TABLE [REPORT]
+DROP TABLE [ROOM]
+DROP TABLE [RULE]
+DROP TABLE [TASK]
+DROP TABLE [TASK_LOG]
+DROP TABLE [USER]
+*/
+
+UPDATE [ROOM]
+SET UserId = NULL
+WHERE Id = 2;
+
+SELECT [ROOM].*
+FROM [ROOM] INNER JOIN [BUILDING] ON [ROOM].BuildingId = [BUILDING].Id
+WHERE CONVERT(varchar, [ROOM].Type) = 'Bedroom' AND [ROOM].UserId IS NULL AND [BUILDING].Id = 2;
+
+SELECT *
+FROM [ROOM];
