@@ -9,7 +9,6 @@ namespace StudentHousingBV.forms
         public StudentPanel()
         {
             InitializeComponent();
-            /*
             #region Tests
             StudentHousingBV.models.Task _testTask1, _testTask2;
             StudentHousingBV.models.Rule _testRule;
@@ -29,7 +28,6 @@ namespace StudentHousingBV.forms
             for (int i = 1; i <= 10; i++)
                 flowRules.Controls.Add(new RuleComponent(_testRule));
             #endregion
-            */
 
         }
     }

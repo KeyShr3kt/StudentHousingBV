@@ -15,6 +15,21 @@ namespace StudentHousingBV.repositories
 {
     public class RoomRepository
     {
+        #region Helper Functions
+        public static T ConvertFromDBVal<T>(object obj) // https://stackoverflow.com/questions/870697/unable-to-cast-object-of-type-system-dbnull-to-type-system-string
+        {
+            if (obj == null || obj == DBNull.Value)
+            {
+                return default(T); // returns the default value for the type
+            }
+            else
+            {
+                return (T)obj;
+            }
+        }
+
+        #endregion
+
         private List<Room> ToListOfRooms(SqlDataReader reader)
         {
             List<Room> result = new();
@@ -25,7 +40,7 @@ namespace StudentHousingBV.repositories
                 {
                     if (inc == 2)
                     {
-                        if (int.TryParse((string?)reader.GetValue(inc), out int userId))
+                        if (int.TryParse(ConvertFromDBVal<string>(reader.GetValue(inc)), out int userId))
                         {
                             room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, userId, null);
                         }
@@ -34,7 +49,10 @@ namespace StudentHousingBV.repositories
                             room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, null, null);
                         }
                     }
-                    room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, reader.GetValue(inc), null);
+                    else
+                    {
+                        room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, reader.GetValue(inc), null);
+                    }
                 }
                 result.Add(room);
             }
@@ -187,7 +205,7 @@ namespace StudentHousingBV.repositories
                 "WHERE CONVERT(varchar, [ROOM].Type) = @type AND [ROOM].UserId IS NULL AND [BUILDING].Id = @id;";
             Dictionary<string, string> parameters = new()
             {
-                { "@type", "'Bedroom'" },
+                { "@type", "Bedroom" },
                 { "@id", id.ToString() }
             };
             return ExecuteReader(sql, parameters);
