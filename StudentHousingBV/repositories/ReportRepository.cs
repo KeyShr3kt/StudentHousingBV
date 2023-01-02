@@ -129,7 +129,7 @@ namespace StudentHousingBV.repositories
         public int Insert(string type, int userId, string name, int buildingId)
         {
             string sql = "INSERT INTO [ROOM] (Type, UserId, Name, BuildingId)" +
-                "VALUES (@type, @userId, @name, @buildingId)";
+                " VALUES (@type, @userId, @name, @buildingId)";
             Dictionary<string, string?> parameters = new()
             {
                 { "@type", type },
@@ -143,8 +143,8 @@ namespace StudentHousingBV.repositories
         public int Update(Report report)
         {
             string sql = "UPDATE [REPORT]" +
-                            "SET Title = @title, Description = @description, CreatorId = @creatorId, BuildingId = @buildingId, TargetedToEventId = @targetedToEventId" +
-                            "WHERE Id = @id;";
+                            " SET Title = @title, Description = @description, CreatorId = @creatorId, BuildingId = @buildingId, TargetedToEventId = @targetedToEventId" +
+                            " WHERE Id = @id;";
             Dictionary<string, string> parameters = new()
             {
                 { "@id", report.Id.ToString() },
@@ -160,7 +160,7 @@ namespace StudentHousingBV.repositories
         public int Delete(Report report)
         {
             string sql = "DELETE FROM [REPORT]" +
-                            "WHERE Id = @id;";
+                            " WHERE Id = @id;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@id", report.Id.ToString() }
@@ -176,8 +176,8 @@ namespace StudentHousingBV.repositories
         public List<Report> GetAllInBuildingId(int id)
         {
             string sql = "SELECT [REPORT].*" +
-                "FROM [REPORT] INNER JOIN [BUILDING] ON [REPORT].BuildingId = [BUILDING].Id" +
-                "WHERE [REPORT].BuildingId = @id";
+                " FROM [REPORT] INNER JOIN [BUILDING] ON [REPORT].BuildingId = [BUILDING].Id" +
+                " WHERE [REPORT].BuildingId = @id";
             Dictionary<string, string?> parameters = new()
             {
                 { "@id", id.ToString() }
@@ -188,8 +188,8 @@ namespace StudentHousingBV.repositories
         public List<Report> GetAllInBuildingIdForReview(int id)
         {
             string sql = "SELECT [REPORT].*" +
-                "FROM [REPORT] INNER JOIN [BUILDING] ON [REPORT].BuildingId = [BUILDING].Id" +
-                "WHERE [REPORT].BuildingId = @id AND [REPORT].IsReviewed = 0;";
+                " FROM [REPORT] INNER JOIN [BUILDING] ON [REPORT].BuildingId = [BUILDING].Id" +
+                " WHERE [REPORT].BuildingId = @id AND [REPORT].IsReviewed = 0;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@id", id.ToString() }

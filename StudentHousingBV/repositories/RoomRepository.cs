@@ -148,7 +148,7 @@ namespace StudentHousingBV.repositories
         public int Insert(string type, int userId, string name, int buildingId)
         {
             string sql = "INSERT INTO [ROOM] (Type, UserId, Name, BuildingId)" +
-                "VALUES (@type, @userId, @name, @buildingId)";
+                " VALUES (@type, @userId, @name, @buildingId)";
             Dictionary<string, string?> parameters = new()
             {
                 { "@type", type },
@@ -162,8 +162,8 @@ namespace StudentHousingBV.repositories
         public int Update(Room room)
         {
             string sql = "UPDATE [ROOM]" +
-                            "SET Type = @type, UserId = @userId, Name = @name, BuildingId = @buildingId" +
-                            "WHERE Id = @id;";
+                            " SET Type = @type, UserId = @userId, Name = @name, BuildingId = @buildingId" +
+                            " WHERE Id = @id;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@id", room.Id.ToString() },
@@ -178,7 +178,7 @@ namespace StudentHousingBV.repositories
         public int Delete(Room room)
         {
             string sql = "DELETE FROM [ROOM]" +
-                            "WHERE Id = @id;";
+                            " WHERE Id = @id;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@id", room.Id.ToString() }
@@ -189,8 +189,8 @@ namespace StudentHousingBV.repositories
         public Room GetForUser(User user)
         {
             string sql = "SELECT [ROOM].* " +
-                "FROM [ROOM] INNER JOIN [USER] ON [ROOM].UserId = [USER].Id " +
-                "WHERE [USER].Id = @userId;";
+                " FROM [ROOM] INNER JOIN [USER] ON [ROOM].UserId = [USER].Id " +
+                " WHERE [USER].Id = @userId;";
             Dictionary<string, string> parameters = new()
             {
                 { "@userId", user.Id.ToString() }
@@ -200,9 +200,9 @@ namespace StudentHousingBV.repositories
 
         public List<Room> GetAvailableBedroomsForBuildingId(int id) 
         {
-            string sql = "SELECT [ROOM].* " +
-                "FROM [ROOM] INNER JOIN [BUILDING] ON [ROOM].BuildingId = [BUILDING].Id " +
-                "WHERE CONVERT(varchar, [ROOM].Type) = @type AND [ROOM].UserId IS NULL AND [BUILDING].Id = @id;";
+            string sql = "SELECT [ROOM].*" +
+                " FROM [ROOM] INNER JOIN [BUILDING] ON [ROOM].BuildingId = [BUILDING].Id" +
+                " WHERE CONVERT(varchar, [ROOM].Type) = @type AND [ROOM].UserId IS NULL AND [BUILDING].Id = @id;";
             Dictionary<string, string> parameters = new()
             {
                 { "@type", "Bedroom" },
@@ -214,8 +214,8 @@ namespace StudentHousingBV.repositories
         public int SetRoomToUserId(int roomId, int userId) 
         {
             string sql = "UPDATE [ROOM]" +
-                            "SET UserId = @userId" +
-                            "WHERE Id = @roomId;";
+                            " SET UserId = @userId" +
+                            " WHERE Id = @roomId;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@userId", userId.ToString() },

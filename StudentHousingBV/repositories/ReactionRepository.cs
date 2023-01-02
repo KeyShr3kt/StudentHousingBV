@@ -166,7 +166,7 @@ namespace StudentHousingBV.repositories
             affectedRows => affectedRows == 1);
 
         public Reaction? GetUserReactionOnAgreement(int userId, int agreementId) => sqlOneHelper<Reaction>("SELECT TOP 1 * FROM [REACTION]" +
-            "WHERE [CreatorId] = @creatorId AND [Agreementid] = @agreementId",
+            " WHERE [CreatorId] = @creatorId AND [Agreementid] = @agreementId",
             new { creatorId = userId, agreementId },
             () => new());
 
@@ -178,13 +178,13 @@ namespace StudentHousingBV.repositories
             try
             {
                 int id = sqlOneHelper<int>("INSERT INTO [REACTION]" +
-                    " OUTPUT Inserted.[Id]" +
                     " ([CreatorId], [AgreementId], [IsPositive])" +
+                    " OUTPUT Inserted.[Id]" +
                     " SELECT" +
                     " @creatorId, @agreementId, @isPositive" +
-                    "WHERE NOT EXISTS" +
+                    " WHERE NOT EXISTS" +
                     " (SELECT * FROM [REACTION]" +
-                    " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId",
+                    " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId)",
                     new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0 },
                     () => default);
                 reaction.Id = id;
