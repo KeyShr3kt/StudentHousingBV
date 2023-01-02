@@ -38,10 +38,10 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnUpvote = new System.Windows.Forms.Button();
             this.btnDownvote = new System.Windows.Forms.Button();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowReactionControls = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
+            this.flowReactionControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -152,21 +152,21 @@
             this.btnDownvote.UseVisualStyleBackColor = true;
             this.btnDownvote.Click += new System.EventHandler(this.btnDownvote_Click);
             // 
-            // flowLayoutPanel3
+            // flowReactionControls
             // 
-            this.flowLayoutPanel3.Controls.Add(this.btnUpvote);
-            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel3.Controls.Add(this.btnDownvote);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(715, 30);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(182, 46);
-            this.flowLayoutPanel3.TabIndex = 11;
+            this.flowReactionControls.Controls.Add(this.btnUpvote);
+            this.flowReactionControls.Controls.Add(this.flowLayoutPanel2);
+            this.flowReactionControls.Controls.Add(this.btnDownvote);
+            this.flowReactionControls.Location = new System.Drawing.Point(715, 30);
+            this.flowReactionControls.Name = "flowReactionControls";
+            this.flowReactionControls.Size = new System.Drawing.Size(182, 46);
+            this.flowReactionControls.TabIndex = 11;
             // 
             // AgreementCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.flowLayoutPanel3);
+            this.Controls.Add(this.flowReactionControls);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lblTitle);
             this.Name = "AgreementCard";
@@ -175,8 +175,8 @@
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
+            this.flowReactionControls.ResumeLayout(false);
+            this.flowReactionControls.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,6 +194,6 @@
         private FlowLayoutPanel flowLayoutPanel2;
         private Button btnUpvote;
         private Button btnDownvote;
-        private FlowLayoutPanel flowLayoutPanel3;
+        private FlowLayoutPanel flowReactionControls;
     }
 }

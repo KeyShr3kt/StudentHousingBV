@@ -47,6 +47,7 @@ namespace StudentHousingBV.forms.components
             };
             btnUpvote.Enabled = userReaction?.IsPositive != false;
             btnDownvote.Enabled = userReaction?.IsPositive != true;
+            flowReactionControls.Visible = !_agreement.IsAccepted;
         }
 
         private void linkMore_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
