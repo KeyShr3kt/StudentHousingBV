@@ -48,25 +48,43 @@ namespace StudentHousingBV.repositories
             List<T> result = new();
             while (reader.Read())
             {
-                T t = defaultCtor();
-                for (int i = 0; i < reader.FieldCount; i++)
+                T? t = defaultCtor();
+                if (t.GetType().IsValueType)
                 {
-                    var prop = t.GetType().GetProperty(reader.GetName(i));
-                    if (prop == null)
+                    if (reader.FieldCount > 1)
                     {
-                        throw new Exception($"field {reader.GetName(i)} does not exist in {t.GetType().Name}");
+                        throw new Exception("cannot assign result from query with more than one column to a value type");
                     }
-                    if (reader.IsDBNull(i))
+                    if (reader.IsDBNull(0))
                     {
-                        prop!.SetValue(t, null);
-                    }
-                    else if (prop?.PropertyType.Name == "Boolean")
-                    {
-                        prop!.SetValue(t, (short)reader.GetValue(i) != 0);
+                        t = default;
                     }
                     else
                     {
-                        prop!.SetValue(t, reader.GetValue(i));
+                        t = (T)reader.GetValue(0);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        var prop = t.GetType().GetProperty(reader.GetName(i));
+                        if (prop == null)
+                        {
+                            throw new Exception($"field {reader.GetName(i)} does not exist in {t.GetType().Name}");
+                        }
+                        if (reader.IsDBNull(i))
+                        {
+                            prop!.SetValue(t, null);
+                        }
+                        else if (prop?.PropertyType.Name == "Boolean")
+                        {
+                            prop!.SetValue(t, (short)reader.GetValue(i) != 0);
+                        }
+                        else
+                        {
+                            prop!.SetValue(t, reader.GetValue(i));
+                        }
                     }
                 }
                 result.Add(t);
