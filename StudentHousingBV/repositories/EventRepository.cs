@@ -88,7 +88,7 @@ namespace StudentHousingBV.repositories
         private T? sqlOneHelper<T>(string sql, object parameters, Func<T> defaultCtor)
             where T: notnull
         {
-            return sqlQueryHelper(sql, parameters, defaultCtor).First();
+            return sqlQueryHelper(sql, parameters, defaultCtor).FirstOrDefault();
         }
 
 

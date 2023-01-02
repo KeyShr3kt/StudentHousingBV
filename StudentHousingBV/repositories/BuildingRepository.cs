@@ -163,7 +163,7 @@ namespace StudentHousingBV.repositories
             {
                 { "@userId", user.Id.ToString() }
             };
-            return ExecuteReader(sql, parameters).First();
+            return ExecuteReader(sql, parameters).FirstOrDefault();
         }
     }
 }

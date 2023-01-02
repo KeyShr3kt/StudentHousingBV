@@ -87,7 +87,7 @@ namespace StudentHousingBV.repositories
         private T? sqlOneHelper<T>(string sql, object parameters, Func<T> defaultCtor)
             where T : notnull
         {
-            return sqlQueryHelper(sql, parameters, defaultCtor).First();
+            return sqlQueryHelper(sql, parameters, defaultCtor).FirstOrDefault();
         }
 
         [Serializable]
@@ -193,6 +193,22 @@ namespace StudentHousingBV.repositories
             catch
             {
                 return false;
+            }
+        }
+
+        public int? CountReactionsForAgreement(int agreementId, bool isPositive)
+        {
+            try
+            {
+                return sqlOneHelper<int>("SELECT COUNT(*) FROM [REACTION]" +
+                    " WHERE [AgreementId] = @agreementId AND [IsPositive] = @isPositive" +
+                    " GROUP BY [AgreementId]",
+                    new { agreementId, isPositive = isPositive ? 1 : 0 },
+                    () => default);
+            }
+            catch
+            {
+                return null;
             }
         }
     }
