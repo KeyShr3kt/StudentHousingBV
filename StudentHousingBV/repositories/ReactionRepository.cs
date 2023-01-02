@@ -161,12 +161,12 @@ namespace StudentHousingBV.repositories
 
         public bool ChangeUserReactionOnAgreement(int userId, int agreementId, bool isPositive) => sqlNonQueryHelper("UPDATE [REACTION]" +
             " SET [IsPositive] = @isPositive" +
-            " WHERE [CreatorId] = @creatorId, [AgreementId] = @agreementId",
+            " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId",
             new { creatorId = userId, agreementId, isPositive = isPositive ? 1 : 0 },
             affectedRows => affectedRows == 1);
 
         public Reaction? GetUserReactionOnAgreement(int userId, int agreementId) => sqlOneHelper<Reaction>("SELECT TOP 1 * FROM [REACTION]" +
-            "WHERE [CreatorId] = @creatorId, [Agreementid] = @agreementId",
+            "WHERE [CreatorId] = @creatorId AND [Agreementid] = @agreementId",
             new { creatorId = userId, agreementId },
             () => new());
 
