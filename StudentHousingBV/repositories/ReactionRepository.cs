@@ -140,47 +140,28 @@ namespace StudentHousingBV.repositories
             }
         }
 
-        public bool Insert(Reaction reaction)
-        {
-            try
-            {
-                int id = sqlOneHelper<int>("INSERT INTO [REACTION]" +
-                    " OUTPUT Inserted.[Id]" +
-                    " ([CreatorId], [AgreementId], [IsPositive])" +
-                    " VALUES" +
-                    " (@creatorId, @agreementId, @isPositive);",
-                    new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0 },
-                    () => default);
-                reaction.Id = id;
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public bool Update(Reaction reaction) => sqlNonQueryHelper("UPDATE [REACTION]" +
             " SET [CreatorId] = @creatorId, [AgreementId] = @agreementId, [IsPositive] = @isPositive" +
-            " WHERE [Id] = @id",
+            " WHERE [Id] = @id;" +
+            "UPDATE [USER]" +
+            " SET [PositiveVotes] += 1" +
+            " WHERE [Id] = @creatorId AND @isPositive = 1;" +
+            "UPDATE [USER]" +
+            " SET [NegativeVotes] += 1" +
+            " WHERE [Id] = @creatorId AND @isPositive = 0;",
             new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0, id = reaction.Id },
             affectedRows => affectedRows == 1);
 
         public bool Delete(Reaction reaction) => sqlNonQueryHelper("DELETE FROM [REACTION]" +
-            " WHERE [Id] = @id",
-            new { id = reaction.Id },
-            affectedRows => affectedRows == 1);
-
-        public bool DeleteUserReactionOnAgreement(int userId, int agreementId) => sqlNonQueryHelper("DELETE FROM [REACTION]" +
-            " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId",
-            new { creatorId = userId, agreementId },
-            affectedRows => affectedRows == 1);
-
-        public bool ChangeUserReactionOnAgreement(int userId, int agreementId, bool isPositive) => sqlNonQueryHelper("UPDATE [REACTION]" +
-            " SET [IsPositive] = @isPositive" +
-            " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId",
-            new { creatorId = userId, agreementId, isPositive = isPositive ? 1 : 0 },
-            affectedRows => affectedRows == 1);
+            " WHERE [Id] = @id;" +
+            "UPDATE [USER]" +
+            " SET [PositiveVotes] -= 1" +
+            " WHERE [Id] = @creatorId AND @isPositive = 1;" +
+            "UPDATE [USER]" +
+            " SET [NegativeVotes] -= 1" +
+            " WHERE [Id] = @creatorId AND @isPositive = 0;",
+            new { id = reaction.Id, creatorId = reaction.CreatorId, isPositive = reaction.IsPositive ? 1 : 0 },
+            affectedRows => affectedRows == 2);
 
         public Reaction? GetUserReactionOnAgreement(int userId, int agreementId) => sqlOneHelper<Reaction>("SELECT TOP 1 * FROM [REACTION]" +
             " WHERE [CreatorId] = @creatorId AND [Agreementid] = @agreementId",
@@ -201,7 +182,13 @@ namespace StudentHousingBV.repositories
                     " @creatorId, @agreementId, @isPositive" +
                     " WHERE NOT EXISTS" +
                     " (SELECT * FROM [REACTION]" +
-                    " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId)",
+                    " WHERE [CreatorId] = @creatorId AND [AgreementId] = @agreementId);" +
+                    "UPDATE [USER]" +
+                    " SET [PositiveVotes] += 1" +
+                    " WHERE [Id] = @creatorId AND @isPositive = 1 AND SCOPE_IDENTITY() IS NOT NULL;" +
+                    "UPDATE [USER]" +
+                    " SET [NegativeVotes] += 1" +
+                    " WHERE [Id] = @creatorId AND @isPositive = 0 AND SCOPE_IDENTITY() IS NOT NULL;",
                     new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0 },
                     () => default);
                 reaction.Id = id;
