@@ -52,7 +52,8 @@ namespace StudentHousingBV.forms.components
 
         private void linkMore_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // TODO: open an AgreementPanel or something
+            AgreementDetailsForm f = new(_eventManager, _agreement);
+            f.ShowDialog();
         }
 
         private void btnUpvote_Click(object sender, EventArgs e)

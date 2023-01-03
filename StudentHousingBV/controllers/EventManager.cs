@@ -215,5 +215,10 @@ namespace StudentHousingBV.controllers
         {
             return unitOfWork.Reactions.GetUserReactionOnAgreement(user.Id, agreement.Id);
         }
+
+        public User GetAgreementCreator(Agreement agreement)
+        {
+            return unitOfWork.Users.GetCreatorOfEventId(agreement.Id);
+        }
     }
 }
