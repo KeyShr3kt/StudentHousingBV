@@ -7,24 +7,18 @@ namespace StudentHousingBV.forms
 {
     public partial class StudentPanel : Form
     {
-        EventManager _eventManager;
-        User _curUser;
-        BuildingManager _buildingManager;
+        private EventManager _eventManager;
+        private User _curUser;
+        private BuildingManager _buildingManager;
+        private Building _curUserBuilding;
         public StudentPanel(EventManager eventManager, BuildingManager buildingManager, User user)
         {
             _curUser = user;
             _eventManager = eventManager;
             _buildingManager = buildingManager;
-            Building curUserBuilding = _buildingManager.GetForUser(user);
+            _curUserBuilding = _buildingManager.GetForUser(user);
             InitializeComponent();
-            foreach (Agreement agreement in _eventManager.GetPendingAgreements(curUserBuilding))
-            {
-                flowOpenAgreements.Controls.Add(new AgreementCard(agreement, _eventManager, _curUser));
-            }
-            foreach (Agreement agreement in _eventManager.GetAcceptedAgreements(curUserBuilding))
-            {
-                flowClosedAgreements.Controls.Add(new AgreementCard(agreement, _eventManager, _curUser));
-            }
+            updateAgreements();
             #region Tests
             StudentHousingBV.models.Task _testTask1, _testTask2;
             StudentHousingBV.models.Rule _testRule;
@@ -45,6 +39,29 @@ namespace StudentHousingBV.forms
                 flowRules.Controls.Add(new RuleComponent(_testRule));
             #endregion
 
+        }
+
+        private void updateAgreements()
+        {
+            flowOpenAgreements.Controls.Clear();
+            flowClosedAgreements.Controls.Clear();
+            foreach (Agreement agreement in _eventManager.GetPendingAgreements(_curUserBuilding))
+            {
+                flowOpenAgreements.Controls.Add(new AgreementCard(agreement, _eventManager, _curUser));
+            }
+            foreach (Agreement agreement in _eventManager.GetAcceptedAgreements(_curUserBuilding))
+            {
+                flowClosedAgreements.Controls.Add(new AgreementCard(agreement, _eventManager, _curUser));
+            }
+        }
+
+        private void btnCreateAgreement_Click(object sender, EventArgs e)
+        {
+            CreateAgreementForm f = new(_eventManager, _curUserBuilding, _curUser);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                updateAgreements();
+            }
         }
     }
 }

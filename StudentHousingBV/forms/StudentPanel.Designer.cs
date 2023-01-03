@@ -33,14 +33,15 @@
             this.pageAgreements = new System.Windows.Forms.TabPage();
             this.navAgreements = new System.Windows.Forms.TabControl();
             this.pageClosedAgreements = new System.Windows.Forms.TabPage();
+            this.flowClosedAgreements = new System.Windows.Forms.FlowLayoutPanel();
             this.pageOpenAgreements = new System.Windows.Forms.TabPage();
+            this.flowOpenAgreements = new System.Windows.Forms.FlowLayoutPanel();
             this.pageTasks = new System.Windows.Forms.TabPage();
             this.fpPageTasks = new System.Windows.Forms.FlowLayoutPanel();
             this.pageRules = new System.Windows.Forms.TabPage();
             this.flowRules = new System.Windows.Forms.FlowLayoutPanel();
             this.pageAccount = new System.Windows.Forms.TabPage();
-            this.flowOpenAgreements = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowClosedAgreements = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCreateAgreement = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundStudentPanel)).BeginInit();
             this.navPages.SuspendLayout();
             this.pageAgreements.SuspendLayout();
@@ -78,6 +79,7 @@
             // pageAgreements
             // 
             this.pageAgreements.BackColor = System.Drawing.Color.RosyBrown;
+            this.pageAgreements.Controls.Add(this.btnCreateAgreement);
             this.pageAgreements.Controls.Add(this.navAgreements);
             this.pageAgreements.Location = new System.Drawing.Point(4, 33);
             this.pageAgreements.Name = "pageAgreements";
@@ -95,7 +97,7 @@
             this.navAgreements.Name = "navAgreements";
             this.navAgreements.Padding = new System.Drawing.Point(185, 3);
             this.navAgreements.SelectedIndex = 0;
-            this.navAgreements.Size = new System.Drawing.Size(949, 353);
+            this.navAgreements.Size = new System.Drawing.Size(949, 324);
             this.navAgreements.TabIndex = 0;
             // 
             // pageClosedAgreements
@@ -105,9 +107,19 @@
             this.pageClosedAgreements.Location = new System.Drawing.Point(4, 27);
             this.pageClosedAgreements.Name = "pageClosedAgreements";
             this.pageClosedAgreements.Padding = new System.Windows.Forms.Padding(3);
-            this.pageClosedAgreements.Size = new System.Drawing.Size(941, 322);
+            this.pageClosedAgreements.Size = new System.Drawing.Size(941, 293);
             this.pageClosedAgreements.TabIndex = 0;
             this.pageClosedAgreements.Text = "Closed Agreements";
+            // 
+            // flowClosedAgreements
+            // 
+            this.flowClosedAgreements.AutoScroll = true;
+            this.flowClosedAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowClosedAgreements.Location = new System.Drawing.Point(5, 5);
+            this.flowClosedAgreements.Name = "flowClosedAgreements";
+            this.flowClosedAgreements.Size = new System.Drawing.Size(931, 282);
+            this.flowClosedAgreements.TabIndex = 1;
+            this.flowClosedAgreements.WrapContents = false;
             // 
             // pageOpenAgreements
             // 
@@ -116,9 +128,19 @@
             this.pageOpenAgreements.Location = new System.Drawing.Point(4, 27);
             this.pageOpenAgreements.Name = "pageOpenAgreements";
             this.pageOpenAgreements.Padding = new System.Windows.Forms.Padding(3);
-            this.pageOpenAgreements.Size = new System.Drawing.Size(941, 322);
+            this.pageOpenAgreements.Size = new System.Drawing.Size(941, 293);
             this.pageOpenAgreements.TabIndex = 1;
             this.pageOpenAgreements.Text = "Open Agreements";
+            // 
+            // flowOpenAgreements
+            // 
+            this.flowOpenAgreements.AutoScroll = true;
+            this.flowOpenAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowOpenAgreements.Location = new System.Drawing.Point(5, 5);
+            this.flowOpenAgreements.Name = "flowOpenAgreements";
+            this.flowOpenAgreements.Size = new System.Drawing.Size(931, 282);
+            this.flowOpenAgreements.TabIndex = 0;
+            this.flowOpenAgreements.WrapContents = false;
             // 
             // pageTasks
             // 
@@ -174,25 +196,15 @@
             this.pageAccount.TabIndex = 3;
             this.pageAccount.Text = "ACCOUNT";
             // 
-            // flowOpenAgreements
+            // btnCreateAgreement
             // 
-            this.flowOpenAgreements.AutoScroll = true;
-            this.flowOpenAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowOpenAgreements.Location = new System.Drawing.Point(5, 5);
-            this.flowOpenAgreements.Name = "flowOpenAgreements";
-            this.flowOpenAgreements.Size = new System.Drawing.Size(931, 311);
-            this.flowOpenAgreements.TabIndex = 0;
-            this.flowOpenAgreements.WrapContents = false;
-            // 
-            // flowClosedAgreements
-            // 
-            this.flowClosedAgreements.AutoScroll = true;
-            this.flowClosedAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowClosedAgreements.Location = new System.Drawing.Point(5, 5);
-            this.flowClosedAgreements.Name = "flowClosedAgreements";
-            this.flowClosedAgreements.Size = new System.Drawing.Size(931, 311);
-            this.flowClosedAgreements.TabIndex = 1;
-            this.flowClosedAgreements.WrapContents = false;
+            this.btnCreateAgreement.Location = new System.Drawing.Point(10, 336);
+            this.btnCreateAgreement.Name = "btnCreateAgreement";
+            this.btnCreateAgreement.Size = new System.Drawing.Size(941, 23);
+            this.btnCreateAgreement.TabIndex = 1;
+            this.btnCreateAgreement.Text = "Create Agreement";
+            this.btnCreateAgreement.UseVisualStyleBackColor = true;
+            this.btnCreateAgreement.Click += new System.EventHandler(this.btnCreateAgreement_Click);
             // 
             // StudentPanel
             // 
@@ -231,5 +243,6 @@
         private FlowLayoutPanel flowRules;
         private FlowLayoutPanel flowClosedAgreements;
         private FlowLayoutPanel flowOpenAgreements;
+        private Button btnCreateAgreement;
     }
 }
