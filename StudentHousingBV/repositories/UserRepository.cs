@@ -182,7 +182,7 @@ namespace StudentHousingBV.repositories
         public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN) 
         {
             string sql = "INSERT INTO [USER] (FirstName, LastName, EmailAddress, Password, PhoneNumber, PositiveVotes, NegativeVotes, IsAdmin, IBAN)" +
-                "VALUES (@firstName, @lastName, @email, @password , @phoneNumber, 0, 0, @isAdmin, @IBAN)";
+                " VALUES (@firstName, @lastName, @email, @password , @phoneNumber, 0, 0, @isAdmin, @IBAN)";
 
             string password = DateTime.Now.Ticks.ToString("x");
             string hashedPassword = PasswordHasher.Hash(password);
@@ -230,7 +230,7 @@ namespace StudentHousingBV.repositories
 
         public List<User> GetAdminsInBuildingId(int buildingId)
         {
-            string sql = "select u.*" +
+            string sql = "select u.* " +
                             "from [USER] as u " +
                             "inner join [ROOM] as r " +
                             "on r.UserId = u.Id " +

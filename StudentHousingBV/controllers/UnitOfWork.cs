@@ -4,7 +4,7 @@ namespace StudentHousingBV.controllers
 {
     public class UnitOfWork
     {
-        public static string CONNECTION_STRING = "server=localmac;database=StudentHousingBV;uid=SA;password=nepokornite9;";
+        public static string CONNECTION_STRING = "Server=mssqlstud.fhict.local;Database=dbi510175_shbv;User Id=dbi510175_shbv;Password=StudentHousingBV;";
         private UserRepository _userRepository = new();
         public UserRepository Users { get => _userRepository; }
 

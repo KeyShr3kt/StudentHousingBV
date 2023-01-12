@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StudentHousingBV.models
+﻿namespace StudentHousingBV.models
 {
     public class Reaction
     {
@@ -13,7 +7,7 @@ namespace StudentHousingBV.models
         private int _agreementId;
         private bool _isPositive;
 
-        public Reaction ()
+        public Reaction()
         {
 
         }
@@ -25,6 +19,9 @@ namespace StudentHousingBV.models
             _agreementId = agreementId;
             _isPositive = isPossitive;
         }
+
+        public Reaction(int creatorId, int agreementId, bool isPositive)
+            : this(default, creatorId, agreementId, isPositive) { }
 
         public int Id { get => _id; set => _id = value; }
         public int CreatorId { get => _creatorId; set => _creatorId = value; }

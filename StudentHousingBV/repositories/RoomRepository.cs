@@ -15,6 +15,21 @@ namespace StudentHousingBV.repositories
 {
     public class RoomRepository
     {
+        #region Helper Functions
+        public static T ConvertFromDBVal<T>(object obj) // https://stackoverflow.com/questions/870697/unable-to-cast-object-of-type-system-dbnull-to-type-system-string
+        {
+            if (obj == null || obj == DBNull.Value)
+            {
+                return default(T); // returns the default value for the type
+            }
+            else
+            {
+                return (T)obj;
+            }
+        }
+
+        #endregion
+
         private List<Room> ToListOfRooms(SqlDataReader reader)
         {
             List<Room> result = new();
@@ -25,7 +40,7 @@ namespace StudentHousingBV.repositories
                 {
                     if (inc == 2)
                     {
-                        if (int.TryParse((string?)reader.GetValue(inc), out int userId))
+                        if (int.TryParse(ConvertFromDBVal<string>(reader.GetValue(inc)), out int userId))
                         {
                             room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, userId, null);
                         }
@@ -34,14 +49,17 @@ namespace StudentHousingBV.repositories
                             room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, null, null);
                         }
                     }
-                    room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, reader.GetValue(inc), null);
+                    else
+                    {
+                        room.GetType().GetProperty(reader.GetName(inc)).SetValue(room, reader.GetValue(inc), null);
+                    }
                 }
                 result.Add(room);
             }
             return result;
         }
 
-        private List<Room> ExecuteReader(string sql, Dictionary<string, string> parameters)
+        private List<Room> ExecuteReader(string sql, Dictionary<string, string?> parameters)
         {
             List<Room> rooms = new();
             try
@@ -49,32 +67,10 @@ namespace StudentHousingBV.repositories
                 using (SqlConnection conn = new SqlConnection(UnitOfWork.CONNECTION_STRING))
                 {
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    foreach (KeyValuePair<string, string> entry in parameters)
+                    foreach (KeyValuePair<string, string?> entry in parameters)
                     {
                         cmd.Parameters.AddWithValue(entry.Key, entry.Value);
                     }
-                    conn.Open();
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        rooms.AddRange(ToListOfRooms(reader));
-                    }
-                }
-            }
-            catch (InvalidOperationException ex)
-            {
-                MessageBox.Show($"The connection is no longer available!\n + {ex.Message}");
-            }
-            return rooms;
-        }
-
-        private List<Room> ExecuteReader(string sql)
-        {
-            List<Room> rooms = new();
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(UnitOfWork.CONNECTION_STRING))
-                {
-                    SqlCommand cmd = new SqlCommand(sql, conn);
                     conn.Open();
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -152,7 +148,7 @@ namespace StudentHousingBV.repositories
         public int Insert(string type, int userId, string name, int buildingId)
         {
             string sql = "INSERT INTO [ROOM] (Type, UserId, Name, BuildingId)" +
-                "VALUES (@type, @userId, @name, @buildingId)";
+                " VALUES (@type, @userId, @name, @buildingId)";
             Dictionary<string, string?> parameters = new()
             {
                 { "@type", type },
@@ -166,8 +162,8 @@ namespace StudentHousingBV.repositories
         public int Update(Room room)
         {
             string sql = "UPDATE [ROOM]" +
-                            "SET Type = @type, UserId = @userId, Name = @name, BuildingId = @buildingId" +
-                            "WHERE Id = @id;";
+                            " SET Type = @type, UserId = @userId, Name = @name, BuildingId = @buildingId" +
+                            " WHERE Id = @id;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@id", room.Id.ToString() },
@@ -182,7 +178,7 @@ namespace StudentHousingBV.repositories
         public int Delete(Room room)
         {
             string sql = "DELETE FROM [ROOM]" +
-                            "WHERE Id = @id;";
+                            " WHERE Id = @id;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@id", room.Id.ToString() }
@@ -192,9 +188,9 @@ namespace StudentHousingBV.repositories
 
         public Room GetForUser(User user)
         {
-            string sql = "SELECT [ROOM].*" +
-                "FROM [ROOM] INNER JOIN [USER] ON [ROOM].UserId = [USER].Id" +
-                "WHERE [USER].Id = @userId";
+            string sql = "SELECT [ROOM].* " +
+                " FROM [ROOM] INNER JOIN [USER] ON [ROOM].UserId = [USER].Id " +
+                " WHERE [USER].Id = @userId;";
             Dictionary<string, string> parameters = new()
             {
                 { "@userId", user.Id.ToString() }
@@ -205,16 +201,21 @@ namespace StudentHousingBV.repositories
         public List<Room> GetAvailableBedroomsForBuildingId(int id) 
         {
             string sql = "SELECT [ROOM].*" +
-                "FROM [ROOM] INNER JOIN [BUILDING] ON [ROOM].BuildingId = [BUILDING].Id" +
-                "WHERE CONVERT(varchar, [ROOM].Type) = 'Bedroom' AND [ROOM].UserId IS NULL;";
-            return ExecuteReader(sql);
+                " FROM [ROOM] INNER JOIN [BUILDING] ON [ROOM].BuildingId = [BUILDING].Id" +
+                " WHERE CONVERT(varchar, [ROOM].Type) = @type AND [ROOM].UserId IS NULL AND [BUILDING].Id = @id;";
+            Dictionary<string, string> parameters = new()
+            {
+                { "@type", "Bedroom" },
+                { "@id", id.ToString() }
+            };
+            return ExecuteReader(sql, parameters);
         }
 
         public int SetRoomToUserId(int roomId, int userId) 
         {
             string sql = "UPDATE [ROOM]" +
-                            "SET UserId = @userId" +
-                            "WHERE Id = @roomId;";
+                            " SET UserId = @userId" +
+                            " WHERE Id = @roomId;";
             Dictionary<string, string?> parameters = new()
             {
                 { "@userId", userId.ToString() },

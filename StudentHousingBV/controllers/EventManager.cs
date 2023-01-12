@@ -133,5 +133,92 @@ namespace StudentHousingBV.controllers
         {
             unitOfWork.Reports.MarkAsReviewed(id);
         }
+
+        public bool UpvoteAgreement(Agreement agreement)
+        {
+            Reaction r = new(CurrentUserId, agreement.Id, true);
+            return unitOfWork.Reactions.InsertUnique(r);
+        }
+
+        public bool DownvoteAgreement(Agreement agreement)
+        {
+            Reaction r = new(CurrentUserId, agreement.Id, false);
+            return unitOfWork.Reactions.InsertUnique(r);
+        }
+
+        public bool DeleteAgreementReaction(Agreement agreement, Reaction reaction)
+        {
+            // we don't actually need the agreement parameter
+            // I just don't wanna create a ReactionManager class for just one method
+            return unitOfWork.Reactions.Delete(reaction);
+        }
+
+        public bool CreateAgreement(Agreement agreement)
+        {
+            try
+            {
+                unitOfWork.Events.CreateAgreement(
+                    agreement.Title,
+                    agreement.Description,
+                    agreement.CreatorId,
+                    agreement.BuildingId,
+                    agreement.StartDateTime,
+                    agreement.EndDateTime
+                );
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteAgreement(Agreement agreement)
+        {
+            try
+            {
+                unitOfWork.Events.Delete(agreement.Id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public List<Agreement> GetAllAgreements()
+        {
+            return unitOfWork.Events.GetAllAgreements();
+        }
+
+        public List<Agreement> GetAcceptedAgreements(Building building)
+        {
+            return unitOfWork.Events.GetAcceptedAgreements(building.Id);
+        }
+
+        public List<Agreement> GetPendingAgreements(Building building)
+        {
+            return unitOfWork.Events.GetPendingAgreements(building.Id);
+        }
+
+        public int GetAgreementUpvotes(Agreement agreement)
+        {
+            return unitOfWork.Reactions.CountReactionsForAgreement(agreement.Id, true)!.Value;
+        }
+
+        public int GetAgreementDownvotes(Agreement agreement)
+        {
+            return unitOfWork.Reactions.CountReactionsForAgreement(agreement.Id, false)!.Value;
+        }
+
+        public Reaction? GetUserReactionOnAgreement(Agreement agreement, User user)
+        {
+            return unitOfWork.Reactions.GetUserReactionOnAgreement(user.Id, agreement.Id);
+        }
+
+        public User GetAgreementCreator(Agreement agreement)
+        {
+            return unitOfWork.Users.GetCreatorOfEventId(agreement.Id);
+        }
     }
 }

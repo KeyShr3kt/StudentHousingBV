@@ -31,17 +31,12 @@
             this.backgroundStudentPanel = new System.Windows.Forms.PictureBox();
             this.navPages = new System.Windows.Forms.TabControl();
             this.pageAgreements = new System.Windows.Forms.TabPage();
+            this.btnCreateAgreement = new System.Windows.Forms.Button();
             this.navAgreements = new System.Windows.Forms.TabControl();
-            this.pageClosedAgreements = new System.Windows.Forms.TabPage();
-            this.btnReportClosedAgreement = new StudentHousingBV.forms.RoundButton();
-            this.selectClosedAgreement = new System.Windows.Forms.ComboBox();
-            this.btnClosedAgreement = new System.Windows.Forms.Button();
-            this.listClosedAgreements = new System.Windows.Forms.ListBox();
             this.pageOpenAgreements = new System.Windows.Forms.TabPage();
-            this.btnReportOpenAgreement = new StudentHousingBV.forms.RoundButton();
-            this.selectOpenAgreement = new System.Windows.Forms.ComboBox();
-            this.listOpenAgreements = new System.Windows.Forms.ListBox();
-            this.btnOpenAgreement = new System.Windows.Forms.Button();
+            this.flowOpenAgreements = new System.Windows.Forms.FlowLayoutPanel();
+            this.pageClosedAgreements = new System.Windows.Forms.TabPage();
+            this.flowClosedAgreements = new System.Windows.Forms.FlowLayoutPanel();
             this.pageTasks = new System.Windows.Forms.TabPage();
             this.fpPageTasks = new System.Windows.Forms.FlowLayoutPanel();
             this.pageRules = new System.Windows.Forms.TabPage();
@@ -51,8 +46,8 @@
             this.navPages.SuspendLayout();
             this.pageAgreements.SuspendLayout();
             this.navAgreements.SuspendLayout();
-            this.pageClosedAgreements.SuspendLayout();
             this.pageOpenAgreements.SuspendLayout();
+            this.pageClosedAgreements.SuspendLayout();
             this.pageTasks.SuspendLayout();
             this.pageRules.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +79,7 @@
             // pageAgreements
             // 
             this.pageAgreements.BackColor = System.Drawing.Color.RosyBrown;
+            this.pageAgreements.Controls.Add(this.btnCreateAgreement);
             this.pageAgreements.Controls.Add(this.navAgreements);
             this.pageAgreements.Location = new System.Drawing.Point(4, 33);
             this.pageAgreements.Name = "pageAgreements";
@@ -92,129 +88,69 @@
             this.pageAgreements.TabIndex = 0;
             this.pageAgreements.Text = "AGREEMENTS";
             // 
+            // btnCreateAgreement
+            // 
+            this.btnCreateAgreement.Location = new System.Drawing.Point(10, 336);
+            this.btnCreateAgreement.Name = "btnCreateAgreement";
+            this.btnCreateAgreement.Size = new System.Drawing.Size(941, 23);
+            this.btnCreateAgreement.TabIndex = 1;
+            this.btnCreateAgreement.Text = "Create Agreement";
+            this.btnCreateAgreement.UseVisualStyleBackColor = true;
+            this.btnCreateAgreement.Click += new System.EventHandler(this.btnCreateAgreement_Click);
+            // 
             // navAgreements
             // 
             this.navAgreements.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.navAgreements.Controls.Add(this.pageClosedAgreements);
             this.navAgreements.Controls.Add(this.pageOpenAgreements);
+            this.navAgreements.Controls.Add(this.pageClosedAgreements);
             this.navAgreements.Location = new System.Drawing.Point(6, 6);
             this.navAgreements.Name = "navAgreements";
             this.navAgreements.Padding = new System.Drawing.Point(185, 3);
             this.navAgreements.SelectedIndex = 0;
-            this.navAgreements.Size = new System.Drawing.Size(949, 353);
+            this.navAgreements.Size = new System.Drawing.Size(949, 324);
             this.navAgreements.TabIndex = 0;
-            // 
-            // pageClosedAgreements
-            // 
-            this.pageClosedAgreements.BackColor = System.Drawing.Color.RosyBrown;
-            this.pageClosedAgreements.Controls.Add(this.btnReportClosedAgreement);
-            this.pageClosedAgreements.Controls.Add(this.selectClosedAgreement);
-            this.pageClosedAgreements.Controls.Add(this.btnClosedAgreement);
-            this.pageClosedAgreements.Controls.Add(this.listClosedAgreements);
-            this.pageClosedAgreements.Location = new System.Drawing.Point(4, 27);
-            this.pageClosedAgreements.Name = "pageClosedAgreements";
-            this.pageClosedAgreements.Padding = new System.Windows.Forms.Padding(3);
-            this.pageClosedAgreements.Size = new System.Drawing.Size(941, 322);
-            this.pageClosedAgreements.TabIndex = 0;
-            this.pageClosedAgreements.Text = "Closed Agreements";
-            // 
-            // btnReportClosedAgreement
-            // 
-            this.btnReportClosedAgreement.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReportClosedAgreement.ForeColor = System.Drawing.Color.Red;
-            this.btnReportClosedAgreement.Location = new System.Drawing.Point(6, 255);
-            this.btnReportClosedAgreement.Name = "btnReportClosedAgreement";
-            this.btnReportClosedAgreement.Size = new System.Drawing.Size(75, 60);
-            this.btnReportClosedAgreement.TabIndex = 8;
-            this.btnReportClosedAgreement.Text = "!";
-            this.btnReportClosedAgreement.UseVisualStyleBackColor = true;
-            // 
-            // selectClosedAgreement
-            // 
-            this.selectClosedAgreement.FormattingEnabled = true;
-            this.selectClosedAgreement.Location = new System.Drawing.Point(87, 256);
-            this.selectClosedAgreement.Name = "selectClosedAgreement";
-            this.selectClosedAgreement.Size = new System.Drawing.Size(848, 23);
-            this.selectClosedAgreement.TabIndex = 10;
-            // 
-            // btnClosedAgreement
-            // 
-            this.btnClosedAgreement.BackColor = System.Drawing.Color.Brown;
-            this.btnClosedAgreement.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClosedAgreement.ForeColor = System.Drawing.Color.White;
-            this.btnClosedAgreement.Location = new System.Drawing.Point(87, 285);
-            this.btnClosedAgreement.Name = "btnClosedAgreement";
-            this.btnClosedAgreement.Size = new System.Drawing.Size(848, 30);
-            this.btnClosedAgreement.TabIndex = 9;
-            this.btnClosedAgreement.Text = "Expand Agreement";
-            this.btnClosedAgreement.UseVisualStyleBackColor = false;
-            // 
-            // listClosedAgreements
-            // 
-            this.listClosedAgreements.BackColor = System.Drawing.Color.White;
-            this.listClosedAgreements.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listClosedAgreements.FormattingEnabled = true;
-            this.listClosedAgreements.ItemHeight = 21;
-            this.listClosedAgreements.Location = new System.Drawing.Point(6, 6);
-            this.listClosedAgreements.Name = "listClosedAgreements";
-            this.listClosedAgreements.Size = new System.Drawing.Size(929, 235);
-            this.listClosedAgreements.TabIndex = 0;
             // 
             // pageOpenAgreements
             // 
             this.pageOpenAgreements.BackColor = System.Drawing.Color.RosyBrown;
-            this.pageOpenAgreements.Controls.Add(this.btnReportOpenAgreement);
-            this.pageOpenAgreements.Controls.Add(this.selectOpenAgreement);
-            this.pageOpenAgreements.Controls.Add(this.listOpenAgreements);
-            this.pageOpenAgreements.Controls.Add(this.btnOpenAgreement);
+            this.pageOpenAgreements.Controls.Add(this.flowOpenAgreements);
             this.pageOpenAgreements.Location = new System.Drawing.Point(4, 27);
             this.pageOpenAgreements.Name = "pageOpenAgreements";
             this.pageOpenAgreements.Padding = new System.Windows.Forms.Padding(3);
-            this.pageOpenAgreements.Size = new System.Drawing.Size(941, 322);
-            this.pageOpenAgreements.TabIndex = 1;
+            this.pageOpenAgreements.Size = new System.Drawing.Size(941, 293);
+            this.pageOpenAgreements.TabIndex = 0;
             this.pageOpenAgreements.Text = "Open Agreements";
             // 
-            // btnReportOpenAgreement
+            // flowOpenAgreements
             // 
-            this.btnReportOpenAgreement.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReportOpenAgreement.ForeColor = System.Drawing.Color.Red;
-            this.btnReportOpenAgreement.Location = new System.Drawing.Point(6, 256);
-            this.btnReportOpenAgreement.Name = "btnReportOpenAgreement";
-            this.btnReportOpenAgreement.Size = new System.Drawing.Size(75, 60);
-            this.btnReportOpenAgreement.TabIndex = 2;
-            this.btnReportOpenAgreement.Text = "!";
-            this.btnReportOpenAgreement.UseVisualStyleBackColor = true;
+            this.flowOpenAgreements.AutoScroll = true;
+            this.flowOpenAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowOpenAgreements.Location = new System.Drawing.Point(5, 5);
+            this.flowOpenAgreements.Name = "flowOpenAgreements";
+            this.flowOpenAgreements.Size = new System.Drawing.Size(931, 282);
+            this.flowOpenAgreements.TabIndex = 0;
+            this.flowOpenAgreements.WrapContents = false;
             // 
-            // selectOpenAgreement
+            // pageClosedAgreements
             // 
-            this.selectOpenAgreement.FormattingEnabled = true;
-            this.selectOpenAgreement.Location = new System.Drawing.Point(87, 257);
-            this.selectOpenAgreement.Name = "selectOpenAgreement";
-            this.selectOpenAgreement.Size = new System.Drawing.Size(848, 23);
-            this.selectOpenAgreement.TabIndex = 7;
+            this.pageClosedAgreements.BackColor = System.Drawing.Color.RosyBrown;
+            this.pageClosedAgreements.Controls.Add(this.flowClosedAgreements);
+            this.pageClosedAgreements.Location = new System.Drawing.Point(4, 27);
+            this.pageClosedAgreements.Name = "pageClosedAgreements";
+            this.pageClosedAgreements.Padding = new System.Windows.Forms.Padding(3);
+            this.pageClosedAgreements.Size = new System.Drawing.Size(941, 293);
+            this.pageClosedAgreements.TabIndex = 1;
+            this.pageClosedAgreements.Text = "Closed Agreements";
             // 
-            // listOpenAgreements
+            // flowClosedAgreements
             // 
-            this.listOpenAgreements.BackColor = System.Drawing.Color.White;
-            this.listOpenAgreements.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listOpenAgreements.FormattingEnabled = true;
-            this.listOpenAgreements.ItemHeight = 21;
-            this.listOpenAgreements.Location = new System.Drawing.Point(6, 6);
-            this.listOpenAgreements.Name = "listOpenAgreements";
-            this.listOpenAgreements.Size = new System.Drawing.Size(929, 235);
-            this.listOpenAgreements.TabIndex = 6;
-            // 
-            // btnOpenAgreement
-            // 
-            this.btnOpenAgreement.BackColor = System.Drawing.Color.Brown;
-            this.btnOpenAgreement.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnOpenAgreement.ForeColor = System.Drawing.Color.White;
-            this.btnOpenAgreement.Location = new System.Drawing.Point(87, 286);
-            this.btnOpenAgreement.Name = "btnOpenAgreement";
-            this.btnOpenAgreement.Size = new System.Drawing.Size(848, 30);
-            this.btnOpenAgreement.TabIndex = 3;
-            this.btnOpenAgreement.Text = "Expand Agreement";
-            this.btnOpenAgreement.UseVisualStyleBackColor = false;
+            this.flowClosedAgreements.AutoScroll = true;
+            this.flowClosedAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowClosedAgreements.Location = new System.Drawing.Point(5, 5);
+            this.flowClosedAgreements.Name = "flowClosedAgreements";
+            this.flowClosedAgreements.Size = new System.Drawing.Size(931, 282);
+            this.flowClosedAgreements.TabIndex = 0;
+            this.flowClosedAgreements.WrapContents = false;
             // 
             // pageTasks
             // 
@@ -284,8 +220,8 @@
             this.navPages.ResumeLayout(false);
             this.pageAgreements.ResumeLayout(false);
             this.navAgreements.ResumeLayout(false);
-            this.pageClosedAgreements.ResumeLayout(false);
             this.pageOpenAgreements.ResumeLayout(false);
+            this.pageClosedAgreements.ResumeLayout(false);
             this.pageTasks.ResumeLayout(false);
             this.pageRules.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -301,17 +237,12 @@
         private TabPage pageRules;
         private TabPage pageAccount;
         private TabControl navAgreements;
-        private TabPage pageClosedAgreements;
         private TabPage pageOpenAgreements;
-        private ListBox listClosedAgreements;
-        private Button btnOpenAgreement;
-        private ComboBox selectOpenAgreement;
-        private ListBox listOpenAgreements;
-        private RoundButton btnReportClosedAgreement;
-        private ComboBox selectClosedAgreement;
-        private Button btnClosedAgreement;
-        private RoundButton btnReportOpenAgreement;
+        private TabPage pageClosedAgreements;
         private FlowLayoutPanel fpPageTasks;
         private FlowLayoutPanel flowRules;
+        private FlowLayoutPanel flowOpenAgreements;
+        private FlowLayoutPanel flowClosedAgreements;
+        private Button btnCreateAgreement;
     }
 }

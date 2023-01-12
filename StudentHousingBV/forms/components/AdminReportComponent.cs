@@ -39,7 +39,7 @@ namespace StudentHousingBV.forms.components
             Building building = buildingManager.GetBuidingWithId(report.BuildingId);
             _building = building;
             lblBuilding.Text = building.Address;
-            if (report.IsReviewd)
+            if (report.IsReviewed)
             {
                 btnReview.Hide();
             }

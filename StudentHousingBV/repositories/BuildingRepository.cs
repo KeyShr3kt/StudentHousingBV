@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using User = StudentHousingBV.models.User;
 
 namespace StudentHousingBV.repositories
 {
@@ -119,7 +120,7 @@ namespace StudentHousingBV.repositories
         public int Insert(string address)
         {
             string sql = "INSERT INTO [BUILDING] (Address)" +
-                "VALUES (@address)";
+                " VALUES (@address)";
             Dictionary<string, string> parameters = new()
             {
                 { "@address", address }
@@ -130,7 +131,7 @@ namespace StudentHousingBV.repositories
         public int Update(Building building)
         {
             string sql = "UPDATE [BUILDING] SET Address = @address" +
-                            "WHERE Id = @id;";
+                            " WHERE Id = @id;";
             Dictionary<string, string> parameters = new()
             {
                 { "@id", building.Id.ToString() },
@@ -142,7 +143,7 @@ namespace StudentHousingBV.repositories
         public int Delete(Building building)
         {
             string sql = "DELETE FROM [BUILDING]" +
-                            "WHERE Id = @id AND Address = @address;";
+                            " WHERE Id = @id AND Address = @address;";
             Dictionary<string, string> parameters = new()
             {
                 { "@id", building.Id.ToString() },
@@ -153,15 +154,16 @@ namespace StudentHousingBV.repositories
 
         public Building GetForUser(models.User user)
         {
-            string sql = "SELECT[BUILDING].Id, [BUILDING].Address" +
-                            "FROM[BUILDING] INNER JOIN[ROOM] ON[BUILDING].Id = [ROOM].BuildingId" +
-                            "INNER JOIN[USER] ON[USER].Id = [ROOM].UserId" +
-                            "WHERE[USER].Id = @userId;";
+            string sql = "SELECT [BUILDING].Id, [BUILDING].Address" +
+                            " FROM [BUILDING]" +
+                            " INNER JOIN [ROOM] ON [BUILDING].[Id] = [ROOM].[BuildingId]" +
+                            " INNER JOIN [USER] ON [USER].[Id] = [ROOM].[UserId]" +
+                            " WHERE [USER].[Id] = @userId;";
             Dictionary<string, string> parameters = new()
             {
                 { "@userId", user.Id.ToString() }
             };
-            return ExecuteReader(sql, parameters).First();
+            return ExecuteReader(sql, parameters).FirstOrDefault();
         }
     }
 }

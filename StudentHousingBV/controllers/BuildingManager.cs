@@ -34,5 +34,9 @@ namespace StudentHousingBV.controllers
             return unitOfWork.Buildings.Get(id);
         }
 
+        public Building GetForUser(User user)
+        {
+            return unitOfWork.Buildings.GetForUser(user);
+        }
     }
 }

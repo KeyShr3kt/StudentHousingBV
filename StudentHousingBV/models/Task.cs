@@ -8,26 +8,27 @@ namespace StudentHousingBV.models
 {
     public class Task : Event
     {
+        private int _assignedToUserId;
         private bool _isShopping;
         private bool _isCompleted;
         private int? _totalPrice;
-        private byte[]? _image;
 
         public Task()
-        {
+        { }
 
-        }
-        public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted) 
+        public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, int assignedToUserId, bool isShopping, bool isCompleted) 
             : base(id, title, description, createdAt, creatorId, buildingId)
         {
+            this._assignedToUserId = assignedToUserId;
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;
             this._totalPrice = null;
         }
 
-        public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, bool isShopping, bool isCompleted, int totalPrice)
+        public Task(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, int assignedToUserId, bool isShopping, bool isCompleted, int totalPrice)
             : base(id, title, description, createdAt, creatorId, buildingId)
         {
+            this._assignedToUserId = assignedToUserId;
             this._isShopping = isShopping;
             this._isCompleted = isCompleted;
             this._totalPrice = totalPrice;
@@ -49,10 +50,16 @@ namespace StudentHousingBV.models
             { this._isShopping = value; }
         }
 
+        public int AssignedToUserId
+        {
+            get
+            { return this._assignedToUserId; }
+            set
+            { this._assignedToUserId = value; }
+        }
+
         public int? TotalPrice { get => _totalPrice; set => _totalPrice = value; }
 
         public int EventId { get; set; } // so we can read columns using reflection
-
-        public byte[]? Image { get => _image; set => _image = value; }
     }
 }
