@@ -151,7 +151,7 @@ namespace StudentHousingBV.repositories
             return ExecuteNonQuery(sql, parameters);
         }
 
-        public Building GetForUser(User user)
+        public Building GetForUser(models.User user)
         {
             string sql = "SELECT[BUILDING].Id, [BUILDING].Address" +
                             "FROM[BUILDING] INNER JOIN[ROOM] ON[BUILDING].Id = [ROOM].BuildingId" +

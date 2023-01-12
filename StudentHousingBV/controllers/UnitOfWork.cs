@@ -8,7 +8,7 @@ namespace StudentHousingBV.controllers
         private UserRepository _userRepository = new();
         public UserRepository Users { get => _userRepository; }
 
-        private BuildingRepository _buildingRepository = new(CONNECTION_STRING);
+        private BuildingRepository _buildingRepository = new();
 
         public BuildingRepository Buildings { get => _buildingRepository; }
 
