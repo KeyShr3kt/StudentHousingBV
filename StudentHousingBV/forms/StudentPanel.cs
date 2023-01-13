@@ -2,6 +2,7 @@ using StudentHousingBV.controllers;
 using StudentHousingBV.forms.components;
 using StudentHousingBV.models;
 using System.Drawing.Text;
+using Task = StudentHousingBV.models.Task;
 
 namespace StudentHousingBV.forms
 {
@@ -19,8 +20,9 @@ namespace StudentHousingBV.forms
             _curUserBuilding = _buildingManager.GetForUser(user);
             InitializeComponent();
             updateAgreements();
+            updateTasks();
             #region Tests
-            StudentHousingBV.models.Task _testTask1, _testTask2;
+            /* StudentHousingBV.models.Task _testTask1, _testTask2;
             StudentHousingBV.models.Rule _testRule;
             StudentHousingBV.models.User _testUser = new User(1,"Ionut", "Dragomir", "510175@student.fontys.nl", "smthsmthsmth", "+31633396888", 0, 0, false, DateTime.Now, "IBAN");
             //listClosedAgreements.Items.Add("#ID | {user}: {title} - Upvotes: {number} / Downvotes: {number}");
@@ -36,7 +38,7 @@ namespace StudentHousingBV.forms
             }
             _testRule = new StudentHousingBV.models.Rule(1, "This is a rule title.", "This is a rule description.", DateTime.Now, _testUser.Id, 1, DateTime.Now);
             for (int i = 1; i <= 10; i++)
-                flowRules.Controls.Add(new RuleComponent(_testRule));
+                flowRules.Controls.Add(new RuleComponent(_testRule)); */
             #endregion
 
         }
@@ -61,6 +63,15 @@ namespace StudentHousingBV.forms
             if (f.ShowDialog() == DialogResult.OK)
             {
                 updateAgreements();
+            }
+        }
+
+        private void updateTasks()
+        {
+            fpPageTasks.Controls.Clear();
+            foreach (Task task in _eventManager.GetAllTasksInBuildingId(6))
+            {
+                fpPageTasks.Controls.Add(new TaskComponent(task, _curUser.Id, 6));
             }
         }
     }

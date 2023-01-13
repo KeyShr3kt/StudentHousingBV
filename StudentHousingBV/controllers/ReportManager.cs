@@ -48,5 +48,10 @@ namespace StudentHousingBV.controllers
         {
             return unitOfWork.Reports.GetAllForReview();
         }
+
+        public void Create(string title, string description, int creatorId, int buildingId, int targetedToEventId, int isReviewed)
+        {
+            unitOfWork.Reports.Insert(title, description, creatorId, buildingId, targetedToEventId, isReviewed);
+        }
     }
 }

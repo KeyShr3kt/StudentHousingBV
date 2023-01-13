@@ -129,9 +129,9 @@ namespace StudentHousingBV.controllers
             return unitOfWork.Events.Get(id);
         }
 
-        public void MarkReportAsReviewed(int id)
+        public void MarkReportAsReviewed(Report report)
         {
-            unitOfWork.Reports.MarkAsReviewed(id);
+            unitOfWork.Reports.MarkAsReviewed(report);
         }
 
         public bool UpvoteAgreement(Agreement agreement)

@@ -84,6 +84,7 @@
             this.btnSend.TabIndex = 5;
             this.btnSend.Text = "Complete";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // ReportForm
             // 
