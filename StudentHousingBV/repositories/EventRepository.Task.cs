@@ -66,7 +66,7 @@ namespace StudentHousingBV.repositories
             sqlNonQueryHelper("INSERT INTO [EVENT]" +
                 " ([Title], [Description], [CreatedAt], [CreatorId], [BuildingId])" +
                 " VALUES" +
-                " (@title, @description, GETDATE(), @creatorId);" +
+                " (@title, @description, GETDATE(), @creatorId, @buildingId);" +
                 " INSERT INTO [TASK]" +
                 " ([EventId], [IsShopping], [IsCompleted], [TotalPrice])" +
                 " VALUES" +
