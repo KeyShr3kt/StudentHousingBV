@@ -21,6 +21,7 @@ namespace StudentHousingBV.forms
             InitializeComponent();
             updateAgreements();
             updateTasks();
+            updateRules();
             #region Tests
             /* StudentHousingBV.models.Task _testTask1, _testTask2;
             StudentHousingBV.models.Rule _testRule;
@@ -69,9 +70,18 @@ namespace StudentHousingBV.forms
         private void updateTasks()
         {
             fpPageTasks.Controls.Clear();
-            foreach (Task task in _eventManager.GetAllTasksInBuildingId(6))
+            foreach (Task task in _eventManager.GetAllTasksInBuildingId(_curUserBuilding.Id))
             {
-                fpPageTasks.Controls.Add(new TaskComponent(task, _curUser.Id, 6));
+                fpPageTasks.Controls.Add(new TaskComponent(task, _curUser.Id, _curUserBuilding.Id));
+            }
+        }
+
+        private void updateRules()
+        {
+            flowRules.Controls.Clear();
+            foreach (Rule rule in _eventManager.GetAllRulesInBuildingId(_curUserBuilding.Id))
+            {
+                fpPageTasks.Controls.Add(new RuleComponent(rule, _curUser.Id, _curUserBuilding.Id));
             }
         }
     }
