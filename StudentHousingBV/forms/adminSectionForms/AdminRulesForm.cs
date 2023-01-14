@@ -78,6 +78,10 @@ namespace StudentHousingBV.forms.adminSectionForms
                 rules = eventManager.GetAllRulesInBuildingId(building.Id);
             else
                 rules = eventManager.GetAllRules();
+            if (rules.Count == 0)
+            {
+                MessageBox.Show("There are no availbale rules in this category.");
+            }
             fillRules(rules);
         }
 
