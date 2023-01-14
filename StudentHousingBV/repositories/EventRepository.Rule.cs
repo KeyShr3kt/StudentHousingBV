@@ -12,8 +12,8 @@ namespace StudentHousingBV.repositories
         public List<Rule> GetAllRulesInBuildingId(int buildingId)
         {
             return sqlQueryHelper<Rule>("SELECT * FROM [RULE]" +
-                " WHERE [RULE].[BuildingId] = @buildingId" +
-                " JOIN [EVENT] ON [EVENT].[Id] = [RULE].[EventId]",
+                " JOIN [EVENT] ON [EVENT].[Id] = [RULE].[EventId]" +
+                " WHERE [EVENT].[BuildingId] = @buildingId",
                 new { buildingId },
                 () => new());
         }
@@ -22,12 +22,12 @@ namespace StudentHousingBV.repositories
         {
             sqlNonQueryHelper("INSERT INTO [EVENT]" +
                 " ([Title], [Description], [CreatorId], [BuildingId], [CreatedAt])" +
-                " VALUES (@title, @description, @creatorId, GETDATE());" +
+                " VALUES (@title, @description, @creatorId, @buildingId, GETDATE());" +
                 "INSERT INTO [RULE]" +
                 " ([EventId], [UpdatedAt])" +
                 " VALUES" +
                 " (SCOPE_IDENTITY(), GETDATE())",
-                new { title, description, creatorId });
+                new { title, description, creatorId, buildingId });
 
         }
 

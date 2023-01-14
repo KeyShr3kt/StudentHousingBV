@@ -37,7 +37,7 @@ namespace StudentHousingBV.forms.adminSectionForms
 
         private void btnMarkAsReviewed_Click(object sender, EventArgs e)
         {
-            eventManager.MarkReportAsReviewed(_report.Id);
+            eventManager.MarkReportAsReviewed(_report);
             this.Close();
         }
     }

@@ -14,11 +14,16 @@ namespace StudentHousingBV.forms.components
     public partial class TaskComponent : UserControl
     {
         private StudentHousingBV.models.Task _task;
-        public TaskComponent(StudentHousingBV.models.Task task, int currentUserId)
+        private int _currentUserId;
+        private int _currentBuildingId;
+
+        public TaskComponent(StudentHousingBV.models.Task task, int currentUserId, int currentBuildingId)
         {
             InitializeComponent();
             this._task = task;
             this.lbTaskDescription.Text = this._task.Title;
+            this._currentUserId = currentUserId;
+            this._currentBuildingId = currentBuildingId;
             if (this._task.IsShopping == true && this._task.AssignedToUserId == currentUserId) 
             {
                 this.btnTaskComponent.Visible = true;
@@ -33,7 +38,7 @@ namespace StudentHousingBV.forms.components
 
         private void btnReportTask_Click(object sender, EventArgs e)
         {
-            StudentHousingBV.forms.ReportForm _reportForm = new StudentHousingBV.forms.ReportForm(this._task);
+            StudentHousingBV.forms.ReportForm _reportForm = new StudentHousingBV.forms.ReportForm(this._task, _currentUserId, _currentBuildingId);
             _reportForm.Show();
         }
     }

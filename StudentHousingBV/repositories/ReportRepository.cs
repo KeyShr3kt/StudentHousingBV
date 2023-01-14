@@ -126,16 +126,18 @@ namespace StudentHousingBV.repositories
             return ExecuteReader(sql, parameters).First();
         }
 
-        public int Insert(string type, int userId, string name, int buildingId)
+        public int Insert(string title, string description, int creatorId, int buildingId, int targetedToEventId, int isReviewed)
         {
-            string sql = "INSERT INTO [ROOM] (Type, UserId, Name, BuildingId)" +
-                " VALUES (@type, @userId, @name, @buildingId)";
-            Dictionary<string, string?> parameters = new()
+            string sql = "INSERT INTO REPORT (Title, Description, CreatedAt, CreatorID, BuildingID, TargetedToEventID, IsReviewed)" +
+                " VALUES (@title, @description, GETDATE(), @creatorId, @buildingId, @targetedToEventId, @isReviewed)";
+            Dictionary<string, string> parameters = new()
             {
-                { "@type", type },
-                { "@userId", userId.ToString() },
-                { "@name", name },
-                { "@buildingId", buildingId.ToString() }
+                { "@title", title },
+                { "@description", description },
+                { "@creatorId", creatorId.ToString() },
+                { "@buildingId", buildingId.ToString() },
+                { "@targetedToEventId", targetedToEventId.ToString() },
+                { "@isReviewed", isReviewed.ToString() }
             };
             return ExecuteNonQuery(sql, parameters);
         }
@@ -161,24 +163,31 @@ namespace StudentHousingBV.repositories
         {
             string sql = "DELETE FROM [REPORT]" +
                             " WHERE Id = @id;";
-            Dictionary<string, string?> parameters = new()
+            Dictionary<string, string> parameters = new()
             {
                 { "@id", report.Id.ToString() }
             };
             return ExecuteNonQuery(sql, parameters);
         }
 
-        public void MarkAsReviewed(int id)
+        public int MarkAsReviewed(Report report)
         {
-            // report.isReviewed = true;
+            string sql = "UPDATE [REPORT]" +
+                            " SET IsReviewed = 1" +
+                            " WHERE Id = @id;";
+            Dictionary<string, string> parameters = new()
+            {
+                { "@id", report.Id.ToString() }
+            };
+            return ExecuteNonQuery(sql, parameters);
         }
 
         public List<Report> GetAllInBuildingId(int id)
         {
             string sql = "SELECT [REPORT].*" +
                 " FROM [REPORT] INNER JOIN [BUILDING] ON [REPORT].BuildingId = [BUILDING].Id" +
-                " WHERE [REPORT].BuildingId = @id";
-            Dictionary<string, string?> parameters = new()
+                " WHERE [REPORT].BuildingId = @id; ";
+            Dictionary<string, string> parameters = new()
             {
                 { "@id", id.ToString() }
             };
@@ -190,7 +199,7 @@ namespace StudentHousingBV.repositories
             string sql = "SELECT [REPORT].*" +
                 " FROM [REPORT] INNER JOIN [BUILDING] ON [REPORT].BuildingId = [BUILDING].Id" +
                 " WHERE [REPORT].BuildingId = @id AND [REPORT].IsReviewed = 0;";
-            Dictionary<string, string?> parameters = new()
+            Dictionary<string, string> parameters = new()
             {
                 { "@id", id.ToString() }
             };
@@ -199,8 +208,8 @@ namespace StudentHousingBV.repositories
 
         public List<Report> GetAllForReview()
         {
-            // isReviewd == false
-            return new List<Report>();
+            string sql = "SELECT * FROM [REPORT] WHERE [REPORT].IsReviewed = 0;";
+            return ExecuteReader(sql, new());
         }
     }
 }
