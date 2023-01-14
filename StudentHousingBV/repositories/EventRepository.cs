@@ -1,4 +1,4 @@
-﻿using StudentHousingBV.models;
+using StudentHousingBV.models;
 using System.Data.SqlClient;
 using Task = StudentHousingBV.models.Task;
 
@@ -18,9 +18,9 @@ namespace StudentHousingBV.repositories
             try
             {
                 string sql = "DELETE FROM [TASK] WHERE [TASK].[Id] = @id;";
-                sql += "DELETE FROM [RULE] WHERE [RULE].[Id] = @id";
+                sql += "DELETE FROM [RULE] WHERE [RULE].[Id] = @id;";
                 sql += "DELETE FROM [AGREEMENT] WHERE [AGREEMENT].[Id] = @id;";
-                sql += "DELETE FROM [EVENT] WHERE [EVENT].[Id] = @id";
+                sql += "DELETE FROM [EVENT] WHERE [EVENT].[Id] = @id;";
                 sqlNonQueryHelper(sql, new { id });
             } catch
             {
