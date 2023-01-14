@@ -16,13 +16,13 @@ namespace StudentHousingBV.repositories
             string recipient = email;
 
             // Set the email subject and body
-            string subject = "Test Email from C#";
+            string subject = "User registration";
            // string body = "This is a test email sent from a C# program.";
 
             // Generate a random code and append it to the email body
            // Random random = new Random();
            // int code = random.Next(10000, 99999);
-            string body = "Password for this email: " + passwordToSend;
+            string body = "Your password is: " + passwordToSend;
 
             // Create a new MailMessage object
             MailMessage message = new MailMessage(sender, recipient, subject, body);
@@ -144,6 +144,10 @@ namespace StudentHousingBV.repositories
                    
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
+                        foreach (KeyValuePair<string, string> entry in parameters)
+                        {
+                            cmd.Parameters.AddWithValue(entry.Key, entry.Value);
+                        }
                         conn.Open();
                         result = (int)cmd.ExecuteScalar();
                     }
@@ -281,11 +285,11 @@ namespace StudentHousingBV.repositories
                         "on r.UserId = u.Id " +
                         "inner join BUILDING as b " +
                         "on r.BuildingId = b.Id " +
-                        "where r.BuildingId = @buildingId;";
+                        "where r.BuildingId = @bId;";
 
             Dictionary<string, string> parameters = new()
             {
-                { "@buildingId", id.ToString() }
+                { "@bId", id.ToString() }
             };
             return ExecuteScalarUsers(sql, parameters);
            

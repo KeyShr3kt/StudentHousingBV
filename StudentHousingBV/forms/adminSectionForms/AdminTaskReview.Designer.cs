@@ -82,6 +82,7 @@
             this.btnReceipt.TabIndex = 3;
             this.btnReceipt.Text = "Receipt";
             this.btnReceipt.UseVisualStyleBackColor = true;
+            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
             // lblIBAN
             // 
@@ -109,7 +110,7 @@
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(123, 23);
             this.btnComplete.TabIndex = 6;
-            this.btnComplete.Text = "Mark As Complete";
+            this.btnComplete.Text = "Mark As Completed";
             this.btnComplete.UseVisualStyleBackColor = true;
             this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 

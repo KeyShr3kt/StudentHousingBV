@@ -14,7 +14,7 @@ namespace StudentHousingBV.forms.components
 {
     public partial class AdminTaskComponent : UserControl
     {
-        private models.Task _task; 
+        private models.Task _task;
         private EventManager _eventManager;
         public EventManager eventManager { get => _eventManager; }
         public AdminTaskComponent(models.Task task, EventManager manager)
@@ -23,16 +23,20 @@ namespace StudentHousingBV.forms.components
             _eventManager = manager;
             _task = task;
             lblTitle.Text = ((Event)task).Title;
-            lblDescription.Text = ((Event) task).Description;
-            lblCreatedAt.Text = ((Event) task).CreatedAt.ToString();
-            lblTaskIdHidden.Text = ((Event) task).Id.ToString();
+            lblDescription.Text = ((Event)task).Description;
+            lblCreatedAt.Text = ((Event)task).CreatedAt.ToString();
+            lblTaskIdHidden.Text = ((Event)task).Id.ToString();
             lblTaskIdHidden.Hide();
-            if (task.TotalPrice == null)
+            if (task.TotalPrice == null || task.IsCompleted == true)
             {
                 btnComplete.Hide();
             }
         }
 
+        public void HideComplete()
+        {
+            btnComplete.Hide();
+        }
         private void btnComplete_Click(object sender, EventArgs e)
         {
             AdminTaskReview atr = new AdminTaskReview(_task, eventManager.CurrentUserId);

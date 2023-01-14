@@ -1,4 +1,5 @@
 ﻿using StudentHousingBV.controllers;
+using StudentHousingBV.forms.components;
 using StudentHousingBV.models;
 using System;
 using System.Collections.Generic;
@@ -24,22 +25,33 @@ namespace StudentHousingBV.forms.adminSectionForms
             _task = task;
             lblTitle.Text = task.Title;
             lblDescription.Text = task.Description;
-            lblTotalPrice.Text = "Total price: " + task.TotalPrice;
+            lblTotalPrice.Text = PriceToEuro(task.TotalPrice);
             User user = userManager.GetUser(task.CreatorId);
-            lblIBAN.Text = "IBAN: " + user.IBAN;
+            lblIBAN.Text = user.IBAN;
 
             int count = userManager.CountUsersInBuildingId(task.BuildingId);
             if (task.TotalPrice != 0)
             {
                 int payBack = (((int)(task.TotalPrice)) / count) * (count - 1);
-                lblToPayBack.Text = "To pay back: " + payBack.ToString();
+                lblToPayBack.Text = PriceToEuro(payBack);
             }
          }
 
         private void btnComplete_Click(object sender, EventArgs e)
         {
             eventManager.MarkTaskIdAsComplete(_task.Id);
+            
             this.Close();
+        }
+        public string PriceToEuro(int? price)
+        {
+            return String.Format("€ {0:0.00}", price / 100m);
+        }
+
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+            ReceiptForm receiptForm = new ReceiptForm();
+            receiptForm.Show();
         }
     }
 }
