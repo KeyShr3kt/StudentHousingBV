@@ -105,6 +105,10 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 tasks = eventManager.GetAllTasksInBuildingId(buildingId);
             }
+            if (tasks.Count == 0)
+            {
+                MessageBox.Show("There are no active tasks in this category.");
+            }
             fillTasks(tasks);
         }
 

@@ -42,6 +42,7 @@ namespace StudentHousingBV.forms.adminSectionForms
             List<User> users;
             if (usersToFill.Count == 0)
             {
+                
                 users = userManager.GetAllUsers();
             } 
             else
@@ -118,16 +119,45 @@ namespace StudentHousingBV.forms.adminSectionForms
             if (isAdmin)
             {
                 if (building != null)
-                    fillUsers(userManager.GetAdminsInBuilding(building));
+                {
+                    List<User> users = userManager.GetAdminsInBuilding(building);
+                    if (users.Count == 0)
+                    {
+                        MessageBox.Show("There are no active users where you are currently searching.");
+                    }
+                    fillUsers(users);
+                }
                 else
-                    fillUsers(userManager.GetAllAdmins());
+                {
+                    List<User> users = userManager.GetAllAdmins();
+                    if (users.Count == 0)
+                    {
+                        MessageBox.Show("There are no active users where you are currently searching.");
+                    }
+                    fillUsers(users);
+                }
             }
             else
             {
                 if (building != null)
-                    fillUsers(userManager.GetAllUsersInBuilding(building));
+                {
+                    List<User> users = userManager.GetAllUsersInBuilding(building);
+                    if (users.Count == 0)
+                    {
+                        MessageBox.Show("There are no active users where you are currently searching.");
+                    }
+                    fillUsers(users);
+                }
                 else
-                    fillUsers(userManager.GetAllUsers());
+                {
+                    List<User> users = userManager.GetAllUsers();
+                    if (users.Count == 0)
+                    {
+                        MessageBox.Show("There are no active users where you are currently searching.");
+                    }
+
+                    fillUsers(users);
+                }
             } 
        
             

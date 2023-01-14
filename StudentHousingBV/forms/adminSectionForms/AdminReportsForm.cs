@@ -120,6 +120,10 @@ namespace StudentHousingBV.forms.adminSectionForms
                 else
                     reports = reportManager.GetAll();
             }
+            if (reports.Count == 0)
+            {
+                MessageBox.Show("There are no active reports in this category.");
+            }
             fillReports(reports);
         }
 
