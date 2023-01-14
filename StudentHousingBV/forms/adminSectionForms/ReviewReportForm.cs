@@ -25,7 +25,7 @@ namespace StudentHousingBV.forms.adminSectionForms
             lblDescription.Text = report.Description;
             lblBuilding.Text = building.Address;
             lblCreatedAt.Text = report.CreatedAt.ToString();
-            lblUserName.Text = "Received from from: " + user.FirstName + " " + user.LastName + ", email: " + user.EmailAddress;
+            lblUserName.Text = user.FirstName + " " + user.LastName + ", " + user.EmailAddress;
             lblReportingEvent.Text = (eventManager.GetEvent(report.TargetedToEventId)).Title;
         }
 

@@ -215,6 +215,7 @@
             this.Controls.Add(this.backgroundStudentPanel);
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "StudentPanel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Housing BV - Student Panel";
             ((System.ComponentModel.ISupportInitialize)(this.backgroundStudentPanel)).EndInit();
             this.navPages.ResumeLayout(false);

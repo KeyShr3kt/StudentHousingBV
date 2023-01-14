@@ -32,7 +32,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnMoreInfo = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEdit
@@ -48,15 +50,16 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.lblTitle);
-            this.panel1.Location = new System.Drawing.Point(13, 14);
+            this.panel1.Location = new System.Drawing.Point(6, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(646, 37);
+            this.panel1.Size = new System.Drawing.Size(646, 31);
             this.panel1.TabIndex = 2;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(3, 3);
+            this.lblTitle.ForeColor = System.Drawing.Color.Black;
+            this.lblTitle.Location = new System.Drawing.Point(3, 5);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(38, 15);
             this.lblTitle.TabIndex = 2;
@@ -72,20 +75,32 @@
             this.btnMoreInfo.UseVisualStyleBackColor = true;
             this.btnMoreInfo.Click += new System.EventHandler(this.btnMoreInfo_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox1.Location = new System.Drawing.Point(14, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(652, 51);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Title";
+            // 
             // AdminRuleComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnMoreInfo);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(796, 63);
             this.MinimumSize = new System.Drawing.Size(796, 63);
             this.Name = "AdminRuleComponent";
             this.Size = new System.Drawing.Size(796, 63);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -96,5 +111,6 @@
         private Panel panel1;
         private Label lblTitle;
         private Button btnMoreInfo;
+        private GroupBox groupBox1;
     }
 }

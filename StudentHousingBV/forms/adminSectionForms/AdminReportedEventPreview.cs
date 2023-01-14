@@ -19,12 +19,12 @@ namespace StudentHousingBV.forms.adminSectionForms
             InitializeComponent();
 
             Event e = manager.GetEvent(eventId);
-            lblTitle.Text = "Title: " + e.Title;
-            lblDescription.Text = "Description: " + e.Description;
-            lblCreatedAt.Text = "Created at: " + e.CreatedAt.ToString();
+            lblTitle.Text = e.Title;
+            lblDescription.Text =  e.Description;
+            lblCreatedAt.Text = e.CreatedAt.ToString();
             UserManager userManager = new UserManager(manager.CurrentUserId);
             User user = userManager.GetUser(e.CreatorId);
-            lblCreator.Text = "Created by: " + user.FirstName + " " + user.LastName + " " + user.EmailAddress;
+            lblCreator.Text = user.FirstName + " " + user.LastName + " " + user.EmailAddress;
             BuildingManager bManager = new BuildingManager(manager.CurrentUserId);
             Building b = bManager.GetBuidingWithId(e.BuildingId);
             lblBuilding.Text = "Building: " + b.Address;
@@ -42,6 +42,9 @@ namespace StudentHousingBV.forms.adminSectionForms
                 models.Task t = (models.Task) e;
                 lblIsShopping.Text = "Does it include payment: " + t.IsShopping.ToString();
                 lblIsCompleted.Text = "Is it fully completed: " + t.IsCompleted.ToString();
+            } else
+            {
+                groupBox1.Hide();
             }
         }
     }

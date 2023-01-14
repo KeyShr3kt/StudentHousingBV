@@ -165,6 +165,7 @@
             this.Controls.Add(this.btnCreateRule);
             this.Controls.Add(this.lblTitleForm);
             this.Name = "AdminCreateRuleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminCreateRuleForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

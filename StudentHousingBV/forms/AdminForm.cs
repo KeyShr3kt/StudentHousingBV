@@ -20,8 +20,9 @@ namespace StudentHousingBV.forms
         public AdminForm(UserManager manager)
         {
             InitializeComponent();
-            OpenChildForm(new AdminHomeForm(), this);
             _userManager = manager;
+            OpenChildForm(new AdminUsersForm(_userManager), this);
+            
         }
 
         public AdminForm(int userId) 
@@ -29,7 +30,7 @@ namespace StudentHousingBV.forms
             InitializeComponent();
             _userManager = new UserManager(userId);
             //Color color = ColorTranslator.FromHtml("#D9514EFF");
-            OpenChildForm(new AdminHomeForm(), this);
+            OpenChildForm(new AdminUsersForm(_userManager), this);
             // sidebarPanel.BackColor = Color.FromArgb(217, 81, 78);
 
 
@@ -84,10 +85,7 @@ namespace StudentHousingBV.forms
             this.Close();
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new AdminHomeForm(), sender);
-        }
+ 
     }
 
 }
