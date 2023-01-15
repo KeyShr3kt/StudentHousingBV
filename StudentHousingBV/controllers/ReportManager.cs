@@ -10,17 +10,18 @@ namespace StudentHousingBV.controllers
 {
     public class ReportManager
     {
-        private int _currUseid;
-        public int CurrentUserId { get => _currUseid; }
+        private int _currUserid;
+        private UnitOfWork _unitOfWork = new();
 
-        UnitOfWork _unitOfWork = new();
+        public int CurrentUserId { get => _currUserid; }
 
         public UnitOfWork unitOfWork { get => _unitOfWork; }
 
         public ReportManager(int id)
         {
-            _currUseid = id;
+            _currUserid = id;
         }
+
         public List<Report> GetAll()
         {
             return unitOfWork.Reports.GetAll();

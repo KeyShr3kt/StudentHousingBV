@@ -17,9 +17,8 @@ namespace StudentHousingBV.models
         private int _buildingId;
 
         public Event ()
-        {
+        { }
 
-        }
         public Event(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId)
         {
             this._id = id;
@@ -70,6 +69,12 @@ namespace StudentHousingBV.models
             { this._creatorId = value; }
         }
 
-        public int BuildingId { get => this._buildingId; set => _buildingId = value; }
+        public int BuildingId
+        {
+            get
+            { return this._buildingId; }
+            set
+            { _buildingId = value; }
+        }
     }
 }

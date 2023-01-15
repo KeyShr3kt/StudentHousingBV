@@ -15,32 +15,17 @@ namespace StudentHousingBV.forms.adminSectionForms
     public partial class AdminTasksForm : Form
     {
         private EventManager _eventManager;
+        private BuildingManager _buildingManager;
 
         public EventManager eventManager { get => _eventManager; }
 
-        private BuildingManager _buildingManager;
         public BuildingManager buildingManager { get => _buildingManager; }
+
         public AdminTasksForm(int id)
         {
             InitializeComponent();
             _eventManager = new EventManager(id);
             _buildingManager = new BuildingManager(id);
-            /*AdminTaskComponent component1 = new AdminTaskComponent();
-            AdminTaskComponent component2 = new AdminTaskComponent();
-
-            AdminTaskComponent component3 = new AdminTaskComponent();
-            AdminTaskComponent component4 = new AdminTaskComponent();
-            AdminTaskComponent component5 = new AdminTaskComponent();
-            AdminTaskComponent component6 = new AdminTaskComponent();
-            AdminTaskComponent component7 = new AdminTaskComponent();
-            AdminTaskComponent component8 = new AdminTaskComponent();
-
-            List<AdminTaskComponent> components = new List<AdminTaskComponent> { component1, component2, component3, component4, component5, component6, component7, component8 };
-            foreach (AdminTaskComponent auc in components)
-            {
-                flowLayoutPanel1.Controls.Add(auc);
-            }*/
-
             fillBuildings();
             fillTasks(new());
         }
@@ -54,7 +39,6 @@ namespace StudentHousingBV.forms.adminSectionForms
         void fillTasks(List<models.Task> tasksToFill)
         {
             flowLayoutPanel1.Controls.Clear();
-
             List<models.Task> tasks;
             if (tasksToFill.Count == 0)
             {
@@ -64,8 +48,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 tasks = new List<models.Task>(tasksToFill);
             }
-
-
             List<AdminTaskComponent> components = new ();
             foreach (models.Task task in tasks)
             {
@@ -92,7 +74,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 buildingId = building.Id;
             }
-
             if (rdBtnCompleted.Checked)
             {
                 tasks = eventManager.GetAllTasksInBuildingIdWithStatusCompleted(buildingId);

@@ -15,9 +15,12 @@ namespace StudentHousingBV.repositories
 {
     public class RoomRepository
     {
-        #region Helper Functions
-        public static T ConvertFromDBVal<T>(object obj) // https://stackoverflow.com/questions/870697/unable-to-cast-object-of-type-system-dbnull-to-type-system-string
+        #region Helpers
+
+        // https://stackoverflow.com/questions/870697/unable-to-cast-object-of-type-system-dbnull-to-type-system-string
+        public static T ConvertFromDBVal<T>(object obj) 
         {
+            
             if (obj == null || obj == DBNull.Value)
             {
                 return default(T); // returns the default value for the type

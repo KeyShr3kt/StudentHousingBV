@@ -40,7 +40,7 @@ namespace StudentHousingBV.repositories
         }
 
 
-        private List<User> toListOfUsers(SqlDataReader reader)
+        private List<User> ToListOfUsers(SqlDataReader reader)
         {
             List<User> result = new();
             while (reader.Read())
@@ -48,13 +48,9 @@ namespace StudentHousingBV.repositories
                 User user = new User();
                 for (int inc = 0; inc < reader.FieldCount; inc++)
                 {
-
-                    //Type type = user.GetType();
-                    //var prop = type.GetProperty(reader.GetName(inc));
-                    //prop.SetValue(user, reader.GetValue(inc));
                     if (inc == 8)
                     {
-                        if (Convert.ToInt16(reader.GetValue(inc)) > 0) // boolean
+                        if (Convert.ToInt16(reader.GetValue(inc)) > 0)
                         {
                             user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, true, null);
                         } else
@@ -64,7 +60,7 @@ namespace StudentHousingBV.repositories
                         
                     } else if (inc == 9)
                     {
-                       if (reader.GetValue(inc) == DBNull.Value) // DateTime parse problem DBNull.Value != null
+                       if (reader.GetValue(inc) == DBNull.Value)
                         {
                             user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, null, null);
                         } else
@@ -98,7 +94,7 @@ namespace StudentHousingBV.repositories
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        users.AddRange(toListOfUsers(reader));
+                        users.AddRange(ToListOfUsers(reader));
                     }
                 }
             }
@@ -106,7 +102,6 @@ namespace StudentHousingBV.repositories
             {
                 MessageBox.Show($"The connection is no longer available! + {ex.Message}");
             }
-
             return users;
         }
 
@@ -154,7 +149,6 @@ namespace StudentHousingBV.repositories
             {
                 MessageBox.Show($"The connection is no longer available! + {ex.Message}");
             }
-
             return result;
         }
 
@@ -162,13 +156,8 @@ namespace StudentHousingBV.repositories
         {
               string sql = "SELECT * FROM [USER];";
               return ExecuteReaderUsers(sql, new());
-
-           /* return new List<User> {
-                new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL71ABNA2405012723"),
-                new User(2, "Quanna", "Cevdet", "quanna@mail.com", "password", "+31434342", 7, 1, false, DateTime.UtcNow, "NL78ABNA3470416656"),
-                new User(3, "Kalina", "Ravi", "admin", "admin", "+3154i2o", 90, 37, true, DateTime.Now, "NL23INGB4666097791")
-            }; */
         }
+
         public User Get(int id) 
         {
             string sql = "SELECT * FROM [USER] WHERE [USER].Id = @id;";
@@ -177,17 +166,14 @@ namespace StudentHousingBV.repositories
                 { "@id", id.ToString() }
             };
             return ExecuteReaderUsers(sql, parameters).First(); 
-          // return new User(1, "firstName", "LastName", "email", "password", "phonenumber", 1, 0, true, DateTime.UtcNow, "NL75ABNA4887467303"); 
         }
        
         public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN) 
         {
             string sql = "INSERT INTO [USER] (FirstName, LastName, EmailAddress, Password, PhoneNumber, PositiveVotes, NegativeVotes, IsAdmin, IBAN)" +
                 " VALUES (@firstName, @lastName, @email, @password , @phoneNumber, 0, 0, @isAdmin, @IBAN)";
-
             string password = DateTime.Now.Ticks.ToString("x");
             string hashedPassword = PasswordHasher.Hash(password);
-
             Dictionary<string, string> parameters = new()
             {
                 { "@firstName", firstName },
@@ -198,7 +184,6 @@ namespace StudentHousingBV.repositories
                 { "@isAdmin", Convert.ToInt32(isAdmin).ToString()},
                 { "@IBAN", IBAN}
             };
-
             ExecuteNonQuery(sql, parameters);
             string query = "SELECT Id FROM [USER] WHERE Id = (SELECT MAX(Id) FROM [USER])";
             sendMail(email, password);
@@ -211,7 +196,6 @@ namespace StudentHousingBV.repositories
                             "PositiveVotes = @PositiveVotes, NegativeVotes = @NegativeVotes, IsAdmin = @IsAdmin, " +
                             "LastSeenAt = GETDATE(), IBAN = @IBAN " +
                             "WHERE Id = @Id;";
-
             Dictionary<string, string> parameters = new()
             {
                 { "@id", user.Id.ToString() },
@@ -225,7 +209,6 @@ namespace StudentHousingBV.repositories
                 { "@IsAdmin", Convert.ToInt16(user.IsAdmin).ToString()},
                 { "@IBAN", user.IBAN }
             };
-
             ExecuteNonQuery( sql, parameters );
         }
 
@@ -238,13 +221,10 @@ namespace StudentHousingBV.repositories
                             "inner join BUILDING as b " +
                             "on r.BuildingId = b.Id " +
                             "where u.IsAdmin = 1 and r.BuildingId = @buildingId;";
-
             Dictionary<string, string> parameters = new()
             {
                 { "@buildingId", buildingId.ToString() }
             };
-
-
             return ExecuteReaderUsers( sql, parameters);
         }
 
@@ -257,7 +237,6 @@ namespace StudentHousingBV.repositories
                             "inner join BUILDING as b " +
                             "on r.BuildingId = b.Id " +
                             "where r.BuildingId = @buildingId;";
-
             Dictionary<string, string> parameters = new()
             {
                 { "@buildingId", buildingId.ToString() }
@@ -270,7 +249,6 @@ namespace StudentHousingBV.repositories
             string sql = "select * " +
                             "from [USER] " +
                             "where IsAdmin = 1;";
-           
             return ExecuteReaderUsers(sql, new());
         }
 
@@ -283,13 +261,11 @@ namespace StudentHousingBV.repositories
                         "inner join BUILDING as b " +
                         "on r.BuildingId = b.Id " +
                         "where r.BuildingId = @bId;";
-
             Dictionary<string, string> parameters = new()
             {
                 { "@bId", id.ToString() }
             };
             return ExecuteScalarUsers(sql, parameters);
-           
         }
 
         public User GetCreatorOfEventId(int id)
@@ -299,15 +275,11 @@ namespace StudentHousingBV.repositories
                             "inner join [USER] as u " +
                             "on e.CreatorId = u.Id " +
                             "where e.Id = @Id;";
-
             Dictionary<string, string> parameters = new()
             {
                 { "@Id", id.ToString() }
             };
-
             return ExecuteReaderUsers(sql, parameters).First();
-
-           // return new User(1, "Nela", "Geraldo", "nela@mail.com", "password", "+3165123", 10, 99, false, DateTime.UtcNow, "NL51INGB9304669103");
         }
     }
 }

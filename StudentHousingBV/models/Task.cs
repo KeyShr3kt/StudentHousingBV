@@ -58,7 +58,13 @@ namespace StudentHousingBV.models
             { this._assignedToUserId = value; }
         }
 
-        public int? TotalPrice { get => _totalPrice; set => _totalPrice = value; }
+        public int? TotalPrice
+        {
+            get
+            { return this._totalPrice; }
+            set
+            { this._totalPrice = value; }
+        }
 
         public int EventId { get; set; } // so we can read columns using reflection
     }

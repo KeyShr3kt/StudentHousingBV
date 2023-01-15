@@ -16,13 +16,15 @@ namespace StudentHousingBV.forms.adminSectionForms
     public partial class AdminReportsForm : Form
     {
         private UserManager _userManager;
-        public UserManager userManager { get => _userManager; private set { _userManager = value; } }
-
         private BuildingManager _buildingManager;
-        public BuildingManager buildingManager { get => _buildingManager; }
-
         private ReportManager _reportManager;
+
+        public UserManager userManager { get => _userManager; private set { _userManager = value; } }
+      
+        public BuildingManager buildingManager { get => _buildingManager; }
+ 
         public ReportManager reportManager { get => _reportManager; }
+
         public AdminReportsForm(UserManager manager)
         {
             InitializeComponent();
@@ -37,7 +39,6 @@ namespace StudentHousingBV.forms.adminSectionForms
         {
             cmbBoxBuildings.Items.Clear();
             buildingManager.GetAllBuildings().ForEach(building => { cmbBoxBuildings.Items.Add(building); });
-
         }
 
         public void fillReports(List<Report> reportsToFill)
@@ -53,8 +54,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 reports = new List<Report>(reportsToFill);
             }
-
-
             List<AdminReportComponent> components = new ();
             foreach (Report report in reports)
             {

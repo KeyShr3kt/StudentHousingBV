@@ -14,15 +14,6 @@ namespace StudentHousingBV.models
         private int? _userId;
         private int _buildingId;
 
-        public int Id { get => _id; private set => _id = value; }
-        public string Type { get => _type; private set => _type = value; }
-
-        public string Name { get => _name; private set => _name = value; }
-
-        public int? UserId { get => _userId; private set => _userId = value; }
-
-        public int BuildingId { get => _buildingId; private set => _buildingId = value; }
-
         public Room()
         { }
 
@@ -34,6 +25,16 @@ namespace StudentHousingBV.models
             UserId = userId;
             BuildingId = buildingId;
         }
+
+        public int Id { get => _id; private set => _id = value; }
+
+        public string Type { get => _type; private set => _type = value; }
+
+        public string Name { get => _name; private set => _name = value; }
+
+        public int? UserId { get => _userId; private set => _userId = value; }
+
+        public int BuildingId { get => _buildingId; private set => _buildingId = value; }
 
         public override string ToString()
         {

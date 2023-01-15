@@ -15,9 +15,10 @@ namespace StudentHousingBV.forms.adminSectionForms
     public partial class AdminUsersForm : Form
     {
         private UserManager _userManager;
+        private BuildingManager _buildingManager;
+
         public UserManager userManager { get => _userManager; private set { _userManager = value; } }
 
-        private BuildingManager _buildingManager;
         public BuildingManager buildingManager { get => _buildingManager; }
 
         public AdminUsersForm(UserManager manager)
@@ -33,24 +34,20 @@ namespace StudentHousingBV.forms.adminSectionForms
         {
             cmbBoxBuildings.Items.Clear();
             buildingManager.GetAllBuildings().ForEach(building => { cmbBoxBuildings.Items.Add(building); });
-
         }
+
         public void fillUsers(List<User> usersToFill)
         {
             flowLayoutPanel1.Controls.Clear();
-
             List<User> users;
             if (usersToFill.Count == 0)
             {
-                
                 users = userManager.GetAllUsers();
             } 
             else
             {
                 users = new List<User>(usersToFill);
             }
-
-
             List<AdminUserComponent> components = new List<AdminUserComponent>();
             foreach (User user in users)
             {
@@ -60,7 +57,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 flowLayoutPanel1.Controls.Add(auc);
             }
-            
         }
 
         private void btnCreateUser_Click(object sender, EventArgs e)
@@ -77,7 +73,6 @@ namespace StudentHousingBV.forms.adminSectionForms
                 {
                     fillUsers(new List<User>());
                 }
-                
                 List<AdminUserComponent> testcomponents = new List<AdminUserComponent>();
                 foreach (Control c in flowLayoutPanel1.Controls)
                 {
@@ -113,9 +108,7 @@ namespace StudentHousingBV.forms.adminSectionForms
         private void btnApplyFilters_Click(object sender, EventArgs e)
         {
             Building? building = cmbBoxBuildings.SelectedItem as Building;
-            bool isAdmin = checkBoxIsAdmin.Checked;
-
-           
+            bool isAdmin = checkBoxIsAdmin.Checked;  
             if (isAdmin)
             {
                 if (building != null)
@@ -155,19 +148,15 @@ namespace StudentHousingBV.forms.adminSectionForms
                     {
                         MessageBox.Show("There are no active users where you are currently searching.");
                     }
-
                     fillUsers(users);
                 }
-            } 
-       
-            
+            }
         }
 
         private void btnDisableFilters_Click(object sender, EventArgs e)
         {
             cmbBoxBuildings.SelectedItem = null;
             checkBoxIsAdmin.Checked = false;
-
             fillUsers(new List<User>());
         }
 
@@ -184,7 +173,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 flowLayoutPanel1.Controls.Add(c);
             }
-
         }
 
         private void btnSortByDownvotes_Click(object sender, EventArgs e)

@@ -16,11 +16,12 @@ namespace StudentHousingBV.forms.adminSectionForms
     public partial class AdminCreateRuleForm : Form
     {
         private EventManager _eventManager;
-        public EventManager eventManager { get => _eventManager; }
-
         private BuildingManager _buildingManager;
 
+        public EventManager eventManager { get => _eventManager; }
+
         public BuildingManager buildingManager { get => _buildingManager; }
+
         public AdminCreateRuleForm(EventManager manager, BuildingManager bManager)
         {
             InitializeComponent();
@@ -62,8 +63,6 @@ namespace StudentHousingBV.forms.adminSectionForms
                 if (btnCreateRule.Text == "Edit")
                 {
                     int ruleId = Int32.Parse(lblHiddenRuleId.Text);
-                 //   MessageBox.Show(ruleId.ToString());
-
                     eventManager.UpdateRuleForBuilding(ruleId, title, description, building);
                 }
                 else

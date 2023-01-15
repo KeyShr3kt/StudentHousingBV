@@ -101,6 +101,5 @@ namespace StudentHousingBV.forms
             };
             updateUserForm.Show();
         }
-
     }
 }

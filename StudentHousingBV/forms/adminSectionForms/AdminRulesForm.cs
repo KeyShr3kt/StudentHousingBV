@@ -16,14 +16,12 @@ namespace StudentHousingBV.forms.adminSectionForms
 {
     public partial class AdminRulesForm : Form
     {
-        // private RulesManager _rulesManager;
-        // public RulesManager RulesManager { get => _rulesManager; private set {_rulesManager = value; } }
         private BuildingManager _buildingManager;
+        private EventManager _eventManager;
+
         public BuildingManager buildingManager { get => _buildingManager; }
 
-        private EventManager _eventManager;
         public EventManager eventManager { get => _eventManager;}
-
 
         public AdminRulesForm(int userId)
         {
@@ -33,15 +31,16 @@ namespace StudentHousingBV.forms.adminSectionForms
             fillRules(new());
             fillBuildings();
         }
+
         void fillBuildings()
         {
             cmbBoxBuildings.Items.Clear();
             buildingManager.GetAllBuildings().ForEach(building => { cmbBoxBuildings.Items.Add(building); });
         }
+
         void fillRules(List<Rule> rulesToFill)
         {
             flowLayoutPanel1.Controls.Clear();
-
             List<Rule> rules;
             if (rulesToFill.Count == 0)
             {
@@ -51,8 +50,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 rules = new List<Rule>(rulesToFill);
             }
-
-
             List<AdminRuleComponent> components = new List<AdminRuleComponent>();
             foreach (Rule rule in rules)
             {

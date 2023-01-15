@@ -11,17 +11,18 @@ namespace StudentHousingBV.models
         private int _id;
         private string _address;
 
-        public int Id { get => _id; private set => _id = value; }
-        public string Address { get => _address; private set => _address = value; }
-
         public Building()
         { }
 
         public Building(int id, string address)
         {
-            Id = id;
-            Address = address;
+            _id = id;
+            _address = address;
         }
+
+        public int Id { get => _id; private set => _id = value; }
+
+        public string Address { get => _address; private set => _address = value; }
         
         public override string ToString()
         {

@@ -23,7 +23,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             User user = EventManager.GetCreatorOfRule(rule);
             lblCreatedBy.Text = user.FirstName + " " + user.LastName;
             lblDescription.Text = rule.Description;
-
         }
     }
 }

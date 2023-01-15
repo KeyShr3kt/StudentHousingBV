@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentHousingBV.forms
+namespace StudentHousingBV.forms.components
 {
     public class RoundButton : Button
     {
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
             GraphicsPath grPath = new GraphicsPath();
             grPath.AddEllipse(0, 0, ClientSize.Width, ClientSize.Height);
-            this.Region = new System.Drawing.Region(grPath);
+            Region = new Region(grPath);
             base.OnPaint(e);
         }
     }

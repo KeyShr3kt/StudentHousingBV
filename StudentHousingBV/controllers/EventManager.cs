@@ -13,16 +13,16 @@ namespace StudentHousingBV.controllers
 {
     public class EventManager
     {
-        private int _currUseid;
-        public int CurrentUserId { get => _currUseid;}
-
+        private int _currUserid;
         UnitOfWork _unitOfWork = new();
+
+        public int CurrentUserId { get => _currUserid;}
 
         public UnitOfWork unitOfWork { get => _unitOfWork;}
 
         public EventManager(int currUseid)
         {
-            _currUseid = currUseid;
+            _currUserid = currUseid;
         }
 
         public List<Rule> GetAllRules()
@@ -51,7 +51,6 @@ namespace StudentHousingBV.controllers
 
         public void UpdateRuleForBuilding(int ruleId, string title, string description, Building building)
         {
-     
             if (title == "" || description == "" || building == null)
             {
                 throw new ArgumentException("Invalid input!");
@@ -72,7 +71,6 @@ namespace StudentHousingBV.controllers
             {
                 throw new ArgumentException("Invalid input!");
             }
-
             unitOfWork.Events.CreateTask(title, description, CurrentUserId, building.Id);
         }
 
@@ -149,8 +147,6 @@ namespace StudentHousingBV.controllers
 
         public bool DeleteAgreementReaction(Agreement agreement, Reaction reaction)
         {
-            // we don't actually need the agreement parameter
-            // I just don't wanna create a ReactionManager class for just one method
             return unitOfWork.Reactions.Delete(reaction);
         }
 

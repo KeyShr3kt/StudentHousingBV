@@ -5,24 +5,25 @@ namespace StudentHousingBV.controllers
     public class UnitOfWork
     {
         public static string CONNECTION_STRING = "Server=mssqlstud.fhict.local;Database=dbi510175_shbv;User Id=dbi510175_shbv;Password=StudentHousingBV;";
-        private UserRepository _userRepository = new();
-        public UserRepository Users { get => _userRepository; }
 
+        private UserRepository _userRepository = new();
         private BuildingRepository _buildingRepository = new();
+        private RoomRepository _roomRepository = new();
+        private ReportRepository _reportRepository = new();
+        private EventRepository _eventRepository = new(CONNECTION_STRING);
+        private ReactionRepository _reactionRepository = new(CONNECTION_STRING);
+
+
+        public UserRepository Users { get => _userRepository; }
 
         public BuildingRepository Buildings { get => _buildingRepository; }
 
-        private RoomRepository _roomRepository = new();
         public RoomRepository Rooms { get => _roomRepository; }
 
-        private EventRepository _eventRepository = new(CONNECTION_STRING);
         public EventRepository Events { get => _eventRepository; }
-
-        private ReportRepository _reportRepository = new();
 
         public ReportRepository Reports { get => _reportRepository; }
 
-        private ReactionRepository _reactionRepository = new(CONNECTION_STRING);
         public ReactionRepository Reactions { get => _reactionRepository; }
     }
 }

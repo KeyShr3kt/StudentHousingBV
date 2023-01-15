@@ -31,7 +31,7 @@
             this.lbTaskDescription = new System.Windows.Forms.Label();
             this.lbTaskUser = new System.Windows.Forms.Label();
             this.btnTaskComponent = new System.Windows.Forms.Button();
-            this.btnReportTask = new StudentHousingBV.forms.RoundButton();
+            this.btnReportTask = new StudentHousingBV.forms.components.RoundButton();
             this.SuspendLayout();
             // 
             // lbTaskDescription
@@ -95,6 +95,6 @@
         private Label lbTaskDescription;
         private Label lbTaskUser;
         private Button btnTaskComponent;
-        private RoundButton btnReportTask;
+        private StudentHousingBV.forms.components.RoundButton btnReportTask;
     }
 }

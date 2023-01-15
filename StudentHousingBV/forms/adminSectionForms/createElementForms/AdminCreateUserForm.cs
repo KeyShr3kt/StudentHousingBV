@@ -23,6 +23,7 @@ namespace StudentHousingBV.forms
         private BuildingManager _buildingManager;
 
         public UserManager userManager { get => _userManager; }
+
         public BuildingManager buildingManager { get => _buildingManager; }
 
         public AdminCreateUserForm(UserManager manager, BuildingManager bManager)
@@ -52,9 +53,7 @@ namespace StudentHousingBV.forms
                 string phoneNumber = txtBoxPhoneNumber.Text;
                 bool isAdmin = checkBoxIfAdmin.Checked;
                 string IBAN = txtBoxIBAN.Text;
-
-                userManager.CreateUser(firstName, lastName, email,
-                                phoneNumber, isAdmin, IBAN, cmbBoxRooms.SelectedItem as Room);
+                userManager.CreateUser(firstName, lastName, email, phoneNumber, isAdmin, IBAN, cmbBoxRooms.SelectedItem as Room);
                 this.Close();
             } 
             catch (ArgumentException ex)
@@ -70,7 +69,6 @@ namespace StudentHousingBV.forms
             {
                 Building building = (Building) cmbBoxBuildings.SelectedItem;
                 List<Room> availableBedrooms = buildingManager.GetAvailableBedroomsForBuilding(building);
-
                 foreach (Room room in availableBedrooms) 
                 {
                     cmbBoxRooms.Items.Add(room);

@@ -16,6 +16,7 @@ namespace StudentHousingBV.controllers
         private UnitOfWork _unitOfWork = new();
 
         public int CurrentUserId { get => _currentUserId;  set { _currentUserId = value; } }
+
         public UnitOfWork unitOfWork { get => _unitOfWork; }
 
         public UserManager(int userId) 

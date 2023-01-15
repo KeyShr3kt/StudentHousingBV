@@ -17,18 +17,8 @@ namespace StudentHousingBV.models
         private int _buildingId;
         private bool _isReviewed;
 
-        public int TargetedToEventId { get => _targetedToEventId; private set => _targetedToEventId = value; }
-        public int Id { get => _id; private set => _id = value; }
-
-        public string Title { get => _title; private set => _title = value; }
-        public string Description { get => _description; private set => _description = value; }
-        public DateTime CreatedAt { get => _createdAt; private set => _createdAt = value; }
-
-        public int CreatorId { get => _creatorId; private set => _creatorId = value; }
-
-        public int BuildingId { get => _buildingId; private set => _buildingId = value; }
-
-        public bool IsReviewed { get => _isReviewed; private set => _isReviewed = value; }
+        public Report()
+        { }
 
         public Report(int id, int targetedToEventId, string title, string description, DateTime createdAt, int creatorId, int buildingId)
         {
@@ -42,7 +32,20 @@ namespace StudentHousingBV.models
             _isReviewed = false;
         }
 
-        public Report()
-        { }
+        public int TargetedToEventId { get => _targetedToEventId; private set => _targetedToEventId = value; }
+
+        public int Id { get => _id; private set => _id = value; }
+
+        public string Title { get => _title; private set => _title = value; }
+
+        public string Description { get => _description; private set => _description = value; }
+
+        public DateTime CreatedAt { get => _createdAt; private set => _createdAt = value; }
+
+        public int CreatorId { get => _creatorId; private set => _creatorId = value; }
+
+        public int BuildingId { get => _buildingId; private set => _buildingId = value; }
+
+        public bool IsReviewed { get => _isReviewed; private set => _isReviewed = value; }
     }
 }

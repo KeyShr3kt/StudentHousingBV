@@ -10,8 +10,10 @@ namespace StudentHousingBV.controllers
     public class BuildingManager
     {
         private int _currentUserId;
-        public int CurrentUserId { get => _currentUserId; set { _currentUserId = value; } }
         private UnitOfWork _unitOfWork = new();
+
+        public int CurrentUserId { get => _currentUserId; set { _currentUserId = value; } }
+        
         public UnitOfWork unitOfWork { get => _unitOfWork; }
 
         public BuildingManager(int currentUserId)

@@ -72,8 +72,5 @@ namespace StudentHousingBV.forms
                 MessageBox.Show(ex.Message);
             }
         }
-
-       
-
     }
 }

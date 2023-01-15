@@ -30,7 +30,7 @@
         {
             this.lbRuleId = new System.Windows.Forms.Label();
             this.lbRuleTitle = new System.Windows.Forms.Label();
-            this.btnReportTask = new StudentHousingBV.forms.RoundButton();
+            this.btnReportTask = new StudentHousingBV.forms.components.RoundButton();
             this.linkDetails = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
@@ -94,7 +94,7 @@
 
         private Label lbRuleId;
         private Label lbRuleTitle;
-        private RoundButton btnReportTask;
+        private StudentHousingBV.forms.components.RoundButton btnReportTask;
         private LinkLabel linkDetails;
     }
 }

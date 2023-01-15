@@ -11,11 +11,8 @@ namespace StudentHousingBV.models
         private DateTime _updatedAt;
 
         public Rule()
-        {
-
-        }
+        { }
         public Rule(int id, string title, string description, DateTime createdAt, int creatorId, int buildingId, DateTime updatedAt) : base(id, title, description, createdAt, creatorId, buildingId)
-        
         {
             _updatedAt = updatedAt;
         }

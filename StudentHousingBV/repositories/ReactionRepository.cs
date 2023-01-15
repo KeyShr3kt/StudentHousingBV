@@ -13,7 +13,7 @@ namespace StudentHousingBV.repositories
             _connectionString = connectionString;
         }
 
-        #region helpers
+        #region Helpers
 
         private List<T>? sqlCommandHelper<T>(string sql, object parameters, Func<T> defaultCtor, bool nonQuery, Func<int, bool> nonQueryPredicate)
             where T : notnull

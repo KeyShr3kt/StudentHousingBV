@@ -17,7 +17,6 @@ namespace StudentHousingBV.forms.adminSectionForms
         public AdminReportedEventPreview(int eventId, EventManager manager)
         {
             InitializeComponent();
-
             Event e = manager.GetEvent(eventId);
             lblTitle.Text = e.Title;
             lblDescription.Text =  e.Description;
@@ -29,7 +28,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             Building b = bManager.GetBuidingWithId(e.BuildingId);
             lblBuilding.Text = "Building: " + b.Address;
             Type type = e.GetType();
-
             if (e.GetType() == typeof(Agreement))
             {
                 Agreement a = (Agreement) e;
@@ -37,12 +35,14 @@ namespace StudentHousingBV.forms.adminSectionForms
                 lblEndDate.Text = "End date: " + a.EndDateTime.ToString();
                 lblIsAccepted.Text = "Is accepted: " + a.IsAccepted.ToString();
 
-            } else if (e.GetType() == typeof(models.Task))
+            }
+            else if (e.GetType() == typeof(models.Task))
             {
                 models.Task t = (models.Task) e;
                 lblIsShopping.Text = "Does it include payment: " + t.IsShopping.ToString();
                 lblIsCompleted.Text = "Is it fully completed: " + t.IsCompleted.ToString();
-            } else
+            } 
+            else
             {
                 groupBox1.Hide();
             }

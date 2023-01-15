@@ -15,11 +15,12 @@ namespace StudentHousingBV.forms.adminSectionForms
     public partial class AdminCreateTaskForm : Form
     {
         private EventManager _eventManager;
-        public EventManager eventManager { get => _eventManager; }
-
         private BuildingManager _buildingManager;
 
+        public EventManager eventManager { get => _eventManager; }
+
         public BuildingManager buildingManager { get => _buildingManager; }
+
         public AdminCreateTaskForm(BuildingManager bManager, EventManager eManager)
         {
             InitializeComponent();
@@ -42,21 +43,18 @@ namespace StudentHousingBV.forms.adminSectionForms
                 string description = txtBoxDescription.Text;
                 bool includesPayment = rdBtnPaymentYes.Checked ? true : false;
                 Building building = (Building)cmbBoxBuildings.SelectedItem;
-
                 if (!rdBtnPaymentYes.Checked && !rdBtnPaymentNo.Checked)
                 {
                     throw new ArgumentException("You should choose if the task includes payment");
                 }
-
                 eventManager.CreateTaskForBuilding(building, title, description, includesPayment);
                 this.Close();
 
-            }catch(ArgumentException ex)
+            }
+            catch(ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        
+        }  
     }
 }

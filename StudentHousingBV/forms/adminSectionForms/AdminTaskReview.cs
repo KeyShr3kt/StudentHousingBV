@@ -15,8 +15,11 @@ namespace StudentHousingBV.forms.adminSectionForms
     public partial class AdminTaskReview : Form
     {
         private models.Task _task;
+
         public UserManager userManager { get; }
+
         public EventManager eventManager { get; }
+
         public AdminTaskReview(models.Task task, int currUserId)
         {
             InitializeComponent();
@@ -28,7 +31,6 @@ namespace StudentHousingBV.forms.adminSectionForms
             lblTotalPrice.Text = PriceToEuro(task.TotalPrice);
             User user = userManager.GetUser(task.CreatorId);
             lblIBAN.Text = user.IBAN;
-
             int count = userManager.CountUsersInBuildingId(task.BuildingId);
             if (task.TotalPrice != 0)
             {
@@ -47,7 +49,6 @@ namespace StudentHousingBV.forms.adminSectionForms
         private void btnComplete_Click(object sender, EventArgs e)
         {
             eventManager.MarkTaskIdAsComplete(_task.Id);
-            
             this.Close();
         }
         public string PriceToEuro(int? price)

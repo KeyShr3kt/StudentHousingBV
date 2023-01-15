@@ -22,10 +22,8 @@ namespace StudentHousingBV.repositories
                 sql += "DELETE FROM [AGREEMENT] WHERE [AGREEMENT].[Id] = @id;";
                 sql += "DELETE FROM [EVENT] WHERE [EVENT].[Id] = @id;";
                 sqlNonQueryHelper(sql, new { id });
-            } catch
-            {
-                // nothing
             }
+            catch { }
         }
 
         private List<T>? sqlCommandHelper<T>(string sql, object parameters, Func<T> defaultCtor, bool nonQuery)
@@ -53,7 +51,7 @@ namespace StudentHousingBV.repositories
                 {
                     if (reader.FieldCount > 1)
                     {
-                        throw new Exception("cannot assign result from query with more than one column to a value type");
+                        throw new Exception("Cannot assign result from query with more than one column to a value type.");
                     }
                     if (reader.IsDBNull(0))
                     {
@@ -71,7 +69,7 @@ namespace StudentHousingBV.repositories
                         var prop = t.GetType().GetProperty(reader.GetName(i));
                         if (prop == null)
                         {
-                            throw new Exception($"field {reader.GetName(i)} does not exist in {t.GetType().Name}");
+                            throw new Exception($"Field {reader.GetName(i)} does not exist in {t.GetType().Name}.");
                         }
                         if (reader.IsDBNull(i))
                         {
