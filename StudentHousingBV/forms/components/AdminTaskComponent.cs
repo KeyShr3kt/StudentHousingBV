@@ -27,9 +27,9 @@ namespace StudentHousingBV.forms.components
             lblCreatedAt.Text = ((Event)task).CreatedAt.ToString();
             lblTaskIdHidden.Text = ((Event)task).Id.ToString();
             lblTaskIdHidden.Hide();
-            if (task.TotalPrice == null || task.IsCompleted == true)
+            if (task.IsShopping == true && task.IsCompleted == false && task.TotalPrice != null)
             {
-                btnComplete.Hide();
+                btnComplete.Show();
             }
         }
 
@@ -48,7 +48,7 @@ namespace StudentHousingBV.forms.components
             DialogResult dialogResult = MessageBox.Show($"Do you really want to delete {lblTitle.Text}?", "Attention!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                eventManager.DeleteTaskWithId(int.Parse(lblTaskIdHidden.Text));
+                eventManager.DeleteTaskWithId(_task.Id);
             }
             
         }

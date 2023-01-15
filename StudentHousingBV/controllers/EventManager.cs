@@ -71,18 +71,26 @@ namespace StudentHousingBV.controllers
             {
                 throw new ArgumentException("Invalid input!");
             }
-            unitOfWork.Events.CreateTask(title, description, CurrentUserId, building.Id);
+            if (includesPayment)
+            {
+                unitOfWork.Events.CreateTaskGrocery(title, description, CurrentUserId, building.Id);
+            }
+            else
+            {
+                unitOfWork.Events.CreateTask(title, description, CurrentUserId, building.Id);
+            }
         }
 
-        public List<Task> GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(int? id)
+        public List<Task> GetAllTasksForReview(int? id)
         {
             List<Task> tasks;
             if (id == null)
             {
-                tasks = unitOfWork.Events.GetAllTasksWithTotalPriceAndNotCompleted();
-            } else
+                tasks = unitOfWork.Events.GetAllTasksForReview();
+            }
+            else
             {
-                tasks = unitOfWork.Events.GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted((int)id);
+                tasks = unitOfWork.Events.GetAllTasksForReviewInBuilding((int)id);
             }
             return tasks;
         }
@@ -115,7 +123,7 @@ namespace StudentHousingBV.controllers
 
         public void DeleteTaskWithId(int id)
         {
-            unitOfWork.Events.Delete(id);
+            unitOfWork.Events.DeleteTask(id);
         }
 
         public void MarkTaskIdAsComplete(int id)

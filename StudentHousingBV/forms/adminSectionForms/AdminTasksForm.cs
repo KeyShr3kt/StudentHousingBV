@@ -80,7 +80,7 @@ namespace StudentHousingBV.forms.adminSectionForms
             }
             else if (rdBtnForReview.Checked)
             {
-                tasks = eventManager.GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(buildingId);
+                tasks = eventManager.GetAllTasksForReview(buildingId);
             }
             else
             {

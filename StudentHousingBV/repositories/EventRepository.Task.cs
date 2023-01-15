@@ -12,12 +12,13 @@ namespace StudentHousingBV.repositories
                 new { },
                 () => new());
         }
-        public List<Task> GetAllTasksWithTotalPriceAndNotCompleted()
+        public List<Task> GetAllTasksForReview()
         {
             return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
                 " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
                 " WHERE [TASK].[TotalPrice] IS NOT NULL" +
-                " AND [TASK].[IsCompleted] = 0",
+                " AND [TASK].[IsCompleted] = 0" +
+                " AND [TASK].[IsShopping] = 1;",
                 new { },
                 () => new());
         }
@@ -31,13 +32,14 @@ namespace StudentHousingBV.repositories
                 () => new());
         }
 
-        public List<Task> GetAllTasksInBuildingIdWithTotalPriceAndNotCompleted(int buildingId)
+        public List<Task> GetAllTasksForReviewInBuilding(int buildingId)
         {
             return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
                 " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
-                " WHERE [EVENT].[BuildingId] = @buildingId" +
-                " AND [TASK].[TotalPrice] != NULL" +
-                " AND [TASK].[IsCompleted] = 0",
+                " WHERE [TASK].[TotalPrice] IS NOT NULL" +
+                " AND [EVENT].[BuildingId] = @buildingId" +
+                " AND [TASK].[IsCompleted] = 0" +
+                " AND [TASK].[IsShopping] = 1;",
                 new { buildingId },
                 () => new());
         }
@@ -61,7 +63,20 @@ namespace StudentHousingBV.repositories
                 () => new());
         }
 
-        public void CreateTask(string title, string description, int creatorId, int buildingId, int totalPrice = 0)
+        public void CreateTask(string title, string description, int creatorId, int buildingId)
+        {
+            sqlNonQueryHelper("INSERT INTO [EVENT]" +
+                " ([Title], [Description], [CreatedAt], [CreatorId], [BuildingId])" +
+                " VALUES" +
+                " (@title, @description, GETDATE(), @creatorId, @buildingId);" +
+                " INSERT INTO [TASK]" +
+                " ([EventId], [IsShopping])" +
+                " VALUES" +
+                " (SCOPE_IDENTITY(), 0);",
+                new { title, description, creatorId, buildingId });
+        }
+
+        public void CreateTaskGrocery(string title, string description, int creatorId, int buildingId)
         {
             sqlNonQueryHelper("INSERT INTO [EVENT]" +
                 " ([Title], [Description], [CreatedAt], [CreatorId], [BuildingId])" +
@@ -70,8 +85,8 @@ namespace StudentHousingBV.repositories
                 " INSERT INTO [TASK]" +
                 " ([EventId], [IsShopping], [IsCompleted], [TotalPrice])" +
                 " VALUES" +
-                " (SCOPE_IDENTITY(), 0, 0, @totalPrice);",
-                new { title, description, creatorId, buildingId, totalPrice });
+                " (SCOPE_IDENTITY(), 1, 0, 0);",
+                new { title, description, creatorId, buildingId });
         }
 
         public void MarkTaskIdAsComplete(int id)
@@ -100,6 +115,15 @@ namespace StudentHousingBV.repositories
                 " SET [IsShopping] = @isShopping, [IsCompleted] = @isCompleted" +
                 " WHERE [TASK].[EventId] = @id",
                 new { id, title, description, creatorId, buildingId, isShopping = isShopping ? 1 : 0, isCompleted = isCompleted ? 1 : 0 });
+        }
+
+        public void DeleteTask(int id)
+        {
+            sqlNonQueryHelper("DELETE FROM [TASK]" +
+                " WHERE [EventId] = @id; " +
+                "DELETE FROM [EVENT]" +
+                " WHERE [Id] = @id",
+                new { id });
         }
     }
 }

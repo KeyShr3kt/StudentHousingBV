@@ -78,6 +78,7 @@
             this.btnComplete.TabIndex = 3;
             this.btnComplete.Text = "Review";
             this.btnComplete.UseVisualStyleBackColor = true;
+            this.btnComplete.Visible = false;
             this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 
             // lblCreatedAt

@@ -41,7 +41,15 @@ namespace StudentHousingBV.forms.adminSectionForms
             {
                 string title = txtBoxTitle.Text;
                 string description = txtBoxDescription.Text;
-                bool includesPayment = rdBtnPaymentYes.Checked ? true : false;
+                bool includesPayment = false;
+                if (rdBtnPaymentYes.Checked)
+                {
+                    includesPayment = true;
+                }
+                else if (rdBtnPaymentNo.Checked)
+                {
+                    includesPayment = false;
+                }
                 Building building = (Building)cmbBoxBuildings.SelectedItem;
                 if (!rdBtnPaymentYes.Checked && !rdBtnPaymentNo.Checked)
                 {
