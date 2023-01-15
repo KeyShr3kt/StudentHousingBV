@@ -1,5 +1,6 @@
 ﻿using StudentHousingBV.controllers;
 using StudentHousingBV.forms.adminSectionForms;
+using StudentHousingBV.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,13 @@ namespace StudentHousingBV.forms.components
             this.lbRuleTitle.Text = this._rule.Title;
             this._currentBuildingId = currentBuildingId;
             this._currentUserId = currentUserId;
+            string description = this._rule.Description;
+            if (this._rule.Description.Length > 60)
+            {
+                description = description.Remove(57);
+                description = description + "...";
+            }
+            this.lbRuleDescription.Text = description;
         }
 
         private void btnReportTask_Click(object sender, EventArgs e)

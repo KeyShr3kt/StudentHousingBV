@@ -32,6 +32,7 @@
             this.lbRuleTitle = new System.Windows.Forms.Label();
             this.btnReportTask = new StudentHousingBV.forms.components.RoundButton();
             this.linkDetails = new System.Windows.Forms.LinkLabel();
+            this.lbRuleDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbRuleId
@@ -67,7 +68,7 @@
             // linkDetails
             // 
             this.linkDetails.AutoSize = true;
-            this.linkDetails.Location = new System.Drawing.Point(806, 29);
+            this.linkDetails.Location = new System.Drawing.Point(798, 29);
             this.linkDetails.Name = "linkDetails";
             this.linkDetails.Size = new System.Drawing.Size(44, 15);
             this.linkDetails.TabIndex = 7;
@@ -75,10 +76,20 @@
             this.linkDetails.Text = "...more";
             this.linkDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDetails_LinkClicked);
             // 
+            // lbRuleDescription
+            // 
+            this.lbRuleDescription.AutoSize = true;
+            this.lbRuleDescription.Location = new System.Drawing.Point(365, 29);
+            this.lbRuleDescription.Name = "lbRuleDescription";
+            this.lbRuleDescription.Size = new System.Drawing.Size(74, 15);
+            this.lbRuleDescription.TabIndex = 8;
+            this.lbRuleDescription.Text = "{description}";
+            // 
             // RuleComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbRuleDescription);
             this.Controls.Add(this.btnReportTask);
             this.Controls.Add(this.lbRuleTitle);
             this.Controls.Add(this.lbRuleId);
@@ -96,5 +107,6 @@
         private Label lbRuleTitle;
         private StudentHousingBV.forms.components.RoundButton btnReportTask;
         private LinkLabel linkDetails;
+        private Label lbRuleDescription;
     }
 }
