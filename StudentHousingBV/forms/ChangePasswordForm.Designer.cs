@@ -41,65 +41,64 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 15F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Brown;
-            this.label1.Location = new System.Drawing.Point(74, 156);
+            this.label1.Location = new System.Drawing.Point(117, 185);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 28);
+            this.label1.Size = new System.Drawing.Size(223, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Change password";
+            this.label1.Text = "CHANGE PASSWORD";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Brown;
-            this.label2.Location = new System.Drawing.Point(56, 196);
+            this.label2.Location = new System.Drawing.Point(106, 226);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(91, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "New password:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Brown;
-            this.label3.Location = new System.Drawing.Point(56, 250);
+            this.label3.Location = new System.Drawing.Point(106, 286);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.Size = new System.Drawing.Size(110, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Confirm password:";
             // 
             // txtBoxNewPassword
             // 
-            this.txtBoxNewPassword.Location = new System.Drawing.Point(56, 217);
+            this.txtBoxNewPassword.Location = new System.Drawing.Point(106, 242);
             this.txtBoxNewPassword.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBoxNewPassword.Name = "txtBoxNewPassword";
-            this.txtBoxNewPassword.Size = new System.Drawing.Size(239, 23);
+            this.txtBoxNewPassword.Size = new System.Drawing.Size(247, 23);
             this.txtBoxNewPassword.TabIndex = 3;
             // 
             // txtBoxConfirmPassword
             // 
-            this.txtBoxConfirmPassword.Location = new System.Drawing.Point(56, 271);
+            this.txtBoxConfirmPassword.Location = new System.Drawing.Point(106, 302);
             this.txtBoxConfirmPassword.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtBoxConfirmPassword.Name = "txtBoxConfirmPassword";
-            this.txtBoxConfirmPassword.Size = new System.Drawing.Size(239, 23);
+            this.txtBoxConfirmPassword.Size = new System.Drawing.Size(247, 23);
             this.txtBoxConfirmPassword.TabIndex = 4;
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Black", 10.875F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btnSave.BackColor = System.Drawing.Color.Brown;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(124, 301);
+            this.btnSave.Location = new System.Drawing.Point(149, 347);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(96, 27);
+            this.btnSave.Size = new System.Drawing.Size(166, 29);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -109,7 +108,7 @@
             // 
             this.pictureBox1.Image = global::StudentHousingBV.Properties.Resources.project_modified;
             this.pictureBox1.InitialImage = global::StudentHousingBV.Properties.Resources.project_modified;
-            this.pictureBox1.Location = new System.Drawing.Point(93, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(149, 28);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(166, 132);
@@ -122,7 +121,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(346, 341);
+            this.ClientSize = new System.Drawing.Size(458, 418);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBoxConfirmPassword);
@@ -133,7 +132,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "ChangePasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ChangePasswordForm";
+            this.Text = "Student Housing BV - Change Password";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

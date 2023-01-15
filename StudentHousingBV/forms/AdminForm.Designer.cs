@@ -82,7 +82,6 @@
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.menuButton.TabIndex = 0;
             this.menuButton.TabStop = false;
-            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // btnUsers
             // 

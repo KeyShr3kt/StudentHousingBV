@@ -13,38 +13,64 @@ namespace StudentHousingBV.controllers
     public class UserManager
     {
         private int _currentUserId;
-        public int CurrentUserId { get => _currentUserId;  set { _currentUserId = value; } }
-
-
         private UnitOfWork _unitOfWork = new();
-        public UnitOfWork unitOfWork { get => _unitOfWork;}
+
+        public int CurrentUserId { get => _currentUserId;  set { _currentUserId = value; } }
+        public UnitOfWork unitOfWork { get => _unitOfWork; }
 
         public UserManager(int userId) 
         {
-            CurrentUserId = userId;
+            _currentUserId = userId;
         }
+
         public User GetUser(int userId) 
         {
            return unitOfWork.Users.Get(userId);
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return unitOfWork.Users.GetAll();
+        }
+
+        public List<User> GetAdminsInBuilding(Building building)
+        {
+            return unitOfWork.Users.GetAdminsInBuildingId(building.Id);
+        }
+
+        public List<User> GetAllUsersInBuilding(Building building)
+        {
+            return unitOfWork.Users.GetAllUsersInBuildingId(building.Id);
+        }
+
+        public List<User> GetAllAdmins()
+        {
+            return unitOfWork.Users.GetAllAdmins();
         }
 
         public int CountUsersInBuildingId(int id)
         {
             return unitOfWork.Users.CountInBuildingId(id);
         }
-        public static User? VirifyUserWithEmailAndPassword(string email, string password)
+
+        public void UpdateUser(User user)
+        {
+            unitOfWork.Users.Update(user);
+        }
+
+        public static User? Verify(string email, string password)
         {
             UnitOfWork unitOfWork = new();
             List<User> users = unitOfWork.Users.GetAll();
             User? foundUser = null;
+            string hashString = "47B63402595D7DE12B1E0EA732D7391776E1ABBD0DC305783756C7CBB1157B3B:36D58FD2B56E1B17D4908458B524D74A:100000:SHA256";
 
             if (email == "" || password == "")
             {
                 throw new ArgumentException("Input cannot be empty");
             }
-            string a = "47B63402595D7DE12B1E0EA732D7391776E1ABBD0DC305783756C7CBB1157B3B:36D58FD2B56E1B17D4908458B524D74A:100000:SHA256";
 
-            bool res = PasswordHasher.Verify(password, a);
+            bool res = PasswordHasher.Verify(password, hashString);
             
             foreach (User user in users) 
             {
@@ -55,10 +81,29 @@ namespace StudentHousingBV.controllers
             }
             return foundUser;
         }
-
-        public List<User> GetAllUsers()
+        
+        public void CreateUser(string firstName, string lastName, string email, 
+                                string phoneNumber, bool isAdmin, string IBAN, Room? room)
         {
-           return unitOfWork.Users.GetAll();
+
+            if (firstName == "" || lastName == "" || IBAN == "" )
+            {
+                throw new ArgumentException("Invalid input! Please try again!");
+            }
+            else if (!IsEmail(email))
+            {
+                throw new ArgumentException("Invalid email! Please try again!");
+            }
+            else if (!IsPhoneNumber(phoneNumber)) 
+            {
+                throw new ArgumentException("Invalid phone number! You should include country code ins the beginning!");
+            }
+
+            int userId = unitOfWork.Users.Insert(firstName, lastName, email, phoneNumber, isAdmin, IBAN);
+            if (room != null)
+            {
+                unitOfWork.Rooms.SetRoomToUserId(room.Id, userId);
+            }
         }
 
         public void SetNewPasswordForCurrentUser(string password)
@@ -76,51 +121,13 @@ namespace StudentHousingBV.controllers
             user.Password = PasswordHasher.Hash(password);
             unitOfWork.Users.Update(user);
         }
-        public bool isCurrentUserAdmin()
+
+        public bool IsCurrentUserAdmin()
         {
             return unitOfWork.Users.Get(CurrentUserId).IsAdmin;
         }
-        
-        public void createUser(string firstName, string lastName, string email, 
-                                string phoneNumber, bool isAdmin, string IBAN, Room? room)
-        {
 
-            if (firstName == "" || lastName == "" || IBAN == "" )
-            {
-                throw new ArgumentException("Invalid input! Please try again!");
-            }
-            else if (!IsValidEmail(email))
-            {
-                throw new ArgumentException("Invalid email! Please try again!");
-            }
-            else if (!IsPhoneNumber(phoneNumber)) 
-            {
-                throw new ArgumentException("Invalid phone number! You should include country code ins the beginning!");
-            }
-
-            int userId = unitOfWork.Users.Insert(firstName, lastName, email, phoneNumber, isAdmin, IBAN);
-            if (room != null)
-            {
-                unitOfWork.Rooms.SetRoomToUserId(room.Id, userId);
-            }
-        }
-
-
-        public List<User> GetAdminsInBuilding(Building building)
-        {
-            return unitOfWork.Users.GetAdminsInBuildingId(building.Id);
-        }
-
-        public List<User> GetAllUsersInBuilding(Building building)
-        {
-            return unitOfWork.Users.GetAllUsersInBuildingId(building.Id);
-        }
-
-        public List<User> GetAllAdmins()
-        {
-            return unitOfWork.Users.GetAllAdmins();
-        }
-        bool IsValidEmail(string email)
+        public static bool IsEmail(string email)
         {
             var trimmedEmail = email.Trim();
 
@@ -141,9 +148,8 @@ namespace StudentHousingBV.controllers
 
         public static bool IsPhoneNumber(string number)
         {
-            Regex validatePhoneNumberRegex = new Regex("^\\s*\\+?[0-9]\\d?[- .]?(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$");
+            Regex validatePhoneNumberRegex = new Regex("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$");
             return validatePhoneNumberRegex.IsMatch(number); // returns True
-            //return Regex.Match(number, @"^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$").Success;
         }
     }
 }

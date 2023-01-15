@@ -16,7 +16,9 @@ namespace StudentHousingBV.forms
     {
         private Form? _activeForm;
         private UserManager _userManager;
+
         public UserManager userManager { get => _userManager; private set {_userManager = value; } }
+
         public AdminForm(UserManager manager)
         {
             InitializeComponent();
@@ -29,17 +31,11 @@ namespace StudentHousingBV.forms
         {
             InitializeComponent();
             _userManager = new UserManager(userId);
-            //Color color = ColorTranslator.FromHtml("#D9514EFF");
             OpenChildForm(new AdminUsersForm(_userManager), this);
+            //Color color = ColorTranslator.FromHtml("#D9514EFF");
             // sidebarPanel.BackColor = Color.FromArgb(217, 81, 78);
-
-
         }
 
-        private void menuButton_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btnUsers_Click(object sender, EventArgs e)
         {
             OpenChildForm(new forms.adminSectionForms.AdminUsersForm(userManager), this);
@@ -49,8 +45,6 @@ namespace StudentHousingBV.forms
         {
            OpenChildForm(new AdminRulesForm(userManager.CurrentUserId), this);
         }
-
-       
 
         private void btnTasks_Click(object sender, EventArgs e)
         {
@@ -84,9 +78,6 @@ namespace StudentHousingBV.forms
             login.Show();
             this.Close();
         }
-
- 
     }
-
 }
 

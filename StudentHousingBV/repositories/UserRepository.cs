@@ -11,24 +11,22 @@ namespace StudentHousingBV.repositories
     {
         private void sendMail(string email, string passwordToSend)
         {
-            // Set the sender and recipient email addresses
+            // Set the sender's email, password and recipient's email addresses
             string sender = "studenthousing404@outlook.com";
+            string password = "Studenthousingbv404";
             string recipient = email;
 
-            // Set the email subject and body
-            string subject = "User registration";
-           // string body = "This is a test email sent from a C# program.";
-
-            // Generate a random code and append it to the email body
-           // Random random = new Random();
-           // int code = random.Next(10000, 99999);
-            string body = "Your password is: " + passwordToSend;
+            string subject = "Student Housing BV - Temporary Passsword";
+            string body = $"Your temporary password for the Student Housing BV Panel is: {passwordToSend}. \n" +
+                $"After the first login, you will be prompted to change it to your intended one! \n" +
+                $"\n" +
+                $"Kind regards, \n" +
+                $"Student Housing BV Team \n" +
+                $"\n" +
+                $"Please be aware that this is email was sent automatically and no replies should be sent to this address!";
 
             // Create a new MailMessage object
             MailMessage message = new MailMessage(sender, recipient, subject, body);
-
-            // Set the sender's password
-            string password = "Studenthousingbv404";
 
             // Create a new SmtpClient object to send the email
             SmtpClient client = new SmtpClient("smtp.office365.com", 587);
@@ -39,9 +37,8 @@ namespace StudentHousingBV.repositories
 
             // Send the email
             client.Send(message);
-
-            Console.WriteLine("Email sent!");
         }
+
 
         private List<User> toListOfUsers(SqlDataReader reader)
         {

@@ -18,8 +18,6 @@ namespace StudentHousingBV.forms
         public LoginPanel()
         {
             InitializeComponent();
-            txtBoxEmail.Text = "admin";
-            txtBoxPassword.Text = "admin";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -29,26 +27,38 @@ namespace StudentHousingBV.forms
                 string email = txtBoxEmail.Text.Trim();
                 string password = txtBoxPassword.Text.Trim();
 
-                User? foundUser = UserManager.VirifyUserWithEmailAndPassword(email, password);
+                User? foundUser = UserManager.Verify(email, password);
                 if (foundUser != null)
                 {
                     if (foundUser.LastSeenAt == null)
                     {
-                        ChangePasswordForm form = new ChangePasswordForm(foundUser.Id);
-                        form.Show();
+                        ChangePasswordForm changepass = new ChangePasswordForm(foundUser.Id);
+                        changepass.Closed += (s, args) =>
+                        {
+                            this.Close();
+                        };
+                        changepass.Show();
                         this.Hide();
                     }
                     else if (foundUser.IsAdmin)
                     {
-                        AdminForm adminForm = new AdminForm(foundUser.Id);
-                        adminForm.Show();
+                        AdminForm admin = new AdminForm(foundUser.Id);
+                        admin.Closed += (s, args) =>
+                        {
+                            this.Close();
+                        };
+                        admin.Show();
                         this.Hide();
                     }
                     else
                     {
-                       // StudentPanel form = new StudentPanel(foundUser.Id);
-                       // form.Show();
-                       // this.Hide();
+                        StudentPanel student = new StudentPanel(foundUser);
+                        student.Closed += (s, args) =>
+                        {
+                            this.Close();
+                        };
+                        student.Show();
+                        this.Hide();
                     }
                 }
                 else

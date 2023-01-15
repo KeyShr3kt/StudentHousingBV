@@ -31,6 +31,7 @@
             this.lbRuleId = new System.Windows.Forms.Label();
             this.lbRuleTitle = new System.Windows.Forms.Label();
             this.btnReportTask = new StudentHousingBV.forms.RoundButton();
+            this.linkDetails = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lbRuleId
@@ -63,6 +64,16 @@
             this.btnReportTask.UseVisualStyleBackColor = true;
             this.btnReportTask.Click += new System.EventHandler(this.btnReportTask_Click);
             // 
+            // linkDetails
+            // 
+            this.linkDetails.AutoSize = true;
+            this.linkDetails.Location = new System.Drawing.Point(806, 29);
+            this.linkDetails.Name = "linkDetails";
+            this.linkDetails.Size = new System.Drawing.Size(44, 15);
+            this.linkDetails.TabIndex = 7;
+            this.linkDetails.TabStop = true;
+            this.linkDetails.Text = "...more";
+            // 
             // RuleComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -70,6 +81,7 @@
             this.Controls.Add(this.btnReportTask);
             this.Controls.Add(this.lbRuleTitle);
             this.Controls.Add(this.lbRuleId);
+            this.Controls.Add(this.linkDetails);
             this.Name = "RuleComponent";
             this.Size = new System.Drawing.Size(914, 72);
             this.ResumeLayout(false);
@@ -82,5 +94,6 @@
         private Label lbRuleId;
         private Label lbRuleTitle;
         private RoundButton btnReportTask;
+        private LinkLabel linkDetails;
     }
 }

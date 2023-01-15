@@ -69,7 +69,7 @@
             this.flowLayoutPanel1.Controls.Add(this.linkMore);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 30);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(699, 56);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(699, 46);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // linkMore

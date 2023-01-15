@@ -20,12 +20,11 @@ namespace StudentHousingBV.forms
     public partial class AdminCreateUserForm : Form
     {
         private UserManager _userManager;
-
-        public UserManager userManager { get => _userManager; }
-
         private BuildingManager _buildingManager;
 
+        public UserManager userManager { get => _userManager; }
         public BuildingManager buildingManager { get => _buildingManager; }
+
         public AdminCreateUserForm(UserManager manager, BuildingManager bManager)
         {
             InitializeComponent();
@@ -54,15 +53,14 @@ namespace StudentHousingBV.forms
                 bool isAdmin = checkBoxIfAdmin.Checked;
                 string IBAN = txtBoxIBAN.Text;
 
-                userManager.createUser(firstName, lastName, email,
+                userManager.CreateUser(firstName, lastName, email,
                                 phoneNumber, isAdmin, IBAN, cmbBoxRooms.SelectedItem as Room);
                 this.Close();
-            } catch (ArgumentException ex)
+            } 
+            catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
 
         private void cmbBoxBuildings_SelectedIndexChanged(object sender, EventArgs e)
