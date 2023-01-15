@@ -34,10 +34,5 @@ namespace StudentHousingBV.forms
             lblAccepted.Text = _agreement.IsAccepted ? "Yes" : "No";
             txtDescription.Text = _agreement.Description;
         }
-
-        private void lblCreatedAt_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
