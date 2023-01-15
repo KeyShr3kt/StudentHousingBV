@@ -36,17 +36,25 @@ namespace StudentHousingBV.forms
 
                 userManager.SetNewPasswordForCurrentUser(newPassword);
                 MessageBox.Show("Password saved!");
-                if (userManager.isCurrentUserAdmin())
+                if (userManager.IsCurrentUserAdmin())
                 {
                     AdminForm admin = new AdminForm(userManager);
+                    admin.Closed += (s, args) =>
+                    {
+                        this.Close();
+                    };
                     admin.Show();
-                    this.Close();
+                    this.Hide();
                 } 
                 else
                 {
-                    //StudentPanel student = new StudentPanel(userManager);
-                    //student.Show();
-                    //this.Hide();
+                    StudentPanel student = new StudentPanel(userManager.GetUser(userManager.CurrentUserId));
+                    student.Closed += (s, args) =>
+                    {
+                        this.Close();
+                    };
+                    student.Show();
+                    this.Hide();
                 }
             } 
             catch (ArgumentException ex)

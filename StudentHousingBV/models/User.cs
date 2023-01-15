@@ -23,8 +23,8 @@ namespace StudentHousingBV.models
 
         public int PossitiveVotes { get => this._possitiveVotes; private set => _possitiveVotes = value;  }
         public int NegativeVotes { get => this._negativeVotes; private set => _negativeVotes = value;  }
-        public string EmailAddress { get => _emailAddress; private set => _emailAddress = value;  }
-        public string PhoneNumber { get => _phoneNumber; private set => _phoneNumber = value; }
+        public string EmailAddress { get => _emailAddress; set => _emailAddress = value;  }
+        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
         public string FirstName { get => this._firstName; private set => _firstName = value; }
         public string LastName { get => this._lastName; private set => _lastName = value; }
         public int Id { get => this._id; private set => _id = value; }

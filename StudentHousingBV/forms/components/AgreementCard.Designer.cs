@@ -36,9 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblDownvote = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnVote = new System.Windows.Forms.Button();
+            this.btnUpvote = new System.Windows.Forms.Button();
+            this.btnDownvote = new System.Windows.Forms.Button();
+            this.flowReactionControls = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowReactionControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -66,7 +69,7 @@
             this.flowLayoutPanel1.Controls.Add(this.linkMore);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 30);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(791, 56);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(699, 46);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // linkMore
@@ -120,28 +123,50 @@
             this.flowLayoutPanel2.Controls.Add(this.lblUpvote);
             this.flowLayoutPanel2.Controls.Add(this.label2);
             this.flowLayoutPanel2.Controls.Add(this.lblDownvote);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(810, 30);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(50, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(87, 25);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(81, 25);
             this.flowLayoutPanel2.TabIndex = 8;
             // 
-            // btnVote
+            // btnUpvote
             // 
-            this.btnVote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVote.Location = new System.Drawing.Point(811, 65);
-            this.btnVote.Name = "btnVote";
-            this.btnVote.Size = new System.Drawing.Size(75, 23);
-            this.btnVote.TabIndex = 9;
-            this.btnVote.Text = "Vote";
-            this.btnVote.UseVisualStyleBackColor = true;
-            this.btnVote.Click += new System.EventHandler(this.btnVote_Click);
+            this.btnUpvote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpvote.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpvote.Location = new System.Drawing.Point(3, 3);
+            this.btnUpvote.Name = "btnUpvote";
+            this.btnUpvote.Size = new System.Drawing.Size(41, 40);
+            this.btnUpvote.TabIndex = 9;
+            this.btnUpvote.Text = "⬆";
+            this.btnUpvote.UseVisualStyleBackColor = true;
+            this.btnUpvote.Click += new System.EventHandler(this.btnUpvote_Click);
+            // 
+            // btnDownvote
+            // 
+            this.btnDownvote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDownvote.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDownvote.Location = new System.Drawing.Point(137, 3);
+            this.btnDownvote.Name = "btnDownvote";
+            this.btnDownvote.Size = new System.Drawing.Size(41, 40);
+            this.btnDownvote.TabIndex = 10;
+            this.btnDownvote.Text = "⬇";
+            this.btnDownvote.UseVisualStyleBackColor = true;
+            this.btnDownvote.Click += new System.EventHandler(this.btnDownvote_Click);
+            // 
+            // flowReactionControls
+            // 
+            this.flowReactionControls.Controls.Add(this.btnUpvote);
+            this.flowReactionControls.Controls.Add(this.flowLayoutPanel2);
+            this.flowReactionControls.Controls.Add(this.btnDownvote);
+            this.flowReactionControls.Location = new System.Drawing.Point(715, 30);
+            this.flowReactionControls.Name = "flowReactionControls";
+            this.flowReactionControls.Size = new System.Drawing.Size(182, 46);
+            this.flowReactionControls.TabIndex = 11;
             // 
             // AgreementCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnVote);
-            this.Controls.Add(this.flowLayoutPanel2);
+            this.Controls.Add(this.flowReactionControls);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lblTitle);
             this.Name = "AgreementCard";
@@ -150,6 +175,8 @@
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.flowReactionControls.ResumeLayout(false);
+            this.flowReactionControls.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +192,8 @@
         private Label label2;
         private Label lblDownvote;
         private FlowLayoutPanel flowLayoutPanel2;
-        private Button btnVote;
+        private Button btnUpvote;
+        private Button btnDownvote;
+        private FlowLayoutPanel flowReactionControls;
     }
 }
