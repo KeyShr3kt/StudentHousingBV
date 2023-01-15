@@ -24,6 +24,7 @@ namespace StudentHousingBV.forms
             lblTitle.Text = _agreement.Title;
             User creator = eventManager.GetAgreementCreator(_agreement);
             lblCreator.Text = $"{creator.FirstName} {creator.LastName}";
+            lblCreatedAt.Text = _agreement.CreatedAt.ToString("u").Replace("Z", "");
             lblStartsAt.Text = _agreement.StartDateTime.ToString("u").Replace("Z", "");
             lblEndsAt.Text = _agreement.EndDateTime.ToString("u").Replace("Z", "");
             int upvotes = eventManager.GetAgreementUpvotes(_agreement);
@@ -32,6 +33,11 @@ namespace StudentHousingBV.forms
             lblDownvotes.Text = downvotes.ToString();
             lblAccepted.Text = _agreement.IsAccepted ? "Yes" : "No";
             txtDescription.Text = _agreement.Description;
+        }
+
+        private void lblCreatedAt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

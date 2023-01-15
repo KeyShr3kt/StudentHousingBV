@@ -51,6 +51,7 @@ namespace StudentHousingBV.forms
                         _currentUser.EmailAddress = tbNewValue.Text;
                         _userManager.UpdateUser(_currentUser);
                         MessageBox.Show("User updated successfully!");
+                        this.Close();
                     }
                     else
                     {
@@ -65,6 +66,7 @@ namespace StudentHousingBV.forms
                         _currentUser.PhoneNumber = tbNewValue.Text;
                         _userManager.UpdateUser(_currentUser);
                         MessageBox.Show("User updated successfully!");
+                        this.Close();
                     }
                     else
                     {

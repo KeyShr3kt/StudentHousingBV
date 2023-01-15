@@ -68,6 +68,7 @@
             this.Controls.Add(this.tbNewValue);
             this.Controls.Add(this.lbInfo);
             this.Name = "ChangeDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change <field>";
             this.ResumeLayout(false);
             this.PerformLayout();

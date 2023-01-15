@@ -102,6 +102,7 @@
             this.Controls.Add(this.AddPictureLabel);
             this.Controls.Add(this.pictureBox1);
             this.Name = "CompletePaymentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Housing BV - Complete Payment";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

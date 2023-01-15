@@ -98,6 +98,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "ReportForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Housing BV - Report";
             this.ResumeLayout(false);
             this.PerformLayout();
