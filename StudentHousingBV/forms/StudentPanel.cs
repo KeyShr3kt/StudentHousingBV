@@ -105,8 +105,7 @@ namespace StudentHousingBV.forms
         private void btnAccountLogout_Click(object sender, EventArgs e)
         {
             this.Close();
-            LoginPanel newLoginPanel = new LoginPanel();
-            newLoginPanel.Show();
+            
         }
     }
 }

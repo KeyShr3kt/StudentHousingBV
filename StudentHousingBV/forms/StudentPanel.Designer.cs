@@ -42,6 +42,7 @@
             this.pageRules = new System.Windows.Forms.TabPage();
             this.flowRules = new System.Windows.Forms.FlowLayoutPanel();
             this.pageAccount = new System.Windows.Forms.TabPage();
+            this.btnAccountLogout = new System.Windows.Forms.Button();
             this.gbChangeDetails = new System.Windows.Forms.GroupBox();
             this.btnAccountChEmail = new System.Windows.Forms.Button();
             this.btnAccountChPhone = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.lbAccountInfo3 = new System.Windows.Forms.Label();
             this.lbAccountInfo2 = new System.Windows.Forms.Label();
             this.lbAccountInfo1 = new System.Windows.Forms.Label();
-            this.btnAccountLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundStudentPanel)).BeginInit();
             this.navPages.SuspendLayout();
             this.pageAgreements.SuspendLayout();
@@ -230,6 +230,16 @@
             this.pageAccount.TabIndex = 3;
             this.pageAccount.Text = "ACCOUNT";
             // 
+            // btnAccountLogout
+            // 
+            this.btnAccountLogout.Location = new System.Drawing.Point(676, 181);
+            this.btnAccountLogout.Name = "btnAccountLogout";
+            this.btnAccountLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnAccountLogout.TabIndex = 4;
+            this.btnAccountLogout.Text = "Logout";
+            this.btnAccountLogout.UseVisualStyleBackColor = true;
+            this.btnAccountLogout.Click += new System.EventHandler(this.btnAccountLogout_Click);
+            // 
             // gbChangeDetails
             // 
             this.gbChangeDetails.BackColor = System.Drawing.Color.LightGray;
@@ -390,16 +400,6 @@
             this.lbAccountInfo1.Size = new System.Drawing.Size(128, 20);
             this.lbAccountInfo1.TabIndex = 0;
             this.lbAccountInfo1.Text = "User information:";
-            // 
-            // btnAccountLogout
-            // 
-            this.btnAccountLogout.Location = new System.Drawing.Point(688, 181);
-            this.btnAccountLogout.Name = "btnAccountLogout";
-            this.btnAccountLogout.Size = new System.Drawing.Size(75, 23);
-            this.btnAccountLogout.TabIndex = 4;
-            this.btnAccountLogout.Text = "Logout";
-            this.btnAccountLogout.UseVisualStyleBackColor = true;
-            this.btnAccountLogout.Click += new System.EventHandler(this.btnAccountLogout_Click);
             // 
             // StudentPanel
             // 
