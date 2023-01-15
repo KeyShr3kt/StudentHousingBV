@@ -69,7 +69,7 @@
             this.btnDisableFilters.Name = "btnDisableFilters";
             this.btnDisableFilters.Size = new System.Drawing.Size(94, 22);
             this.btnDisableFilters.TabIndex = 6;
-            this.btnDisableFilters.Text = "Disable";
+            this.btnDisableFilters.Text = "Refresh";
             this.btnDisableFilters.UseVisualStyleBackColor = true;
             this.btnDisableFilters.Click += new System.EventHandler(this.btnDisableFilters_Click);
             // 

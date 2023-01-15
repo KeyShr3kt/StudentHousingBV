@@ -16,7 +16,7 @@ namespace StudentHousingBV.repositories
         {
             return sqlQueryHelper<Task>("SELECT * FROM [Task]" +
                 " JOIN [EVENT] ON [EVENT].[Id] = [TASK].[EventId]" +
-                " WHERE [TASK].[TotalPrice] != NULL" +
+                " WHERE [TASK].[TotalPrice] IS NOT NULL" +
                 " AND [TASK].[IsCompleted] = 0",
                 new { },
                 () => new());

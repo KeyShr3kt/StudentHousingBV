@@ -32,8 +32,15 @@ namespace StudentHousingBV.forms.adminSectionForms
             int count = userManager.CountUsersInBuildingId(task.BuildingId);
             if (task.TotalPrice != 0)
             {
-                int payBack = (((int)(task.TotalPrice)) / count) * (count - 1);
-                lblToPayBack.Text = PriceToEuro(payBack);
+                if (count == 0)
+                {
+                    lblToPayBack.Text = "Only one person in this building.\nNothing to return.\n";
+                }
+                else
+                {
+                    int payBack = (((int)(task.TotalPrice)) / count) * (count - 1);
+                    lblToPayBack.Text = PriceToEuro(payBack);
+                }
             }
          }
 
