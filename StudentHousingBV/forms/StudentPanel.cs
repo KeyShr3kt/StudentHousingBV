@@ -101,5 +101,12 @@ namespace StudentHousingBV.forms
             };
             updateUserForm.Show();
         }
+
+        private void btnAccountLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginPanel newLoginPanel = new LoginPanel();
+            newLoginPanel.Show();
+        }
     }
 }
