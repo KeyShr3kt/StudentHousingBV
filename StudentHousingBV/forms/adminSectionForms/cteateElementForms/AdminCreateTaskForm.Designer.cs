@@ -196,7 +196,7 @@
             this.Controls.Add(this.label4);
             this.Name = "AdminCreateTaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "v";
+            this.Text = "Create Task";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

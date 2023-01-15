@@ -232,7 +232,7 @@
             this.MaximumSize = new System.Drawing.Size(859, 661);
             this.MinimumSize = new System.Drawing.Size(859, 661);
             this.Name = "AdminUsersForm";
-            this.Text = "AdminUsersForm";
+            this.Text = "Users Form";
             this.Load += new System.EventHandler(this.AdminUsersForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -54,13 +54,13 @@
             // 
             // btnTaskComponent
             // 
+            this.btnTaskComponent.Enabled = false;
             this.btnTaskComponent.Location = new System.Drawing.Point(722, 24);
             this.btnTaskComponent.Name = "btnTaskComponent";
             this.btnTaskComponent.Size = new System.Drawing.Size(127, 23);
             this.btnTaskComponent.TabIndex = 4;
             this.btnTaskComponent.Text = "Open details";
             this.btnTaskComponent.UseVisualStyleBackColor = true;
-            this.btnTaskComponent.Visible = false;
             this.btnTaskComponent.Click += new System.EventHandler(this.btnTaskComponent_Click);
             // 
             // btnReportTask

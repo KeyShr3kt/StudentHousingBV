@@ -26,7 +26,7 @@ namespace StudentHousingBV.forms.components
             this._currentBuildingId = currentBuildingId;
             if (this._task.IsShopping == true && this._task.AssignedToUserId == currentUserId) 
             {
-                this.btnTaskComponent.Visible = true;
+                this.btnTaskComponent.Enabled = true;
             }
         }
 

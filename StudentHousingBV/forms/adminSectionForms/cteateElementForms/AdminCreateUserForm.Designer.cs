@@ -302,7 +302,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "AdminCreateUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminUsersForm";
+            this.Text = "Tenant Registration";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);

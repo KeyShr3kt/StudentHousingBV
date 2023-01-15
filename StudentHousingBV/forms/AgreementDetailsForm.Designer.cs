@@ -243,7 +243,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AgreementDetailsForm";
-            this.Text = "AgreementDetailsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Agreement Details";
             this.ResumeLayout(false);
             this.PerformLayout();
 

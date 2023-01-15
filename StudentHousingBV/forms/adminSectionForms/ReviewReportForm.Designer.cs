@@ -177,7 +177,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnMarkAsReviewed);
             this.Name = "ReviewReportForm";
-            this.Text = "ReviewReportForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Review Report";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

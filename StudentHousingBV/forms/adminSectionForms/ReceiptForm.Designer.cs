@@ -50,7 +50,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "ReceiptForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ReceiptForm";
+            this.Text = "Receipt Form";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

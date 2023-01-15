@@ -41,7 +41,8 @@ namespace StudentHousingBV.forms.components
             lblBuilding.Text = building.Address;
             if (report.IsReviewed)
             {
-                btnReview.Hide();
+                btnReview.Enabled = false;
+                btnReview.Text = "Reviewed";
             }
         }
 

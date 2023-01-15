@@ -186,7 +186,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "AdminTasksForm";
-            this.Text = "AdminTasksForm";
+            this.Text = "Tasks Form";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

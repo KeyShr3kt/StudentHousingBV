@@ -206,7 +206,7 @@
             this.Controls.Add(this.btnReceipt);
             this.Name = "AdminTaskReview";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminTaskReview";
+            this.Text = "Task Review";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

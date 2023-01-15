@@ -65,6 +65,7 @@
             this.pageClosedAgreements.SuspendLayout();
             this.pageTasks.SuspendLayout();
             this.pageRules.SuspendLayout();
+            this.pageAccount.SuspendLayout();
             this.gbChangeDetails.SuspendLayout();
             this.panelAccountInfo.SuspendLayout();
             this.SuspendLayout();
@@ -141,6 +142,7 @@
             // flowOpenAgreements
             // 
             this.flowOpenAgreements.AutoScroll = true;
+            this.flowOpenAgreements.BackColor = System.Drawing.Color.LightGray;
             this.flowOpenAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowOpenAgreements.Location = new System.Drawing.Point(5, 5);
             this.flowOpenAgreements.Name = "flowOpenAgreements";
@@ -162,6 +164,7 @@
             // flowClosedAgreements
             // 
             this.flowClosedAgreements.AutoScroll = true;
+            this.flowClosedAgreements.BackColor = System.Drawing.Color.LightGray;
             this.flowClosedAgreements.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowClosedAgreements.Location = new System.Drawing.Point(5, 5);
             this.flowClosedAgreements.Name = "flowClosedAgreements";
@@ -224,7 +227,7 @@
             this.pageAccount.Size = new System.Drawing.Size(961, 365);
             this.pageAccount.TabIndex = 3;
             this.pageAccount.Text = "ACCOUNT";
-            //
+            // 
             // gbChangeDetails
             // 
             this.gbChangeDetails.BackColor = System.Drawing.Color.LightGray;
@@ -386,7 +389,6 @@
             this.lbAccountInfo1.TabIndex = 0;
             this.lbAccountInfo1.Text = "User information:";
             // 
-
             // StudentPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -406,6 +408,10 @@
             this.pageClosedAgreements.ResumeLayout(false);
             this.pageTasks.ResumeLayout(false);
             this.pageRules.ResumeLayout(false);
+            this.pageAccount.ResumeLayout(false);
+            this.gbChangeDetails.ResumeLayout(false);
+            this.panelAccountInfo.ResumeLayout(false);
+            this.panelAccountInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }

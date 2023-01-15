@@ -214,7 +214,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminForm";
+            this.Text = "Student Housing BV - Admin Panel";
             this.sidebarPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
