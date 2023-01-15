@@ -24,7 +24,7 @@ namespace StudentHousingBV.forms.components
             this.lbTaskDescription.Text = this._task.Title;
             this._currentUserId = currentUserId;
             this._currentBuildingId = currentBuildingId;
-            if (this._task.IsShopping == true && this._task.AssignedToUserId == currentUserId) 
+            if (this._task.IsShopping == true && this._task.AssignedToUserId == currentUserId && this._task.TotalPrice == null) 
             {
                 this.btnTaskComponent.Enabled = true;
             }
@@ -32,7 +32,11 @@ namespace StudentHousingBV.forms.components
 
         private void btnTaskComponent_Click(object sender, EventArgs e)
         {
-            StudentHousingBV.forms.CompletePaymentForm _completePaymentForm = new StudentHousingBV.forms.CompletePaymentForm(this._task);
+            StudentHousingBV.forms.CompletePaymentForm _completePaymentForm = new StudentHousingBV.forms.CompletePaymentForm(this._task, this._currentUserId);
+            _completePaymentForm.Closed += (s, args) =>
+            {
+                this.btnTaskComponent.Enabled = false;
+            };
             _completePaymentForm.Show();
         }
 

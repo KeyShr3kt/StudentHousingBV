@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentHousingBV.controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,15 @@ namespace StudentHousingBV.forms
     public partial class CompletePaymentForm : Form
     {
         private StudentHousingBV.models.Task _task;
+        private int _currUserId;
+        private EventManager _eventManager;
 
-        public CompletePaymentForm(StudentHousingBV.models.Task task)
+        public CompletePaymentForm(StudentHousingBV.models.Task task, int currUserId)
         {
             InitializeComponent();
             _task = task;
+            _currUserId = currUserId;
+            _eventManager = new(_currUserId);
         }
 
         private void AddPictureLabel_Click(object sender, EventArgs e)
@@ -33,9 +38,9 @@ namespace StudentHousingBV.forms
 
         private void SendButton_Click(object sender, EventArgs e)
         {
-            if (double.TryParse(PriceTextBox.Text, out double price))
+            if (int.TryParse(PriceTextBox.Text, out int price))
             {
-                // update to db
+                _eventManager.AddPriceToTask(_task.Id, price);
                 MessageBox.Show("Task completed!");
             }
         }

@@ -141,6 +141,11 @@ namespace StudentHousingBV.controllers
             unitOfWork.Reports.MarkAsReviewed(report);
         }
 
+        public void AddPriceToTask(int taskId, int price)
+        {
+            unitOfWork.Events.AddPriceToTask(taskId, price);
+        }
+
         public bool UpvoteAgreement(Agreement agreement)
         {
             Reaction r = new(CurrentUserId, agreement.Id, true);

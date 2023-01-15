@@ -76,6 +76,14 @@ namespace StudentHousingBV.repositories
                 new { title, description, creatorId, buildingId });
         }
 
+        public void AddPriceToTask(int id, int price)
+        {
+            sqlNonQueryHelper("UPDATE [TASK]" +
+                " SET TotalPrice = @price" +
+                " WHERE EventId = @id;",
+                new { id, price });
+        }
+
         public void CreateTaskGrocery(string title, string description, int creatorId, int buildingId)
         {
             sqlNonQueryHelper("INSERT INTO [EVENT]" +
