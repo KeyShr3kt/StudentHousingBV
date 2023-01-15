@@ -73,6 +73,7 @@
             this.linkDetails.TabIndex = 7;
             this.linkDetails.TabStop = true;
             this.linkDetails.Text = "...more";
+            this.linkDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDetails_LinkClicked);
             // 
             // RuleComponent
             // 

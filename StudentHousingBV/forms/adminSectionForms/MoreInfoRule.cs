@@ -15,12 +15,12 @@ namespace StudentHousingBV.forms.adminSectionForms
 {
     public partial class MoreInfoRule : Form
     {
-        public MoreInfoRule(EventManager eventManager, Rule rule)
+        public MoreInfoRule(Rule rule)
         {
             InitializeComponent();
             lblCreatedAt.Text = rule.CreatedAt.ToString();
             lblUpdatedAt.Text = rule.UpdatedAt.ToString();
-            User user = eventManager.GetCreatorOfRule(rule);
+            User user = EventManager.GetCreatorOfRule(rule);
             lblCreatedBy.Text = user.FirstName + " " + user.LastName;
             lblDescription.Text = rule.Description;
 

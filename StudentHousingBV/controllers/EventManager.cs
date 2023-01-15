@@ -59,8 +59,9 @@ namespace StudentHousingBV.controllers
             unitOfWork.Events.UpdateRule(ruleId, title, description, CurrentUserId, building.Id);
         }
 
-        public User GetCreatorOfRule(Rule rule)
+        public static User GetCreatorOfRule(Rule rule)
         {
+            UnitOfWork unitOfWork = new();
             return unitOfWork.Users.GetCreatorOfEventId(rule.Id);
         }
 

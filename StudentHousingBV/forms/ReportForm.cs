@@ -26,7 +26,7 @@ namespace StudentHousingBV.forms
             this._currentUserId = currentUserId;
             this._currentBuildingId = currentBuildingId;
             _reportManager = new ReportManager(_currentUserId);
-            this.lbReportedEvent.Text = $"Reported task: #{this._reportedTask.Id} {this._reportedTask.Description}";
+            this.lbReportedEvent.Text = $"Reported task: #{this._reportedTask.Id} {this._reportedTask.Title}";
         }
 
         public ReportForm(StudentHousingBV.models.Rule reportedRule, int currentUserId, int currentBuildingId)
@@ -36,7 +36,7 @@ namespace StudentHousingBV.forms
             this._currentUserId = currentUserId;
             this._currentBuildingId = currentBuildingId;
             _reportManager = new ReportManager(_currentUserId);
-            this.lbReportedEvent.Text = $"Reported rule: #{this._reportedRule.Id} {this._reportedRule.Description}";
+            this.lbReportedEvent.Text = $"Reported rule: #{this._reportedRule.Id} {this._reportedRule.Title}";
         }
 
         private void btnSend_Click(object sender, EventArgs e)

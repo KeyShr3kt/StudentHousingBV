@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.forms.adminSectionForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +32,12 @@ namespace StudentHousingBV.forms.components
         {
             StudentHousingBV.forms.ReportForm _reportForm = new StudentHousingBV.forms.ReportForm(this._rule, _currentUserId, _currentBuildingId);
             _reportForm.Show();
+        }
+
+        private void linkDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MoreInfoRule rule = new MoreInfoRule(_rule);
+            rule.Show();
         }
     }
 }

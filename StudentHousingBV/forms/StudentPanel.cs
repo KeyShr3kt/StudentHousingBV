@@ -63,7 +63,7 @@ namespace StudentHousingBV.forms
             flowRules.Controls.Clear();
             foreach (Rule rule in _eventManager.GetAllRulesInBuildingId(_currUserBuilding.Id))
             {
-                fpPageTasks.Controls.Add(new RuleComponent(rule, _currUser.Id, _currUserBuilding.Id));
+                flowRules.Controls.Add(new RuleComponent(rule, _currUser.Id, _currUserBuilding.Id));
             }
         }
 

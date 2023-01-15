@@ -17,9 +17,10 @@ namespace StudentHousingBV.forms.components
     public partial class AdminRuleComponent : UserControl
     {
         private Rule _rule;
-
         private EventManager _eventManager;
+
         public EventManager eventManager { get => _eventManager;}
+
         public AdminRuleComponent(Rule rule, EventManager manager)
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace StudentHousingBV.forms.components
 
         private void btnMoreInfo_Click(object sender, EventArgs e)
         {
-            MoreInfoRule rule = new MoreInfoRule(eventManager, _rule);
+            MoreInfoRule rule = new MoreInfoRule(_rule);
             rule.Show();
         }
 
