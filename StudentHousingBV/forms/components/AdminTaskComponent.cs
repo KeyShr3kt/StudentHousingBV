@@ -27,9 +27,14 @@ namespace StudentHousingBV.forms.components
             lblCreatedAt.Text = ((Event)task).CreatedAt.ToString();
             lblTaskIdHidden.Text = ((Event)task).Id.ToString();
             lblTaskIdHidden.Hide();
-            if (task.IsShopping == true && task.IsCompleted == false && task.TotalPrice != null)
+            if (task.IsShopping == true && task.TotalPrice != null && task.IsCompleted == false)
             {
                 btnComplete.Show();
+            }
+            else if (task.IsShopping == true && task.TotalPrice != null && task.IsCompleted == true)
+            {
+                btnComplete.Show();
+                btnComplete.Enabled = false;
             }
         }
 
