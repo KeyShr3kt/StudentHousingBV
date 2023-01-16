@@ -1,4 +1,6 @@
-﻿using StudentHousingBV.models;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.models;
+using StudentHousingBV.repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +16,21 @@ namespace StudentHousingBV.forms.components
     public partial class TaskComponent : UserControl
     {
         private StudentHousingBV.models.Task _task;
+        private UnitOfWork _unitOfWork = new();
         private int _currentUserId;
         private int _currentBuildingId;
+        private User _assignedUser;
 
         public TaskComponent(StudentHousingBV.models.Task task, int currentUserId, int currentBuildingId)
         {
             InitializeComponent();
             this._task = task;
+            if (_task.AssignedToUserId != null)
+            {
+                this._assignedUser = _unitOfWork.Users.Get(_task.AssignedToUserId);
+            }
             this.lbTaskDescription.Text = this._task.Title;
+            this.lbTaskUser.Text = _assignedUser.FirstName + " " + _assignedUser.LastName;
             this._currentUserId = currentUserId;
             this._currentBuildingId = currentBuildingId;
             if (this._task.IsShopping == true && this._task.AssignedToUserId == currentUserId && this._task.TotalPrice == null) 
