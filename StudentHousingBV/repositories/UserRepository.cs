@@ -57,10 +57,10 @@ namespace StudentHousingBV.repositories
                         {
                             user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, false, null);
                         }
-                        
+
                     } else if (inc == 9)
                     {
-                       if (reader.GetValue(inc) == DBNull.Value)
+                        if (reader.GetValue(inc) == DBNull.Value)
                         {
                             user.GetType().GetProperty(reader.GetName(inc)).SetValue(user, null, null);
                         } else
@@ -133,7 +133,7 @@ namespace StudentHousingBV.repositories
             {
                 using (SqlConnection conn = new SqlConnection(UnitOfWork.CONNECTION_STRING))
                 {
-                   
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         foreach (KeyValuePair<string, string> entry in parameters)
@@ -152,23 +152,23 @@ namespace StudentHousingBV.repositories
             return result;
         }
 
-        public List<User> GetAll() 
+        public List<User> GetAll()
         {
-              string sql = "SELECT * FROM [USER];";
-              return ExecuteReaderUsers(sql, new());
+            string sql = "SELECT * FROM [USER];";
+            return ExecuteReaderUsers(sql, new());
         }
 
-        public User Get(int id) 
+        public User Get(int id)
         {
             string sql = "SELECT * FROM [USER] WHERE [USER].Id = @id;";
             Dictionary<string, string> parameters = new()
             {
                 { "@id", id.ToString() }
             };
-            return ExecuteReaderUsers(sql, parameters).First(); 
+            return ExecuteReaderUsers(sql, parameters).First();
         }
-       
-        public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN) 
+
+        public int Insert(string firstName, string lastName, string email, string phoneNumber, bool isAdmin, string IBAN)
         {
             string sql = "INSERT INTO [USER] (FirstName, LastName, EmailAddress, Password, PhoneNumber, PositiveVotes, NegativeVotes, IsAdmin, IBAN)" +
                 " VALUES (@firstName, @lastName, @email, @password , @phoneNumber, 0, 0, @isAdmin, @IBAN)";
@@ -187,9 +187,9 @@ namespace StudentHousingBV.repositories
             ExecuteNonQuery(sql, parameters);
             string query = "SELECT Id FROM [USER] WHERE Id = (SELECT MAX(Id) FROM [USER])";
             sendMail(email, password);
-            return ExecuteScalarUsers(query, new()); 
+            return ExecuteScalarUsers(query, new());
         }
-        public void Update(User user) 
+        public void Update(User user)
         {
             string sql = "UPDATE [USER] SET FirstName = @FirstName, LastName = @LastName, " +
                             "EmailAddress = @EmailAddress, Password = @Password, PhoneNumber = @PhoneNumber, " +
@@ -209,7 +209,7 @@ namespace StudentHousingBV.repositories
                 { "@IsAdmin", Convert.ToInt16(user.IsAdmin).ToString()},
                 { "@IBAN", user.IBAN }
             };
-            ExecuteNonQuery( sql, parameters );
+            ExecuteNonQuery(sql, parameters);
         }
 
         public List<User> GetAdminsInBuildingId(int buildingId)
@@ -225,7 +225,7 @@ namespace StudentHousingBV.repositories
             {
                 { "@buildingId", buildingId.ToString() }
             };
-            return ExecuteReaderUsers( sql, parameters);
+            return ExecuteReaderUsers(sql, parameters);
         }
 
         public List<User> GetAllUsersInBuildingId(int buildingId)
@@ -242,6 +242,34 @@ namespace StudentHousingBV.repositories
                 { "@buildingId", buildingId.ToString() }
             };
             return ExecuteReaderUsers(sql, parameters);
+        }
+
+        public List<User> GetAllAssignedUsersInBuildingId(int buildingId)
+        {
+            string sql = "select u.* " +
+                            "from [USER] as u " +
+                            "inner join [ROOM] as r " +
+                            "on r.UserId = u.Id " +
+                            "inner join BUILDING as b " +
+                            "on r.BuildingId = b.Id " +
+                            "inner join [TASK] as t " +
+                            "on u.Id = t.AssignedToUserId " +
+                            "where r.BuildingId = @buildingId; ";
+            Dictionary<string, string> parameters = new()
+            {
+                { "@buildingId", buildingId.ToString() }
+            };
+            return ExecuteReaderUsers(sql, parameters);
+        }
+
+        public List<User> GetAllNonAssignedUsersInBuildingId(int buildingId)
+        {
+            List<User> users = GetAllUsersInBuildingId(buildingId);
+            foreach (User user in GetAllAssignedUsersInBuildingId(buildingId))
+            {
+                users.Remove(user);
+            }
+            return users;
         }
 
         public List<User> GetAllAdmins()

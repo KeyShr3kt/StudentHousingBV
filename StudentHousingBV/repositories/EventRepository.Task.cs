@@ -1,4 +1,5 @@
-﻿using StudentHousingBV.models;
+﻿using StudentHousingBV.controllers;
+using StudentHousingBV.models;
 using Task = StudentHousingBV.models.Task;
 
 namespace StudentHousingBV.repositories
@@ -65,15 +66,21 @@ namespace StudentHousingBV.repositories
 
         public void CreateTask(string title, string description, int creatorId, int buildingId)
         {
+            UserRepository userRepository = new UserRepository();
+            Random rnd = new Random();
+            int index = rnd.Next(userRepository.GetAllNonAssignedUsersInBuildingId(buildingId).Count);
+            User notAssignedUser = userRepository.GetAllNonAssignedUsersInBuildingId(buildingId).ToArray()[index];
+            int userId = notAssignedUser.Id;
+
             sqlNonQueryHelper("INSERT INTO [EVENT]" +
                 " ([Title], [Description], [CreatedAt], [CreatorId], [BuildingId])" +
                 " VALUES" +
                 " (@title, @description, GETDATE(), @creatorId, @buildingId);" +
                 " INSERT INTO [TASK]" +
-                " ([EventId], [IsShopping])" +
+                " ([EventId], [AssignedToUserId], [IsShopping])" +
                 " VALUES" +
-                " (SCOPE_IDENTITY(), 0);",
-                new { title, description, creatorId, buildingId });
+                " (SCOPE_IDENTITY(), @userId, 0);",
+                new { title, description, creatorId, buildingId, userId });
         }
 
         public void AddPriceToTask(int id, int price)
@@ -86,15 +93,21 @@ namespace StudentHousingBV.repositories
 
         public void CreateTaskGrocery(string title, string description, int creatorId, int buildingId)
         {
+            UserRepository userRepository = new UserRepository();
+            Random rnd = new Random();
+            int index = rnd.Next(userRepository.GetAllNonAssignedUsersInBuildingId(buildingId).Count);
+            User notAssignedUser = userRepository.GetAllNonAssignedUsersInBuildingId(buildingId).ToArray()[index];
+            int userId = notAssignedUser.Id;
+
             sqlNonQueryHelper("INSERT INTO [EVENT]" +
                 " ([Title], [Description], [CreatedAt], [CreatorId], [BuildingId])" +
                 " VALUES" +
                 " (@title, @description, GETDATE(), @creatorId, @buildingId);" +
                 " INSERT INTO [TASK]" +
-                " ([EventId], [IsShopping], [IsCompleted], [TotalPrice])" +
+                " ([EventId], [AssignedToUserId], [IsShopping], [IsCompleted], [TotalPrice])" +
                 " VALUES" +
-                " (SCOPE_IDENTITY(), 1, 0, 0);",
-                new { title, description, creatorId, buildingId });
+                " (SCOPE_IDENTITY(), @userId, 1, 0, 0);",
+                new { title, description, creatorId, buildingId, userId });
         }
 
         public void MarkTaskIdAsComplete(int id)
