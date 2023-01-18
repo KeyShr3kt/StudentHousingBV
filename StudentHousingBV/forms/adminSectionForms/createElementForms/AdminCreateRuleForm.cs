@@ -43,7 +43,7 @@ namespace StudentHousingBV.forms.adminSectionForms
             lblHiddenRuleId.Hide();
             txtBoxTitle.Text = rule.Title;
             txtBoxDescription.Text = rule.Description;
-            cmbBoxBuildings.SelectedIndex = cmbBoxBuildings.FindStringExact((buildingManager.GetBuidingWithId(rule.Id)).ToString());
+            cmbBoxBuildings.SelectedIndex = cmbBoxBuildings.FindStringExact((buildingManager.GetBuidingWithId(rule.BuildingId)).ToString());
         }
 
         void fillBuildings()
