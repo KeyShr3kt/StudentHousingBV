@@ -192,6 +192,31 @@ namespace StudentHousingBV.repositories
                     new { creatorId = reaction.CreatorId, agreementId = reaction.AgreementId, isPositive = reaction.IsPositive ? 1 : 0 },
                     () => default);
                 reaction.Id = id;
+                try
+                {
+                    sqlNonQueryHelper("UPDATE [AGREEMENT]" +
+                        " SET [AGREEMENT].[IsAccepted] = 1" +
+                        " WHERE" +
+                        "   [AGREEMENT].[EventId] = @agreementId" +
+                        "   AND" +
+                        "   (SELECT COUNT([REACTION].[Id]) FROM [REACTION]" +
+                        "       WHERE [REACTION].[AgreementId] = @agreementId" +
+                        "       AND [REACTION].[IsPositive] = 1)" +
+                        "   /" +
+                        "   CAST((SELECT COUNT([USER].[Id]) FROM [AGREEMENT]" +
+                        "       JOIN [EVENT] ON [EVENT].[Id] = [AGREEMENT].[EventId]" +
+                        "       JOIN [BUILDING] ON [BUILDING].[Id] = [EVENT].[BuildingId]" +
+                        "       JOIN [ROOM] ON [ROOM].[BuildingId] = [Building].[Id]" +
+                        "       JOIN [USER] ON [USER].[Id] = [ROOM].[UserId]" +
+                        "       WHERE [AGREEMENT].[EventId] = @agreementId) AS REAL)" +
+                        "   > 0.7;",
+                        new { agreementId = reaction.AgreementId },
+                        _rowsAffected => true);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
                 return true;
             }
             catch

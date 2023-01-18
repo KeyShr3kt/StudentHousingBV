@@ -32,11 +32,20 @@ namespace StudentHousingBV.forms
             flowClosedAgreements.Controls.Clear();
             foreach (Agreement agreement in _eventManager.GetPendingAgreements(_currUserBuilding))
             {
-                flowOpenAgreements.Controls.Add(new AgreementCard(agreement, _eventManager, _currUser));
+                AgreementCard card = new(agreement, _eventManager, _currUser);
+                flowOpenAgreements.Controls.Add(card);
+                card.OnAgreementReaction += (a, isPositive) =>
+                {
+                    if (isPositive && (_eventManager.GetAgreement(a.Id)?.IsAccepted ?? false))
+                    {
+                        updateAgreements();
+                    }
+                };
             }
             foreach (Agreement agreement in _eventManager.GetAcceptedAgreements(_currUserBuilding))
             {
-                flowClosedAgreements.Controls.Add(new AgreementCard(agreement, _eventManager, _currUser));
+                AgreementCard card = new(agreement, _eventManager, _currUser);
+                flowClosedAgreements.Controls.Add(card);
             }
         }
 

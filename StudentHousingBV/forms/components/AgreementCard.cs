@@ -9,6 +9,10 @@ namespace StudentHousingBV.forms.components
         private EventManager _eventManager;
         private User _curUser;
 
+        public delegate void AgreementReactionHandler(Agreement agreement, bool isPositive);
+
+        public event AgreementReactionHandler? OnAgreementReaction;
+
         public AgreementCard(Agreement agreement, EventManager eventManager, User curUser)
         {
             _agreement = agreement;
@@ -68,6 +72,10 @@ namespace StudentHousingBV.forms.components
             {
                 update();
             }
+            if (userReaction == null)
+            {
+                OnAgreementReaction?.Invoke(_agreement, true);
+            }
         }
 
         private void btnDownvote_Click(object sender, EventArgs e)
@@ -81,6 +89,10 @@ namespace StudentHousingBV.forms.components
             })
             {
                 update();
+            }
+            if (userReaction == null)
+            {
+                OnAgreementReaction?.Invoke(_agreement, false);
             }
         }
     }

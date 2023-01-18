@@ -201,6 +201,11 @@ namespace StudentHousingBV.controllers
             return unitOfWork.Events.GetAllAgreements();
         }
 
+        public Agreement? GetAgreement(int id)
+        {
+            return unitOfWork.Events.GetAgreement(id);
+        }
+
         public List<Agreement> GetAcceptedAgreements(Building building)
         {
             return unitOfWork.Events.GetAcceptedAgreements(building.Id);
