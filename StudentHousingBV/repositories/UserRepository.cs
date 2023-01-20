@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 using System.Net.Mail;
 using System.Net;
 using User = StudentHousingBV.models.User;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StudentHousingBV.repositories
 {
@@ -244,39 +247,27 @@ namespace StudentHousingBV.repositories
             return ExecuteReaderUsers(sql, parameters);
         }
 
-        public List<User> GetAllAssignedUsersInBuildingId(int buildingId)
+        public User GetRandomUserForTaskInBuilding(int buildingId)
         {
-            string sql = "select u.* " +
-                            "from [USER] as u " +
-                            "inner join [ROOM] as r " +
-                            "on r.UserId = u.Id " +
-                            "inner join BUILDING as b " +
-                            "on r.BuildingId = b.Id " +
-                            "inner join [TASK] as t " +
-                            "on u.Id = t.AssignedToUserId " +
-                            "where r.BuildingId = @buildingId; ";
+            string sql = "select top 1 u.Id, u.FirstName, u.LastName, u.EmailAddress, u.Password, u.PhoneNumber, u.PositiveVotes, u.NegativeVotes, u.IsAdmin, u.LastSeenAt, u.IBAN" +
+            " from [USER] as u" +
+            " inner join [ROOM] on [ROOM].UserId = u.Id" +
+            " inner join [BUILDING] on [BUILDING].Id = [ROOM].BuildingId" +
+            " where [BUILDING].Id = @buildingId" +
+            " and u.Id not in (select distinct [USER].id from [USER] inner join [TASK] on [USER].Id = [Task].AssignedToUserId inner join [EVENT] on [Task].EventId = [EVENT].Id where [EVENT].BuildingId = @buildingId)" +
+            " order by NEWID();";
             Dictionary<string, string> parameters = new()
             {
                 { "@buildingId", buildingId.ToString() }
             };
-            return ExecuteReaderUsers(sql, parameters);
-        }
-
-        public List<User> GetAllNonAssignedUsersInBuildingId(int buildingId)
-        {
-            List<User> users = GetAllUsersInBuildingId(buildingId);
-            foreach (User user in GetAllAssignedUsersInBuildingId(buildingId))
-            {
-                users.Remove(user);
-            }
-            return users;
+            return ExecuteReaderUsers(sql, parameters).First();
         }
 
         public List<User> GetAllAdmins()
         {
             string sql = "select * " +
-                            "from [USER] " +
-                            "where IsAdmin = 1;";
+            "from [USER] " +
+            "where IsAdmin = 1;";
             return ExecuteReaderUsers(sql, new());
         }
 

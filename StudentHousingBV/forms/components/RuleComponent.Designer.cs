@@ -28,26 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbRuleId = new System.Windows.Forms.Label();
             this.lbRuleTitle = new System.Windows.Forms.Label();
             this.btnReportTask = new StudentHousingBV.forms.components.RoundButton();
             this.linkDetails = new System.Windows.Forms.LinkLabel();
             this.lbRuleDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lbRuleId
-            // 
-            this.lbRuleId.AutoSize = true;
-            this.lbRuleId.Location = new System.Drawing.Point(45, 29);
-            this.lbRuleId.Name = "lbRuleId";
-            this.lbRuleId.Size = new System.Drawing.Size(25, 15);
-            this.lbRuleId.TabIndex = 0;
-            this.lbRuleId.Text = "{id}";
-            // 
             // lbRuleTitle
             // 
             this.lbRuleTitle.AutoSize = true;
-            this.lbRuleTitle.Location = new System.Drawing.Point(159, 29);
+            this.lbRuleTitle.Location = new System.Drawing.Point(84, 29);
             this.lbRuleTitle.Name = "lbRuleTitle";
             this.lbRuleTitle.Size = new System.Drawing.Size(35, 15);
             this.lbRuleTitle.TabIndex = 1;
@@ -92,7 +82,6 @@
             this.Controls.Add(this.lbRuleDescription);
             this.Controls.Add(this.btnReportTask);
             this.Controls.Add(this.lbRuleTitle);
-            this.Controls.Add(this.lbRuleId);
             this.Controls.Add(this.linkDetails);
             this.Name = "RuleComponent";
             this.Size = new System.Drawing.Size(914, 72);
@@ -102,8 +91,6 @@
         }
 
         #endregion
-
-        private Label lbRuleId;
         private Label lbRuleTitle;
         private StudentHousingBV.forms.components.RoundButton btnReportTask;
         private LinkLabel linkDetails;

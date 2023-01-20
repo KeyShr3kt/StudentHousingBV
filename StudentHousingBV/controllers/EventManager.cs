@@ -73,11 +73,13 @@ namespace StudentHousingBV.controllers
             }
             if (includesPayment)
             {
-                unitOfWork.Events.CreateTaskGrocery(title, description, CurrentUserId, building.Id);
+                User randomUser = unitOfWork.Users.GetRandomUserForTaskInBuilding(building.Id);
+                unitOfWork.Events.CreateTaskGrocery(title, description, _currUserid, building.Id, randomUser.Id);
             }
             else
             {
-                unitOfWork.Events.CreateTask(title, description, CurrentUserId, building.Id);
+                User randomUser = unitOfWork.Users.GetRandomUserForTaskInBuilding(building.Id);
+                unitOfWork.Events.CreateTask(title, description, _currUserid, building.Id, randomUser.Id);
             }
         }
 
